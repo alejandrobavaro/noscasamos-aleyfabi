@@ -1,0 +1,276 @@
+[
+  {
+    "id": 1,
+    "nombre": "P-1-Camiseta - Estilo Urbano Personalizado",
+    "precio": 65000,
+    "imagenes": [
+      "/img/06-tienda/tienda1-a.png",
+      "/img/06-tienda/tienda1-b.png",
+      "/img/06-tienda/tienda1-c.png",
+      "/img/06-tienda/tienda1-d.png"
+    ],
+    "categoria": "camiseta",
+    "descripcion": "Camiseta urbana personalizada con tu diseño favorito, disponible en varios colores."
+  },
+  {
+    "id": 2,
+    "nombre": "P-2-Pijama - Seda Exclusiva - Estilo Minimalista",
+    "precio": 78500,
+    "imagenes": [
+      "/img/06-tienda/tienda2-a.png",
+      "/img/06-tienda/tienda2-b.png",
+      "/img/06-tienda/tienda2-c.png",
+      "/img/06-tienda/tienda2-d.png"
+    ],
+    "categoria": "pijama",
+    "descripcion": "Pijama de seda minimalista con detalles personalizados, suave y lujoso."
+  },
+  {
+    "id": 3,
+    "nombre": "P-3-Camiseta - Vintage Music Lover",
+    "precio": 58000,
+    "imagenes": [
+      "/img/06-tienda/tienda3-a.png",
+      "/img/06-tienda/tienda3-b.png",
+      "/img/06-tienda/tienda3-c.png",
+      "/img/06-tienda/tienda3-d.png"
+    ],
+    "categoria": "camiseta",
+    "descripcion": "Camiseta vintage personalizada con diseño musical, perfecta para amantes de la música retro."
+  },
+  {
+    "id": 4,
+    "nombre": "P-4-Conjunto - Casual Chic - Ropa Femenina",
+    "precio": 82000,
+    "imagenes": [
+      "/img/06-tienda/tienda4-a.png",
+      "/img/06-tienda/tienda4-b.png",
+      "/img/06-tienda/tienda4-c.png",
+      "/img/06-tienda/tienda4-d.png"
+    ],
+    "categoria": "conjunto",
+    "descripcion": "Conjunto femenino casual chic con diseño personalizado y detalles modernos."
+  },
+  {
+    "id": 5,
+    "nombre": "P-5-Gorra - Logo Personalizado - Estilo Deportivo",
+    "precio": 46000,
+    "imagenes": [
+      "/img/06-tienda/tienda5-a.png",
+      "/img/06-tienda/tienda5-b.png",
+      "/img/06-tienda/tienda5-c.png",
+      "/img/06-tienda/tienda5-d.png"
+    ],
+    "categoria": "gorro",
+    "descripcion": "Gorra deportiva personalizada con logo, ideal para actividades al aire libre."
+  },
+  {
+    "id": 6,
+    "nombre": "P-6-Vestido - Fiesta Personalizado - Estilo Elegante",
+    "precio": 120000,
+    "imagenes": [
+      "/img/06-tienda/tienda6-a.png",
+      "/img/06-tienda/tienda6-b.png",
+      "/img/06-tienda/tienda6-c.png",
+      "/img/06-tienda/tienda6-d.png"
+    ],
+    "categoria": "vestido",
+    "descripcion": "Vestido de fiesta con diseño personalizado, ideal para ocasiones especiales."
+  },
+  {
+    "id": 7,
+    "nombre": "P-7-Chaqueta - Cuero Personalizada - Estilo Rockero",
+    "precio": 150000,
+    "imagenes": [
+      "/img/06-tienda/tienda7-a.png",
+      "/img/06-tienda/tienda7-b.png",
+      "/img/06-tienda/tienda7-c.png",
+      "/img/06-tienda/tienda7-d.png"
+    ],
+    "categoria": "chaqueta",
+    "descripcion": "Chaqueta de cuero personalizada con estilo rockero, ideal para un look audaz."
+  },
+  {
+    "id": 8,
+    "nombre": "P-8-Pantalón - Jeans con Bordado - Unisex",
+    "precio": 95000,
+    "imagenes": [
+      "/img/06-tienda/tienda8-a.png",
+      "/img/06-tienda/tienda8-b.png",
+      "/img/06-tienda/tienda8-c.png",
+      "/img/06-tienda/tienda8-d.png"
+    ],
+    "categoria": "pantalón",
+    "descripcion": "Jeans unisex personalizados con bordados únicos, perfectos para cualquier ocasión."
+  },
+  {
+    "id": 9,
+    "nombre": "P-9-Camisa - Oficina Personalizada - Estilo Formal",
+    "precio": 85000,
+    "imagenes": [
+      "/img/06-tienda/tienda9-a.png",
+      "/img/06-tienda/tienda9-b.png",
+      "/img/06-tienda/tienda9-c.png",
+      "/img/06-tienda/tienda9-d.png"
+    ],
+    "categoria": "camisa",
+    "descripcion": "Camisa formal personalizada para oficina, con opciones de bordado en el cuello y puños."
+  },
+  {
+    "id": 10,
+    "nombre": "P-10-Zapatos - Cuero Premium - Personalizados",
+    "precio": 180000,
+    "imagenes": [
+      "/img/06-tienda/tienda10-a.png",
+      "/img/06-tienda/tienda10-b.png",
+      "/img/06-tienda/tienda10-c.png",
+      "/img/06-tienda/tienda10-d.png"
+    ],
+    "categoria": "calzados",
+    "descripcion": "Zapatos de cuero premium con personalización, estilo formal y elegante."
+  },
+  {
+    "id": 11,
+    "nombre": "P-11-Bolso - Tote Personalizado - Cuero Vegano",
+    "precio": 125000,
+    "imagenes": [
+      "/img/06-tienda/tienda11-a.png",
+      "/img/06-tienda/tienda11-b.png",
+      "/img/06-tienda/tienda11-c.png",
+      "/img/06-tienda/tienda11-d.png"
+    ],
+    "categoria": "bolso",
+    "descripcion": "Bolso tote de cuero vegano, completamente personalizable, ideal para el día a día."
+  },
+  {
+    "id": 12,
+    "nombre": "P-12-Cartera - Mano Personalizada - Estilo Clásico",
+    "precio": 110000,
+    "imagenes": [
+      "/img/06-tienda/tienda12-a.png",
+      "/img/06-tienda/tienda12-b.png",
+      "/img/06-tienda/tienda12-c.png",
+      "/img/06-tienda/tienda12-d.png"
+    ],
+    "categoria": "cartera",
+    "descripcion": "Cartera de mano personalizada con un toque clásico, disponible en varios colores."
+  },
+  {
+    "id": 13,
+    "nombre": "P-13-Mochila - Personalizada - Estilo Urbano",
+    "precio": 105000,
+    "imagenes": [
+      "/img/06-tienda/tienda13-a.png",
+      "/img/06-tienda/tienda13-b.png",
+      "/img/06-tienda/tienda13-c.png",
+      "/img/06-tienda/tienda13-d.png"
+    ],
+    "categoria": "mochila",
+    "descripcion": "Mochila urbana personalizada, ideal para llevar todos tus elementos con estilo."
+  },
+  {
+    "id": 14,
+    "nombre": "P-14-Falda - Plisada Personalizada - Estilo Retro",
+    "precio": 70000,
+    "imagenes": [
+      "/img/06-tienda/tienda14-a.png",
+      "/img/06-tienda/tienda14-b.png",
+      "/img/06-tienda/tienda14-c.png",
+      "/img/06-tienda/tienda14-d.png"
+    ],
+    "categoria": "falda",
+    "descripcion": "Falda plisada personalizada con diseño retro, perfecta para un look elegante y cómodo."
+  },
+  {
+    "id": 15,
+    "nombre": "P-15-Cinturón - Cuero Personalizado - Estilo Clásico",
+    "precio": 45000,
+    "imagenes": [
+      "/img/06-tienda/tienda15-a.png",
+      "/img/06-tienda/tienda15-b.png",
+      "/img/06-tienda/tienda15-c.png",
+      "/img/06-tienda/tienda15-d.png"
+    ],
+    "categoria": "cinturón",
+    "descripcion": "Cinturón de cuero clásico con personalización de hebilla y color, elegante y funcional."
+  },
+  {
+    "id": 16,
+    "nombre": "P-16-Campera - Personalizada de Invierno - Estilo Outdoor",
+    "precio": 135000,
+    "imagenes": [
+      "/img/06-tienda/tienda16-a.png",
+      "/img/06-tienda/tienda16-b.png",
+      "/img/06-tienda/tienda16-c.png",
+      "/img/06-tienda/tienda16-d.png"
+    ],
+    "categoria": "campera",
+    "descripcion": "Campera de invierno con estilo outdoor y personalización de detalles para clima frío."
+  },
+  {
+    "id": 17,
+    "nombre": "P-17-Guantes - Cuero Personalizados - Estilo Clásico",
+    "precio": 50000,
+    "imagenes": [
+      "/img/06-tienda/tienda17-a.png",
+      "/img/06-tienda/tienda17-b.png",
+      "/img/06-tienda/tienda17-c.png",
+      "/img/06-tienda/tienda17-d.png"
+    ],
+    "categoria": "guantes",
+    "descripcion": "Guantes de cuero personalizados, ideales para mantener el estilo en invierno."
+  },
+  {
+    "id": 18,
+    "nombre": "P-18-Camisa - Estilo Casual - Personalizada",
+    "precio": 68000,
+    "imagenes": [
+      "/img/06-tienda/tienda18-a.png",
+      "/img/06-tienda/tienda18-b.png",
+      "/img/06-tienda/tienda18-c.png",
+      "/img/06-tienda/tienda18-d.png"
+    ],
+    "categoria": "camisa",
+    "descripcion": "Camisa casual con estilo personalizado, perfecta para un look relajado y con estilo."
+  },
+  {
+    "id": 19,
+    "nombre": "P-19-Cartera - Cruzada Personalizada - Estilo Moderno",
+    "precio": 95000,
+    "imagenes": [
+      "/img/06-tienda/tienda19-a.png",
+      "/img/06-tienda/tienda19-b.png",
+      "/img/06-tienda/tienda19-c.png",
+      "/img/06-tienda/tienda19-d.png"
+    ],
+    "categoria": "cartera",
+    "descripcion": "Cartera cruzada con personalización de estilo moderno, perfecta para llevar todos tus esenciales."
+  },
+  {
+    "id": 20,
+    "nombre": "P-20-Bufanda - Lana Personalizada - Estilo Elegante",
+    "precio": 40000,
+    "imagenes": [
+      "/img/06-tienda/tienda20-a.png",
+      "/img/06-tienda/tienda20-b.png",
+      "/img/06-tienda/tienda20-c.png",
+      "/img/06-tienda/tienda20-d.png"
+    ],
+    "categoria": "bufanda",
+    "descripcion": "Bufanda de lana personalizada, elegante y cómoda para el invierno."
+  },
+    {
+      "id": 21,
+      "nombre": "P-21-Chaleco - Personalizado - Estilo Deportivo",
+      "precio": 80000,
+      "imagenes": [
+        "/img/06-tienda/tienda21-a.png",
+        "/img/06-tienda/tienda21-b.png",
+        "/img/06-tienda/tienda21-c.png",
+        "/img/06-tienda/tienda21-d.png"
+      ],
+      "categoria": "chaleco",
+      "descripcion": "Chaleco personalizado de estilo deportivo, ideal para actividades al aire libre."
+    }
+  ]
+  

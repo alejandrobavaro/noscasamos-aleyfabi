@@ -1,0 +1,166 @@
+/*--------------Estilos Globales--------------*/
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+/*--------------Estilos Body--------------*/
+
+body {
+  
+  background-image: url(../../../../img/00-fondos/fondo2.jpg);
+  background-size: cover; // Asegúrate de que la imagen cubra todo el fondo
+  animation: backgroundAnimation 15s linear infinite; // Fondo animado
+  // font-family: 'Oxanium', sans-serif; // Cambia aquí
+  // font-family: 'Montserrat', sans-serif;
+  font-family: 'Cinzel', serif;
+
+  text-align: center;
+
+
+  // Animación de desplazamiento de fondo
+  @keyframes backgroundAnimation {
+    0% {
+      background-position: 0% 0%; // Posición inicial
+    }
+    25% {
+      background-position: 50% 0%; // Mueve el fondo hacia la mitad
+    }
+    50% {
+      background-position: 100% 0%; // Mueve el fondo hacia la derecha
+    }
+    75% {
+      background-position: 50% 0%; // Regresa a la mitad
+    }
+    100% {
+      background-position: 0% 0%; // Regresa a la posición inicial
+    }
+  }
+
+}
+
+/*--------------Estilos para el Contenedor Principal--------------*/
+
+.app {
+  padding: 2em;
+  transition: background-color 0.3s, box-shadow 0.3s;
+
+
+}
+
+.main-content {
+  display: flex;
+  gap: 2em;
+}
+
+/*--------------Estilos para Textos y Encabezados--------------*/
+
+p {
+  font-size: medium;
+  padding: 20px;
+  color: #dcdcdc;
+
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 1em;
+  
+}
+
+h1 {
+  font-size: xx-large;
+  color: #fff4c8; // Amarillo patito
+}
+
+h2 {
+  font-size: large;
+  color: #a8bddb; // Amarillo patito
+}
+
+h3,
+h4,
+h5 {
+
+}
+
+h6 {
+  font-size: xx-small;
+  color: rgb(252, 252, 252);
+}
+
+/*--------------Estilos para Listas--------------*/
+
+li {
+  list-style-type: none;
+}
+
+ol {
+  list-style-type: circle;
+}
+
+td {
+
+}
+
+/*--------------Estilos para Enlaces--------------*/
+
+a {
+  color: rgba(252, 248, 230, 0.857);
+
+  &:link,
+  &:visited {
+    text-decoration: none;
+
+    body.light-mode & {
+      color: #000000;
+    }
+  }
+
+  &:hover {
+    color: #ffcc00; // Amarillo patito al pasar el mouse
+    animation: shake 0.5s ease;
+  }
+}
+
+/* Animación de sacudida */
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+/*--------------Estilos para el Contenedor Principal--------------*/
+
+.main-content {
+  display: flex;
+  justify-content: center; // Centra horizontalmente
+  align-items: center; // Centra verticalmente
+  flex-direction: column; // Apila los componentes verticalmente
+  gap: 2em; // Espacio entre los componentes
+
+  .content {
+    max-width: 1200px; // Ajusta según el ancho deseado
+    width: 100%; // Asegúrate de que ocupe el ancho total
+    padding: 0px; // Espacio interno
+  }
+}

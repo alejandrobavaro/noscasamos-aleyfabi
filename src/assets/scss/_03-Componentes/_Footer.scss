@@ -1,0 +1,184 @@
+/* Variables de color (consistentes con el header) */
+$bordo-elegante: #7A4F50;
+$bordo-oscuro: #5A2D2D;
+$tierra-claro: #C2A78D;
+$tierra-medio: #A67C52;
+$tierra-oscuro: #8C5E3D;
+$gris-claro: #E8E5E0;
+$gris-medio: #D1CDC5;
+$gris-oscuro: #6B635B;
+$blanco: #ffffff1f;
+$negro: #2A2621;
+
+/* Estilos del footer */
+.footer {
+  background-color: $blanco;
+  font-family: 'Cormorant Garamond', serif;
+  padding: 30px 0 15px;
+  position: relative;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  
+  /* Líneas barrocas (consistentes con el header) */
+  .baroque-line-top, .baroque-line-bottom {
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(90deg, 
+      transparent, 
+      $tierra-claro, 
+      $bordo-elegante, 
+      $tierra-claro, 
+      transparent);
+    background-size: 200% 100%;
+    animation: baroqueFlow 8s linear infinite;
+    opacity: 0.7;
+  }
+  
+  .baroque-line-bottom {
+    margin-top: 20px;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .footer-logo-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    
+    .footer-logo {
+      max-width: 100px;
+      height: auto;
+      transition: all 0.4s ease;
+      opacity: 0.8;
+      
+      &:hover {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+    }
+  }
+  
+  .social-links-container {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    
+    .social-links {
+      display: flex;
+      gap: 25px;
+      
+      a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: $bordo-oscuro;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        
+        &:hover {
+          color: $tierra-oscuro;
+          
+          .social-icon {
+            transform: translateY(-3px);
+          }
+        }
+        
+        span {
+          font-size: 0.9rem;
+          margin-top: 5px;
+        }
+      }
+    }
+    
+    .social-icon {
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+  }
+  
+  .copyright-container {
+    text-align: center;
+    padding: 15px 0 5px;
+    
+    .copyright-content {
+      a {
+        color: $bordo-oscuro;
+        text-decoration: none;
+        font-weight: 600;
+        letter-spacing: 1px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          color: $tierra-oscuro;
+          
+          .copyright-icon {
+            transform: rotate(180deg);
+          }
+        }
+      }
+      
+      .copyright-icon {
+        display: inline-block;
+        transition: all 0.6s ease;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+/* Animación consistente con el header */
+@keyframes baroqueFlow {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer {
+    .footer-content {
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .footer-logo-container {
+      order: 1;
+      
+      .footer-logo {
+        max-width: 80px;
+      }
+    }
+    
+    .social-links-container {
+      order: 2;
+      width: 100%;
+      
+      .social-links {
+        width: 100%;
+        justify-content: space-around;
+        gap: 10px;
+      }
+    }
+    
+    .copyright-container {
+      order: 3;
+      padding-top: 20px;
+    }
+  }
+}
+
+/* Importación de fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');

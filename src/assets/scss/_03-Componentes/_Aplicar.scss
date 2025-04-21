@@ -1,0 +1,111 @@
+.aplica-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; // Limitar el ancho máximo del contenedor
+  margin: 0 auto;
+  background: rgba(20, 24, 45, 0.9);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 6px 40px rgba(0, 247, 255, 0.3);
+}
+
+.aplica-data-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); // En pantallas pequeñas, una columna
+  gap: 20px; // Espacio entre cada tarjeta
+  width: 100%;
+  max-width: 100%; // Asegura que no se salga del contenedor
+
+  @media (min-width: 768px) { // A partir de pantallas medianas (tabletas)
+    grid-template-columns: repeat(2, 1fr); // Dos columnas
+  }
+}
+
+.aplica-data-item {
+  background-color: rgba(131, 25, 25, 0.144);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 40px rgba(255, 0, 0, 0.418);
+  transition: transform 0.2s;
+  text-align: center;
+  width: 100%;
+  overflow: hidden; // Previene que el contenido se desborde
+
+  // &:hover {
+  //   transform: scale(1.02); // Animación sutil en hover
+  // }
+
+  h3 {
+    font-size: medium;
+    color: #fcd200;
+    margin-bottom: 10px;
+  }
+
+  img {
+    width: 100%;
+    height: auto; // La altura de la imagen se ajusta automáticamente
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: small;
+
+    td {
+      padding: 8px;
+      border: 1px solid #ffee0091;
+      color: #ffffff;
+    }
+  }
+}
+
+.aplica-search-filter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.aplica-search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+
+  input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    font-size: 16px;
+    background-color: rgba(20, 24, 45, 0.8);
+    color: #ffffff;
+    outline: none;
+    transition: all 0.3s ease;
+
+    &::placeholder {
+      color: #ced4da;
+    }
+
+    &:focus {
+      border-color: #00fbff;
+      background-color: rgba(20, 24, 45, 1);
+      box-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
+    }
+  }
+}
+
+.aplica-image {
+  width: 100%;
+  height: auto; // Asegura que la imagen mantenga la proporción
+  border-radius: 10px;
+  object-fit: cover; // Ajusta la imagen para cubrir el contenedor
+}

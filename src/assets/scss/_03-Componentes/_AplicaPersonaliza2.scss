@@ -1,0 +1,45 @@
+.aplica-personaliza2-container {
+  padding: 20px;
+  background-color: #9c00003f;
+  border-radius: 30px;
+  text-align: center;
+
+  .canvas-container {
+    width: 100%;
+    height: 400px;
+    background-color: rgba(13, 0, 87, 0.295);
+    margin: 0px auto;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+  }
+
+  .aplica-personaliza2-title {
+    font-size: 24px;
+    color: #ffffff;
+  }
+
+  .image-selector {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+    .image-button {
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 5px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.30s;
+
+      &.selected {
+        background-color: #8806068f;
+        color: #ffffff;
+      }
+
+      &:hover {
+        background-color: #eeeeee;
+      }
+    }
+  }
+}

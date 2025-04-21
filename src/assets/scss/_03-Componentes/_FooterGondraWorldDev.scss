@@ -1,0 +1,105 @@
+.trademarkGondraFooter {
+  text-align: center;
+  margin: 0;
+  padding: 20px 0; // Añadido padding vertical
+}
+
+.textoFooterAutor {
+  border-radius: 30px;
+  width: 100%;
+  padding: 20px;
+
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+  color: #f2ffb8; // Color de texto en contraste
+}
+
+.gridPadreProductosGondraFooter1 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; // Espacio entre las imágenes
+  justify-content: center;
+  padding: 10px;
+  border-radius: 20px;
+  width: 100%;
+}
+
+// Estilos para el texto principal
+.texto-principal {
+  font-size: medium; 
+  color: #f2ffb8;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 10px;
+}
+
+
+.textoFooterGondraWorld {
+font-size: small;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+// Estilos para el texto secundario
+.texto-secundario {
+  font-size: medium; 
+  color: #d4fdf4;
+  margin-left: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.imagen-limitada8 {
+  max-width: 120px; // Tamaño máximo para pantallas grandes
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.objetoCentrado1 {
+  display: block;
+  margin: 0 auto;
+}
+
+hr {
+  margin: 20px 0; // Espacio alrededor de la línea horizontal
+}
+
+// Estilos responsivos
+@media (max-width: 768px) {
+  .texto-principal {
+    font-size: medium; // Tamaño de fuente para tabletas
+  }
+
+  .texto-secundario {
+    font-size: medium; // Tamaño de fuente para tabletas
+  }
+
+  .imagen-limitada8 {
+    max-width: 100px; // Tamaño de imagen más pequeño en tabletas
+  }
+}
+
+@media (max-width: 480px) {
+  .texto-principal {
+    font-size: small; // Tamaño de fuente para móviles
+  }
+
+  .texto-secundario {
+    font-size: small; // Tamaño de fuente para móviles
+  }
+
+  .imagen-limitada8 {
+    max-width: 80px; // Tamaño de imagen más pequeño en móviles
+  }
+
+  .gridPadreProductosGondraFooter1 {
+    gap: 10px; // Reducir el espacio entre imágenes en móviles
+    padding: 0px; // Reducir padding para móviles
+    margin-bottom: 250px;
+  }
+
+  .textoFooterAutor {
+    padding: 15px; // Reducir padding para móviles
+    margin-top: 0px;
+  }
+}

@@ -1,0 +1,61 @@
+// src/assets/scss/_03-Componentes/_TiendaOfertas.scss
+.producto-card {
+  background-color: transparent;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.781);
+  padding: 15px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(136, 99, 99, 0.2);
+  }
+}
+
+.oferta-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  color: #fff; // Puedes cambiar esto a un color más oscuro para mayor contraste si es necesario
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.producto-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.producto-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #333; // Color del texto para mejorar el contraste con el fondo blanco
+}
+
+.producto-price {
+  font-size: 1.1rem;
+  color: #ff0101;
+  margin: 10px 0;
+}
+
+.producto-button {
+  background-color: #000000;
+  border: none;
+  color: #fff; // Color del texto en el botón, cambia a un color más oscuro si es necesario
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #d81b1b;
+  }
+}

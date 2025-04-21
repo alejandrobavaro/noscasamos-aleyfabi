@@ -1,0 +1,150 @@
+{
+  "componentes": {
+    "solapa": {
+      "titulo": "Elige la SOLAPA de tu cartera.",
+      "opciones": [
+        {
+          "nombre": "Azul Serpiente",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/01-solapa-azul-serpiente.png"
+        },
+        {
+          "nombre": "Blanco Liso",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/01-solapa-blanco-liso.png"
+        },
+        {
+          "nombre": "Blanco Tramado",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/01-solapa-blanco-tramado.png"
+        },
+        {
+          "nombre": "Negro Floather",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/01-solapa-negro-floather.png"
+        },
+        {
+          "nombre": "Negro Lagarto Transfer",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/01-solapa-negro-lagarto-transfer.png"
+        },
+        {
+          "nombre": "Negro Serpiente",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/01-solapa-negro-serpiente.png"
+        }
+      ]
+    },
+    "cuerpo": {
+      "titulo": "Elige el CUERPO de tu cartera.",
+      "opciones": [
+        {
+          "nombre": "Azul Serpiente",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/02-cuerpo-azul-serpiente.png"
+        },
+        {
+          "nombre": "Blanco Liso",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/02-cuerpo-blanco-liso.png"
+        },
+        {
+          "nombre": "Lila Senna Figure",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/02-cuerpo-lila-senna-figure.png"
+        },
+        {
+          "nombre": "Negro Lagarto Transfer",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/02-cuerpo-negro-lagarto-transfer.png"
+        },
+        {
+          "nombre": "Negro Listo",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/02-cuerpo-negro-listo.png"
+        },
+        {
+          "nombre": "Rojo Liso",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/02-cuerpo-rojo-liso.png"
+        },
+        {
+          "nombre": "Verde Liso",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/02-cuerpo-verde-liso.png"
+        }
+      ]
+    },
+    "fuelle": {
+      "titulo": "Elige el FUELLE de tu cartera.",
+      "opciones": [
+        {
+          "nombre": "Azul Gamuzado",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/03-fuelle-azul-gamuzado.png"
+        },
+        {
+          "nombre": "Negro Gamuzado",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/03-fuelle-negro-gamuzado.png"
+        },
+        {
+          "nombre": "Rojo Gamuzado",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/03-fuelle-rojo-gamuzado.png"
+        },
+        {
+          "nombre": "Verde Gamuzado",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/03-fuelle-verde-gamuzado.png"
+        },
+        {
+          "nombre": "Violeta Gamuzado",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/03-fuelle-violeta-gamuzado.png"
+        }
+      ]
+    },
+    "correa": {
+      "titulo": "Elige la CORREA de tu cartera.",
+      "opciones": [
+        {
+          "nombre": "Amarillo Liso",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/04-correa-amarillo-liso.png"
+        },
+        {
+          "nombre": "Azul Liso",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/04-correa-azul-liso.png"
+        },
+        {
+          "nombre": "Negro Liso",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/04-correa-negro-liso.png"
+        },
+        {
+          "nombre": "Rojo Liso",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/04-correa-rojo-liso.png"
+        },
+        {
+          "nombre": "Violeta Listo",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/04-correa-violeta-listo.png"
+        }
+      ]
+    },
+    "portamanijas": {
+      "titulo": "Elige el PORTAMANIJAS de tu cartera.",
+      "opciones": [
+        {
+          "nombre": "Azul Liso",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/05-portamanijas-azul-liso.png"
+        },
+        {
+          "nombre": "Blanco Liso",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/05-portamanijas-blanco-liso.png"
+        },
+        {
+          "nombre": "Rojo",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/05-portamanijas-rojo.png"
+        },
+        {
+          "nombre": "Violeta Liso",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/05-portamanijas-violeta-liso.png"
+        }
+      ]
+    },
+    "herrajes": {
+      "titulo": "Elige el HERRAJE para tu cartera.",
+      "opciones": [
+        {
+          "nombre": "Dorado Bronce Natural",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/06-herrajes-dorado-bronce-natural.png"
+        },
+        {
+          "nombre": "Plateado Níquel",
+          "imagen": "/img/13-imagenes-personaliza3/deira-cartera-bombon/06-herrajes-plateado-niquel.png"
+        }
+      ]
+    }
+  }
+}

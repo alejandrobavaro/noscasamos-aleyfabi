@@ -1,0 +1,404 @@
+[
+  {
+    "id": 1,
+    "nombre": "Diseño de Sitios Web Personalizados",
+    "imagen portada": "/img/09-imagenes-servicios/diseño-web-personalizado.png",
+    "tipo": "Web",
+    "categoria": "Diseño",
+    "complejidad": "intermedia",
+    "precio": "consultar",
+    "finalizados": 1200,
+    "nuestro servicio": [
+      "Ofrecemos diseños únicos, completamente adaptados a las necesidades de tu negocio."     
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/diseño-web-personalizado-1.png",
+      "/img/09-imagenes-servicios/diseño-web-personalizado-2.png",
+      "/img/09-imagenes-servicios/diseño-web-personalizado-3.png",
+      "/img/09-imagenes-servicios/diseño-web-personalizado-4.png",
+      "/img/09-imagenes-servicios/diseño-web-personalizado-5.png",
+      "/img/09-imagenes-servicios/diseño-web-personalizado-6.png"
+    ]
+  },
+  {
+    "id": 2,
+    "nombre": "Personalización de Aplicaciones Mobile",
+    "imagen portada": "/img/09-imagenes-servicios/personalizacion-apps-mobile.png",
+    "tipo": "Mobile",
+    "categoria": "Desarrollo",
+    "complejidad": "intermedia",
+    "precio": "consultar",
+    "finalizados": 950,
+    "nuestro servicio": [
+      "Transformamos tu aplicación en una herramienta intuitiva, mejorando la experiencia de usuario y facilitando la interacción."
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/personalizacion-apps-mobile-1.png",
+      "/img/09-imagenes-servicios/personalizacion-apps-mobile-2.png",
+      "/img/09-imagenes-servicios/personalizacion-apps-mobile-3.png"
+    ]
+  },
+  {
+    "id": 3,
+    "nombre": "Personalización de Productos Físicos",
+    "imagen portada": "/img/09-imagenes-servicios/personalizacion-productos-fisicos.png",
+    "tipo": "Físico",
+    "categoria": "Productos",
+    "complejidad": "intermedia",
+      "precio": "consultar",
+    "finalizados": 1500,
+    "nuestro servicio": [
+      "Ofrecemos una personalización de alta calidad que hará que tus productos se destaquen en el mercado."
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/personalizacion-productos-fisicos-1.png",
+      "/img/09-imagenes-servicios/personalizacion-productos-fisicos-2.png",
+      "/img/09-imagenes-servicios/personalizacion-productos-fisicos-3.png"
+    ]
+  },
+  {
+    "id": 4,
+    "nombre": "Diseño Gráfico a Medida",
+    "imagen portada": "/img/09-imagenes-servicios/diseño-grafico-medida.png",
+    "tipo": "Gráfico",
+    "categoria": "Diseño",
+    "complejidad": "intermedia",
+    "precio": "consultar",
+    "finalizados": 2200,
+    "nuestro servicio": [
+      "Creamos una identidad visual impactante que hará que tu marca sea inolvidable.",
+      "Nuestro equipo ofrece un trabajo rápido y profesional, asegurando resultados excepcionales."
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/diseño-grafico-medida-1.png",
+      "/img/09-imagenes-servicios/diseño-grafico-medida-2.png",
+      "/img/09-imagenes-servicios/diseño-grafico-medida-3.png"
+    ]
+  },
+  {
+    "id": 5,
+    "nombre": "Desarrollo de Tiendas Online Personalizadas",
+    "imagen portada": "/img/09-imagenes-servicios/tiendas-online-personalizadas.png",
+    "tipo": "Web",
+    "categoria": "E-commerce",
+    "complejidad": "intermedia",
+    "precio": "consultar",
+    "finalizados": 3100,
+    "nuestro servicio": [
+      "Desarrollamos tiendas online eficientes y adaptadas a tus necesidades específicas.",
+      "Mejoramos la funcionalidad y el diseño para ofrecer una experiencia de compra atractiva."
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/tiendas-online-personalizadas-1.png",
+      "/img/09-imagenes-servicios/tiendas-online-personalizadas-2.png",
+      "/img/09-imagenes-servicios/tiendas-online-personalizadas-3.png"
+    ]
+  },
+
+  {
+    "id": 6,
+    "nombre": "Optimización SEO Personalizada",
+    "imagen portada": "/img/09-imagenes-servicios/seo-personalizado.png",
+    "tipo": "Web",
+    "categoria": "Marketing Digital",
+    "complejidad": "intermedia",
+    "precio": "consultar",
+    "finalizados": 1800,
+    "nuestro servicio": [
+      "Aumentamos la visibilidad de tu sitio web para atraer más tráfico.",
+      "Nuestros resultados son rápidos y efectivos, impulsando tu presencia en línea.",
+      "Con nuestra optimización SEO, serás más fácil de encontrar en los motores de búsqueda."
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/seo-personalizado-1.png",
+      "/img/09-imagenes-servicios/seo-personalizado-2.png",
+      "/img/09-imagenes-servicios/seo-personalizado-3.png"
+    ]
+  },
+  {
+    "id": 7,
+    "nombre": "Diseño de Logos Personalizados",
+    "imagen portada": "/img/09-imagenes-servicios/diseño-logos-personalizados.png",
+    "tipo": "Gráfico",
+    "categoria": "Diseño",
+    "complejidad": "intermedia",
+    "precio": "consultar",
+    "finalizados": 2400,
+    "nuestro servicio": [
+    "Ofrecemos diseños de logos personalizados que reflejan tu identidad de marca, combinando creatividad y atención a los detalles para garantizar tu satisfacción total."
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/diseño-logos-personalizados-1.png",
+      "/img/09-imagenes-servicios/diseño-logos-personalizados-2.png",
+      "/img/09-imagenes-servicios/diseño-logos-personalizados-3.png"
+    ]
+  },
+  {
+    "id": 8,
+    "nombre": "Impresión de Productos Personalizados",
+    "imagen portada": "/img/09-imagenes-servicios/impresion-productos-personalizados.png",
+    "tipo": "Físico",
+    "categoria": "Impresión",
+    "complejidad": "intermedia",
+    "precio": "varía según producto",
+    "finalizados": 1950,
+    "nuestro servicio": [
+    "Impresión de productos personalizados con la mejor calidad. Nuestro proceso de personalización es rápido y fácil, con atención al cliente excepcional."
+
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/impresion-productos-personalizados-1.png",
+      "/img/09-imagenes-servicios/impresion-productos-personalizados-2.png",
+      "/img/09-imagenes-servicios/impresion-productos-personalizados-3.png"
+    ]
+  },
+  {
+    "id": 9,
+    "nombre": "Desarrollo de Apps Personalizadas",
+    "imagen portada": "/img/09-imagenes-servicios/desarrollo-apps-personalizadas.png",
+    "tipo": "Mobile",
+    "categoria": "Desarrollo",
+    "complejidad": "intermedia",
+    "precio": "consultar",
+    "finalizados": 2900,
+    "nuestro servicio": [
+   "Desarrollo de apps personalizadas que son profesionales y funcionales. Te ayudamos a construir exactamente lo que necesitas, con soporte constante durante todo el proceso."
+
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/desarrollo-apps-personalizadas-1.png",
+      "/img/09-imagenes-servicios/desarrollo-apps-personalizadas-2.png",
+      "/img/09-imagenes-servicios/desarrollo-apps-personalizadas-3.png"
+    ]
+  },
+  {
+    "id": 10,
+    "nombre": "Consultoría de UX/UI Personalizada",
+    "imagen portada": "/img/09-imagenes-servicios/consultoria-ux-ui-personalizada.png",
+    "tipo": "Web",
+    "categoria": "Diseño",
+    "complejidad": "intermedia",
+    "precio": "consultar",
+    "finalizados": 1800,
+    "nuestro servicio": [
+       "Consultoría UX/UI personalizada que mejora la experiencia del usuario. Focalizamos en la funcionalidad y estética para resultados profesionales y eficientes."
+
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/consultoria-ux-ui-personalizada-1.png",
+      "/img/09-imagenes-servicios/consultoria-ux-ui-personalizada-2.png",
+      "/img/09-imagenes-servicios/consultoria-ux-ui-personalizada-3.png"
+    ]
+  },
+  {
+    "id": 11,
+    "nombre": "Desarrollo de Interfaces Personalizadas",
+    "imagen portada": "/img/09-imagenes-servicios/desarrollo-interfaces-personalizadas.png",
+    "tipo": "Web",
+    "categoria": "Desarrollo",
+    "complejidad": "intermedia",
+    "precio": "consultar",
+    "finalizados": 2100,
+    "nuestro servicio": [
+       "Creamos interfaces personalizadas modernas y fáciles de usar, mejorando notablemente la interacción de los usuarios. Confía en nuestro excelente trabajo."
+
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/desarrollo-interfaces-personalizadas-1.png",
+      "/img/09-imagenes-servicios/desarrollo-interfaces-personalizadas-2.png",
+      "/img/09-imagenes-servicios/desarrollo-interfaces-personalizadas-3.png"
+    ]
+  },
+  {
+    "id": 12,
+    "nombre": "Marketing Digital para Productos Personalizados",
+    "imagen portada": "/img/09-imagenes-servicios/marketing-digital-personalizado.png",
+    "tipo": "Web",
+    "categoria": "Marketing",
+    "complejidad": "intermedia",
+    "precio": "consultar",
+    "finalizados": 4000,
+    "nuestro servicio": [
+      "Llevamos tu marketing digital al siguiente nivel con estrategias adaptadas a tus productos personalizados, asegurando un amplio alcance y un gran retorno de inversión."
+
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/marketing-digital-personalizado-1.png",
+      "/img/09-imagenes-servicios/marketing-digital-personalizado-2.png",
+      "/img/09-imagenes-servicios/marketing-digital-personalizado-3.png"
+    ]
+  },
+  {
+    "id": 13,
+    "nombre": "Personalización de Empaques",
+    "imagen portada": "/img/09-imagenes-servicios/personalizacion-empaques.png",
+    "tipo": "Físico",
+    "categoria": "Diseño de Productos",
+    "complejidad": "intermedia",
+    "precio": "consultar",
+    "finalizados": 1350,
+    "nuestro servicio": [
+      "Ofrecemos un servicio de personalización de empaques que se adapta a tus necesidades, brindando calidad y atención al cliente excepcional. Comunícate con nosotros para obtener más información y descubre cómo podemos ayudar a destacar tus productos en el mercado."
+
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/personalizacion-empaques-1.png",
+      "/img/09-imagenes-servicios/personalizacion-empaques-2.png",
+      "/img/09-imagenes-servicios/personalizacion-empaques-3.png"
+    ]
+  },
+  {
+    "id": 14,
+    "nombre": "Producción de Videos Personalizados",
+    "imagen portada": "/img/09-imagenes-servicios/produccion-videos-personalizados.png",
+    "tipo": "Video",
+    "categoria": "Marketing",
+    "complejidad": "intermedia",
+    "precio": "consultar",
+    "finalizados": 2500,
+    "nuestro servicio": [
+      "Transforma tu mensaje con nuestros videos personalizados. Contamos con un gran equipo de producción que asegura resultados de alta calidad, ayudándote a contar tu historia de manera efectiva y atractiva para tu audiencia."
+
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/produccion-videos-personalizados-1.png",
+      "/img/09-imagenes-servicios/produccion-videos-personalizados-2.png",
+      "/img/09-imagenes-servicios/produccion-videos-personalizados-3.png"
+    ]
+  },
+  {
+    "id": 15,
+    "nombre": "Desarrollo de Blogs Personalizados",
+    "imagen portada": "/img/09-imagenes-servicios/desarrollo-blogs-personalizados.png",
+    "tipo": "Web",
+    "categoria": "Desarrollo",
+    "complejidad": "intermedia",
+    "precio": "consultar",
+    "finalizados": 1650,
+    "nuestro servicio": [
+      "Creamos blogs personalizados que reflejan la esencia de tu marca. Nuestros diseños son intuitivos y fáciles de gestionar, con funcionalidades modernas que garantizan una experiencia atractiva para tus visitantes."
+
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/desarrollo-blogs-personalizados-1.png",
+      "/img/09-imagenes-servicios/desarrollo-blogs-personalizados-2.png",
+      "/img/09-imagenes-servicios/desarrollo-blogs-personalizados-3.png"
+    ]
+  },
+  {
+    "id": 16,
+    "nombre": "Consultoría en Branding Personalizado",
+    "imagen portada": "/img/09-imagenes-servicios/branding-personalizado.png",
+    "tipo": "Web",
+    "categoria": "Consultoría",
+    "complejidad": "intermedia",
+    "precio": "consultar",
+    "finalizados": 1800,
+    "nuestro servicio": [
+      "Transforma la identidad de tu marca con nuestra consultoría en branding. Nos especializamos en construir identidades sólidas y creativas, garantizando un proceso profesional y eficiente para reimaginar tu marca."
+
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/branding-personalizado-1.png",
+      "/img/09-imagenes-servicios/branding-personalizado-2.png",
+      "/img/09-imagenes-servicios/branding-personalizado-3.png"
+    ]
+  },
+  {
+    "id": 17,
+    "nombre": "Personalización de Ropa y Accesorios",
+    "imagen portada": "/img/09-imagenes-servicios/personalizacion-ropa.png",
+    "tipo": "Físico",
+    "categoria": "Productos",
+    "complejidad": "intermedia",
+    "precio": "varía según producto",
+    "finalizados": 3200,
+    "nuestro servicio": [
+      "Diferénciate en el mercado con nuestra personalización de ropa y accesorios. Utilizamos materiales de alta calidad y diseños únicos que encantan a nuestros clientes, asegurando que cada pieza sea especial."
+
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/personalizacion-ropa-1.png",
+      "/img/09-imagenes-servicios/personalizacion-ropa-2.png",
+      "/img/09-imagenes-servicios/personalizacion-ropa-3.png"
+    ]
+  },
+  {
+    "id": 18,
+    "nombre": "Impresión de Merchandising Personalizado",
+    "imagen portada": "/img/09-imagenes-servicios/impresion-merchandising.png",
+    "tipo": "Físico",
+    "categoria": "Productos",
+    "complejidad": "intermedia",
+    "precio": "consultar",
+    "finalizados": 2700,
+    "nuestro servicio": [
+      "Destaca tu marca con nuestra impresión de merchandising personalizado. Ofrecemos productos de alta calidad que representan tu esencia, complementados por un excelente servicio de personalización que garantiza resultados exitosos."
+
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/impresion-merchandising-1.png",
+      "/img/09-imagenes-servicios/impresion-merchandising-2.png",
+      "/img/09-imagenes-servicios/impresion-merchandising-3.png"
+    ]
+  },
+  {
+    "id": 19,
+    "nombre": "Diseño de Logotipos Personalizados",
+    "imagen portada": "/img/09-imagenes-servicios/diseño-logotipos.png",
+    "tipo": "Web",
+    "categoria": "Diseño",
+    "complejidad": "intermedia",
+    "precio": "consultar",
+    "finalizados": 1900,
+    "nuestro servicio": [
+      "Destaca en el mercado con un logotipo personalizado que represente la esencia de tu marca. Nuestro proceso de diseño se centra en tus valores y en lo que deseas transmitir a tus clientes."     
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/diseño-logotipos-1.png",
+      "/img/09-imagenes-servicios/diseño-logotipos-2.png",
+      "/img/09-imagenes-servicios/diseño-logotipos-3.png"
+    ]
+  },
+  {
+    "id": 20,
+    "nombre": "Consultoría en Estrategia Digital",
+    "imagen portada": "/img/09-imagenes-servicios/consultoria-estrategia-digital.png",
+    "tipo": "Web",
+    "categoria": "Marketing",
+    "complejidad": "intermedia",
+    "precio": "consultar",
+    "finalizados": 2150,
+    "nuestro servicio": [
+      "Potencia tu presencia digital con nuestra consultoría en estrategia. Implementamos estrategias innovadoras que garantizan resultados tangibles y un gran impacto en tu visibilidad en el mundo digital."
+
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/consultoria-estrategia-digital-1.png",
+      "/img/09-imagenes-servicios/consultoria-estrategia-digital-2.png",
+      "/img/09-imagenes-servicios/consultoria-estrategia-digital-3.png"
+    ]
+  },
+  {
+    "id": 21,
+    "nombre": "Diseño de Landing Pages Personalizadas",
+    "imagen portada": "/img/09-imagenes-servicios/landing-pages-personalizadas.png",
+    "tipo": "Web",
+    "categoria": "Diseño",
+    "complejidad": "intermedia",
+    "precio": "consultar",
+    "finalizados": 1750,
+    "nuestro servicio": [
+      "Creamos landing pages personalizadas que aumentan la efectividad de tus campañas. Nuestro enfoque en los detalles asegura un diseño atractivo que mejora notablemente las tasas de conversión."
+
+    ],
+    "imagenes": [
+      "/img/09-imagenes-servicios/landing-pages-personalizadas-1.png",
+      "/img/09-imagenes-servicios/landing-pages-personalizadas-2.png",
+      "/img/09-imagenes-servicios/landing-pages-personalizadas-3.png"
+    ]
+  }
+  
+]
+
+

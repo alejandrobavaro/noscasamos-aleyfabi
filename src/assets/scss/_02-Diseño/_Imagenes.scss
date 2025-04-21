@@ -1,0 +1,112 @@
+// //---------------ESTILO IMAGENES-----------------------//
+
+// /* Estilos para las imágenes limitadas */
+// .imagen-limitada1 {
+//   width: 90%;
+//   height: auto;
+//   border: 1px solid rgba(245, 222, 179, 0.434);
+//   border-radius: 20px;
+//   padding: 0px;
+//   box-shadow: 0 0 80px rgb(248, 187, 237);
+// }
+
+// .imagen-limitada2,
+// .imagen-limitada3,
+// .imagen-limitada4,
+// .imagen-limitada5,
+// .imagen-limitada6,
+// .imagen-limitada7 {
+//   height: auto;
+//   border: none;
+//   border-radius: 20px;
+// }
+
+// .imagen-limitada2 {
+//   width: 40%;
+// }
+
+// .imagen-limitada3 {
+//   width: 65%;
+// }
+
+// .imagen-limitada4 {
+//   width: 15%;
+//   height: auto;
+// }
+
+// .imagen-limitada5 {
+//   width: 30%;
+// }
+
+// .imagen-limitada6,
+// .imagen-limitada7 {
+//   object-fit: cover;
+//   transition: 1s;
+// }
+
+// .imagen-limitada6 {
+//   width: 70%;
+// }
+
+// .imagen-limitada7 {
+//   width: 90%;
+// }
+// .imagen-limitada8 {
+//   width: 100%;
+// }
+
+
+// .imagen-detras {
+//   // position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 110%; // Ajusta según sea necesario
+//   height: auto; // Ajusta según sea necesario
+//   z-index: 1; // Ajusta el z-index si es necesario
+// }
+
+// .imagen-delante {
+//   // position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 150%; // Ajusta según sea necesario
+//   height: auto; // Ajusta según sea necesario
+//   z-index: 0; // Ajusta el z-index si es necesario
+// }
+
+
+
+// //-------------------ESTILOS GIF-----------------------------/
+
+// .gif-limitado1 {
+//   width: 40%;
+//   height: auto;
+//   border: rgba(156, 223, 202, 0.592) 10px solid;
+//   border-radius: 20px;
+//   padding: 0px;
+//   margin-bottom: 0px;
+// }
+
+// //----------LOGO WHATSAPP FLOTANTE------------/
+
+// .logoWhats {
+//   width: 100px;
+//   position: fixed;
+//   bottom: 20px;
+//   right: 20px;
+// }
+
+// @media (max-width: 992px) {
+//   .logoWhats {
+//     left: auto;
+//     right: auto;
+//   }
+// }
+
+
+
+// //-------------------------------------------//
+// .image-gallery-image {
+//   max-height: 200px;
+//   object-fit: contain;
+// }

@@ -1,0 +1,38 @@
+// src/assets/scss/_03-Componentes/_TiendaProductoDetalle.scss
+
+.producto-detalle {
+  background-color: transparent; 
+  border-radius: 8px;
+  color: #ffffff;
+  margin: 0;
+  animation: fadeIn 0.5s ease-in-out;
+
+  h4 {
+    margin-bottom: 1rem;
+    color: #006eff; 
+    font-size: medium;
+  }
+
+  .detalle-info {
+    p {
+      color: #ffffff;
+      margin: 0.5rem 0;
+      font-size: large;
+    }
+
+    strong {
+      color: #4c00ff;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,65 @@
+//------------GENERAL--------------//
+@import "./_01-General/BodyIndexApp";
+@import "./_01-General/AppModoClaroOscuro";
+@import "./_01-General/SweetAlert";
+@import "./_01-General/Toastify";
+
+//----------DISEÑO GRAL------------//
+// @import "./_02-Diseño/Alineacion";
+// @import "./_02-Diseño/Animaciones";
+// @import "./_02-Diseño/Botones";
+// @import "./_02-Diseño/Cards";
+// @import "./_02-Diseño/GridEstructuras";
+// @import "./_02-Diseño/Imagenes";
+// @import "./_02-Diseño/PublicidadSliders";
+// @import "./_02-Diseño/Responsive";
+// @import "./_02-Diseño/Textos";
+
+//------------HEADER--------------//
+@import "./_03-Componentes/Header";
+@import "./_03-Componentes/HeaderNotificaciones";
+
+//-----------HOME-MAIN-----------------//
+@import "./_03-Componentes/MainPublicidadSlider";
+@import "./_03-Componentes/MainContent";
+
+//------------------CLIENTES--------------//
+@import "./_03-Componentes/Clientes.scss";
+
+//-----------APLICA----------//
+@import "./_03-Componentes/Aplicar";
+
+@import "./_03-Componentes/AplicaPersonaliza1";
+@import "./_03-Componentes/AplicaPersonaliza2";
+@import "./_03-Componentes/AplicaPersonaliza3";
+@import "./_03-Componentes/AplicaPersonaliza3Productoersonalizable";
+
+
+//---------SERVICIO------------//
+@import "./_03-Componentes/Servicio";
+
+//-------CONTACTOS--------//
+@import "./_03-Componentes/ContactoLogoRedes";
+@import "./_03-Componentes/ContactoFormularioSlider";
+
+//----------TIENDA--------------------//
+@import "./_03-Componentes/Tienda";
+@import "./_03-Componentes/TiendaCarritoCompra";
+@import "./_03-Componentes/TiendaImgAgrandar";
+@import "./_03-Componentes/TiendaCarritoMini2";
+@import "./_03-Componentes/TiendaModalInicio";
+@import "./_03-Componentes/TiendaOfertas";
+@import "./_03-Componentes/TiendaProductos";
+@import "./_03-Componentes/TiendaProductoDetalle";
+@import "./_03-Componentes/TiendaProductosLista";
+
+//----------LOGIN LOG OUT------------//
+@import "./_03-Componentes/SesionLoginRegister";
+
+//--------------FOOTER----------------//
+@import "./_03-Componentes/Footer";
+@import "./_03-Componentes/FooterGondraWorldDev";
+
+
+
+

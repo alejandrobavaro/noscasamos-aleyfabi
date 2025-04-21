@@ -1,0 +1,150 @@
+// // Mobile
+// @media only screen and (max-width: 600px) {
+//   body {
+//     font-size: 14px;
+//   }
+
+//   .container {
+//     padding: 0 10px;
+//   }
+
+//   .header,
+//   .footer {
+//     text-align: center;
+//   }
+
+//   .nav-links {
+//     flex-direction: column;
+//   }
+
+//   .card {
+//     margin: 10px 0;
+//   }
+
+//   .gridPadre1,
+//   .gridPadre {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//   }
+
+//   .objetoCentrado1 {
+//     margin: 10px 0;
+//     text-align: center;
+//   }
+
+//   .imagen-publicidad {
+//     width: 100%;
+//     max-width: 300px; // Adjust as needed
+//   }
+
+//   .imagen-publicidad1 {
+//     width: 100%;
+//     max-width: 300px; // Adjust as needed
+//   }
+
+//   .imagen-publicidad2 {
+//     width: 100%;
+//     height: auto;
+  
+//   }
+
+//   #telefonoWhattsapp {
+//     text-align: center;
+//     margin-top: 20px;
+//   }
+// }
+
+// // Tablet
+// @media only screen and (min-width: 601px) and (max-width: 768px) {
+//   body {
+//     font-size: 16px;
+//   }
+
+//   .container {
+//     padding: 0 20px;
+//   }
+
+//   .header,
+//   .footer {
+//     text-align: center;
+//   }
+
+//   .nav-links {
+//     flex-direction: row;
+//     justify-content: space-around;
+//   }
+
+//   .card {
+//     margin: 15px 0;
+//   }
+
+//   .gridPadre1,
+//   .gridPadre {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-around;
+//   }
+
+//   .objetoCentrado1 {
+//     margin: 15px;
+//     text-align: center;
+//   }
+
+//   .imagen-publicidad {
+//     width: 100%;
+//     max-width: 400px; // Adjust as needed
+//   }
+
+//   #telefonoWhattsapp {
+//     text-align: center;
+//     margin-top: 20px;
+//   }
+// }
+
+// // Desktop
+// @media only screen and (min-width: 769px) {
+//   body {
+//     font-size: 18px;
+//   }
+
+//   .container {
+//     padding: 0 30px;
+//   }
+
+//   .header,
+//   .footer {
+//     text-align: left;
+//   }
+
+//   .nav-links {
+//     flex-direction: row;
+//     justify-content: flex-end;
+//   }
+
+//   .card {
+//     margin: 20px 0;
+//   }
+
+//   .gridPadre1,
+//   .gridPadre {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+//   }
+
+//   .objetoCentrado1 {
+//     // margin: 20px;
+//     // text-align: center;
+//   }
+
+//   .imagen-publicidad {
+//     width: 100%;
+//     max-width: 500px; 
+//   }
+
+//   #telefonoWhattsapp {
+//     text-align: left;
+//     margin-top: 20px;
+//   }
+// }

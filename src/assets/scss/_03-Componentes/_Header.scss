@@ -1,0 +1,226 @@
+/* Variables de color */
+$bordo-elegante: #7A4F50;
+$bordo-oscuro: #5A2D2D;
+$tierra-claro: #C2A78D;
+$tierra-medio: #A67C52;
+$tierra-oscuro: #8C5E3D;
+$gris-claro: #E8E5E0;
+$gris-medio: #D1CDC5;
+$gris-oscuro: #6B635B;
+$blanco: #ffffff1f;
+$negro: #2A2621;
+
+/* Estilos del header */
+.header {
+  background-color: $blanco;
+    box-sizing: border-box;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  font-family: 'Cormorant Garamond', serif;
+
+  &.scrolled {
+    padding: 10px 0 5px;
+    
+    .logoHeader {
+      max-width: 180px;
+    }
+    
+    .baroque-line-top, .baroque-line-bottom {
+      height: 3px;
+    }
+  }
+
+  /* Líneas barrocas */
+  .baroque-line-top, .baroque-line-bottom {
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(90deg, 
+      transparent, 
+      $tierra-claro, 
+      $bordo-elegante, 
+      $tierra-claro, 
+      transparent);
+    background-size: 200% 100%;
+    animation: baroqueFlow 8s linear infinite;
+    opacity: 0.7;
+  }
+  
+  .baroque-line-bottom {
+    margin-top: 5px;
+  }
+
+  /* Divisores barrocos */
+  .baroque-divider {
+    display: inline-block;
+    width: 12px;
+    height: 20px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 20"><path d="M6,0 Q8,5 6,10 Q4,15 6,20" fill="none" stroke="%237A4F50" stroke-width="1"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.6;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+    position: relative;
+    z-index: 10;
+
+    .logoHeader {
+      max-width: 220px;
+      transition: all 0.6s ease;
+      filter: none;
+      
+      &:hover {
+        transform: scale(1.02);
+        opacity: 0.95;
+      }
+    }
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+  }
+
+  .navbar-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+
+    .nav-link {
+      color: $bordo-oscuro;
+      padding: 10px 15px;
+      position: relative;
+      transition: all 0.4s ease;
+      font-weight: 600;
+      
+      &:hover {
+        color: $tierra-oscuro;
+        
+        &::before {
+          width: 100%;
+          left: 0;
+        }
+      }
+      
+      &::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: 8px;
+        left: 50%;
+        background: linear-gradient(90deg, transparent, $tierra-medio, transparent);
+        transition: all 0.4s ease;
+      }
+    }
+  }
+
+  .menu-icon {
+    font-size: 1.6rem;
+    color: $bordo-oscuro;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: $tierra-oscuro;
+      transform: scale(1.05);
+    }
+  }
+
+  /* Estilos para autenticación */
+  .auth-buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 20px;
+  }
+
+  .auth-icon {
+    color: $bordo-oscuro;
+    font-size: 1.4rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: $tierra-oscuro;
+      transform: scale(1.1);
+    }
+  }
+
+  .auth-welcome-container {
+    display: flex;
+    align-items: center;
+    color: $bordo-oscuro;
+    font-size: 0.95rem;
+    gap: 8px;
+  }
+
+  .logout-link {
+    margin-left: 10px;
+  }
+}
+
+/* Animaciones */
+@keyframes baroqueFlow {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* Estilos para móvil */
+@media (max-width: 992px) {
+  .header {
+    .navbar-nav {
+      flex-direction: column;
+      padding: 20px 0;
+      gap: 0;
+      
+      .nav-link {
+        padding: 12px 0;
+        font-size: 1.2rem;
+        
+        &::before {
+          bottom: 10px;
+        }
+      }
+      
+      .baroque-divider {
+        display: none;
+      }
+    }
+    
+    .logo-container {
+      order: -1;
+      margin-bottom: 15px;
+      
+      .logoHeader {
+        max-width: 160px;
+      }
+    }
+    
+    .auth-buttons-container {
+      margin: 15px 0 10px;
+      justify-content: center;
+    }
+
+    .baroque-line-top, .baroque-line-bottom {
+      height: 2px;
+    }
+  }
+}
+
+/* Importación de fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');

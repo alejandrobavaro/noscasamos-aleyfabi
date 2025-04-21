@@ -1,0 +1,30 @@
+
+
+
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Cartera Deira Bombon Personalizable",
+      "imagenUrl": "/img/13-imagenes-personaliza3/deira-cartera-bombon/00-boceto-inicial-final-1.png"
+        },
+    {
+      "id": 2,
+      "nombre": "Producto 2 Personalizable",
+      "imagenUrl": "/img/13-imagenes-personaliza3/deira-cartera-bolso-top/tienda5-c.png"
+       },
+       {
+         "id": 3,
+         "nombre": "Producto 3 Personalizable",
+         "imagenUrl": "/img/13-imagenes-personaliza3/deira-cartera-bolso-top/tienda9-b.jpg"
+          },
+          {
+            "id": 4,
+            "nombre": "Producto 4 Personalizable",
+            "imagenUrl": "/img/13-imagenes-personaliza3/deira-cartera-bolso-top/tienda2-a.jpg"
+             }
+          
+  ]
+}
+
+

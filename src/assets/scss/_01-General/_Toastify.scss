@@ -1,0 +1,61 @@
+// src/assets/scss/_01-General/_Toastify.scss
+
+//--------TOASTIFYS-----------//
+
+.toastify-tienda {
+  background-color: #1900ff80 !important; /* Color de fondo */
+  color: #fff !important; /* Color del texto */
+  padding: 10px !important; /* Espaciado interno */
+  border-radius: 20px !important; /* Bordes redondeados */
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.712) !important; /* Sombra */
+  font-size: small !important; /* Tamaño de fuente */
+  margin-top: 20px !important; /* Espaciado desde la parte superior */
+  position: fixed !important; /* Fijo en la parte superior */
+  left: 8%; /* Centrando horizontalmente */
+  transform: translateX(-50%); /* Ajustando el centrado */
+  z-index: 9999; /* Asegurando que esté encima de otros elementos */
+  
+  // Estilo para el botón de cierre (icono de la X)
+  // &::after {
+  //   content: '✖'; /* El carácter X */
+  //   position: absolute; /* Posicionamiento absoluto */
+  //   right: 10px; /* Espaciado desde la derecha */
+  //   top: 50%; /* Centrado verticalmente */
+  //   transform: translateY(-50%); /* Ajuste para centrar verticalmente */
+  //   cursor: pointer; /* Cambia el cursor al pasar sobre el icono */
+  //   border: none;
+  //   font-size: 1.2em; /* Tamaño del icono */
+  //   color: #fff; /* Color del icono */
+  // }
+
+  &.fade-in {
+    animation: fadeIn 0.5s forwards; /* Animación de entrada */
+  }
+
+  &.fade-out {
+    animation: fadeOut 0.5s forwards; /* Animación de salida */
+  }
+}
+
+/* Animaciones de entrada y salida */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); /* Entrada desde arriba */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px); /* Salida hacia arriba */
+  }
+}

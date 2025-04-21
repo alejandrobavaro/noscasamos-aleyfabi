@@ -1,0 +1,77 @@
+// Productos
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 2px;
+  box-shadow: 0 0 100px rgba(255, 0, 0, 0.467);
+}
+
+.producto-card {
+  background-color: #ffffff4b;
+  border-radius: 10px;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.467);
+  padding: 15px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.producto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 40px rgba(236, 228, 255, 0.504);
+}
+
+.producto-image {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.producto-image:hover {
+  transform: scale(1.05);
+}
+
+.producto-title {
+  font-size: x-small; // Ajustado a un tamaño más pequeño
+  color: #ffffff !important;
+  margin: 10px 0;
+
+}
+
+.producto-price {
+  font-size: 0.95rem; // Ajustado a un tamaño más pequeño
+  color: #ffffff !important;
+  margin-bottom: 10px;
+  text-transform: none; // Asegúrate de que no esté en mayúsculas
+}
+
+.producto-button {
+  background-color: #020a7c71; // Rosa vibrante
+  border: none;
+  color: #ffffff; // Color blanco para el texto del botón
+  padding: 3px 6px; // Padding ajustado
+  border-radius: 50%; // Bordes redondeados
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 0.85rem; // Tamaño de fuente ajustado
+}
+
+.producto-button:hover {
+  background-color: #3b4197a2; // Rosa oscuro al pasar el ratón
+  transform: scale(1.05); // Escala al pasar el ratón
+}
+
+.oferta-tag {
+  position: absolute;
+  top: 2px;
+  right: 0px;
+  background-color: #000000ab;
+  color: #fff;
+  padding: 0px 2px;
+  border-radius: 5px;
+  font-size: xx-small;
+  text-transform: none; // Asegúrate de que no esté en mayúsculas
+  z-index: 1000;
+}
