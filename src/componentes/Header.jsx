@@ -48,9 +48,9 @@ const Header = ({ isDarkMode, toggleDarkMode }) => {
               <div className="baroque-divider"></div>
               
               <Nav.Link
-                as={Link}
-                to="/confirmar"
-                onClick={() => setIsMobileMenuOpen(false)}
+                // as={Link}
+                // to="/confirmar"
+                // onClick={() => setIsMobileMenuOpen(false)}
               >
                 CONFIRMAR
               </Nav.Link>
@@ -58,9 +58,9 @@ const Header = ({ isDarkMode, toggleDarkMode }) => {
               <div className="baroque-divider"></div>
 
               <Nav.Link
-                as={Link}
-                to="/ubicacion"
-                onClick={() => setIsMobileMenuOpen(false)}
+                // as={Link}
+                // to="/ubicacion"
+                // onClick={() => setIsMobileMenuOpen(false)}
               >
                 UBICACIÓN
               </Nav.Link>
@@ -76,9 +76,9 @@ const Header = ({ isDarkMode, toggleDarkMode }) => {
               <div className="baroque-divider"></div>
 
               <Nav.Link
-                as={Link}
-                to="/galeria"
-                onClick={() => setIsMobileMenuOpen(false)}
+                // as={Link}
+                // to="/galeria"
+                // onClick={() => setIsMobileMenuOpen(false)}
               >
                 GALERÍA
               </Nav.Link>
@@ -86,9 +86,9 @@ const Header = ({ isDarkMode, toggleDarkMode }) => {
               <div className="baroque-divider"></div>
 
               <Nav.Link
-                as={Link}
-                to="/playlist"
-                onClick={() => setIsMobileMenuOpen(false)}
+                // as={Link}
+                // to="/playlist"
+                // onClick={() => setIsMobileMenuOpen(false)}
               >
                 PLAYLIST
               </Nav.Link>
@@ -96,9 +96,9 @@ const Header = ({ isDarkMode, toggleDarkMode }) => {
               <div className="baroque-divider"></div>
 
               <Nav.Link
-                as={Link}
-                to="/mensajes"
-                onClick={() => setIsMobileMenuOpen(false)}
+                // as={Link}
+                // to="/mensajes"
+                // onClick={() => setIsMobileMenuOpen(false)}
               >
                 MENSAJES
               </Nav.Link>

@@ -20,19 +20,19 @@ function Footer() {
         {/* Redes sociales */}
         <div className="social-links-container">
           <div className="social-links">
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+            <a href="#" target="_blank" rel="noopener noreferrer">
               <BsInstagram className="social-icon" />
               <span>Instagram</span>
             </a>
-            <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+            <a href="#"  target="_blank" rel="noopener noreferrer">
               <BsYoutube className="social-icon" />
               <span>YouTube</span>
             </a>
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+            <a href="#" target="_blank" rel="noopener noreferrer">
               <BsFacebook className="social-icon" />
               <span>Facebook</span>
             </a>
-            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+            <a href="#"  target="_blank" rel="noopener noreferrer">
               <BsTwitter className="social-icon" />
               <span>Twitter</span>
             </a>
