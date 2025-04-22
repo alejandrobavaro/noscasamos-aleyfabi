@@ -1,0 +1,322 @@
+// Variables de color mejoradas
+$color-bordo: #7A4F50;
+$color-dorado: #C2A78D;
+$color-blanco: rgba(255, 249, 245, 0.85);
+$color-beige: rgba(248, 241, 233, 0.35);
+$color-rosa-suave: #F5E1E4;
+
+.pantalla-acceso {
+  position: relative;
+  width: 100%;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Cormorant Garamond', serif;
+  color: $color-bordo;
+}
+
+.contenido-acceso {
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.3), 
+    rgba(0, 0, 0, 0.3)),
+    url('../../../../public/img/03-img-cuadradas/aleyfabi1.jpg') center/cover no-repeat;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid rgba($color-dorado, 0.4);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 249, 245, 0.1);
+    backdrop-filter: blur(4px);
+    z-index: 0;
+  }
+}
+
+.tarjetas-acceso {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.tarjeta {
+  background: $color-blanco;
+  padding: 1.8rem 1.2rem;
+  border-radius: 10px;
+  transition: all 0.35s ease;
+  cursor: pointer;
+  border: 1px solid rgba($color-bordo, 0.15);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .icono-container {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+  
+  i {
+    font-size: 2rem;
+    transition: all 0.3s ease;
+  }
+  
+  h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 2px;
+      background: $color-dorado;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+  }
+  
+  &:hover h3::after {
+    opacity: 1;
+  }
+  
+  p {
+    font-size: 0.95rem;
+    color: lighten($color-bordo, 15%);
+    margin-top: 0.5rem;
+  }
+}
+
+.tarjeta-publico {
+  .icono-container {
+    background: rgba($color-rosa-suave, 0.8);
+    
+    &:hover {
+      background: $color-rosa-suave;
+    }
+  }
+  
+  i { 
+    color: $color-bordo;
+  }
+}
+
+.tarjeta-invitado {
+  .icono-container {
+    background: rgba($color-dorado, 0.25);
+    
+    &:hover {
+      background: rgba($color-dorado, 0.4);
+    }
+  }
+  
+  i { 
+    color: darken($color-dorado, 15%);
+  }
+}
+
+.tarjeta-organizacion {
+  .icono-container {
+    background: rgba($color-bordo, 0.15);
+    
+    &:hover {
+      background: rgba($color-bordo, 0.25);
+    }
+  }
+  
+  i { 
+    color: $color-bordo;
+  }
+}
+
+.formulario-clave {
+  max-width: 450px;
+  margin: 2rem auto 0;
+  position: relative;
+  z-index: 1;
+  
+  h2 {
+    font-size: 1.7rem;
+    margin-bottom: 1.8rem;
+    font-weight: 600;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 2px;
+      background: $color-dorado;
+    }
+  }
+}
+
+.input-group {
+  display: flex;
+  margin-bottom: 1.5rem;
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.input-clave {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: none;
+  font-size: 1.05rem;
+  background: rgba($color-blanco, 0.95);
+  font-family: 'Cormorant Garamond', serif;
+  
+  &:focus {
+    outline: none;
+    background: $color-blanco;
+  }
+  
+  &::placeholder {
+    color: lighten($color-bordo, 25%);
+    font-style: italic;
+  }
+}
+
+.boton-acceder {
+  background: $color-bordo;
+  color: white;
+  border: none;
+  padding: 0 2rem;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: darken($color-bordo, 7%);
+  }
+  
+  i {
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover i {
+    transform: translateX(3px);
+  }
+}
+
+.mensaje-error {
+  color: #d9534f;
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+  animation: fadeIn 0.4s ease;
+}
+
+.boton-volver {
+  background: transparent;
+  color: $color-bordo;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  
+  &:hover {
+    color: darken($color-bordo, 10%);
+    background: rgba($color-bordo, 0.05);
+    
+    i {
+      transform: translateX(-3px);
+    }
+  }
+  
+  i {
+    transition: transform 0.3s ease;
+  }
+}
+
+// Animaciones
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .contenido-acceso {
+    padding: 2rem 1.5rem;
+  }
+  
+  .tarjetas-acceso {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+  }
+  
+  .tarjeta {
+    padding: 1.5rem 1rem;
+  }
+  
+  .formulario-clave {
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .contenido-acceso {
+    padding: 1.8rem 1.2rem;
+    border-radius: 8px;
+  }
+  
+  .input-group {
+    flex-direction: column;
+    border-radius: 8px;
+    
+    .input-clave {
+      border-radius: 8px 8px 0 0;
+      padding: 0.9rem 1.2rem;
+    }
+    
+    .boton-acceder {
+      border-radius: 0 0 8px 8px;
+      padding: 0.8rem;
+    }
+  }
+}

@@ -1,0 +1,178 @@
+// PanelOrganizacion.scss
+$color-bordo: #7A4F50;
+$color-dorado: #C2A78D;
+$color-blanco: #FFF9F5;
+$color-gris: #F5F0EC;
+
+.panel-organizacion {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.encabezado-panel {
+  text-align: center;
+  margin-bottom: 3rem;
+  
+  h1 {
+    font-family: 'Playfair Display', serif;
+    color: $color-bordo;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    font-family: 'Cormorant Garamond', serif;
+    color: lighten($color-bordo, 20%);
+    font-size: 1.2rem;
+  }
+}
+
+.resumen-estadisticas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.estadistica {
+  background: $color-blanco;
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    color: $color-bordo;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .numero {
+    font-family: 'Cinzel', serif;
+    color: $color-bordo;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
+  
+  .meta {
+    font-family: 'Cormorant Garamond', serif;
+    color: lighten($color-bordo, 20%);
+    font-size: 0.9rem;
+  }
+}
+
+.accesos-rapidos {
+  margin-bottom: 3rem;
+  
+  h2 {
+    font-family: 'Playfair Display', serif;
+    color: $color-bordo;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba($color-bordo, 0.1);
+  }
+}
+
+.grid-accesos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.acceso {
+  background: $color-blanco;
+  padding: 1.5rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba($color-bordo, 0.1);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    background: $color-bordo;
+    
+    i, span {
+      color: white;
+    }
+  }
+  
+  i {
+    font-size: 2rem;
+    color: $color-dorado;
+    display: block;
+    margin-bottom: 0.8rem;
+    transition: color 0.3s ease;
+  }
+  
+  span {
+    font-family: 'Cormorant Garamond', serif;
+    color: $color-bordo;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+}
+
+.proximas-tareas {
+  h2 {
+    font-family: 'Playfair Display', serif;
+    color: $color-bordo;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba($color-bordo, 0.1);
+  }
+}
+
+.lista-tareas {
+  list-style: none;
+  padding: 0;
+  
+  li {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: $color-blanco;
+    margin-bottom: 0.8rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    
+    input[type="checkbox"] {
+      margin-right: 1rem;
+    }
+    
+    label {
+      font-family: 'Cormorant Garamond', serif;
+      color: $color-bordo;
+      flex-grow: 1;
+      cursor: pointer;
+    }
+    
+    .fecha {
+      font-family: 'Cormorant Garamond', serif;
+      color: lighten($color-bordo, 20%);
+      font-size: 0.9rem;
+      min-width: 80px;
+      text-align: right;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .panel-organizacion {
+    padding: 1rem;
+  }
+  
+  .resumen-estadisticas {
+    grid-template-columns: 1fr;
+  }
+  
+  .grid-accesos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

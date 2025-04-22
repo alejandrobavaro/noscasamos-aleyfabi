@@ -1,0 +1,124 @@
+// ConfirmacionAsistencia.scss
+$color-bordo: #7A4F50;
+$color-dorado: #C2A78D;
+$color-blanco: #FFF9F5;
+
+.confirmacion-asistencia {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  
+  h1 {
+    font-family: 'Playfair Display', serif;
+    color: $color-bordo;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .instrucciones {
+    font-family: 'Cormorant Garamond', serif;
+    color: lighten($color-bordo, 20%);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  
+  label {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    color: $color-bordo;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid rgba($color-bordo, 0.3);
+    border-radius: 5px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    
+    &:focus {
+      outline: none;
+      border-color: $color-dorado;
+    }
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+}
+
+.opciones-asistencia {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  
+  label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    
+    input {
+      margin-right: 0.8rem;
+    }
+    
+    span {
+      font-weight: normal;
+    }
+  }
+}
+
+.boton-confirmar {
+  background: $color-bordo;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s ease;
+  
+  &:hover {
+    background: darken($color-bordo, 10%);
+  }
+}
+
+.confirmacion-exitosa {
+  text-align: center;
+  padding: 3rem;
+  
+  i {
+    font-size: 4rem;
+    color: $color-bordo;
+    margin-bottom: 1.5rem;
+  }
+  
+  h2 {
+    font-family: 'Playfair Display', serif;
+    color: $color-bordo;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    font-family: 'Cormorant Garamond', serif;
+    color: lighten($color-bordo, 20%);
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .confirmacion-asistencia {
+    padding: 1rem;
+  }
+}

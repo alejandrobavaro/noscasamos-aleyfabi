@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "../assets/scss/_03-Componentes/_MainContent.scss";
 
 function MainContent() {
-  const weddingImages = [
+  // Imágenes para la historia de amor
+  const loveStoryImages = [
     "/img/05-img-costados-larga/1a.jpg",
     "/img/05-img-costados-larga/2a.jpg",
     "/img/05-img-costados-larga/3a.jpg",
@@ -26,201 +26,178 @@ function MainContent() {
 
   return (
     <main className="mainContent">
+      {/* Carrusel con imágenes de la historia */}
       <div className="carouselContainer">
         <Slider {...settings}>
-          {weddingImages.map((image, index) => (
+          {loveStoryImages.map((image, index) => (
             <div key={index} className="carouselItem">
-              <img src={image} alt={`Imagen boda ${index + 1}`} />
+              <img src={image} alt={`Historia de amor ${index + 1}`} />
             </div>
           ))}
         </Slider>
       </div>
 
+      {/* Contenido principal - Historia de amor */}
       <div className="mainContentContainer">
-        <section className="weddingSection">
+        {/* Introducción */}
+        <section className="storyIntro">
           <div className="sectionHeader">
             <h2 className="sectionTitle">
-              Nuestra Historia de Amor
-              <span className="sectionSubtitle">El comienzo de nuestro viaje juntos</span>
+              Nuestra Historia
+              <span className="sectionSubtitle">Un cuento de hadas hecho realidad</span>
             </h2>
           </div>
-          <div className="sectionRow">
-            <div className="gridItem weddingItem">
-              <div className="weddingText">
-                <h3 className="weddingSubtitle">
-                  <span className="subtitleLine">Cuando el destino nos unió</span>
-                </h3>
-                <img
-                  src="../../img/boda/historia.jpg"
-                  alt="Alejandro y Fabiola"
-                />
-                <p className="weddingDescription">
-                  "El amor no se mira con los ojos, sino con el alma". Desde aquel primer encuentro, 
-                  supimos que nuestro camino estaría juntos. Cada risa, cada mirada, cada momento 
-                  compartido ha sido un regalo que nos llevó a este día tan especial.
-                </p>
-                <div className="poemContainer">
-                  <p className="poemText">
-                    "Dos almas que se encuentran<br />
-                    Como el mar y la orilla<br />
-                    Unidos por siempre<br />
-                    En esta hermosa vida"
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="infoSection">
-          <div className="sectionHeader">
-            <h2 className="sectionTitle">
-              Detalles de la Celebración
-              <span className="sectionSubtitle">Todo lo que necesitas saber</span>
-            </h2>
-          </div>
-          <div className="sectionRow">
-            <div className="gridItem infoItem">
-              <div className="infoText">
-                <h3 className="infoSubtitle">
-                  <span className="subtitleLine">La Ceremonia</span>
-                </h3>
-                <img
-                  src="../../img/boda/ceremonia.jpg"
-                  alt="Ceremonia"
-                />
-                <div className="infoDetails">
-                  <p><strong>Fecha:</strong> 23 de Noviembre 2025</p>
-                  <p><strong>Hora:</strong> 20:00 hs</p>
-                  <p><strong>Lugar:</strong> Casa del Mar, Villa García Uriburu</p>
-                  <p><strong>Dresscode:</strong> Elegante soirée</p>
-                </div>
-                <div className="buttonContainer">
-                  <Link to="/ubicacion" className="weddingButton">Ver ubicación</Link>
-                </div>
-              </div>
-            </div>
-
-            <div className="gridItem infoItem">
-              <div className="infoText">
-                <h3 className="infoSubtitle">
-                  <span className="subtitleLine">La Recepción</span>
-                </h3>
-                <img
-                  src="../../img/boda/recepcion.jpg"
-                  alt="Recepción"
-                />
-                <p className="infoDescription">
-                  Después de la ceremonia, los esperamos para celebrar juntos 
-                  hasta las 4:00 am. Habrá cena, barra libre, música y mucha diversión.
-                  ¡No olviden sus zapatos de baile!
-                </p>
-                <div className="poemContainer">
-                  <p className="poemText">
-                    "Bailaremos bajo las estrellas<br />
-                    Celebrando este amor sin igual<br />
-                    Que la música nos lleve<br />
-                    En esta noche mágica y especial"
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="gridItem infoItem">
-              <div className="infoText">
-                <h3 className="infoSubtitle">
-                  <span className="subtitleLine">Casa del Mar</span>
-                </h3>
-                <img
-                  src="../../img/boda/lugar.jpg"
-                  alt="Casa del Mar"
-                />
-                <p className="infoDescription">
-                  Un lugar mágico frente al mar, donde la elegancia se mezcla con la naturaleza. 
-                  Sus jardines y salones han sido testigos de historias de amor como la nuestra, 
-                  y ahora será el escenario perfecto para nuestro comienzo.
-                </p>
-                <div className="buttonContainer">
-                  <Link to="/galeria" className="weddingButton">Ver más fotos</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="rsvpSection">
-          <div className="sectionHeader">
-            <h2 className="sectionTitle">
-              Confirma tu asistencia
-              <span className="sectionSubtitle">Esperamos celebrar contigo</span>
-            </h2>
-          </div>
-          <div className="rsvpItem">
-            <img
-              className="weddingImage"
-              src="../../img/boda/confirmacion.jpg"
-              alt="Confirmación"
-            />
-            <p className="rsvpText">
-              Nos encantaría contar con tu presencia en este día tan especial. 
-              Por favor confirma tu asistencia antes del 1 de Noviembre.
+          <div className="introContent">
+            <p className="storyText">
+              Esta es la historia de cómo dos almas destinadas a estar juntas se encontraron, 
+              se enamoraron y decidieron pasar el resto de sus vidas como compañeros de aventuras.
             </p>
-            <div className="buttonContainer">
-              <Link to="/confirmar" className="weddingButton">Confirmar ahora</Link>
+          </div>
+        </section>
+
+        {/* Capítulo 1: El Encuentro */}
+        <section className="storyChapter chapter1">
+          <div className="chapterContent">
+            <div className="chapterImage">
+              <img src="/img/historia/encuentro-detalle.jpg" alt="Primer encuentro" />
+            </div>
+            <div className="chapterText">
+              <h3 className="chapterTitle">Febrero 2023: El Destino nos Unió</h3>
+              <p>
+                Todo comenzó en una cálida noche de verano. Fabiola estaba disfrutando de una cena con amigas 
+                cuando Alejandro llegó al mismo restaurante con su grupo de amigos. Sus miradas se cruzaron 
+                por casualidad cuando Fabiola se levantó para ir al baño y Alejandro, galante, le abrió la puerta.
+              </p>
+              <p>
+                "Fue como si el tiempo se detuviera", recuerda Fabiola. "Había algo en su sonrisa que me hizo 
+                sentir inmediatamente cómoda". Alejandro, por su parte, quedó cautivado por la risa contagiosa 
+                de Fabiola y su manera genuina de ser.
+              </p>
+              <blockquote className="loveQuote">
+                "Esa noche supe que quería volver a verla. No podía dejar que se fuera sin al menos 
+                conseguir su número" - Alejandro
+              </blockquote>
             </div>
           </div>
         </section>
 
-        <section className="giftsSection">
-          <div className="sectionHeader">
-            <h2 className="sectionTitle">
-              Nuestra Mesa de Regalos
-              <span className="sectionSubtitle">Un gesto de amor y aprecio</span>
-            </h2>
+        {/* Capítulo 2: Primeras Citas */}
+        <section className="storyChapter chapter2">
+          <div className="chapterContent reverse">
+            <div className="chapterText">
+              <h3 className="chapterTitle">Marzo 2023: Descubriéndonos</h3>
+              <p>
+                Su primera cita fue en un pequeño café cerca del río. Hablaron durante horas, descubriendo 
+                sus gustos en común por el jazz, los viajes y la cocina italiana. Alejandro sorprendió a 
+                Fabiola con su conocimiento de vinos, mientras que ella lo cautivó con sus historias de 
+                viajes por Europa.
+              </p>
+              <p>
+                La segunda cita fue una aventura: Alejandro llevó a Fabiola a un mercado de antigüedades 
+                donde buscaban el objeto más curioso. Fabiola encontró un viejo candelabro francés que 
+                hoy luce en su hogar como símbolo de esos primeros momentos mágicos.
+              </p>
+              <div className="memoryBox">
+                <p>Recuerdo favorito de Fabiola: "Cuando me llevó de sorpresa a ver el atardecer en 
+                el mirador de la ciudad con un picnic que él mismo preparó"</p>
+              </div>
+            </div>
+            <div className="chapterImage">
+              <img src="/img/historia/primeras-citas.jpg" alt="Primeras citas" />
+            </div>
           </div>
-          <div className="sectionRow">
-            <div className="gridItem giftItem">
-              <div className="giftText">
-                <h3 className="giftSubtitle">
-                  <span className="subtitleLine">Su presencia es nuestro mejor regalo</span>
-                </h3>
-                <img
-                  src="../../img/boda/regalos.jpg"
-                  alt="Regalos"
-                />
-                <p className="giftDescription">
-                  Si desean hacernos un obsequio, hemos creado una lista de regalos 
-                  en las tiendas que frecuentamos. Sin embargo, lo más importante 
-                  es poder compartir este día con ustedes.
-                </p>
-                <div className="poemContainer">
-                  <p className="poemText">
-                    "No hay regalo más valioso<br />
-                    Que tu amor y compañía<br />
-                    Celebrar juntos este día<br />
-                    Es la mayor alegría"
-                  </p>
-                </div>
+        </section>
+
+        {/* Capítulo 3: El Amor Florece */}
+        <section className="storyChapter chapter3">
+          <div className="chapterContent">
+            <div className="chapterImage">
+              <img src="/img/historia/viaje-together.jpg" alt="Viaje juntos" />
+            </div>
+            <div className="chapterText">
+              <h3 className="chapterTitle">Junio 2023: Nuestro Primer Viaje</h3>
+              <p>
+                Para el cumpleaños de Fabiola, Alejandro planeó una sorpresa: un fin de semana en la montaña. 
+                Fue allí, caminando por senderos rodeados de naturaleza, donde ambos sintieron que esto era 
+                algo serio, algo especial.
+              </p>
+              <p>
+                "Recuerdo que hizo mucho frío esa noche", cuenta Alejandro, "y Fabiola se acurrucó contra mí 
+                para calentarse. En ese momento supe que quería protegerla y hacerla feliz por el resto de 
+                mis días".
+              </p>
+              <ul className="loveTimeline">
+                <li>Julio 2023: Conocen a las familias</li>
+                <li>Agosto 2023: Primera crisis superada juntos</li>
+                <li>Octubre 2023: Se mudan juntos</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Capítulo 4: La Propuesta */}
+        <section className="storyChapter chapter4">
+          <div className="chapterContent reverse">
+            <div className="chapterText">
+              <h3 className="chapterTitle">Diciembre 2024: ¿Quieres Casarte Conmigo?</h3>
+              <p>
+                Alejandro planeó meticulosamente la propuesta durante meses. Sabía que Mendoza, con sus 
+                viñedos y montañas, era el lugar perfecto. Contrató a un fotógrafo para capturar el momento 
+                y reservó una cena privada en una bodega centenaria.
+              </p>
+              <p>
+                "Estábamos paseando por los viñedos al atardecer", recuerda Fabiola con lágrimas en los ojos. 
+                "De repente se detuvo, se arrodilló y sacó un anillo que había diseñado especialmente para mí. 
+                No pude evitar decir que sí antes de que terminara de hablar".
+              </p>
+              <blockquote className="loveQuote">
+                "Ese día entendí que el verdadero amor no es encontrar a alguien perfecto, sino encontrar a 
+                alguien que te haga querer ser mejor cada día" - Fabiola
+              </blockquote>
+            </div>
+            <div className="chapterImage">
+              <img src="/img/historia/propuesta-mendoza.jpg" alt="Propuesta en Mendoza" />
+            </div>
+          </div>
+        </section>
+
+        {/* Capítulo 5: Planeando el Futuro */}
+        <section className="storyChapter chapter5">
+          <div className="chapterContent">
+            <div className="chapterImage">
+              <img src="/img/historia/casa-del-mar.jpg" alt="Casa del Mar" />
+            </div>
+            <div className="chapterText">
+              <h3 className="chapterTitle">2025: Comienza la Aventura</h3>
+              <p>
+                La elección de "La Casa del Mar" como lugar para su boda no fue casual. Ambos comparten un 
+                amor profundo por el océano y los atardeceres. "Queremos que nuestro matrimonio comience 
+                donde el mar besa la tierra, como nuestro amor que une dos mundos", explica Alejandro.
+              </p>
+              <p>
+                Ahora, mientras planean cada detalle de su boda, no pueden evitar emocionarse pensando en 
+                todas las aventuras que vendrán después: construir un hogar, viajar por el mundo, y quizás 
+                algún día, empezar una familia.
+              </p>
+              <div className="futurePromise">
+                <p>"Prometemos amarnos, respetarnos y aventurarnos juntos por el resto de nuestras vidas"</p>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="hashtagSection">
-          <div className="sectionHeader">
-            <h2 className="sectionTitle">
-              Comparte tus fotos
-              <span className="sectionSubtitle">Atesoramos cada momento</span>
-            </h2>
-          </div>
-          <div className="hashtagContent">
-            <p className="hashtagText">
-              Usa nuestro hashtag <strong>#BodaAlejandroYFabiola</strong> en tus redes sociales 
-              para que podamos ver y guardar todos los momentos especiales de este día.
+        {/* Epílogo */}
+        <section className="storyEpilogue">
+          <div className="epilogueContent">
+            <h3 className="epilogueTitle">Y Así Continúa Nuestra Historia...</h3>
+            <p>
+              Esta es solo el comienzo de nuestro viaje juntos. El 23 de Noviembre de 2025, frente al mar 
+              que tanto amamos, celebraremos nuestro amor con todos ustedes, nuestros seres queridos.
             </p>
-            <div className="socialIcons">
-              {/* Aquí irían los iconos de redes sociales */}
-            </div>
+            <p className="signature">
+              Con todo nuestro amor,<br />
+              Alejandro & Fabiola
+            </p>
           </div>
         </section>
       </div>

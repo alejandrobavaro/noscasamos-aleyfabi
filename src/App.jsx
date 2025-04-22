@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 //------------ESTILOS--------------//
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,58 +9,40 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"; 
 import "./assets/scss/_01-General/_Toastify.scss"; 
 
-//------------HEADER--------------//
+//------------COMPONENTES--------------//
 import Header from "./componentes/Header";
-//-----------HOME - MAIN-----------------//
-import MainContent from "./componentes/MainContent";
+import Footer from "./componentes/Footer";
 import MainWhatsappIcon from "./componentes/MainWhatsappIcon";
 import MainPublicidadSlider from "./componentes/MainPublicidadSlider";
-//--------------FOOTER----------------//
-import Footer from "./componentes/Footer";
-//-----------CONTACTO-----------------//
+
+//------------PANTALLA DE ACCESO--------------//
+import PantallaAcceso from "./componentes/PantallaAcceso";
+
+//------------RUTAS PÚBLICAS--------------//
+import MainContent from "./componentes/MainContent";
 import ContactoLogoRedes from "./componentes/ContactoLogoRedes";
 import ContactoFormularioSlider from "./componentes/ContactoFormularioSlider";
-//-----------DATA------------//
 import Clientes from "./componentes/Clientes";
-//-----------LOGIN-LOGOUT-REGISTRO-----------------//
-import SesionRegister from "./componentes/SesionRegistrate";
-import SesionLogout from "./componentes/SesionLogout";
-import SesionLogin from "./componentes/SesionLogin";
-//------------------TIENDA---------------------//
-import Tienda from './componentes/Tienda';
-import TiendaCarritoCompra  from './componentes/TiendaCarritoCompra';
-import { OfertasProvider } from './componentes/TiendaOfertasContext';
-//-------------------APLICA-----------------//
-import Aplicar from "./componentes/Aplicar"; 
-import AplicaPersonaliza1 from "./componentes/AplicaPersonaliza1";
-import AplicaPersonaliza2 from "./componentes/AplicaPersonaliza2";
-import AplicaPersonaliza3 from "./componentes/AplicaPersonaliza3";
-import AplicaPersonaliza3ProductoPersonalizable from './componentes/AplicaPersonaliza3ProductoPersonalizable';
-//------------------------SERVICIO----------------------------//
 import Servicio from "./componentes/Servicio";
+
+//------------RUTAS DE INVITADOS--------------//
+import AreaInvitados from "./componentes/AreaInvitados";
+import ConfirmacionAsistencia from "./componentes/ConfirmacionAsistencia";
+import UbicacionInvitados from "./componentes/UbicacionInvitados";
+import DressCode from "./componentes/DressCode";
+import Itinerario from "./componentes/Itinerario";
+
+//------------RUTAS DE ORGANIZACIÓN--------------//
+import PanelOrganizacion from "./componentes/PanelOrganizacion";
+import ListaInvitados from "./componentes/ListaInvitados";
+import AsignacionMesas from "./componentes/AsignacionMesas";
+import TareasBoda from "./componentes/TareasBoda";
+
+//------------CONTEXTO DE AUTENTICACIÓN--------------//
+import { AuthProvider } from "./context/AuthContext"; // Eliminamos useAuth de aquí
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [productCart, setProductCart] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const addProductToCart = (product) => {
-    setProductCart([...productCart, product]);
-  };
-
-  const removeProductFromCart = (id) => {
-    setProductCart(productCart.filter((product) => product.id !== id));
-  };
-
-  const handlePagar = () => {
-    toast.success("Iniciando el proceso de pago. Por favor, espere...", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-
-    setTimeout(() => {
-      window.open('https://www.paypal.com/paypalme/alegondramusic?country.x=AR&locale.x=es_XC', '_blank');
-    }, 2000);
-  };
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -75,59 +53,56 @@ function App() {
   }, [isDarkMode]);
 
   return (
-    <OfertasProvider>
+    <AuthProvider>
       <Router>
         <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
 
         <div className="main-content">
           <div className="content centered">
             <Routes>
-              <Route path="/login" element={<SesionLogin />} />
-              <Route path="/register" element={<SesionRegister />} />
-              <Route path="/logout" element={<SesionLogout />} />
-              <Route path="/" element={<MainContent />} />
+              {/* Ruta principal - Pantalla de acceso */}
+              <Route path="/" element={<PantallaAcceso />} />
 
-              {/* Rutas accesibles sin autenticación */}
-              <Route
-                path="/contacto"
-                element={
-                  <>
-                    <ContactoLogoRedes />
-                    <ContactoFormularioSlider />
-                  </>
-                }
-              />
-              <Route path="/clientes" element={<Clientes />} /> 
+              {/* RUTAS PÚBLICAS (acceso sin autenticación) */}
+              <Route path="/inicio" element={<MainContent />} />
+              <Route path="/contacto" element={
+                <>
+                  <ContactoLogoRedes />
+                  <ContactoFormularioSlider />
+                </>
+              } />
+              <Route path="/clientes" element={<Clientes />} />
               <Route path="/servicio" element={<Servicio />} />
-              <Route path="/aplicar" element={<Aplicar />} />
-              {/* Nuevas rutas para los servicios*/}
-              <Route path="/aplicar/1" element={<AplicaPersonaliza1 />} />
-              <Route path="/aplicar/2" element={<AplicaPersonaliza2 />} />
-              <Route path="/aplicar/3" element={<AplicaPersonaliza3 />} />
-              <Route path="/aplicar/3/:productoId" element={<AplicaPersonaliza3ProductoPersonalizable />} />
-              {/* Rutas para la tienda */}
-              <Route path="/tienda" element={<Tienda 
-                setCart={setProductCart} 
-                cart={productCart} 
-                addToCart={addProductToCart} 
-                removeFromCart={removeProductFromCart} 
-                searchQuery={searchQuery} 
-                setSearchQuery={setSearchQuery} />} 
-              />
-              <Route path="/carrito" element={<TiendaCarritoCompra  
-                cart={productCart} 
-                removeFromCart={removeProductFromCart} 
-                handlePagar={handlePagar} />} 
-              />
+
+              {/* 
+                Rutas protegidas ahora manejadas por cada componente interno
+                Cada componente protegido manejará su propia lógica de autenticación
+                usando useAuth()
+              */}
+              <Route path="/invitados" element={<AreaInvitados />} />
+              <Route path="/invitados/confirmar" element={<ConfirmacionAsistencia />} />
+              <Route path="/invitados/ubicacion" element={<UbicacionInvitados />} />
+              <Route path="/invitados/dresscode" element={<DressCode />} />
+              <Route path="/invitados/itinerario" element={<Itinerario />} />
+
+
+              <Route path="/organizacion" element={<PanelOrganizacion />} />
+              <Route path="/organizacion/invitados" element={<ListaInvitados />} />
+              <Route path="/organizacion/mesas" element={<AsignacionMesas />} />
+              <Route path="/organizacion/tareas" element={<TareasBoda />} />
+
+              {/* Redirección para rutas no encontradas */}
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </div>
         </div>
+
         <hr className="border border-0 opacity-20" />
         <MainPublicidadSlider />
         <Footer />
         <MainWhatsappIcon />
       </Router>
-    </OfertasProvider>
+    </AuthProvider>
   );
 }
 

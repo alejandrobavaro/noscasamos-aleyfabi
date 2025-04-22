@@ -1,0 +1,195 @@
+// TareasBoda.scss
+$color-bordo: #7A4F50;
+$color-dorado: #C2A78D;
+$color-blanco: #FFF9F5;
+$color-gris: #F5F0EC;
+
+.tareas-boda {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  
+  h1 {
+    font-family: 'Playfair Display', serif;
+    color: $color-bordo;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.resumen-tareas {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  
+  .estadistica {
+    background: $color-blanco;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    
+    .numero {
+      font-family: 'Cinzel', serif;
+      color: $color-bordo;
+      font-size: 1.8rem;
+      font-weight: bold;
+      display: block;
+    }
+    
+    .texto {
+      font-family: 'Cormorant Garamond', serif;
+      color: lighten($color-bordo, 20%);
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.formulario-nueva-categoria,
+.formulario-nueva-tarea {
+  background: $color-blanco;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+  
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    color: $color-bordo;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  
+  form {
+    display: flex;
+    gap: 1rem;
+    
+    input, select {
+      flex-grow: 1;
+      padding: 0.7rem;
+      border: 1px solid rgba($color-bordo, 0.2);
+      border-radius: 5px;
+      font-family: 'Cormorant Garamond', serif;
+      
+      &:focus {
+        outline: none;
+        border-color: $color-dorado;
+      }
+    }
+    
+    button {
+      background: $color-bordo;
+      color: white;
+      border: none;
+      padding: 0 1.5rem;
+      border-radius: 5px;
+      font-family: 'Cormorant Garamond', serif;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      
+      &:hover {
+        background: darken($color-bordo, 10%);
+      }
+    }
+  }
+}
+
+.categorias-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.categoria {
+  background: $color-blanco;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    color: $color-bordo;
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba($color-bordo, 0.1);
+  }
+}
+
+.lista-tareas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  li {
+    display: flex;
+    align-items: center;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba($color-bordo, 0.05);
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    &.completada {
+      span {
+        text-decoration: line-through;
+        color: lighten($color-bordo, 30%);
+      }
+    }
+    
+    input[type="checkbox"] {
+      margin-right: 1rem;
+      cursor: pointer;
+    }
+    
+    span {
+      flex-grow: 1;
+      font-family: 'Cormorant Garamond', serif;
+      color: $color-bordo;
+    }
+    
+    .boton-eliminar {
+      background: transparent;
+      border: none;
+      color: lighten($color-bordo, 30%);
+      cursor: pointer;
+      transition: color 0.3s ease;
+      
+      &:hover {
+        color: $color-bordo;
+      }
+    }
+  }
+}
+
+.sin-tareas {
+  font-family: 'Cormorant Garamond', serif;
+  color: lighten($color-bordo, 30%);
+  text-align: center;
+  padding: 1rem 0;
+}
+
+@media (max-width: 768px) {
+  .tareas-boda {
+    padding: 1rem;
+  }
+  
+  .resumen-tareas {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .formulario-nueva-categoria,
+  .formulario-nueva-tarea {
+    form {
+      flex-direction: column;
+    }
+  }
+  
+  .categorias-container {
+    grid-template-columns: 1fr;
+  }
+}

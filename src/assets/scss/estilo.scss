@@ -5,15 +5,10 @@
 @import "./_01-General/Toastify";
 
 //----------DISEÑO GRAL------------//
-// @import "./_02-Diseño/Alineacion";
-// @import "./_02-Diseño/Animaciones";
-// @import "./_02-Diseño/Botones";
-// @import "./_02-Diseño/Cards";
-// @import "./_02-Diseño/GridEstructuras";
-// @import "./_02-Diseño/Imagenes";
-// @import "./_02-Diseño/PublicidadSliders";
-// @import "./_02-Diseño/Responsive";
-// @import "./_02-Diseño/Textos";
+
+
+
+
 
 //------------HEADER--------------//
 @import "./_03-Componentes/Header";
@@ -42,19 +37,39 @@
 @import "./_03-Componentes/ContactoLogoRedes";
 @import "./_03-Componentes/ContactoFormularioSlider";
 
-//----------TIENDA--------------------//
-@import "./_03-Componentes/Tienda";
-@import "./_03-Componentes/TiendaCarritoCompra";
-@import "./_03-Componentes/TiendaImgAgrandar";
-@import "./_03-Componentes/TiendaCarritoMini2";
-@import "./_03-Componentes/TiendaModalInicio";
-@import "./_03-Componentes/TiendaOfertas";
-@import "./_03-Componentes/TiendaProductos";
-@import "./_03-Componentes/TiendaProductoDetalle";
-@import "./_03-Componentes/TiendaProductosLista";
+
 
 //----------LOGIN LOG OUT------------//
 @import "./_03-Componentes/SesionLoginRegister";
+
+
+//----------NUEVOS BODA-----------//
+
+
+
+
+@import "./_03-Componentes/AreaInvitados";
+
+@import "./_03-Componentes/AsignacionMesas";
+
+@import "./_03-Componentes/ConfirmacionAsistencia";
+
+@import "./_03-Componentes/ListaInvitados";
+
+@import "./_03-Componentes/PanelOrganizacion";
+
+@import "./_03-Componentes/PantallaAcceso";
+
+@import "./_03-Componentes/TareasBoda";
+
+@import "./_03-Componentes/UbicacionInvitados";
+
+
+@import "./_03-Componentes/DressCode";
+
+@import "./_03-Componentes/Itinerario";
+
+
 
 //--------------FOOTER----------------//
 @import "./_03-Componentes/Footer";

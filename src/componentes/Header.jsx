@@ -1,138 +1,117 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../context/SesionAuthContext";
-import { BsFillPersonPlusFill, BsBoxArrowRight, BsList } from "react-icons/bs";
+import { useAuth } from "../context/AuthContext";
+import { BsBoxArrowRight, BsList } from "react-icons/bs";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import "../assets/scss/_03-Componentes/_Header.scss";
 
 const Header = ({ isDarkMode, toggleDarkMode }) => {
-  const { state, dispatch } = useAuth();
+  const { nivelAcceso, logout } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     document.body.classList.toggle("dark-mode", isDarkMode);
-    
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, [isDarkMode]);
 
   const handleToggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
-    <header className={`header encabezado ${scrolled ? 'scrolled' : ''}`}>
+    <header className="header">
       <div className="baroque-line-top"></div>
-      <Navbar expand="lg" className="navbar">
-        <Container>
-          <Navbar.Toggle aria-controls="basic-navbar-nav">
-            <BsList className="menu-icon" onClick={handleToggleMobileMenu} />
-          </Navbar.Toggle>
+    
+      <Navbar expand="lg" className="navbar-custom">
+     
 
-          <Navbar.Collapse
-            id="basic-navbar-nav"
-            className={`navbar-collapse ${isMobileMenuOpen ? "show" : ""}`}
-          >
-            <Nav className="ml-auto navbar-nav">
-              <Nav.Link
-                as={Link}
-                to="/"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
+      <Navbar.Brand as={Link} to="/" className="logo-brand header-container">
+            <img
+              src="../../img/02-logos/logo-bodaaleyfabi1d.png"
+              alt="Logo Boda Ale y Fabi"
+              className="logo-header"
+            />
+          </Navbar.Brand>
+
+          <Nav.Link as={Link} to="/" onClick={() => setIsMobileMenuOpen(false)}>
                 INICIO
               </Nav.Link>
-              
-              <div className="baroque-divider"></div>
-              
-              <Nav.Link
-                // as={Link}
-                // to="/confirmar"
-                // onClick={() => setIsMobileMenuOpen(false)}
-              >
-                CONFIRMAR
-              </Nav.Link>
 
-              <div className="baroque-divider"></div>
 
-              <Nav.Link
-                // as={Link}
-                // to="/ubicacion"
-                // onClick={() => setIsMobileMenuOpen(false)}
-              >
-                UBICACIÓN
-              </Nav.Link>
+        <Container className="header-container">
+          <Navbar.Toggle 
+            aria-controls="basic-navbar-nav" 
+            className="mobile-toggle"
+            onClick={handleToggleMobileMenu}
+          >
+            <BsList className="menu-icon" />
+          </Navbar.Toggle>
 
-              <Navbar.Brand as={Link} to="/" className="logo-container">
-                <img
-                  src="../../img/02-logos/logo-bodaaleyfabi1d.png"
-                  alt="Logo Boda Ale y Fabi"
-                  className="logoHeader"
-                />
-              </Navbar.Brand>
 
-              <div className="baroque-divider"></div>
+       
 
-              <Nav.Link
-                // as={Link}
-                // to="/galeria"
-                // onClick={() => setIsMobileMenuOpen(false)}
-              >
-                GALERÍA
-              </Nav.Link>
+       
 
-              <div className="baroque-divider"></div>
+          <Navbar.Collapse id="basic-navbar-nav" className={`navbar-collapse-custom ${isMobileMenuOpen ? "show" : ""}`}>
+            <Nav className="nav-links">
 
-              <Nav.Link
-                // as={Link}
-                // to="/playlist"
-                // onClick={() => setIsMobileMenuOpen(false)}
-              >
-                PLAYLIST
-              </Nav.Link>
+            
+           
 
-              <div className="baroque-divider"></div>
+              {nivelAcceso === 'invitado' && (
+                <>
+                  <div className="baroque-divider"></div>
+                  <Nav.Link as={Link} to="/invitados/confirmar" onClick={() => setIsMobileMenuOpen(false)}>
+                    CONFIRMAR
+                  </Nav.Link>
 
-              <Nav.Link
-                // as={Link}
-                // to="/mensajes"
-                // onClick={() => setIsMobileMenuOpen(false)}
-              >
-                MENSAJES
-              </Nav.Link>
+
+             
+
+
+                  <div className="baroque-divider"></div>
+                  <Nav.Link as={Link} to="/invitados/ubicacion" onClick={() => setIsMobileMenuOpen(false)}>
+                    UBICACIÓN
+                  </Nav.Link>
+                </>
+              )}
+
+              {nivelAcceso === 'organizacion' && (
+                <>
+                  <div className="baroque-divider"></div>
+                  <Nav.Link as={Link} to="/organizacion/invitados" onClick={() => setIsMobileMenuOpen(false)}>
+                    INVITADOS
+                  </Nav.Link>
+                </>
+              )}
             </Nav>
 
-            <Nav.Item className="auth-buttons-container">
-              {state.isAuthenticated ? (
-                <div className="auth-welcome-container">
-                  <div className="auth-welcome">
-                    <span>Hola,</span>
-                    <span>{state.user.email.split("@")[0]}</span>
-                  </div>
+
+          
+
+
+            <div className="auth-section">
+              {nivelAcceso ? (
+                <div className="auth-welcome">
+                  <span>Hola, {nivelAcceso}</span>
                   <Link
-                    className="nav-linkHeader auth-link logout-link"
-                    to="/logout"
+                    to="/"
                     onClick={() => {
-                      dispatch({ type: "LOGOUT" });
+                      logout();
                       setIsMobileMenuOpen(false);
                     }}
+                    className="logout-btn"
                   >
-                    <BsBoxArrowRight className="auth-icon" />
+                    <BsBoxArrowRight className="logout-icon" />
                   </Link>
                 </div>
               ) : (
-                <>
-                  <Link className="nav-linkHeader auth-link" to="/admin">
-                    <BsFillPersonPlusFill className="auth-icon" />
-                  </Link>
-                </>
+                <Link to="/admin" className="access-btn">
+                  ACCESO
+                </Link>
               )}
-            </Nav.Item>
+            </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      
       <div className="baroque-line-bottom"></div>
     </header>
   );

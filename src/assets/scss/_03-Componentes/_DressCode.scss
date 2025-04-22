@@ -1,0 +1,209 @@
+// Variables
+$color-bordo: #7A4F50;
+$color-dorado: #C2A78D;
+$color-blanco: #FFF9F5;
+$color-beige: #F8F1E9;
+
+// Animaciones
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dresscode-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  animation: fadeIn 0.8s ease;
+}
+
+.dresscode-header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    color: $color-bordo;
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-family: 'Cormorant Garamond', serif;
+    color: lighten($color-bordo, 20%);
+    font-size: 1.3rem;
+  }
+
+  .floral-divider {
+    background: url('/img/00-elementos/flor-separador.png') center no-repeat;
+    height: 40px;
+    margin: 1.5rem auto;
+    background-size: contain;
+  }
+}
+
+.dresscode-section {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    color: $color-bordo;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-family: 'Cormorant Garamond', serif;
+    color: lighten($color-bordo, 15%);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.attire-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.attire-card {
+  background: $color-blanco;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+}
+
+.attire-image {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+  }
+}
+
+.attire-details {
+  padding: 2rem;
+
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    color: $color-bordo;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      font-family: 'Cormorant Garamond', serif;
+      color: lighten($color-bordo, 10%);
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.5rem;
+
+      &::before {
+        content: '•';
+        color: $color-dorado;
+        position: absolute;
+        left: 0;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+.color-palette {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    color: $color-bordo;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.colors {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.color-box {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid $color-beige;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.back-button {
+  display: block;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  color: $color-bordo;
+  font-size: 1.1rem;
+  text-decoration: none;
+  margin-top: 3rem;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid $color-bordo;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  max-width: 300px;
+  margin: 3rem auto 0;
+
+  &:hover {
+    background: $color-bordo;
+    color: $color-blanco;
+  }
+}
+
+@media (max-width: 768px) {
+  .dresscode-container {
+    padding: 1.5rem;
+  }
+
+  .dresscode-header {
+    h1 {
+      font-size: 2.2rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+  }
+
+  .attire-image {
+    height: 250px;
+  }
+}
