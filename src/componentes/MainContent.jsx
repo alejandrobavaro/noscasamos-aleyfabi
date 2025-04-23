@@ -32,10 +32,13 @@ function MainContent() {
           {loveStoryImages.map((image, index) => (
             <div key={index} className="carouselItem">
               <img src={image} alt={`Historia de amor ${index + 1}`} />
+              
             </div>
           ))}
         </Slider>
       </div>
+
+    
 
       {/* Contenido principal - Historia de amor */}
       <div className="mainContentContainer">
@@ -44,7 +47,8 @@ function MainContent() {
           <div className="sectionHeader">
             <h2 className="sectionTitle">
               Nuestra Historia
-              <span className="sectionSubtitle">Un cuento de hadas hecho realidad</span>
+              <span className="sectionSubtitle"> "El amor no mira con los ojos, sino con el alma" - Shakespeare</span>
+          
             </h2>
           </div>
           <div className="introContent">
@@ -59,7 +63,7 @@ function MainContent() {
         <section className="storyChapter chapter1">
           <div className="chapterContent">
             <div className="chapterImage">
-              <img src="/img/historia/encuentro-detalle.jpg" alt="Primer encuentro" />
+              <img src="/img/05-img-costados-larga/1a.jpg" alt="Primer encuentro" />
             </div>
             <div className="chapterText">
               <h3 className="chapterTitle">Febrero 2023: El Destino nos Unió</h3>
@@ -84,6 +88,9 @@ function MainContent() {
         {/* Capítulo 2: Primeras Citas */}
         <section className="storyChapter chapter2">
           <div className="chapterContent reverse">
+          <div className="chapterImage">
+              <img src="/img/05-img-costados-larga/2a.jpg" alt="Primeras citas" />
+            </div>
             <div className="chapterText">
               <h3 className="chapterTitle">Marzo 2023: Descubriéndonos</h3>
               <p>
@@ -102,9 +109,7 @@ function MainContent() {
                 el mirador de la ciudad con un picnic que él mismo preparó"</p>
               </div>
             </div>
-            <div className="chapterImage">
-              <img src="/img/historia/primeras-citas.jpg" alt="Primeras citas" />
-            </div>
+          
           </div>
         </section>
 
@@ -112,7 +117,7 @@ function MainContent() {
         <section className="storyChapter chapter3">
           <div className="chapterContent">
             <div className="chapterImage">
-              <img src="/img/historia/viaje-together.jpg" alt="Viaje juntos" />
+              <img src="/img/05-img-costados-larga/3a.jpg" alt="Viaje juntos" />
             </div>
             <div className="chapterText">
               <h3 className="chapterTitle">Junio 2023: Nuestro Primer Viaje</h3>
@@ -138,7 +143,11 @@ function MainContent() {
         {/* Capítulo 4: La Propuesta */}
         <section className="storyChapter chapter4">
           <div className="chapterContent reverse">
+          <div className="chapterImage">
+              <img src="/img/05-img-costados-larga/4a.jpg" alt="Propuesta en Mendoza" />
+            </div>
             <div className="chapterText">
+              
               <h3 className="chapterTitle">Diciembre 2024: ¿Quieres Casarte Conmigo?</h3>
               <p>
                 Alejandro planeó meticulosamente la propuesta durante meses. Sabía que Mendoza, con sus 
@@ -155,9 +164,7 @@ function MainContent() {
                 alguien que te haga querer ser mejor cada día" - Fabiola
               </blockquote>
             </div>
-            <div className="chapterImage">
-              <img src="/img/historia/propuesta-mendoza.jpg" alt="Propuesta en Mendoza" />
-            </div>
+          
           </div>
         </section>
 
@@ -165,7 +172,7 @@ function MainContent() {
         <section className="storyChapter chapter5">
           <div className="chapterContent">
             <div className="chapterImage">
-              <img src="/img/historia/casa-del-mar.jpg" alt="Casa del Mar" />
+              <img src="/img/05-img-costados-larga/5a.jpg" alt="Casa del Mar" />
             </div>
             <div className="chapterText">
               <h3 className="chapterTitle">2025: Comienza la Aventura</h3>

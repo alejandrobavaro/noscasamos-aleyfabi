@@ -1,322 +1,280 @@
-// Variables de color mejoradas
-$color-bordo: #7A4F50;
+// Variables
+$color-bordo: #662a2b;
 $color-dorado: #C2A78D;
-$color-blanco: rgba(255, 249, 245, 0.85);
-$color-beige: rgba(248, 241, 233, 0.35);
-$color-rosa-suave: #F5E1E4;
+$color-blanco: rgba(255, 249, 245, 0.836);
+$color-error: #d9534f;
 
 .pantalla-acceso {
-  position: relative;
-  width: 100%;
-   display: flex;
-  align-items: center;
+  display: flex;
   justify-content: center;
-  padding: 20px;
+  align-items: center;
+  min-height: 50vh;
+  padding: 1rem;
   font-family: 'Cormorant Garamond', serif;
-  color: $color-bordo;
-}
 
-.contenido-acceso {
-  background: 
-    linear-gradient(rgba(0, 0, 0, 0.3), 
-    rgba(0, 0, 0, 0.3)),
-    url('../../../../public/img/03-img-cuadradas/aleyfabi1.jpg') center/cover no-repeat;
-  padding: 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-  max-width: 800px;
-  width: 100%;
-  text-align: center;
-  border: 1px solid rgba($color-dorado, 0.4);
-  position: relative;
-  overflow: hidden;
+  .contenedor-acceso {
+    background: linear-gradient(rgba(255, 249, 245, 0.85), rgba(255, 249, 245, 0.041)), 
+                url('/img/00-fondos/fondoaleyfabi1.jpg') center/cover no-repeat;
+    border-radius: 12px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba($color-bordo, 0.05);
+      z-index: 0;
+    }
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 249, 245, 0.1);
-    backdrop-filter: blur(4px);
-    z-index: 0;
+    h4 {
+      color: $color-bordo;
+      font-weight: 900;
+      font-size: x-large;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+    }
   }
 }
 
-.tarjetas-acceso {
+.opciones-acceso {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.8rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 0;
   position: relative;
   z-index: 1;
 }
 
 .tarjeta {
-  background: $color-blanco;
-  padding: 1.8rem 1.2rem;
-  border-radius: 10px;
-  transition: all 0.35s ease;
+  background: rgba(255, 249, 245, 0.95);
+  padding: 20px 5px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: all 0.4s ease;
   border: 1px solid rgba($color-bordo, 0.15);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  
+  backdrop-filter: blur(2px);
+  position: relative;
+  z-index: 1;
+
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 249, 245, 0.98);
   }
-  
+
   .icono-container {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto 1.2rem;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
   }
-  
+
   i {
-    font-size: 2rem;
+    font-size: x-large;
     transition: all 0.3s ease;
   }
-  
+
   h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.6rem;
-    font-weight: 600;
+    font-size: large;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin: 0 0;
+    color: $color-bordo;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
     position: relative;
-    
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 40px;
-      height: 2px;
-      background: $color-dorado;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
   }
-  
-  &:hover h3::after {
-    opacity: 1;
-  }
-  
+
   p {
-    font-size: 0.95rem;
+    font-size: small;
+    font-weight: 900;
+    text-transform: uppercase;
     color: lighten($color-bordo, 15%);
     margin-top: 0.5rem;
   }
 }
 
-.tarjeta-publico {
-  .icono-container {
-    background: rgba($color-rosa-suave, 0.8);
-    
-    &:hover {
-      background: $color-rosa-suave;
+// Estilos específicos para cada tarjeta
+@each $tipo, $color in (
+  'publico': rgba(#F5E1E4, 0.9),
+  'invitado': rgba($color-dorado, 0.4),
+  'organizacion': rgba($color-bordo, 0.2)
+) {
+  .tarjeta-#{$tipo} {
+    .icono-container {
+      background: $color;
+      
+      &:hover {
+        background: saturate($color, 20%);
+      }
     }
-  }
-  
-  i { 
-    color: $color-bordo;
-  }
-}
-
-.tarjeta-invitado {
-  .icono-container {
-    background: rgba($color-dorado, 0.25);
     
-    &:hover {
-      background: rgba($color-dorado, 0.4);
+    i {
+      color: darken($color-bordo, 5%);
     }
-  }
-  
-  i { 
-    color: darken($color-dorado, 15%);
-  }
-}
-
-.tarjeta-organizacion {
-  .icono-container {
-    background: rgba($color-bordo, 0.15);
-    
-    &:hover {
-      background: rgba($color-bordo, 0.25);
-    }
-  }
-  
-  i { 
-    color: $color-bordo;
   }
 }
 
 .formulario-clave {
-  max-width: 450px;
-  margin: 2rem auto 0;
+  max-width: 400px;
+  margin: 0 auto;
+  background: rgba(255, 249, 245, 0.95);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   position: relative;
   z-index: 1;
-  
+
   h2 {
-    font-size: 1.7rem;
-    margin-bottom: 1.8rem;
-    font-weight: 600;
-    position: relative;
-    
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 2px;
-      background: $color-dorado;
+    color: $color-bordo;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+  }
+
+  .input-group {
+    display: flex;
+    margin-bottom: 1rem;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    input {
+      flex: 1;
+      padding: 0.8rem 1.2rem;
+      border: none;
+      font-family: inherit;
+      background: rgba(255,255,255,0.9);
+      
+      &:focus {
+        outline: none;
+        background: white;
+      }
+      
+      &::placeholder {
+        color: lighten($color-bordo, 25%);
+      }
+    }
+
+    button {
+      background: $color-bordo;
+      color: white;
+      border: none;
+      padding: 0 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        background: darken($color-bordo, 10%);
+        
+        i {
+          transform: translateX(3px);
+        }
+      }
+      
+      i {
+        transition: transform 0.3s ease;
+      }
     }
   }
-}
 
-.input-group {
-  display: flex;
-  margin-bottom: 1.5rem;
-  border-radius: 50px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  
-  &:hover {
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15);
+  .error {
+    color: $color-error;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.5);
   }
-}
 
-.input-clave {
-  flex: 1;
-  padding: 1rem 1.5rem;
-  border: none;
-  font-size: 1.05rem;
-  background: rgba($color-blanco, 0.95);
-  font-family: 'Cormorant Garamond', serif;
-  
-  &:focus {
-    outline: none;
-    background: $color-blanco;
-  }
-  
-  &::placeholder {
-    color: lighten($color-bordo, 25%);
-    font-style: italic;
-  }
-}
+  .volver {
+    background: none;
+    border: none;
+    color: $color-bordo;
+    cursor: pointer;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    transition: all 0.3s;
 
-.boton-acceder {
-  background: $color-bordo;
-  color: white;
-  border: none;
-  padding: 0 2rem;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: darken($color-bordo, 7%);
-  }
-  
-  i {
-    transition: transform 0.3s ease;
-  }
-  
-  &:hover i {
-    transform: translateX(3px);
-  }
-}
-
-.mensaje-error {
-  color: #d9534f;
-  font-size: 0.95rem;
-  margin-bottom: 1.2rem;
-  animation: fadeIn 0.4s ease;
-}
-
-.boton-volver {
-  background: transparent;
-  color: $color-bordo;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.3s ease;
-  padding: 0.5rem 0.8rem;
-  border-radius: 4px;
-  
-  &:hover {
-    color: darken($color-bordo, 10%);
-    background: rgba($color-bordo, 0.05);
+    &:hover {
+      color: darken($color-bordo, 10%);
+      text-decoration: underline;
+      
+      i {
+        transform: translateX(-3px);
+      }
+    }
     
     i {
-      transform: translateX(-3px);
+      transition: transform 0.3s ease;
     }
   }
-  
-  i {
-    transition: transform 0.3s ease;
-  }
-}
-
-// Animaciones
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 // Responsive
 @media (max-width: 768px) {
-  .contenido-acceso {
-    padding: 2rem 1.5rem;
-  }
-  
-  .tarjetas-acceso {
+  .opciones-acceso {
     grid-template-columns: 1fr;
     gap: 1.2rem;
-    margin-top: 1.5rem;
+  }
+
+  .contenedor-acceso {
+    padding: 1.5rem;
   }
   
   .tarjeta {
     padding: 1.5rem 1rem;
   }
-  
-  .formulario-clave {
-    h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-  }
 }
 
 @media (max-width: 480px) {
-  .contenido-acceso {
-    padding: 1.8rem 1.2rem;
-    border-radius: 8px;
+  .pantalla-acceso {
+    padding: 0.5rem;
+    min-height: 70vh;
+  }
+
+  .formulario-clave {
+    padding: 1.2rem;
+    
+    .input-group {
+      flex-direction: column;
+      border-radius: 8px;
+
+      input {
+        border-radius: 8px 8px 0 0;
+        padding: 0.9rem 1.2rem;
+      }
+
+      button {
+        border-radius: 0 0 8px 8px;
+        padding: 0.8rem;
+      }
+    }
   }
   
-  .input-group {
-    flex-direction: column;
-    border-radius: 8px;
-    
-    .input-clave {
-      border-radius: 8px 8px 0 0;
-      padding: 0.9rem 1.2rem;
+  .tarjeta {
+    h3 {
+      font-size: medium;
     }
     
-    .boton-acceder {
-      border-radius: 0 0 8px 8px;
-      padding: 0.8rem;
+    p {
+      font-size: 0.8rem;
     }
   }
 }

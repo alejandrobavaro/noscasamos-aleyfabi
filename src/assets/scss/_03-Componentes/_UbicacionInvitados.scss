@@ -1,170 +1,321 @@
-// UbicacionInvitados.scss
+// Variables
 $color-bordo: #7A4F50;
 $color-dorado: #C2A78D;
 $color-blanco: #FFF9F5;
+$color-gris: #6B635B;
+$color-texto: #2A2621;
 
 .ubicacion-invitados {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
-  
-  h1 {
-    font-family: 'Playfair Display', serif;
-    color: $color-bordo;
-    font-size: 2.2rem;
-    margin-bottom: 1.5rem;
+  padding: 0;
+  font-family: 'Cormorant Garamond', serif;
+  color: $color-texto;
+  line-height: 1.6;
+
+  .hero-section {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url("/img/05-img-costados-larga/2a.jpg") center/cover no-repeat;
+    color: white;
+    padding: 5rem 2rem;
     text-align: center;
+    margin-bottom: 3rem;
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin: 0;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
   }
 }
 
-.informacion-ubicacion {
+.location-content {
+  padding: 0 2rem;
+
+  section {
+    margin-bottom: 4rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    color: $color-bordo;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+
+    i {
+      color: $color-dorado;
+    }
+  }
+}
+
+.main-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  margin-bottom: 2rem;
-  
+  margin-bottom: 4rem;
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
 }
 
-.detalles {
+.info-card {
+  background: $color-blanco;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
   h2 {
-    font-family: 'Cormorant Garamond', serif;
-    color: $color-bordo;
-    font-size: 1.8rem;
     margin-top: 0;
-    margin-bottom: 1rem;
-  }
-  
-  .direccion {
-    font-family: 'Cormorant Garamond', serif;
-    color: lighten($color-bordo, 20%);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-    
-    i {
-      color: $color-dorado;
-    }
-  }
-}
-
-.info-horario {
-  display: flex;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  
-  .horario {
-    h3 {
-      font-family: 'Cormorant Garamond', serif;
-      color: $color-bordo;
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    p {
-      font-family: 'Cormorant Garamond', serif;
-      color: lighten($color-bordo, 20%);
-      margin: 0;
-    }
-  }
-}
-
-.como-llegar {
-  h3 {
-    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
     color: $color-bordo;
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-  }
-  
-  p {
-    font-family: 'Cormorant Garamond', serif;
-    color: lighten($color-bordo, 20%);
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba($color-dorado, 0.5);
+    padding-bottom: 1rem;
   }
 }
 
-.opciones-transporte {
-  display: flex;
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
-  
-  .transporte {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    
-    i {
-      font-size: 1.5rem;
-      color: $color-dorado;
-    }
-    
-    span {
-      font-family: 'Cormorant Garamond', serif;
-      color: lighten($color-bordo, 20%);
-      font-size: 0.9rem;
-    }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
   }
 }
 
-.mapa {
-  height: 400px;
+.info-item {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  i {
+    font-size: 1.5rem;
+    color: $color-dorado;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: $color-bordo;
+  }
+
+  p {
+    margin: 0.3rem 0 0;
+    color: $color-gris;
+  }
+}
+
+.map-container {
+  position: relative;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  height: 100%;
+
   iframe {
     width: 100%;
     height: 100%;
+    min-height: 300px;
+    border: none;
+  }
+
+  .map-link {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: $color-bordo;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+
+    &:hover {
+      background: $color-bordo;
+      color: white;
+    }
   }
 }
 
-.notas-importantes {
-  background: rgba($color-dorado, 0.1);
-  padding: 1.5rem;
-  border-radius: 10px;
-  
-  h3 {
-    font-family: 'Cormorant Garamond', serif;
-    color: $color-bordo;
-    font-size: 1.3rem;
-    margin-top: 0;
-    margin-bottom: 1rem;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    
-    li {
-      font-family: 'Cormorant Garamond', serif;
-      color: lighten($color-bordo, 20%);
-      padding: 0.3rem 0;
+.location-gallery, .couple-gallery {
+  margin-bottom: 4rem;
+
+  .image-slider, .couple-slider {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+    .slider-item {
       position: relative;
-      padding-left: 1.5rem;
       
-      &::before {
-        content: '•';
-        color: $color-dorado;
+      img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+
+        @media (max-width: 768px) {
+          height: 300px;
+        }
+      }
+
+      .image-caption {
         position: absolute;
+        bottom: 0;
         left: 0;
+        right: 0;
+        background: rgba(0,0,0,0.6);
+        color: white;
+        padding: 1rem;
+        text-align: center;
+        font-size: 1.2rem;
+      }
+    }
+
+    .slick-dots {
+      bottom: 20px;
+
+      li button:before {
+        color: white;
+        opacity: 0.7;
+      }
+
+      li.slick-active button:before {
+        color: $color-dorado;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.location-history {
+  .history-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .history-text {
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: $color-gris;
+    }
+  }
+
+  .history-image {
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+  }
+}
+
+.transport-section {
+  .transport-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+
+    .transport-card {
+      background: $color-blanco;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+
+      i {
+        font-size: 2.5rem;
+        color: $color-dorado;
+        margin-bottom: 1rem;
+      }
+
+      h3 {
+        color: $color-bordo;
+        margin-top: 0;
+      }
+
+      p {
+        color: $color-gris;
+      }
+
+      ul {
+        text-align: left;
+        padding-left: 1.5rem;
+        margin: 1rem 0;
+      }
+    }
+  }
+}
+
+.important-notes {
+  .notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+
+    .note-card {
+      background: $color-blanco;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+
+      i {
+        font-size: 2rem;
+        color: $color-dorado;
+        margin-bottom: 1rem;
+      }
+
+      h3 {
+        color: $color-bordo;
+        margin-top: 0;
+      }
+
+      p {
+        color: $color-gris;
+        margin-bottom: 0;
       }
     }
   }
 }
 
 @media (max-width: 768px) {
-  .ubicacion-invitados {
-    padding: 1rem;
+  .location-content {
+    padding: 0 1rem;
   }
-  
-  .opciones-transporte {
-    justify-content: center;
-    flex-wrap: wrap;
+
+  .hero-section {
+    padding: 3rem 1rem;
+
+    h1 {
+      font-size: 2.2rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+    }
   }
 }
+
+// Importación de fuentes
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');

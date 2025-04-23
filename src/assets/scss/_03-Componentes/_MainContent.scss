@@ -6,7 +6,7 @@ $tierra-medio: #A67C52;
 $tierra-oscuro: #8C5E3D;
 $gris-claro: #E8E5E0;
 $gris-medio: #D1CDC5;
-$gris-oscuro: #6B635B;
+$gris-oscuro: #271e14;
 $blanco: #fce8dc;
 $negro: #2A2621;
 
@@ -18,7 +18,7 @@ $negro: #2A2621;
   margin: 0;
   color: $negro;
   font-family: 'Cormorant Garamond', serif;
-  line-height: 1.8;
+  // line-height: 1.8;
 }
 
 /* Carrusel */
@@ -28,8 +28,7 @@ $negro: #2A2621;
   
   .carouselItem img {
     width: 100%;
-    height: 70vh;
-    max-height: 600px;
+       max-height: 250px;
     object-fit: cover;
     object-position: center;
   }
@@ -54,7 +53,7 @@ $negro: #2A2621;
 .mainContentContainer {
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: 0px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 60px 20px;
@@ -63,11 +62,11 @@ $negro: #2A2621;
 /* Encabezados */
 .sectionHeader {
   text-align: center;
-  margin-bottom: 60px;
+  // margin-bottom: 60px;
 }
 
 .sectionTitle {
-  font-size: 3.2rem;
+  font-size: xx-large;
   color: $bordo-oscuro;
   font-weight: 500;
   letter-spacing: 1px;
@@ -96,9 +95,9 @@ $negro: #2A2621;
 
 .sectionSubtitle {
   display: block;
-  font-size: 1.3rem;
+  font-size: large;
   color: $tierra-oscuro;
-  margin-top: 15px;
+  // margin-top: 15px;
   font-style: italic;
   font-weight: 400;
   letter-spacing: 1px;
@@ -107,21 +106,20 @@ $negro: #2A2621;
 /* Introducción */
 .storyIntro {
   .introContent {
-    max-width: 800px;
+    max-width: 500px;
     margin: 0 auto;
     text-align: center;
   }
   
   .storyText {
-    font-size: 1.3rem;
+    font-size: medium;
     color: $gris-oscuro;
-    line-height: 1.9;
   }
 }
 
 /* Capítulos de la historia */
 .storyChapter {
-  padding: 40px 0;
+  padding: 10px 0;
   position: relative;
   
   &::before {
@@ -169,12 +167,12 @@ $negro: #2A2621;
   flex: 1;
   
   .chapterTitle {
-    font-size: 2rem;
+    font-size: large;
     color: $bordo-oscuro;
-    margin-bottom: 25px;
+    margin-bottom: 0px;
     font-family: 'Playfair Display', serif;
     position: relative;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
     
     &::after {
       content: '';
@@ -188,9 +186,9 @@ $negro: #2A2621;
   }
   
   p {
-    font-size: 1.1rem;
+    font-size: medium;
     color: $gris-oscuro;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
   }
 }
 
@@ -198,10 +196,10 @@ $negro: #2A2621;
 .loveQuote {
   font-style: italic;
   color: $tierra-oscuro;
-  padding: 20px;
+  padding: 0px;
   border-left: 3px solid $tierra-medio;
   background: rgba($tierra-claro, 0.1);
-  margin: 30px 0;
+  margin: 10px 0;
   font-size: 1.1rem;
   
   &::before, &::after {
@@ -214,7 +212,7 @@ $negro: #2A2621;
 .memoryBox {
   background: rgba($bordo-elegante, 0.05);
   border: 1px solid rgba($bordo-elegante, 0.2);
-  padding: 20px;
+  padding: 0px;
   border-radius: 5px;
   margin: 25px 0;
   
@@ -250,7 +248,7 @@ $negro: #2A2621;
   padding: 25px;
   text-align: center;
   border-radius: 5px;
-  margin-top: 30px;
+  margin-top: 0px;
   
   p {
     font-size: 1.2rem;
@@ -263,35 +261,37 @@ $negro: #2A2621;
 /* Epílogo */
 .storyEpilogue {
   text-align: center;
-  padding: 80px 20px;
-  background: linear-gradient(rgba($blanco, 0.9), rgba($blanco, 0.9)), 
-              url('../../img/historia/fondo-epilogo.jpg') center/cover;
+  padding: 20px 20px;
+  background: linear-gradient(rgba($blanco, 0.3), rgba($blanco, 0.3)), 
+              url('/img/00-fondos/fondoaleyfabi1.jpg') center/cover;
   border-radius: 10px;
   margin-top: 50px;
+  color: $bordo-oscuro; // Color oscuro para mejor legibilidad
+  text-shadow: 0 1px 2px rgba(255,255,255,0.5); // Sombra clara
   
   .epilogueContent {
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
   }
   
   .epilogueTitle {
     font-size: 2.2rem;
     color: $bordo-oscuro;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     font-family: 'Playfair Display', serif;
   }
   
   p {
-    font-size: 1.2rem;
+    font-size: large;
     color: $gris-oscuro;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
   }
   
   .signature {
     font-family: 'Cinzel', serif;
-    font-size: 1.5rem;
+    font-size: large;
     color: $bordo-oscuro;
-    margin-top: 40px;
+    margin-top: 0px;
   }
 }
 
@@ -382,3 +382,26 @@ $negro: #2A2621;
 
 /* Importación de fuentes */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Cinzel:wght@400;700&display=swap');
+
+.slider-inspiracion {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #F4F1EE;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.05);
+}
+
+.slider-inspiracion h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.slider-inspiracion .slick-slide img {
+  border-radius: 8px;
+  margin: 0 auto;
+  max-height: 300px;
+  object-fit: cover;
+}

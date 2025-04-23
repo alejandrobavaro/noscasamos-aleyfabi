@@ -1,0 +1,90 @@
+{
+  "avatarHombre": {
+    "base": "/img/14-dresscode-avatar/avatar-hombre/base.png",
+    "componentes": {
+      "camisa": {
+        "titulo": "Elegí una camisa",
+        "opciones": [
+          {
+            "nombre": "Camisa Blanca",
+            "imagen": "/img/14-dresscode-avatar/avatar-hombre/camisa-blanca.png"
+          },
+          {
+            "nombre": "Camisa Negra",
+            "imagen": "/img/14-dresscode-avatar/avatar-hombre/camisa-negra.png"
+          }
+        ]
+      },
+      "saco": {
+        "titulo": "Elegí un saco",
+        "opciones": [
+          {
+            "nombre": "Saco Azul",
+            "imagen": "/img/14-dresscode-avatar/avatar-hombre/saco-azul.png"
+          },
+          {
+            "nombre": "Saco Gris",
+            "imagen": "/img/14-dresscode-avatar/avatar-hombre/saco-gris.png"
+          }
+        ]
+      },
+      "pantalon": {
+        "titulo": "Elegí un pantalón",
+        "opciones": [
+          {
+            "nombre": "Pantalón Negro",
+            "imagen": "/img/14-dresscode-avatar/avatar-hombre/pantalon-negro.png"
+          },
+          {
+            "nombre": "Pantalón Gris",
+            "imagen": "/img/14-dresscode-avatar/avatar-hombre/pantalon-gris.png"
+          }
+        ]
+      }
+    }
+  },
+  "avatarMujer": {
+    "base": "/img/14-dresscode-avatar/avatar-mujer/base.png",
+    "componentes": {
+      "vestido": {
+        "titulo": "Elegí un vestido",
+        "opciones": [
+          {
+            "nombre": "Vestido Rojo",
+            "imagen": "/img/14-dresscode-avatar/avatar-mujer/vestido-rojo.png"
+          },
+          {
+            "nombre": "Vestido Negro",
+            "imagen": "/img/14-dresscode-avatar/avatar-mujer/vestido-negro.png"
+          }
+        ]
+      },
+      "saco": {
+        "titulo": "Elegí un saco",
+        "opciones": [
+          {
+            "nombre": "Saco Negro",
+            "imagen": "/img/14-dresscode-avatar/avatar-mujer/saco-negro.png"
+          },
+          {
+            "nombre": "Saco Beige",
+            "imagen": "/img/14-dresscode-avatar/avatar-mujer/saco-beige.png"
+          }
+        ]
+      },
+      "zapatos": {
+        "titulo": "Elegí los zapatos",
+        "opciones": [
+          {
+            "nombre": "Zapatos Negros",
+            "imagen": "/img/14-dresscode-avatar/avatar-mujer/zapatos-negros.png"
+          },
+          {
+            "nombre": "Zapatos Dorados",
+            "imagen": "/img/14-dresscode-avatar/avatar-mujer/zapatos-dorados.png"
+          }
+        ]
+      }
+    }
+  }
+}

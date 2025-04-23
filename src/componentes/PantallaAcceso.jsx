@@ -10,77 +10,57 @@ function PantallaAcceso() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleAccesoPublico = () => {
-    navigate('/inicio');
+  const handleAcceso = (tipo) => {
+    if (tipo === 'publico') return navigate('/inicio');
+    setTipoAcceso(tipo);
   };
 
   const verificarClave = () => {
-    if (tipoAcceso === 'invitado' && clave === 'invitado') {
-      login('invitado');
-      navigate('/invitados');
-    } else if (tipoAcceso === 'organizacion' && clave === 'aleyfabi') {
-      login('organizacion');
-      navigate('/organizacion');
+    const credenciales = {
+      invitado: { clave: 'invitado', ruta: '/invitados' },
+      organizacion: { clave: 'aleyfabi', ruta: '/organizacion' }
+    };
+
+    if (clave === credenciales[tipoAcceso]?.clave) {
+      login(tipoAcceso);
+      navigate(credenciales[tipoAcceso].ruta);
     } else {
-      setError('Clave incorrecta. Intenta nuevamente.');
+      setError('Clave incorrecta');
       setTimeout(() => setError(''), 3000);
     }
   };
 
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      verificarClave();
-    }
-  };
+  const handleKeyPress = (e) => e.key === 'Enter' && verificarClave();
 
   return (
     <div className="pantalla-acceso">
-      <div className="fondo-romantico"></div>
-      
-      <div className="contenido-acceso compacto">
+      <div className="contenedor-acceso">
+        <h4>Bienvenidos a Nuestra Boda</h4>
+        
         {!tipoAcceso ? (
           <div className="opciones-acceso">
-            <div className="tarjetas-acceso">
+            {[
+              { tipo: 'publico', icono: 'heart-fill', titulo: 'Nuestra historia', subtitulo: 'Acceso público' },
+              { tipo: 'invitado', icono: 'envelope-fill', titulo: 'Invitado', subtitulo: 'Acceso con clave - Qr' },
+              { tipo: 'organizacion', icono: 'lock-fill', titulo: 'Organización', subtitulo: 'Acceso novios' }
+            ].map((opcion) => (
               <div 
-                className="tarjeta tarjeta-publico" 
-                onClick={handleAccesoPublico}
-                aria-label="Acceso público"
+                key={opcion.tipo}
+                className={`tarjeta tarjeta-${opcion.tipo}`}
+                onClick={() => handleAcceso(opcion.tipo)}
+                aria-label={`Acceso ${opcion.tipo}`}
               >
                 <div className="icono-container">
-                  <i className="bi bi-heart-fill"></i>
+                  <i className={`bi bi-${opcion.icono}`}></i>
                 </div>
-                <h3>Conoce nuestra historia</h3>
-                <p>Acceso público</p>
+                <h3>{opcion.titulo}</h3>
+                <p>{opcion.subtitulo}</p>
               </div>
-              
-              <div 
-                className="tarjeta tarjeta-invitado" 
-                onClick={() => setTipoAcceso('invitado')}
-                aria-label="Acceso para invitados"
-              >
-                <div className="icono-container">
-                  <i className="bi bi-envelope-fill"></i>
-                </div>
-                <h3>Soy Invitado</h3>
-                <p>Acceso con clave</p>
-              </div>
-              
-              <div 
-                className="tarjeta tarjeta-organizacion" 
-                onClick={() => setTipoAcceso('organizacion')}
-                aria-label="Acceso para organización"
-              >
-                <div className="icono-container">
-                  <i className="bi bi-lock-fill"></i>
-                </div>
-                <h3>Organización</h3>
-                <p>Acceso para los novios</p>
-              </div>
-            </div>
+            ))}
           </div>
         ) : (
-          <div className="formulario-clave compacto">
-            <h2>Acceso de {tipoAcceso === 'invitado' ? 'Invitados' : 'Organización'}</h2>
+          <div className="formulario-clave">
+            <h2>Acceso {tipoAcceso === 'invitado' ? 'Invitados' : 'Organización'}</h2>
             <div className="input-group">
               <input
                 type="password"
@@ -88,16 +68,15 @@ function PantallaAcceso() {
                 onChange={(e) => setClave(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Introduce la clave"
-                className="input-clave"
                 autoFocus
               />
-              <button onClick={verificarClave} className="boton-acceder">
+              <button onClick={verificarClave}>
                 <i className="bi bi-arrow-right"></i>
               </button>
             </div>
-            {error && <p className="mensaje-error">{error}</p>}
+            {error && <p className="error">{error}</p>}
             <button 
-              className="boton-volver" 
+              className="volver" 
               onClick={() => {
                 setTipoAcceso(null);
                 setClave('');
