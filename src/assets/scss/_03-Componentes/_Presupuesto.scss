@@ -1,0 +1,697 @@
+/* ==================== */
+/* VARIABLES VINTAGE */
+/* ==================== */
+$primary-color: #8B4513; // Marrón oscuro vintage
+$secondary-color: #A0522D; // Marrón rojizo
+$accent-color: #D4AF37; // Oro para detalles
+$text-color: #3A2E29;
+$text-light: #777;
+$border-color: rgba(139, 69, 19, 0.3);
+$background-light: #FFF8E7;
+$box-shadow: 0 10px 30px rgba(139, 69, 19, 0.15);
+$success-color: #5a8f5a;
+$warning-color: #b08d57;
+$error-color: #8f5a5a;
+$info-color: #5a7b8f;
+$transition: all 0.3s ease;
+
+/* ==================== */
+/* ESTILOS GENERALES */
+/* ==================== */
+.presupuesto-container.vintage-design {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Cormorant Garamond', serif;
+  background: url('../assets/images/vintage-paper-bg.jpg') center/cover;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 248, 231, 0.9);
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  h1, h2, h3, h4 {
+    color: $primary-color;
+    font-family: 'Cinzel', serif;
+    font-weight: 500;
+  }
+
+  .divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, $accent-color, transparent);
+    margin: 1.5rem auto;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+
+    &.floral {
+      &::before, &::after {
+        content: '❀';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $accent-color;
+        font-size: 1.2rem;
+      }
+
+      &::before {
+        left: 0;
+      }
+
+      &::after {
+        right: 0;
+      }
+    }
+  }
+
+  .header-section {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      color: $secondary-color;
+      font-style: italic;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+/* ==================== */
+/* RESUMEN PRESUPUESTO */
+/* ==================== */
+.resumen-presupuesto {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  .estadistica-presupuesto {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: $box-shadow;
+    text-align: center;
+    transition: $transition;
+    border-top: 4px solid;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: currentColor;
+      opacity: 0.3;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(139, 69, 19, 0.2);
+    }
+
+    &.total {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+
+    &.gastado {
+      border-color: $secondary-color;
+      color: $secondary-color;
+    }
+
+    &.restante {
+      border-color: $success-color;
+      color: $success-color;
+
+      &.sobrepasado {
+        border-color: $error-color;
+        color: $error-color;
+      }
+    }
+
+    h3 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: currentColor;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+
+      i {
+        font-size: 1.3rem;
+      }
+    }
+
+    .monto {
+      font-size: 2rem;
+      font-weight: 700;
+      color: currentColor;
+      margin: 0.5rem 0;
+      font-family: 'Cinzel', serif;
+
+      .warning-text {
+        font-size: 0.8rem;
+        font-family: 'Raleway', sans-serif;
+        margin-left: 0.5rem;
+      }
+    }
+
+    .meta {
+      color: $text-light;
+      font-size: 0.9rem;
+      font-family: 'Raleway', sans-serif;
+    }
+  }
+}
+
+/* ==================== */
+/* TOGGLE DE VISTA */
+/* ==================== */
+.view-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  .toggle-btn {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid $border-color;
+    border-radius: 30px;
+    padding: 0.5rem 1.5rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: $transition;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:hover {
+      background: rgba($primary-color, 0.1);
+    }
+
+    &.active {
+      background: $primary-color;
+      color: white;
+      border-color: $primary-color;
+    }
+
+    i {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+/* ==================== */
+/* VISTA GRÁFICA */
+/* ==================== */
+.grafico-distribucion {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: $box-shadow;
+
+  h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    color: $primary-color;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+
+    i {
+      color: $accent-color;
+    }
+  }
+
+  .chart-container {
+    height: 400px;
+    position: relative;
+    margin: 0 auto;
+    max-width: 600px;
+  }
+
+  .chart-legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+      .color-box {
+        width: 16px;
+        height: 16px;
+        border-radius: 3px;
+        flex-shrink: 0;
+      }
+
+      .category-name {
+        flex-grow: 1;
+        font-family: 'Raleway', sans-serif;
+        font-size: 0.9rem;
+      }
+
+      .category-percent {
+        font-weight: 600;
+        color: $primary-color;
+        min-width: 40px;
+        text-align: right;
+      }
+
+      .category-amount {
+        color: $text-light;
+        font-size: 0.8rem;
+        min-width: 80px;
+        text-align: right;
+      }
+    }
+  }
+}
+
+/* ==================== */
+/* VISTA TABULAR */
+/* ==================== */
+.detalle-categorias {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: $box-shadow;
+  margin-bottom: 2rem;
+
+  h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    color: $primary-color;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+
+    i {
+      color: $accent-color;
+    }
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Raleway', sans-serif;
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid $border-color;
+    }
+
+    th {
+      background-color: rgba($primary-color, 0.1);
+      color: $primary-color;
+      font-weight: 600;
+      font-family: 'Cinzel', serif;
+      white-space: nowrap;
+    }
+
+    tr {
+      transition: $transition;
+
+      &:hover {
+        background-color: rgba($accent-color, 0.05);
+      }
+
+      &.active {
+        background-color: rgba($primary-color, 0.1);
+      }
+
+      &.over-budget {
+        td {
+          color: $error-color;
+        }
+      }
+    }
+
+    td {
+      color: $text-color;
+
+      i {
+        margin-right: 0.5rem;
+        color: $accent-color;
+      }
+
+      &.negative {
+        color: $error-color;
+        font-weight: 600;
+
+        .warning-icon {
+          margin-left: 0.5rem;
+        }
+      }
+    }
+
+    .progress-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      .progress-bar {
+        flex: 1;
+        height: 8px;
+        background: $background-light;
+        border-radius: 4px;
+        overflow: hidden;
+        min-width: 80px;
+
+        .progress {
+          height: 100%;
+          transition: $transition;
+        }
+      }
+
+      span {
+        min-width: 40px;
+        text-align: right;
+      }
+    }
+  }
+}
+
+/* ==================== */
+/* SECCIÓN DE PAGOS */
+/* ==================== */
+.payment-section {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: $box-shadow;
+  margin-bottom: 2rem;
+
+  h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    color: $primary-color;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+
+    i {
+      color: $accent-color;
+    }
+  }
+
+  .payment-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    background: rgba($accent-color, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px dashed $border-color;
+
+    .form-group {
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: $primary-color;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 500;
+      }
+
+      select, input {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid $border-color;
+        border-radius: 4px;
+        background: white;
+        font-family: 'Raleway', sans-serif;
+
+        &:focus {
+          outline: none;
+          border-color: $accent-color;
+        }
+      }
+    }
+
+    .btn-add {
+      align-self: flex-end;
+      background: $primary-color;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      font-family: 'Raleway', sans-serif;
+      cursor: pointer;
+      transition: $transition;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      height: fit-content;
+
+      &:hover {
+        background: $secondary-color;
+      }
+
+      i {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .payment-list {
+    h3 {
+      color: $primary-color;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        background: white;
+        border-radius: 6px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        border-left: 3px solid $accent-color;
+
+        .payment-info {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 0.5rem;
+
+          .payment-category {
+            font-weight: 600;
+            color: $primary-color;
+          }
+
+          .payment-amount {
+            font-weight: 600;
+            color: $secondary-color;
+          }
+        }
+
+        .payment-meta {
+          display: flex;
+          justify-content: space-between;
+          font-size: 0.9rem;
+          color: $text-light;
+          margin-bottom: 0.5rem;
+        }
+
+        .payment-notes {
+          font-size: 0.9rem;
+          color: $text-color;
+          padding-top: 0.5rem;
+          border-top: 1px dashed $border-color;
+          font-style: italic;
+        }
+      }
+    }
+
+    .no-payments {
+      text-align: center;
+      color: $text-light;
+      font-style: italic;
+      padding: 1rem;
+    }
+  }
+}
+
+/* ==================== */
+/* DETALLES DE CATEGORÍA */
+/* ==================== */
+.category-details {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: $box-shadow;
+  margin-bottom: 2rem;
+  overflow: hidden;
+
+  h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: $primary-color;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    border-bottom: 1px solid $border-color;
+    padding-bottom: 0.5rem;
+
+    i {
+      color: $accent-color;
+    }
+  }
+
+  .details-content {
+    > div {
+      margin-bottom: 1.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      h4 {
+        color: $secondary-color;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        font-family: 'Raleway', sans-serif;
+      }
+
+      p {
+        color: $text-color;
+        line-height: 1.5;
+      }
+    }
+
+    .notes-section {
+      textarea {
+        width: 100%;
+        min-height: 120px;
+        padding: 1rem;
+        border: 1px solid $border-color;
+        border-radius: 6px;
+        font-family: 'Raleway', sans-serif;
+        resize: vertical;
+        margin-bottom: 1rem;
+
+        &:focus {
+          outline: none;
+          border-color: $accent-color;
+        }
+      }
+
+      .btn-guardar {
+        background: $primary-color;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 0.5rem 1.5rem;
+        font-family: 'Raleway', sans-serif;
+        cursor: pointer;
+        transition: $transition;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-left: auto;
+
+        &:hover {
+          background: $secondary-color;
+        }
+
+        i {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}
+
+/* ==================== */
+/* RESPONSIVE */
+/* ==================== */
+@media (max-width: 992px) {
+  .presupuesto-container.vintage-design {
+    padding: 1.5rem;
+
+    .header-section h1 {
+      font-size: 2rem;
+    }
+
+    .grafico-distribucion {
+      .chart-container {
+        height: 300px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .resumen-presupuesto {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-form {
+    grid-template-columns: 1fr !important;
+  }
+
+  .chart-legend {
+    grid-template-columns: 1fr !important;
+  }
+
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+}

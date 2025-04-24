@@ -1,0 +1,595 @@
+// _Vestuario.scss - Versión corregida con variables y mixins
+
+/* ==================== */
+/* VARIABLES DEFINIDAS */
+/* ==================== */
+$primary-color: #3f51b5;        // Color primario (azul)
+$text-primary: #333333;         // Texto principal
+$text-secondary: #666666;       // Texto secundario
+$border-color: #e0e0e0;         // Color de bordes
+$background-light: #f5f5f5;     // Fondo claro
+$info-color: #2196f3;           // Color informativo (azul claro)
+$success-color: #4caf50;        // Color de éxito (verde)
+$warning-color: #ff9800;        // Color de advertencia (naranja)
+$error-color: #f44336;          // Color de error (rojo)
+$box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);          // Sombra normal
+
+/* ==================== */
+/* MIXINS DEFINIDOS */
+/* ==================== */
+@mixin primary-button {
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+/* ==================== */
+/* ESTILOS PRINCIPALES */
+/* ==================== */
+.vestuario-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+
+  h1 {
+    color: $primary-color;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+  
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid $border-color;
+      padding-bottom: 0.5rem;
+  
+      button {
+        background: none;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        margin: 0 0.5rem;
+        cursor: pointer;
+        font-size: 1rem;
+        color: $text-secondary;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        position: relative;
+  
+        &:hover {
+          color: $primary-color;
+          background: rgba($primary-color, 0.1);
+        }
+  
+        &.active {
+          color: $primary-color;
+          font-weight: 600;
+  
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: $primary-color;
+            border-radius: 3px;
+          }
+        }
+      }
+    }
+  
+    .calendar-section {
+      .calendar-container {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: $box-shadow;
+        margin-bottom: 2rem;
+  
+        .rbc-calendar {
+          height: 600px;
+        }
+  
+        .rbc-event {
+          background: $primary-color;
+          border-color: darken($primary-color, 10%);
+        }
+  
+        .rbc-today {
+          background: rgba($primary-color, 0.1);
+        }
+      }
+  
+      .add-fitting-form {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: $box-shadow;
+        margin-bottom: 2rem;
+  
+        h2 {
+          color: $primary-color;
+          margin-bottom: 1.5rem;
+        }
+  
+        .form-group {
+          margin-bottom: 1rem;
+  
+          label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: $text-secondary;
+            font-size: 0.9rem;
+          }
+  
+          input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid $border-color;
+            border-radius: 6px;
+            font-family: inherit;
+  
+            &:focus {
+              outline: none;
+              border-color: $primary-color;
+            }
+          }
+  
+          textarea {
+            min-height: 100px;
+            resize: vertical;
+          }
+        }
+  
+        .form-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+  
+          @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+          }
+        }
+  
+        .btn-add {
+          @include primary-button;
+          width: 100%;
+          padding: 0.75rem;
+          margin-top: 1rem;
+        }
+      }
+  
+      .upcoming-fittings {
+        .fitting-card {
+          background: white;
+          border-radius: 10px;
+          padding: 1.5rem;
+          box-shadow: $box-shadow;
+          margin-bottom: 1rem;
+          transition: transform 0.3s ease;
+  
+          &:hover {
+            transform: translateY(-5px);
+          }
+  
+          .fitting-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid $border-color;
+  
+            h3 {
+              color: $primary-color;
+              margin: 0;
+            }
+  
+            .date {
+              color: $text-secondary;
+              font-size: 0.9rem;
+            }
+          }
+  
+          .fitting-details {
+            p {
+              margin: 0.5rem 0;
+              color: $text-primary;
+  
+              strong {
+                color: $text-secondary;
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    .items-section {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+  
+      @media (max-width: 992px) {
+        grid-template-columns: 1fr;
+      }
+  
+      .add-item-form {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: $box-shadow;
+        height: fit-content;
+  
+        h2 {
+          color: $primary-color;
+          margin-bottom: 1.5rem;
+        }
+  
+        .form-group {
+          margin-bottom: 1rem;
+  
+          label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: $text-secondary;
+            font-size: 0.9rem;
+          }
+  
+          input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid $border-color;
+            border-radius: 6px;
+            font-family: inherit;
+  
+            &:focus {
+              outline: none;
+              border-color: $primary-color;
+            }
+          }
+  
+          textarea {
+            min-height: 100px;
+            resize: vertical;
+          }
+        }
+  
+        .form-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+        }
+  
+        .btn-add {
+          @include primary-button;
+          width: 100%;
+          padding: 0.75rem;
+          margin-top: 1rem;
+        }
+      }
+  
+      .items-list {
+        h2 {
+          color: $primary-color;
+          margin-bottom: 1.5rem;
+        }
+  
+        .items-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          gap: 1.5rem;
+  
+          .item-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: $box-shadow;
+            transition: transform 0.3s ease;
+  
+            &:hover {
+              transform: translateY(-5px);
+            }
+  
+            &.status-pending {
+              border-left: 4px solid $warning-color;
+            }
+  
+            &.status-measured {
+              border-left: 4px solid $info-color;
+            }
+  
+            &.status-ordered {
+              border-left: 4px solid $primary-color;
+            }
+  
+            &.status-purchased {
+              border-left: 4px solid $success-color;
+            }
+  
+            &.status-received {
+              border-left: 4px solid darken($success-color, 10%);
+            }
+  
+            .item-header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 1rem;
+  
+              h3 {
+                color: $primary-color;
+                margin: 0;
+                font-size: 1.1rem;
+              }
+  
+              .status {
+                font-size: 0.8rem;
+                padding: 0.25rem 0.75rem;
+                border-radius: 20px;
+  
+                &.pending {
+                  background: rgba($warning-color, 0.2);
+                  color: darken($warning-color, 20%);
+                }
+  
+                &.measured {
+                  background: rgba($info-color, 0.2);
+                  color: darken($info-color, 20%);
+                }
+  
+                &.ordered {
+                  background: rgba($primary-color, 0.2);
+                  color: darken($primary-color, 20%);
+                }
+  
+                &.purchased {
+                  background: rgba($success-color, 0.2);
+                  color: darken($success-color, 20%);
+                }
+  
+                &.received {
+                  background: rgba(darken($success-color, 10%), 0.2);
+                  color: darken($success-color, 30%);
+                }
+              }
+            }
+  
+            .description {
+              font-weight: 600;
+              margin-bottom: 1rem;
+              color: $text-primary;
+            }
+  
+            .item-details {
+              p {
+                margin: 0.5rem 0;
+                color: $text-primary;
+                font-size: 0.9rem;
+  
+                strong {
+                  color: $text-secondary;
+                }
+              }
+            }
+  
+            .item-actions {
+              margin-top: 1.5rem;
+              display: grid;
+              grid-template-columns: 2fr 1fr;
+              gap: 1rem;
+  
+              select {
+                padding: 0.5rem;
+                border: 1px solid $border-color;
+                border-radius: 6px;
+                font-size: 0.8rem;
+                cursor: pointer;
+  
+                &:focus {
+                  outline: none;
+                  border-color: $primary-color;
+                }
+              }
+  
+              .payment-input {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+  
+                label {
+                  font-size: 0.8rem;
+                  color: $text-secondary;
+                }
+  
+                input {
+                  width: 100%;
+                  padding: 0.5rem;
+                  border: 1px solid $border-color;
+                  border-radius: 6px;
+                  font-size: 0.8rem;
+  
+                  &:focus {
+                    outline: none;
+                    border-color: $primary-color;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    .budget-section {
+      h2 {
+        color: $primary-color;
+        margin-bottom: 1.5rem;
+      }
+  
+      .budget-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+  
+        @media (max-width: 768px) {
+          grid-template-columns: 1fr;
+        }
+  
+        .stat-card {
+          background: white;
+          border-radius: 10px;
+          padding: 1.5rem;
+          box-shadow: $box-shadow;
+          text-align: center;
+  
+          h3 {
+            color: $text-secondary;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+          }
+  
+          .amount {
+            font-size: 2rem;
+            font-weight: 700;
+            color: $primary-color;
+  
+            &.paid {
+              color: $success-color;
+            }
+  
+            &.pending {
+              color: $warning-color;
+            }
+          }
+        }
+      }
+  
+      .budget-breakdown {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: $box-shadow;
+        margin-bottom: 2rem;
+        overflow-x: auto;
+  
+        h3 {
+          color: $primary-color;
+          margin-bottom: 1.5rem;
+        }
+  
+        table {
+          width: 100%;
+          border-collapse: collapse;
+  
+          th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid $border-color;
+          }
+  
+          th {
+            background-color: $background-light;
+            color: $primary-color;
+            font-weight: 600;
+          }
+  
+          tr:hover {
+            background-color: $background-light;
+          }
+  
+          .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+  
+            .progress-bar {
+              flex: 1;
+              height: 8px;
+              background: $background-light;
+              border-radius: 4px;
+              overflow: hidden;
+  
+              .progress {
+                height: 100%;
+                background: $primary-color;
+              }
+            }
+          }
+        }
+      }
+  
+      .payment-schedule {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: $box-shadow;
+  
+        h3 {
+          color: $primary-color;
+          margin-bottom: 1.5rem;
+        }
+  
+        .payment-card {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+          padding: 1rem;
+          border-bottom: 1px solid $border-color;
+  
+          &:last-child {
+            border-bottom: none;
+          }
+  
+          h4 {
+            color: $primary-color;
+            margin: 0;
+            font-size: 1.1rem;
+          }
+  
+          .vendor {
+            color: $text-secondary;
+            font-size: 0.9rem;
+            margin: 0.25rem 0;
+          }
+  
+          .payment-details {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+  
+            .pending-amount {
+              font-weight: 600;
+              color: $warning-color;
+            }
+  
+            input {
+              width: 100px;
+              padding: 0.5rem;
+              border: 1px solid $border-color;
+              border-radius: 6px;
+  
+              &:focus {
+                outline: none;
+                border-color: $primary-color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }

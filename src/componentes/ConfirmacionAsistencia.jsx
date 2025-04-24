@@ -395,34 +395,30 @@ const ConfirmacionAsistencia = () => {
               </div>
             </div>
             
-            <div className="lista-invitados">
+            <div className="lista-invitados-compacta">
               {filteredGuests.length > 0 ? (
-                filteredGuests.map(invitado => (
-                  <div 
-                    key={invitado.id} 
-                    className={`invitado-card ${invitado.confirmado ? 'confirmado' : 'pendiente'} ${selectedGuest?.id === invitado.id ? 'seleccionado' : ''}`}
-                    onClick={() => selectGuest(invitado)}
-                  >
-                    <div className="invitado-avatar">
-                      {invitado.confirmado ? (
-                        <div className="avatar-icon confirmado">✓</div>
-                      ) : (
-                        <div className="avatar-icon pendiente">?</div>
-                      )}
-                    </div>
-                    <div className="invitado-info">
-                      <h3>{invitado.nombre}</h3>
-                      <p className="grupo">{invitado.grupo}</p>
+                <ul className="lista-compacta">
+                  {filteredGuests.map(invitado => (
+                    <li 
+                      key={invitado.id} 
+                      className={`invitado-item ${invitado.confirmado ? 'confirmado' : 'pendiente'} ${selectedGuest?.id === invitado.id ? 'seleccionado' : ''}`}
+                      onClick={() => selectGuest(invitado)}
+                    >
+                      <div className="nombre-grupo-container">
+                        <span className="nombre-invitado">{invitado.nombre}</span>
+                        <span className="separador"> - </span>
+                        <span className="grupo-invitado">{invitado.grupo}</span>
+                      </div>
                       {invitado.confirmado && (
-                        <p className="estado">
+                        <span className={`estado-asistencia ${invitado.asistencia === 'si' ? 'asiste' : 'no-asiste'}`}>
                           {invitado.asistencia === 'si' ? 
-                            `Asiste${invitado.acompanantes > 0 ? ` + ${invitado.acompanantes}` : ''}` : 
-                            'No asiste'}
-                        </p>
+                            `✓${invitado.acompanantes > 0 ? ` +${invitado.acompanantes}` : ''}` : 
+                            '✗'}
+                        </span>
                       )}
-                    </div>
-                  </div>
-                ))
+                    </li>
+                  ))}
+                </ul>
               ) : (
                 <div className="sin-resultados">
                   <p>No hay invitados que coincidan con tu búsqueda</p>

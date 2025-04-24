@@ -1,0 +1,73 @@
+{
+    "categories": [
+      {
+        "id": "salon",
+        "name": "Salón & Decoración",
+        "tasks": [
+          {"id": "salon-1", "name": "Confirmar reserva del salón", "assigned": "both", "dueDate": "2025-03-01", "completed": true},
+          {"id": "salon-2", "name": "Definir diseño de centros de mesa", "assigned": "fabiola", "dueDate": "2025-04-15", "completed": false},
+          {"id": "salon-3", "name": "Contratar florista para arreglos", "assigned": "fabiola", "dueDate": "2025-05-01", "completed": false},
+          {"id": "salon-4", "name": "Diseñar y construir arco nupcial", "assigned": "alejandro", "dueDate": "2025-08-01", "completed": false}
+        ]
+      },
+      {
+        "id": "vestuario",
+        "name": "Vestuario",
+        "tasks": [
+          {"id": "vestuario-1", "name": "Seleccionar y comprar vestido de novia", "assigned": "fabiola", "dueDate": "2025-02-01", "completed": true},
+          {"id": "vestuario-2", "name": "Seleccionar traje de novio", "assigned": "alejandro", "dueDate": "2025-04-01", "completed": false},
+          {"id": "vestuario-3", "name": "Pruebas de vestuario", "assigned": "both", "dueDate": "2025-08-15", "completed": false}
+        ]
+      },
+      {
+        "id": "catering",
+        "name": "Catering & Banquete",
+        "tasks": [
+          {"id": "catering-1", "name": "Seleccionar menú principal", "assigned": "both", "dueDate": "2025-05-01", "completed": false},
+          {"id": "catering-2", "name": "Definir opciones para vegetarianos", "assigned": "fabiola", "dueDate": "2025-05-15", "completed": false},
+          {"id": "catering-3", "name": "Seleccionar torta nupcial", "assigned": "both", "dueDate": "2025-06-01", "completed": false}
+        ]
+      },
+      {
+        "id": "invitaciones",
+        "name": "Invitaciones & Comunicación",
+        "tasks": [
+          {"id": "invitaciones-1", "name": "Diseñar tarjetas de invitación", "assigned": "both", "dueDate": "2025-01-15", "completed": true},
+          {"id": "invitaciones-2", "name": "Enviar invitaciones", "assigned": "both", "dueDate": "2025-03-01", "completed": false},
+          {"id": "invitaciones-3", "name": "Confirmar asistencia de invitados", "assigned": "both", "dueDate": "2025-07-01", "completed": false}
+        ]
+      },
+      {
+        "id": "entretenimiento",
+        "name": "Entretenimiento",
+        "tasks": [
+          {"id": "entretenimiento-1", "name": "Contratar DJ/Banda", "assigned": "alejandro", "dueDate": "2025-04-01", "completed": false},
+          {"id": "entretenimiento-2", "name": "Seleccionar lista de canciones", "assigned": "both", "dueDate": "2025-09-01", "completed": false}
+        ]
+      },
+      {
+        "id": "fotografia",
+        "name": "Fotografía & Video",
+        "tasks": [
+          {"id": "fotografia-1", "name": "Contratar fotógrafo", "assigned": "both", "dueDate": "2025-03-01", "completed": false},
+          {"id": "fotografia-2", "name": "Planificar sesión pre-boda", "assigned": "both", "dueDate": "2025-07-01", "completed": false}
+        ]
+      },
+      {
+        "id": "regalos",
+        "name": "Regalos & Souvenirs",
+        "tasks": [
+          {"id": "regalos-1", "name": "Seleccionar souvenirs para invitados", "assigned": "fabiola", "dueDate": "2025-06-01", "completed": false},
+          {"id": "regalos-2", "name": "Crear lista de regalos", "assigned": "both", "dueDate": "2025-04-01", "completed": false}
+        ]
+      },
+      {
+        "id": "web",
+        "name": "Página Web",
+        "tasks": [
+          {"id": "web-1", "name": "Diseñar página web de la boda", "assigned": "alejandro", "dueDate": "2025-02-01", "completed": true},
+          {"id": "web-2", "name": "Actualizar información en la web", "assigned": "both", "dueDate": "2025-10-01", "completed": false}
+        ]
+      }
+    ]
+  }

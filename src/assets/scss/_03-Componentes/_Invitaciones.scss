@@ -1,0 +1,952 @@
+/* ==================== */
+/* VARIABLES Y MIXINS */
+/* ==================== */
+$primary-color: #7A4F50;
+$secondary-color: #E8D5C6;
+$text-color: #3A2E29;
+$text-light: #777;
+$border-color: rgba(122, 79, 80, 0.2);
+$background-light: #f9f5f5;
+$box-shadow: 0 10px 30px rgba(122, 79, 80, 0.15);
+$whatsapp-color: #25D366;
+$transition: all 0.3s ease;
+
+// Variables barrocas añadidas
+$baroque-primary: #8B4513; // Marrón oscuro vintage
+$baroque-secondary: #F5DEB3; // Beige claro
+$baroque-accent: #A0522D; // Marrón rojizo
+$baroque-gold: #D4AF37; // Oro para detalles
+$baroque-bg: #FFF8E7; // Fondo beige claro
+
+@mixin card-style {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: $box-shadow;
+}
+
+@mixin button-style($bg-color) {
+  background-color: $bg-color;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: $transition;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+
+  &:hover {
+    background-color: darken($bg-color, 5%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  }
+
+  i {
+    font-size: 1.1rem;
+  }
+}
+
+/* ==================== */
+/* ESTILOS GENERALES */
+/* ==================== */
+.invitaciones-page {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: 'Playfair Display', serif;
+
+  h1 {
+    color: $primary-color;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    color: $text-light;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    font-family: 'Raleway', sans-serif;
+  }
+}
+
+.invitaciones-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+  min-height: 80vh;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==================== */
+/* LISTA DE INVITADOS */
+/* ==================== */
+.guest-selection {
+  @include card-style;
+  height: fit-content;
+  position: sticky;
+  top: 1rem;
+
+  h2 {
+    color: $primary-color;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $border-color;
+  }
+
+  .search-box {
+    position: relative;
+    margin-bottom: 1.5rem;
+
+    input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      border: 1px solid $border-color;
+      border-radius: 30px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem;
+      transition: $transition;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+      }
+    }
+
+    i {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $text-light;
+    }
+  }
+
+  .guest-groups {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba($primary-color, 0.3);
+      border-radius: 3px;
+    }
+  }
+
+  .guest-group {
+    margin-bottom: 1.5rem;
+
+    h3 {
+      color: $primary-color;
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.25rem;
+      border-bottom: 1px dashed $border-color;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.5rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: $transition;
+        font-family: 'Raleway', sans-serif;
+        display: flex;
+        flex-direction: column;
+
+        &:hover {
+          background: rgba($primary-color, 0.05);
+        }
+
+        &.selected {
+          background: rgba($primary-color, 0.1);
+          font-weight: 600;
+          color: $primary-color;
+        }
+
+        .relation {
+          font-size: 0.8rem;
+          color: $text-light;
+          font-weight: normal;
+          margin-top: 0.25rem;
+        }
+      }
+    }
+  }
+}
+
+/* ==================== */
+/* VIAJE DE INVITACION */
+/* ==================== */
+.invitation-journey {
+  @include card-style;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+
+  .journey-page {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+
+    h3 {
+      color: $primary-color;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .story-slider, .countdown-slider {
+      width: 100%;
+      height: 200px;
+      margin: 1rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .poem-content {
+      font-style: italic;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin: 1.5rem 0;
+      color: $primary-color;
+    }
+
+    .video-container {
+      width: 100%;
+      height: 200px;
+      margin: 1rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .event-preview {
+      margin-top: 1.5rem;
+      p {
+        margin: 0.5rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .teaser {
+        font-style: italic;
+        margin-top: 1rem;
+        color: $primary-color;
+      }
+    }
+
+    .animation-container {
+      margin: 2rem 0;
+      i {
+        font-size: 3rem;
+        color: $primary-color;
+      }
+    }
+
+    .hint {
+      font-size: 0.9rem;
+      color: $text-light;
+      margin-top: 1rem;
+    }
+  }
+
+  .journey-controls {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-top: 1px solid $border-color;
+
+    button {
+      @include button-style($primary-color);
+      padding: 0.5rem 1rem;
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+/* ==================== */
+/* DISEÑO DE INVITACION */
+/* ==================== */
+.invitation-container {
+  @include card-style;
+  display: flex;
+  flex-direction: column;
+}
+
+.design-options {
+  margin-bottom: 2rem;
+
+  h3 {
+    color: $primary-color;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .design-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 500;
+      color: white;
+      transition: $transition;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      }
+
+      &.active {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2), 0 0 0 2px white, 0 0 0 4px $primary-color;
+      }
+    }
+  }
+}
+
+.invitation-card {
+  position: relative;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: $box-shadow;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border: 1px solid $border-color;
+  transition: all 0.5s ease;
+
+  .floral-decoration {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7;
+
+    i {
+      font-size: 1.5rem;
+      color: rgba($primary-color, 0.6);
+      margin: 0 0.5rem;
+    }
+
+    &.top {
+      top: 1rem;
+    }
+
+    &.bottom {
+      bottom: 1rem;
+    }
+  }
+
+  .invitation-header {
+    text-align: center;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid $border-color;
+
+    h2 {
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      color: $primary-color;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .couple-names {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      font-size: 2.2rem;
+      margin-top: 1rem;
+
+      span {
+        font-weight: 500;
+      }
+
+      .and {
+        font-size: 1.8rem;
+        font-style: italic;
+        color: $primary-color;
+        font-weight: 400;
+      }
+    }
+
+    .invitation-subtitle {
+      font-style: italic;
+      color: $text-light;
+      margin-top: 0.5rem;
+    }
+  }
+
+  .invitation-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.1rem;
+    line-height: 1.8;
+
+    .guest-name {
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      color: $primary-color;
+    }
+
+    .love-message {
+      font-style: italic;
+      padding: 1rem;
+      margin: 1rem 0;
+      background: rgba($primary-color, 0.03);
+      border-left: 3px solid $primary-color;
+      border-radius: 0 8px 8px 0;
+
+      .appreciation {
+        margin-top: 1rem;
+        font-weight: 500;
+      }
+    }
+
+    .event-details {
+      margin: 2rem 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+
+      .detail-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.5rem 0;
+
+        i {
+          font-size: 1.3rem;
+          color: $primary-color;
+          min-width: 30px;
+          text-align: center;
+        }
+
+        span {
+          flex-grow: 1;
+          text-align: left;
+        }
+      }
+    }
+
+    .adults-only {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 1rem 0;
+      padding: 0.5rem;
+      font-size: 0.9rem;
+      color: $text-light;
+      font-style: italic;
+      justify-content: center;
+
+      i {
+        color: $primary-color;
+      }
+    }
+
+    .rsvp {
+      margin-top: auto;
+      text-align: center;
+      padding: 1rem;
+      background: rgba($primary-color, 0.05);
+      border-radius: 6px;
+      font-weight: 500;
+
+      .contact-info {
+        display: block;
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .invitation-footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid $border-color;
+    font-size: 1.1rem;
+
+    p {
+      font-style: italic;
+      color: $primary-color;
+      margin-bottom: 1rem;
+    }
+
+    .signature {
+      margin-top: 1rem;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: $primary-color;
+
+      .names {
+        display: block;
+        font-weight: 500;
+        margin-top: 0.5rem;
+      }
+    }
+  }
+}
+
+/* ==================== */
+/* ACCIONES DE INVITACION */
+/* ==================== */
+.invitation-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid $border-color;
+  flex-wrap: wrap;
+
+  .download-btn {
+    @include button-style($primary-color);
+  }
+
+  .whatsapp-btn {
+    @include button-style($whatsapp-color);
+  }
+
+  .back-btn {
+    @include button-style($text-light);
+    background: transparent;
+    color: $text-color;
+    border: 1px solid $border-color;
+  }
+}
+
+/* ==================== */
+/* ESTILOS BARROCOS AÑADIDOS */
+/* ==================== */
+.baroque-design {
+  background: $baroque-bg url('../assets/images/baroque-pattern.png') center/cover;
+  color: $text-color;
+  border: 8px double $baroque-gold;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Cormorant Garamond', serif;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 248, 231, 0.85);
+    z-index: 0;
+  }
+
+  .baroque-frame {
+    position: absolute;
+    background-image: url('../assets/images/baroque-border.png');
+    background-size: contain;
+    background-repeat: repeat;
+    z-index: 2;
+    
+    &.top {
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background-position: top;
+    }
+    
+    &.right {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 40px;
+      background-position: right;
+    }
+    
+    &.bottom {
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 40px;
+      background-position: bottom;
+    }
+    
+    &.left {
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      background-position: left;
+    }
+  }
+
+  .couple-slider {
+    width: 100%;
+    height: 250px;
+    margin: 1rem 0;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border: 3px solid $baroque-gold;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .invitation-header {
+    position: relative;
+    z-index: 1;
+    
+    h2 {
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      color: $baroque-primary;
+      margin-bottom: 1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-family: 'Cinzel', serif;
+    }
+
+    .couple-names {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: $baroque-accent;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      
+      .and {
+        font-family: 'Dancing Script', cursive;
+        color: $baroque-gold;
+        font-size: 2.2rem;
+      }
+    }
+    
+    .invitation-subtitle {
+      font-style: italic;
+      color: $baroque-primary;
+    }
+  }
+
+  .invitation-body {
+    position: relative;
+    z-index: 1;
+    
+    .guest-name {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: $baroque-accent;
+      border-bottom: 1px solid rgba($baroque-primary, 0.3);
+      padding-bottom: 0.5rem;
+    }
+    
+    .love-message {
+      font-style: italic;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: rgba($baroque-gold, 0.05);
+      border-left: 3px solid $baroque-gold;
+      border-right: 1px solid rgba($baroque-primary, 0.2);
+      
+      .appreciation {
+        margin-top: 1rem;
+        font-weight: 500;
+      }
+    }
+    
+    .event-details {
+      .detail-item {
+        i {
+          color: $baroque-gold;
+        }
+      }
+    }
+    
+    .rsvp {
+      background: rgba($baroque-gold, 0.1);
+      border: 1px dashed $baroque-gold;
+    }
+  }
+
+  .invitation-footer {
+    position: relative;
+    z-index: 1;
+    
+    p {
+      font-style: italic;
+      color: $baroque-accent;
+      font-size: 1.2rem;
+    }
+    
+    .signature {
+      .names {
+        font-family: 'Dancing Script', cursive;
+        font-size: 1.8rem;
+        color: $baroque-primary;
+      }
+    }
+  }
+
+  .floral-decoration {
+    i {
+      color: $baroque-gold;
+      font-size: 1.8rem;
+      margin: 0 1rem;
+      opacity: 0.7;
+    }
+  }
+}
+
+/* ==================== */
+/* ANIMACIONES BARROCAS AÑADIDAS */
+/* ==================== */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.baroque-design .floral-decoration i {
+  animation: float 3s ease-in-out infinite;
+  
+  &:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+  
+  &:nth-child(3) {
+    animation-delay: 1s;
+  }
+}
+
+/* ==================== */
+/* ESTILOS ESPECÍFICOS PARA CADA DISEÑO */
+/* ==================== */
+.classic-design {
+  background: linear-gradient(135deg, #f9f5f5 0%, #ffffff 100%);
+  color: $text-color;
+
+  .invitation-header {
+    h2 {
+      letter-spacing: 3px;
+    }
+  }
+
+  .love-message {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3rem;
+  }
+}
+
+.rustic-design {
+  background-color: #F5E9DC;
+  background-image: url('../assets/images/rustic-bg.png');
+  background-size: cover;
+  background-position: center;
+  color: #4A3C31;
+
+  .invitation-header {
+    border-bottom: 1px solid rgba(#B38E6E, 0.3);
+  }
+
+  .couple-names span {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+
+  .invitation-header,
+  .invitation-body,
+  .invitation-footer {
+    background-color: rgba(245, 233, 220, 0.85);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+}
+
+.modern-design {
+  background-color: white;
+  color: #333;
+  border: 1px solid rgba(#4A6Baf, 0.2);
+  box-shadow: 0 5px 15px rgba(74, 107, 175, 0.1);
+
+  .invitation-header {
+    border-bottom: 2px solid #4A6Baf;
+  }
+
+  .couple-names span {
+    letter-spacing: 1px;
+  }
+
+  .and {
+    color: #4A6Baf;
+  }
+}
+
+/* ==================== */
+/* ESTADOS Y ANIMACIONES */
+/* ==================== */
+.no-guest-selected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  text-align: center;
+  color: $text-light;
+
+  i {
+    font-size: 3rem;
+    color: rgba($primary-color, 0.3);
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    max-width: 300px;
+  }
+
+  small {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+.loading-container, 
+.error-container {
+  text-align: center;
+  padding: 2rem;
+  color: $primary-color;
+  font-size: 1.2rem;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* ==================== */
+/* RESPONSIVE */
+/* ==================== */
+@media (max-width: 768px) {
+  .invitaciones-page {
+    padding: 1rem;
+  }
+
+  .invitation-card {
+    padding: 1.5rem;
+    min-height: auto;
+
+    .couple-names {
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 1.8rem;
+      
+      .and {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  .invitation-actions {
+    flex-direction: column;
+    
+    button {
+      width: 100%;
+    }
+  }
+
+  .invitation-journey {
+    .journey-page {
+      padding: 1rem;
+      
+      h3 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  /* Ajustes responsive para diseño barroco */
+  .baroque-design {
+    .couple-slider {
+      height: 200px;
+    }
+    
+    .invitation-header .couple-names {
+      font-size: 2rem;
+      
+      .and {
+        font-size: 1.8rem;
+      }
+    }
+    
+    .invitation-footer .signature .names {
+      font-size: 1.5rem;
+    }
+  }
+}

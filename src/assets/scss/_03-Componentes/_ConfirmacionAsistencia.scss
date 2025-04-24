@@ -13,7 +13,6 @@ $color-gris: #E0E0E0;
   background: $color-blanco;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  padding: 1.5rem;
   transition: all 0.3s ease;
 }
 
@@ -68,7 +67,7 @@ $color-gris: #E0E0E0;
 // Slider de fotos novios
 .slider-novios {
   margin: 0 auto 3rem;
-  max-width: 800px;
+  max-height: 150px;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 15px 40px rgba(0,0,0,0.15);
@@ -135,7 +134,7 @@ $color-gris: #E0E0E0;
     li.slick-active button::before {
       color: $color-dorado;
       opacity: 1;
-      font-size: 14px;
+      font-size: 10px;
     }
   }
 }
@@ -143,21 +142,21 @@ $color-gris: #E0E0E0;
 // Contenedor principal
 .contenedor-principal {
   display: grid;
-  gap: 2.5rem;
+  gap: 0;
 }
 
 // Estadísticas
 .estadisticas-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 3rem;
+  gap: 1rem;
+  margin-bottom: 15px;
   
   .estadistica-card {
     @include card-style;
     display: flex;
     align-items: center;
-    padding: 1.8rem;
+    padding: 5px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     
@@ -179,7 +178,7 @@ $color-gris: #E0E0E0;
     }
     
     .estadistica-icon {
-      font-size: 2.2rem;
+      font-size: 1.7rem;
       margin-right: 1.2rem;
       width: 60px;
       height: 60px;
@@ -202,7 +201,7 @@ $color-gris: #E0E0E0;
       
       .label {
         font-size: 1rem;
-        opacity: 0.8;
+        opacity: 0.9;
         margin-top: 0.3rem;
       }
     }
@@ -213,7 +212,7 @@ $color-gris: #E0E0E0;
 .contenedor-secundario {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
+  gap: 1rem;
   
   @media (min-width: 1200px) {
     grid-template-columns: 1fr 1fr;
@@ -233,7 +232,7 @@ $color-gris: #E0E0E0;
   &.visible {
     opacity: 1;
     height: auto;
-    padding: 2.5rem;
+    padding: 1.5rem;
     margin-bottom: 0;
     animation: fadeIn 0.8s ease;
   }
@@ -241,9 +240,9 @@ $color-gris: #E0E0E0;
   h2 {
     text-align: center;
     margin-bottom: 1.5rem;
-    font-size: 2rem;
+    font-size: x-large;
     position: relative;
-    padding-bottom: 1rem;
+    padding-bottom: 0.5rem;
     
     &::after {
       content: '';
@@ -535,7 +534,6 @@ $color-gris: #E0E0E0;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    margin-bottom: 2rem;
     
     @media (min-width: 768px) {
       flex-direction: row;
@@ -545,155 +543,121 @@ $color-gris: #E0E0E0;
     
     h2 {
       margin: 0;
-      font-size: 2rem;
+      font-size: x-large;
       color: darken($color-bordo, 10%);
     }
   }
 }
 
-// Estilos para la lista
-.lista-invitados {
-  max-height: 1000px;
+// Estilos para la lista compacta
+.lista-invitados-compacta {
+  max-height: 600px;
   overflow-y: auto;
-  padding-right: 0.8rem;
+  padding-right: 0.5rem;
+  margin-top: 1rem;
   
   &::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
   
   &::-webkit-scrollbar-thumb {
-    background: rgba($color-bordo, 0.3);
-    border-radius: 4px;
+    background: rgba($color-bordo, 0.2);
+    border-radius: 3px;
     
     &:hover {
-      background: rgba($color-bordo, 0.5);
+      background: rgba($color-bordo, 0.4);
     }
   }
+}
+
+.lista-compacta {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.invitado-item {
+  padding: 10px 15px;
+  margin-bottom: 5px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border-left: 3px solid transparent;
   
-  .invitado-card {
-    @include card-style;
+  &:hover {
+    background-color: rgba($color-dorado, 0.1);
+  }
+  
+  &.confirmado {
+    border-left-color: $color-verde;
+    background-color: rgba($color-verde, 0.05);
+  }
+  
+  &.pendiente {
+    border-left-color: $color-rojo;
+    background-color: rgba($color-rojo, 0.05);
+  }
+  
+  &.seleccionado {
+    background-color: rgba($color-dorado, 0.2);
+    box-shadow: 0 0 0 1px rgba($color-dorado, 0.3);
+  }
+  
+  .nombre-grupo-container {
     display: flex;
     align-items: center;
-    padding: 10px;
-    margin-bottom: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
-    position: relative;
-    overflow: hidden;
+    flex-grow: 1;
+  }
+
+  .nombre-invitado {
+    color: $color-bordo;
+    font-weight: 600;
+    font-size: medium;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .separador {
+    color: lighten($color-bordo, 30%);
+    margin: 0 5px;
+    font-weight: normal;
+  }
+
+  .grupo-invitado {
+    color: lighten($color-bordo, 20%);
+    font-style: italic;
+    font-size: 0.95rem;
+  }
+
+  .estado-asistencia {
+    font-size: 0.9rem;
+    font-weight: bold;
+    min-width: 40px;
+    text-align: right;
     
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-      transition: width 0.3s ease;
+    &.asiste {
+      color: $color-verde;
     }
     
-    &:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      
-      &::before {
-        width: 8px;
-      }
-    }
-    
-    &.confirmado {
-      border-left: 4px solid $color-verde;
-      
-      &::before {
-        background: $color-verde;
-      }
-    }
-    
-    &.pendiente {
-      border-left: 4px solid $color-rojo;
-      
-      &::before {
-        background: $color-rojo;
-      }
-    }
-    
-    &.seleccionado {
-      border: 1px solid $color-dorado;
-      background: rgba($color-dorado, 0.1);
-      box-shadow: 0 0 0 3px rgba($color-dorado, 0.2);
-    }
-    
-    .invitado-avatar {
-      margin-right: 1.5rem;
-      flex-shrink: 0;
-      
-      .avatar-icon {
-        width: 50px;
-        height: 50px;
-        @include flex-center;
-        border-radius: 50%;
-        font-weight: bold;
-        font-size: 1.2rem;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        
-        &.confirmado {
-          background: rgba($color-verde, 0.2);
-          color: $color-verde;
-          border: 2px solid $color-verde;
-        }
-        
-        &.pendiente {
-          background: rgba($color-rojo, 0.2);
-          color: $color-rojo;
-          border: 2px solid $color-rojo;
-        }
-      }
-    }
-    
-    .invitado-info {
-      flex: 1;
-      
-      h3 {
-        margin: 0 0 0.3rem 0;
-        font-size: 1.3rem;
-        color: darken($color-bordo, 10%);
-      }
-      
-      .grupo {
-        font-size: 0.9rem;
-        color: lighten($color-bordo, 20%);
-        margin: 0;
-        font-style: italic;
-      }
-      
-      .estado {
-        font-size: 0.9rem;
-        margin: 0.5rem 0 0 0;
-        font-weight: 600;
-        
-        &.asiste {
-          color: $color-verde;
-        }
-        
-        &.no-asiste {
-          color: $color-rojo;
-        }
-      }
+    &.no-asiste {
+      color: $color-rojo;
     }
   }
+}
+
+.sin-resultados {
+  text-align: center;
+  padding: 2rem;
+  color: lighten($color-bordo, 30%);
+  font-size: 1rem;
   
-  .sin-resultados {
-    text-align: center;
-    padding: 3rem;
-    color: lighten($color-bordo, 30%);
-    font-size: 1.1rem;
-    
-    &::before {
-      content: '😊';
-      font-size: 2rem;
-      display: block;
-      margin-bottom: 1rem;
-    }
+  &::before {
+    content: '😊';
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -917,6 +881,23 @@ $color-gris: #E0E0E0;
       .estadistica {
         width: 100%;
       }
+    }
+  }
+  
+  .invitado-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 15px;
+    
+    .nombre-invitado,
+    .grupo-invitado {
+      margin-right: 0;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+    
+    .estado-asistencia {
+      align-self: flex-end;
     }
   }
 }

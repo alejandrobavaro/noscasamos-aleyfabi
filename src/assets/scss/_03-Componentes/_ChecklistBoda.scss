@@ -1,0 +1,428 @@
+/* ==================== */
+/* VARIABLES VINTAGE */
+/* ==================== */
+$primary-color: #8B4513; // Marrón oscuro vintage
+$secondary-color: #F5DEB3; // Beige claro
+$accent-color: #A0522D; // Marrón rojizo
+$gold-color: #D4AF37; // Oro para detalles
+$text-color: #3A2E29;
+$text-light: #777;
+$border-color: rgba(139, 69, 19, 0.3);
+$background-light: #FFF8E7;
+$box-shadow: 0 10px 30px rgba(139, 69, 19, 0.15);
+$success-color: #5a8f5a;
+$warning-color: #b08d57;
+$error-color: #8f5a5a;
+$info-color: #5a7b8f;
+$transition: all 0.3s ease;
+
+/* ==================== */
+/* ESTILOS GENERALES */
+/* ==================== */
+.checklist-container.vintage-design {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Cormorant Garamond', serif;
+  background: url('../assets/images/vintage-paper-bg.jpg') center/cover;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 248, 231, 0.9);
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  h1, h2, h3 {
+    color: $primary-color;
+    font-family: 'Cinzel', serif;
+    font-weight: 500;
+  }
+
+  .divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, $gold-color, transparent);
+    margin: 1.5rem auto;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+
+    &.floral {
+      &::before, &::after {
+        content: '❀';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $gold-color;
+        font-size: 1.2rem;
+      }
+
+      &::before {
+        left: 0;
+      }
+
+      &::after {
+        right: 0;
+      }
+    }
+  }
+
+  .header-section {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      color: $accent-color;
+      font-style: italic;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+/* ==================== */
+/* TIMELINE Y FASES */
+/* ==================== */
+.timeline-container {
+  margin: 3rem 0;
+
+  .phase-card {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: $box-shadow;
+    border: 1px solid rgba($primary-color, 0.1);
+    overflow: hidden;
+    transition: $transition;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(139, 69, 19, 0.2);
+    }
+
+    .phase-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      padding: 1.5rem;
+      background: rgba($primary-color, 0.05);
+      border-bottom: 1px solid $border-color;
+      transition: $transition;
+
+      &:hover {
+        background: rgba($primary-color, 0.1);
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 1.3rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+
+        i {
+          color: $gold-color;
+        }
+      }
+
+      .progress-container {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+
+        .progress-bar {
+          width: 150px;
+          height: 10px;
+          background: $background-light;
+          border-radius: 5px;
+          overflow: hidden;
+          box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+
+          .progress {
+            height: 100%;
+            background: linear-gradient(90deg, $gold-color, $accent-color);
+            border-radius: 5px;
+          }
+        }
+
+        span {
+          color: $accent-color;
+          font-size: 0.9rem;
+          font-family: 'Raleway', sans-serif;
+          min-width: 80px;
+        }
+      }
+
+      i.bi-chevron-down, i.bi-chevron-up {
+        color: $primary-color;
+        font-size: 1.3rem;
+        transition: $transition;
+      }
+    }
+
+    .phase-tasks {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        padding: 1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px dashed $border-color;
+        transition: $transition;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &:hover {
+          background: rgba($gold-color, 0.05);
+        }
+
+        &.completed {
+          opacity: 0.7;
+          position: relative;
+
+          &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+            background: $gold-color;
+            transform: translateY(-50%);
+          }
+
+          label {
+            color: $text-light;
+          }
+        }
+
+        input[type="checkbox"] {
+          appearance: none;
+          width: 20px;
+          height: 20px;
+          border: 2px solid $gold-color;
+          border-radius: 4px;
+          margin-right: 1rem;
+          cursor: pointer;
+          position: relative;
+          transition: $transition;
+
+          &:checked {
+            background: $gold-color;
+
+            &::after {
+              content: '✓';
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              color: white;
+              font-size: 0.8rem;
+            }
+          }
+        }
+
+        label {
+          display: flex;
+          align-items: center;
+          flex-grow: 1;
+          cursor: pointer;
+          font-size: 1.1rem;
+          color: $text-color;
+          transition: $transition;
+
+          .due-date {
+            margin-left: auto;
+            background: rgba($gold-color, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: $accent-color;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-family: 'Raleway', sans-serif;
+
+            i {
+              font-size: 0.9rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ==================== */
+/* SECCIÓN DOCUMENTACIÓN */
+/* ==================== */
+.documentacion-section {
+  margin-top: 4rem;
+  padding: 0 1rem;
+
+  h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+
+    i {
+      color: $gold-color;
+    }
+  }
+
+  .document-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+
+    .document-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: $box-shadow;
+      text-align: center;
+      transition: $transition;
+      border-top: 4px solid;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: currentColor;
+        opacity: 0.3;
+      }
+
+      .card-icon {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba($gold-color, 0.1);
+        border-radius: 50%;
+        color: $primary-color;
+        font-size: 1.8rem;
+      }
+
+      h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+        color: $primary-color;
+      }
+
+      p {
+        color: $text-light;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+        font-family: 'Raleway', sans-serif;
+      }
+
+      .status {
+        display: inline-block;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        font-family: 'Raleway', sans-serif;
+      }
+
+      &.pending {
+        border-color: $warning-color;
+        color: $warning-color;
+      }
+
+      &.completed {
+        border-color: $success-color;
+        color: $success-color;
+      }
+
+      &.not-started {
+        border-color: $error-color;
+        color: $error-color;
+      }
+
+      &.in-progress {
+        border-color: $info-color;
+        color: $info-color;
+      }
+    }
+  }
+}
+
+/* ==================== */
+/* RESPONSIVE */
+/* ==================== */
+@media (max-width: 992px) {
+  .checklist-container.vintage-design {
+    padding: 1.5rem;
+
+    .header-section h1 {
+      font-size: 2rem;
+    }
+
+    .phase-card .phase-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+
+      .progress-container {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .document-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .phase-tasks li {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 0.5rem;
+
+    .due-date {
+      margin-left: 0 !important;
+      margin-top: 0.5rem;
+      align-self: flex-end;
+    }
+  }
+}

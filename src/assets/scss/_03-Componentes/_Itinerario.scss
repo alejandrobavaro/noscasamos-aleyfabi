@@ -26,7 +26,7 @@ $color-oscuro: #3A2A2A;
 .itinerario-container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 10px;
   animation: fadeIn 0.8s ease;
   position: relative;
   overflow: hidden;
@@ -34,13 +34,13 @@ $color-oscuro: #3A2A2A;
 
 .itinerario-header {
   text-align: center;
-  margin-bottom: 3rem;
+  // margin-bottom: 3rem;
   position: relative;
 
   h1 {
     font-family: 'Playfair Display', serif;
     color: $color-bordo;
-    font-size: 3.5rem;
+    font-size: xx-large;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     animation: float 6s ease-in-out infinite;
@@ -49,7 +49,7 @@ $color-oscuro: #3A2A2A;
   p {
     font-family: 'Cormorant Garamond', serif;
     color: lighten($color-bordo, 20%);
-    font-size: 1.5rem;
+    font-size: x-large;
     font-style: italic;
   }
 
@@ -64,7 +64,7 @@ $color-oscuro: #3A2A2A;
 
 .timeline-controls {
   text-align: center;
-  margin: 2rem 0;
+  // margin: 2rem 0;
 
   button {
     background: rgba($color-dorado, 0.2);
@@ -86,7 +86,7 @@ $color-oscuro: #3A2A2A;
 
 .timeline-wrapper {
   overflow-x: auto;
-  padding: 1rem 0;
+  padding: 10px 0px;
   margin-bottom: 2rem;
 
   &::-webkit-scrollbar {
@@ -102,13 +102,13 @@ $color-oscuro: #3A2A2A;
 .timeline-scrollable {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 5px;
   min-width: max-content;
-  padding: 0 2rem;
+  // padding: 0 2rem;
 }
 
 .timeline-marker {
-  padding: 0.8rem 1.5rem;
+  padding: 5px 8px;
   background: $color-beige;
   border-radius: 30px;
   font-family: 'Cormorant Garamond', serif;
@@ -137,7 +137,7 @@ $color-oscuro: #3A2A2A;
 .timeline-content-container {
   background: rgba($color-beige, 0.5);
   border-radius: 20px;
-  padding: 2rem;
+  padding: 0px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   margin-bottom: 3rem;
   animation: fadeIn 0.5s ease;

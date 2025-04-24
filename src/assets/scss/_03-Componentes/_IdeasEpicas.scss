@@ -1,0 +1,228 @@
+// _IdeasEpicas.scss
+
+// Variables específicas del componente
+$primary-color: #7A4F50;
+$text-secondary: #666666;
+$success-color: #4CAF50;
+$warning-color: #FFC107;
+$error-color: #F44336;
+$border-color: #e0e0e0;
+$box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+// Mixins específicos del componente
+@mixin primary-button {
+  background: $primary-color;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: darken($primary-color, 10%);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin secondary-button {
+  background: white;
+  color: $primary-color;
+  border: 1px solid $primary-color;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba($primary-color, 0.1);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.ideas-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+
+  h1 {
+    color: $primary-color;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .subtitle {
+    color: $text-secondary;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .category-section {
+    margin-bottom: 4rem;
+
+    h2 {
+      color: $primary-color;
+      margin-bottom: 2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid $border-color;
+    }
+
+    .ideas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+
+      .idea-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: $box-shadow;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        .idea-image {
+          height: 200px;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+
+            &:hover {
+              transform: scale(1.05);
+            }
+          }
+        }
+
+        .idea-content {
+          padding: 1.5rem;
+
+          h3 {
+            color: $primary-color;
+            margin: 0 0 1rem 0;
+          }
+
+          p {
+            color: $text-secondary;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+          }
+
+          .idea-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+
+            .cost {
+              font-size: 0.8rem;
+              font-weight: 600;
+
+              &.low {
+                color: $success-color;
+              }
+
+              &.medium {
+                color: $warning-color;
+              }
+
+              &.high {
+                color: $error-color;
+              }
+            }
+
+            .complexity {
+              font-size: 0.8rem;
+              padding: 0.25rem 0.75rem;
+              border-radius: 20px;
+
+              &.low {
+                background: rgba($success-color, 0.2);
+                color: darken($success-color, 20%);
+              }
+
+              &.medium {
+                background: rgba($warning-color, 0.2);
+                color: darken($warning-color, 20%);
+              }
+
+              &.high {
+                background: rgba($error-color, 0.2);
+                color: darken($error-color, 20%);
+              }
+            }
+          }
+
+          .btn-save {
+            @include secondary-button;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  .saved-ideas-section {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: $box-shadow;
+    text-align: center;
+
+    h2 {
+      color: $primary-color;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      color: $text-secondary;
+      margin-bottom: 2rem;
+    }
+
+    .btn-export {
+      @include primary-button;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 2rem;
+    }
+  }
+}
+
+// Media queries para responsive design
+@media (max-width: 768px) {
+  .ideas-container {
+    padding: 1rem;
+    
+    .ideas-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+}

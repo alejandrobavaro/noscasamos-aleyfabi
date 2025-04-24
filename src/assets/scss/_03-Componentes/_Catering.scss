@@ -1,0 +1,504 @@
+// _Catering.scss - Versión completa con variables y mixins incluidos
+
+/* ==================== */
+/* VARIABLES DEFINIDAS */
+/* ==================== */
+$primary-color: #3f51b5;        // Color primario (azul)
+$text-primary: #333333;         // Texto principal
+$text-secondary: #666666;       // Texto secundario
+$border-color: #e0e0e0;         // Color de bordes
+$background-light: #f5f5f5;     // Fondo claro
+$info-color: #2196f3;           // Color informativo (azul claro)
+$success-color: #4caf50;        // Color de éxito (verde)
+$warning-color: #ff9800;        // Color de advertencia (naranja)
+$error-color: #f44336;          // Color de error (rojo)
+$box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);          // Sombra normal
+$box-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);       // Sombra pequeña
+
+/* ==================== */
+/* MIXINS DEFINIDOS */
+/* ==================== */
+@mixin primary-button {
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+@mixin secondary-button {
+  background-color: white;
+  color: $primary-color;
+  border: 1px solid $primary-color;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+
+  &:hover {
+    background-color: rgba($primary-color, 0.1);
+  }
+}
+
+/* ==================== */
+/* ESTILOS PRINCIPALES */
+/* ==================== */
+.catering-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+
+  h1 {
+    color: $primary-color;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid $border-color;
+    padding-bottom: 0.5rem;
+
+    button {
+      background: none;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      margin: 0 0.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      color: $text-secondary;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      position: relative;
+
+      &:hover {
+        color: $primary-color;
+        background: rgba($primary-color, 0.1);
+      }
+
+      &.active {
+        color: $primary-color;
+        font-weight: 600;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -0.5rem;
+          left: 0;
+          width: 100%;
+          height: 3px;
+          background: $primary-color;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+
+  .menu-section {
+    .menu-categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+
+      .menu-category {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: $box-shadow;
+
+        h3 {
+          color: $primary-color;
+          margin-bottom: 1.5rem;
+          padding-bottom: 0.5rem;
+          border-bottom: 1px solid $border-color;
+        }
+
+        .menu-items {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+
+          .menu-item {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 1px dashed $border-color;
+
+            &:last-child {
+              border-bottom: none;
+            }
+
+            &:hover {
+              background: rgba($primary-color, 0.05);
+            }
+
+            &.selected {
+              background: rgba($primary-color, 0.1);
+            }
+
+            input[type="checkbox"] {
+              margin-right: 1rem;
+              width: 18px;
+              height: 18px;
+              accent-color: $primary-color;
+            }
+
+            label {
+              flex-grow: 1;
+              cursor: pointer;
+
+              .restrictions {
+                display: inline-flex;
+                gap: 0.25rem;
+                margin-left: 0.5rem;
+
+                .restriction {
+                  font-size: 0.7rem;
+                  padding: 0.1rem 0.5rem;
+                  border-radius: 10px;
+                  background: $background-light;
+                  color: $text-secondary;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .selected-menu-summary {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: $box-shadow;
+      margin-bottom: 2rem;
+
+      h3 {
+        color: $primary-color;
+        margin-bottom: 1.5rem;
+      }
+
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+
+        .summary-category {
+          h4 {
+            color: $primary-color;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid $border-color;
+          }
+
+          ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+              padding: 0.5rem 0;
+              color: $text-primary;
+
+              .restrictions {
+                color: $text-secondary;
+                font-size: 0.8rem;
+                margin-left: 0.5rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .restrictions-section {
+    h2 {
+      color: $primary-color;
+      margin-bottom: 1.5rem;
+    }
+
+    .subtitle {
+      color: $text-secondary;
+      margin-bottom: 2rem;
+    }
+
+    .restrictions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+
+      .restriction-card {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: $box-shadow;
+        text-align: center;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        h3 {
+          color: $primary-color;
+          margin-bottom: 0.5rem;
+        }
+
+        .count {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: $text-primary;
+          margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+          height: 8px;
+          background: $background-light;
+          border-radius: 4px;
+          overflow: hidden;
+          margin-bottom: 1.5rem;
+
+          .progress {
+            height: 100%;
+            background: $primary-color;
+          }
+        }
+
+        .btn-details {
+          @include secondary-button;
+          width: 100%;
+          padding: 0.5rem;
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .restrictions-notes {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: $box-shadow;
+
+      h3 {
+        color: $primary-color;
+        margin-bottom: 1rem;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 150px;
+        padding: 1rem;
+        border: 1px solid $border-color;
+        border-radius: 6px;
+        font-family: inherit;
+        resize: vertical;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+        }
+      }
+
+      .btn-save {
+        @include primary-button;
+        margin-top: 1rem;
+        padding: 0.75rem 2rem;
+      }
+    }
+  }
+
+  .tables-section {
+    h2 {
+      color: $primary-color;
+      margin-bottom: 1.5rem;
+    }
+
+    .subtitle {
+      color: $text-secondary;
+      margin-bottom: 2rem;
+    }
+
+    .add-guest-form {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: $box-shadow;
+      margin-bottom: 2rem;
+
+      h3 {
+        color: $primary-color;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 2fr 1fr auto;
+        gap: 1rem;
+        align-items: flex-end;
+
+        @media (max-width: 768px) {
+          grid-template-columns: 1fr;
+        }
+
+        .form-group {
+          label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: $text-secondary;
+            font-size: 0.9rem;
+          }
+
+          input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid $border-color;
+            border-radius: 6px;
+            font-family: inherit;
+
+            &:focus {
+              outline: none;
+              border-color: $primary-color;
+            }
+          }
+        }
+
+        .btn-add {
+          @include primary-button;
+          padding: 0.75rem 1.5rem;
+          height: fit-content;
+          white-space: nowrap;
+
+          &:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+
+    .tables-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+
+      .table-card {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: $box-shadow;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        &.full {
+          border-left: 4px solid $error-color;
+        }
+
+        .table-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1rem;
+          padding-bottom: 0.5rem;
+          border-bottom: 1px solid $border-color;
+
+          h3 {
+            color: $primary-color;
+            margin: 0;
+          }
+
+          .capacity {
+            color: $text-secondary;
+            font-size: 0.9rem;
+          }
+        }
+
+        .guest-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          min-height: 100px;
+
+          li {
+            padding: 0.5rem 0;
+            color: $text-primary;
+            border-bottom: 1px dashed $border-color;
+
+            &:last-child {
+              border-bottom: none;
+            }
+          }
+        }
+
+        .empty-message {
+          color: $text-secondary;
+          font-style: italic;
+          text-align: center;
+          padding: 2rem 0;
+        }
+
+        .full-message {
+          color: $error-color;
+          font-weight: 600;
+          text-align: center;
+          margin-top: 1rem;
+        }
+      }
+    }
+
+    .seating-plan-notes {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: $box-shadow;
+
+      h3 {
+        color: $primary-color;
+        margin-bottom: 1rem;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 150px;
+        padding: 1rem;
+        border: 1px solid $border-color;
+        border-radius: 6px;
+        font-family: inherit;
+        resize: vertical;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+        }
+      }
+
+      .btn-save {
+        @include primary-button;
+        margin-top: 1rem;
+        padding: 0.75rem 2rem;
+      }
+    }
+  }
+}
