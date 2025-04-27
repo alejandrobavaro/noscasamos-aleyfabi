@@ -1,0 +1,299 @@
+/* ==================== */
+/* VARIABLES VINTAGE */
+/* ==================== */
+$primary-color: #8B4513; // Marrón oscuro vintage
+$secondary-color: #F5DEB3; // Beige claro
+$accent-color: #A0522D; // Marrón rojizo
+$gold-color: #D4AF37; // Oro para detalles
+$text-color: #3A2E29;
+$text-light: #777;
+$border-color: rgba(139, 69, 19, 0.3);
+$background-light: #FFF8E7;
+$box-shadow: 0 10px 30px rgba(139, 69, 19, 0.15);
+$success-color: #5a8f5a;
+$warning-color: #b08d57;
+$error-color: #8f5a5a;
+$info-color: #5a7b8f;
+$transition: all 0.3s ease;
+
+/* ==================== */
+/* ESTILOS GENERALES */
+/* ==================== */
+.thank-you-container.vintage-design {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Cormorant Garamond', serif;
+  background: url('../assets/images/vintage-paper-bg.jpg') center/cover;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 248, 231, 0.9);
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  h2 {
+    color: $primary-color;
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, $gold-color, transparent);
+    }
+
+    svg, i {
+      color: $gold-color;
+      font-size: 1.8rem;
+    }
+  }
+
+  .no-pending {
+    text-align: center;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: $box-shadow;
+    border: 1px solid $border-color;
+    max-width: 500px;
+    margin: 0 auto;
+
+    .icon-wrapper {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba($success-color, 0.1);
+      border-radius: 50%;
+      color: $success-color;
+      font-size: 3rem;
+      border: 2px solid $success-color;
+    }
+
+    p {
+      color: $accent-color;
+      font-size: 1.3rem;
+      margin: 0;
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+    }
+  }
+
+  .thank-you-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+
+    .thank-you-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: $box-shadow;
+      border: 1px solid $border-color;
+      border-top: 4px solid $gold-color;
+      display: flex;
+      flex-direction: column;
+      transition: $transition;
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px dashed $border-color;
+
+        h3 {
+          color: $primary-color;
+          margin: 0;
+          font-size: 1.3rem;
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          font-family: 'Cinzel', serif;
+          font-weight: 500;
+
+          svg, i {
+            color: $gold-color;
+            font-size: 1.2rem;
+          }
+        }
+
+        .date {
+          color: $accent-color;
+          font-size: 0.9rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-family: 'Raleway', sans-serif;
+
+          svg, i {
+            color: $gold-color;
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .card-body {
+        flex-grow: 1;
+        margin-bottom: 1.5rem;
+
+        .gift-name {
+          font-weight: 600;
+          margin-bottom: 1rem;
+          color: $text-color;
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          font-family: 'Raleway', sans-serif;
+          font-size: 1.1rem;
+
+          svg, i {
+            color: $gold-color;
+            font-size: 1.2rem;
+          }
+        }
+
+        .vintage-textarea {
+          width: 100%;
+          min-height: 180px;
+          padding: 1.2rem;
+          border: 1px solid $border-color;
+          border-radius: 6px;
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 1.1rem;
+          resize: vertical;
+          background: rgba(255, 255, 255, 0.8);
+          transition: $transition;
+          color: $text-color;
+          line-height: 1.6;
+
+          &:focus {
+            outline: none;
+            border-color: $gold-color;
+            box-shadow: 0 0 0 3px rgba($gold-color, 0.2);
+          }
+
+          &::placeholder {
+            color: rgba($text-color, 0.5);
+            font-style: italic;
+          }
+        }
+      }
+
+      .card-footer {
+        display: flex;
+        gap: 1rem;
+
+        button {
+          flex: 1;
+          padding: 0.9rem;
+          border-radius: 4px;
+          font-size: 0.95rem;
+          cursor: pointer;
+          transition: $transition;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.8rem;
+          font-family: 'Raleway', sans-serif;
+          font-weight: 500;
+          letter-spacing: 0.5px;
+
+          svg, i {
+            font-size: 1.1rem;
+          }
+        }
+
+        .btn-send {
+          background: linear-gradient(135deg, $primary-color, $accent-color);
+          color: white;
+          border: none;
+
+          &:hover {
+            background: linear-gradient(135deg, darken($primary-color, 5%), darken($accent-color, 5%));
+          }
+        }
+
+        .btn-reminder {
+          background: none;
+          border: 1px solid $border-color;
+          color: $text-color;
+
+          &:hover {
+            border-color: $primary-color;
+            color: $primary-color;
+            background: rgba($primary-color, 0.05);
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ==================== */
+/* RESPONSIVE */
+/* ==================== */
+@media (max-width: 992px) {
+  .thank-you-container.vintage-design {
+    padding: 1.5rem;
+
+    h2 {
+      font-size: 1.8rem;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      svg, i {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .thank-you-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .thank-you-card {
+    padding: 1.5rem !important;
+
+    .card-footer {
+      flex-direction: column;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}

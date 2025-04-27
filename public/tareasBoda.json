@@ -1,73 +1,450 @@
 {
-    "categories": [
-      {
-        "id": "salon",
-        "name": "Salón & Decoración",
-        "tasks": [
-          {"id": "salon-1", "name": "Confirmar reserva del salón", "assigned": "both", "dueDate": "2025-03-01", "completed": true},
-          {"id": "salon-2", "name": "Definir diseño de centros de mesa", "assigned": "fabiola", "dueDate": "2025-04-15", "completed": false},
-          {"id": "salon-3", "name": "Contratar florista para arreglos", "assigned": "fabiola", "dueDate": "2025-05-01", "completed": false},
-          {"id": "salon-4", "name": "Diseñar y construir arco nupcial", "assigned": "alejandro", "dueDate": "2025-08-01", "completed": false}
-        ]
-      },
-      {
-        "id": "vestuario",
-        "name": "Vestuario",
-        "tasks": [
-          {"id": "vestuario-1", "name": "Seleccionar y comprar vestido de novia", "assigned": "fabiola", "dueDate": "2025-02-01", "completed": true},
-          {"id": "vestuario-2", "name": "Seleccionar traje de novio", "assigned": "alejandro", "dueDate": "2025-04-01", "completed": false},
-          {"id": "vestuario-3", "name": "Pruebas de vestuario", "assigned": "both", "dueDate": "2025-08-15", "completed": false}
-        ]
-      },
-      {
-        "id": "catering",
-        "name": "Catering & Banquete",
-        "tasks": [
-          {"id": "catering-1", "name": "Seleccionar menú principal", "assigned": "both", "dueDate": "2025-05-01", "completed": false},
-          {"id": "catering-2", "name": "Definir opciones para vegetarianos", "assigned": "fabiola", "dueDate": "2025-05-15", "completed": false},
-          {"id": "catering-3", "name": "Seleccionar torta nupcial", "assigned": "both", "dueDate": "2025-06-01", "completed": false}
-        ]
-      },
-      {
-        "id": "invitaciones",
-        "name": "Invitaciones & Comunicación",
-        "tasks": [
-          {"id": "invitaciones-1", "name": "Diseñar tarjetas de invitación", "assigned": "both", "dueDate": "2025-01-15", "completed": true},
-          {"id": "invitaciones-2", "name": "Enviar invitaciones", "assigned": "both", "dueDate": "2025-03-01", "completed": false},
-          {"id": "invitaciones-3", "name": "Confirmar asistencia de invitados", "assigned": "both", "dueDate": "2025-07-01", "completed": false}
-        ]
-      },
-      {
-        "id": "entretenimiento",
-        "name": "Entretenimiento",
-        "tasks": [
-          {"id": "entretenimiento-1", "name": "Contratar DJ/Banda", "assigned": "alejandro", "dueDate": "2025-04-01", "completed": false},
-          {"id": "entretenimiento-2", "name": "Seleccionar lista de canciones", "assigned": "both", "dueDate": "2025-09-01", "completed": false}
-        ]
-      },
-      {
-        "id": "fotografia",
-        "name": "Fotografía & Video",
-        "tasks": [
-          {"id": "fotografia-1", "name": "Contratar fotógrafo", "assigned": "both", "dueDate": "2025-03-01", "completed": false},
-          {"id": "fotografia-2", "name": "Planificar sesión pre-boda", "assigned": "both", "dueDate": "2025-07-01", "completed": false}
-        ]
-      },
-      {
-        "id": "regalos",
-        "name": "Regalos & Souvenirs",
-        "tasks": [
-          {"id": "regalos-1", "name": "Seleccionar souvenirs para invitados", "assigned": "fabiola", "dueDate": "2025-06-01", "completed": false},
-          {"id": "regalos-2", "name": "Crear lista de regalos", "assigned": "both", "dueDate": "2025-04-01", "completed": false}
-        ]
-      },
-      {
-        "id": "web",
-        "name": "Página Web",
-        "tasks": [
-          {"id": "web-1", "name": "Diseñar página web de la boda", "assigned": "alejandro", "dueDate": "2025-02-01", "completed": true},
-          {"id": "web-2", "name": "Actualizar información en la web", "assigned": "both", "dueDate": "2025-10-01", "completed": false}
-        ]
-      }
-    ]
-  }
+  "categories": [
+    {
+      "id": "planeacion",
+      "name": "Planeación Inicial",
+      "tasks": [
+        {
+          "id": "fecha",
+          "name": "Definir fecha de la boda",
+          "completed": true,
+          "dueDate": "2024-11-01",
+          "assigned": "both",
+          "priority": "high"
+        },
+        {
+          "id": "presupuesto",
+          "name": "Establecer presupuesto total",
+          "completed": true,
+          "dueDate": "2024-11-15",
+          "assigned": "both",
+          "priority": "high"
+        },
+        {
+          "id": "lista-invitados",
+          "name": "Crear lista preliminar de invitados",
+          "completed": true,
+          "dueDate": "2024-12-01",
+          "assigned": "both",
+          "priority": "medium"
+        },
+        {
+          "id": "tipo-boda",
+          "name": "Decidir tipo de boda (tamaño, estilo, formalidad)",
+          "completed": true,
+          "dueDate": "2024-12-15",
+          "assigned": "both",
+          "priority": "medium"
+        }
+      ]
+    },
+    {
+      "id": "lugar",
+      "name": "Lugar y Ceremonia",
+      "tasks": [
+        {
+          "id": "salon-ceremonia",
+          "name": "Reservar lugar para la ceremonia",
+          "completed": true,
+          "dueDate": "2025-01-15",
+          "assigned": "both",
+          "priority": "high"
+        },
+        {
+          "id": "salon-recepcion",
+          "name": "Reservar lugar para la recepción",
+          "completed": true,
+          "dueDate": "2025-01-30",
+          "assigned": "both",
+          "priority": "high"
+        },
+        {
+          "id": "oficiante",
+          "name": "Contratar oficiante (sacerdote/juez/ministro)",
+          "completed": true,
+          "dueDate": "2025-02-15",
+          "assigned": "alejandro",
+          "priority": "medium"
+        },
+        {
+          "id": "permisos",
+          "name": "Obtener permisos necesarios para la ceremonia",
+          "completed": false,
+          "dueDate": "2025-08-01",
+          "assigned": "alejandro",
+          "priority": "medium"
+        }
+      ]
+    },
+    {
+      "id": "vestuario",
+      "name": "Vestuario",
+      "tasks": [
+        {
+          "id": "vestido-novia",
+          "name": "Comprar/ordenar vestido de novia",
+          "completed": true,
+          "dueDate": "2025-05-01",
+          "assigned": "fabiola",
+          "priority": "high"
+        },
+        {
+          "id": "traje-novio",
+          "name": "Comprar/ordenar traje de novio",
+          "completed": true,
+          "dueDate": "2025-05-15",
+          "assigned": "alejandro",
+          "priority": "high"
+        },
+        {
+          "id": "accesorios-novia",
+          "name": "Seleccionar accesorios (velo, joyas, zapatos)",
+          "completed": false,
+          "dueDate": "2025-08-01",
+          "assigned": "fabiola",
+          "priority": "medium"
+        },
+        {
+          "id": "accesorios-novio",
+          "name": "Seleccionar accesorios (corbata, zapatos, reloj)",
+          "completed": false,
+          "dueDate": "2025-08-15",
+          "assigned": "alejandro",
+          "priority": "medium"
+        },
+        {
+          "id": "pruebas-vestuario",
+          "name": "Programar pruebas de vestuario",
+          "completed": false,
+          "dueDate": "2025-10-01",
+          "assigned": "both",
+          "priority": "medium"
+        }
+      ]
+    },
+    {
+      "id": "catering",
+      "name": "Banquete y Catering",
+      "tasks": [
+        {
+          "id": "contratar-catering",
+          "name": "Contratar servicio de catering",
+          "completed": true,
+          "dueDate": "2025-06-01",
+          "assigned": "both",
+          "priority": "high"
+        },
+        {
+          "id": "menu",
+          "name": "Seleccionar menú y opciones de bebidas",
+          "completed": false,
+          "dueDate": "2025-07-01",
+          "assigned": "both",
+          "priority": "high"
+        },
+        {
+          "id": "prueba-sabores",
+          "name": "Programar prueba de sabores",
+          "completed": false,
+          "dueDate": "2025-07-15",
+          "assigned": "both",
+          "priority": "medium"
+        },
+        {
+          "id": "pastel",
+          "name": "Ordenar pastel de bodas",
+          "completed": false,
+          "dueDate": "2025-09-01",
+          "assigned": "fabiola",
+          "priority": "medium"
+        }
+      ]
+    },
+    {
+      "id": "entretenimiento",
+      "name": "Entretenimiento",
+      "tasks": [
+        {
+          "id": "musica-ceremonia",
+          "name": "Seleccionar música para la ceremonia",
+          "completed": false,
+          "dueDate": "2025-06-15",
+          "assigned": "fabiola",
+          "priority": "medium"
+        },
+        {
+          "id": "dj-banda",
+          "name": "Contratar DJ o banda para la recepción",
+          "completed": false,
+          "dueDate": "2025-07-01",
+          "assigned": "alejandro",
+          "priority": "high"
+        },
+        {
+          "id": "playlist",
+          "name": "Crear playlist de canciones importantes",
+          "completed": false,
+          "dueDate": "2025-10-01",
+          "assigned": "both",
+          "priority": "low"
+        },
+        {
+          "id": "actividades",
+          "name": "Planear actividades/entretenimiento adicional",
+          "completed": false,
+          "dueDate": "2025-10-15",
+          "assigned": "both",
+          "priority": "medium"
+        }
+      ]
+    },
+    {
+      "id": "decoracion",
+      "name": "Decoración y Flores",
+      "tasks": [
+        {
+          "id": "florista",
+          "name": "Contratar florista",
+          "completed": false,
+          "dueDate": "2025-07-01",
+          "assigned": "fabiola",
+          "priority": "high"
+        },
+        {
+          "id": "arreglos-florales",
+          "name": "Seleccionar arreglos florales",
+          "completed": false,
+          "dueDate": "2025-08-01",
+          "assigned": "fabiola",
+          "priority": "medium"
+        },
+        {
+          "id": "decoracion-salones",
+          "name": "Planear decoración de salones",
+          "completed": false,
+          "dueDate": "2025-08-15",
+          "assigned": "both",
+          "priority": "medium"
+        },
+        {
+          "id": "contratar-decorador",
+          "name": "Contratar decorador (si es necesario)",
+          "completed": false,
+          "dueDate": "2025-07-15",
+          "assigned": "fabiola",
+          "priority": "medium"
+        }
+      ]
+    },
+    {
+      "id": "fotografia",
+      "name": "Fotografía y Video",
+      "tasks": [
+        {
+          "id": "fotografo",
+          "name": "Contratar fotógrafo",
+          "completed": false,
+          "dueDate": "2025-06-15",
+          "assigned": "both",
+          "priority": "high"
+        },
+        {
+          "id": "videografo",
+          "name": "Contratar videógrafo",
+          "completed": false,
+          "dueDate": "2025-06-30",
+          "assigned": "both",
+          "priority": "high"
+        },
+        {
+          "id": "lista-fotos",
+          "name": "Crear lista de fotos obligatorias",
+          "completed": false,
+          "dueDate": "2025-10-01",
+          "assigned": "both",
+          "priority": "medium"
+        },
+        {
+          "id": "sesion-engagement",
+          "name": "Programar sesión de fotos pre-boda",
+          "completed": false,
+          "dueDate": "2025-09-01",
+          "assigned": "both",
+          "priority": "low"
+        }
+      ]
+    },
+    {
+      "id": "invitaciones",
+      "name": "Invitaciones",
+      "tasks": [
+        {
+          "id": "diseno-invitaciones",
+          "name": "Diseñar invitaciones",
+          "completed": false,
+          "dueDate": "2025-07-01",
+          "assigned": "fabiola",
+          "priority": "high"
+        },
+        {
+          "id": "imprimir-invitaciones",
+          "name": "Imprimir invitaciones",
+          "completed": false,
+          "dueDate": "2025-07-15",
+          "assigned": "both",
+          "priority": "high"
+        },
+        {
+          "id": "enviar-invitaciones",
+          "name": "Enviar invitaciones",
+          "completed": false,
+          "dueDate": "2025-08-01",
+          "assigned": "both",
+          "priority": "high"
+        },
+        {
+          "id": "confirmaciones",
+          "name": "Seguimiento de confirmaciones",
+          "completed": false,
+          "dueDate": "2025-09-15",
+          "assigned": "fabiola",
+          "priority": "medium"
+        }
+      ]
+    },
+    {
+      "id": "alojamiento",
+      "name": "Alojamiento y Transporte",
+      "tasks": [
+        {
+          "id": "hotel-invitados",
+          "name": "Bloquear habitaciones de hotel para invitados",
+          "completed": false,
+          "dueDate": "2025-07-01",
+          "assigned": "alejandro",
+          "priority": "medium"
+        },
+        {
+          "id": "transporte-invitados",
+          "name": "Organizar transporte para invitados",
+          "completed": false,
+          "dueDate": "2025-09-01",
+          "assigned": "alejandro",
+          "priority": "medium"
+        },
+        {
+          "id": "luna-miel",
+          "name": "Reservar viaje de luna de miel",
+          "completed": false,
+          "dueDate": "2025-09-15",
+          "assigned": "both",
+          "priority": "high"
+        }
+      ]
+    },
+    {
+      "id": "regalos",
+      "name": "Regalos y Detalles",
+      "tasks": [
+        {
+          "id": "registro-bodas",
+          "name": "Crear registro de bodas",
+          "completed": false,
+          "dueDate": "2025-07-01",
+          "assigned": "both",
+          "priority": "medium"
+        },
+        {
+          "id": "detalles-invitados",
+          "name": "Seleccionar detalles para invitados",
+          "completed": false,
+          "dueDate": "2025-09-01",
+          "assigned": "fabiola",
+          "priority": "medium"
+        },
+        {
+          "id": "regalos-padrinos",
+          "name": "Seleccionar regalos para padrinos",
+          "completed": false,
+          "dueDate": "2025-10-01",
+          "assigned": "both",
+          "priority": "medium"
+        }
+      ]
+    },
+    {
+      "id": "pre-boda",
+      "name": "Eventos Pre-Boda",
+      "tasks": [
+        {
+          "id": "despedida-soltero",
+          "name": "Planear despedida de soltero/a",
+          "completed": false,
+          "dueDate": "2025-10-01",
+          "assigned": "both",
+          "priority": "low"
+        },
+        {
+          "id": "ensayo-cena",
+          "name": "Organizar cena de ensayo",
+          "completed": false,
+          "dueDate": "2025-11-15",
+          "assigned": "both",
+          "priority": "medium"
+        }
+      ]
+    },
+    {
+      "id": "dia-boda",
+      "name": "Día de la Boda",
+      "tasks": [
+        {
+          "id": "cronograma",
+          "name": "Crear cronograma detallado del día",
+          "completed": false,
+          "dueDate": "2025-10-15",
+          "assigned": "both",
+          "priority": "high"
+        },
+        {
+          "id": "asignar-tareas",
+          "name": "Asignar tareas a familiares/amigos",
+          "completed": false,
+          "dueDate": "2025-11-01",
+          "assigned": "both",
+          "priority": "medium"
+        },
+        {
+          "id": "kit-emergencia",
+          "name": "Preparar kit de emergencia",
+          "completed": false,
+          "dueDate": "2025-11-15",
+          "assigned": "fabiola",
+          "priority": "medium"
+        }
+      ]
+    },
+    {
+      "id": "post-boda",
+      "name": "Post-Boda",
+      "tasks": [
+        {
+          "id": "agradecimientos",
+          "name": "Preparar notas de agradecimiento",
+          "completed": false,
+          "dueDate": "2025-12-01",
+          "assigned": "both",
+          "priority": "medium"
+        },
+        {
+          "id": "album-fotos",
+          "name": "Seleccionar fotos para álbum",
+          "completed": false,
+          "dueDate": "2026-01-15",
+          "assigned": "both",
+          "priority": "low"
+        }
+      ]
+    }
+  ]
+}

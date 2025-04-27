@@ -1,35 +1,88 @@
-// _Vestuario.scss - Versión corregida con variables y mixins
+// _Vestuario.scss - Estilo Vintage
 
 /* ==================== */
-/* VARIABLES DEFINIDAS */
+/* VARIABLES VINTAGE */
 /* ==================== */
-$primary-color: #3f51b5;        // Color primario (azul)
-$text-primary: #333333;         // Texto principal
-$text-secondary: #666666;       // Texto secundario
-$border-color: #e0e0e0;         // Color de bordes
-$background-light: #f5f5f5;     // Fondo claro
-$info-color: #2196f3;           // Color informativo (azul claro)
-$success-color: #4caf50;        // Color de éxito (verde)
-$warning-color: #ff9800;        // Color de advertencia (naranja)
-$error-color: #f44336;          // Color de error (rojo)
-$box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);          // Sombra normal
+$vintage-primary: #8B4513;        // Color principal (marrón saddle)
+$vintage-secondary: #D2B48C;     // Color secundario (tan)
+$vintage-accent: #5F4B32;        // Color de acento (marrón oscuro)
+$vintage-text: #3E2723;           // Texto principal
+$vintage-text-light: #5D4037;     // Texto secundario
+$vintage-bg: #FAF0E6;             // Fondo (linen)
+$vintage-border: #BCAAA4;         // Color de bordes
+$vintage-paper: #FFF8E1;          // Color papel antiguo
+$vintage-shadow: 0 2px 8px rgba(94, 71, 44, 0.2); // Sombra vintage
+$vintage-font: 'Old Standard TT', serif; // Fuente vintage
+$vintage-font-secondary: 'Cormorant Garamond', serif;
 
 /* ==================== */
-/* MIXINS DEFINIDOS */
+/* MIXINS VINTAGE */
 /* ==================== */
-@mixin primary-button {
-  background-color: $primary-color;
+@mixin vintage-button {
+  background-color: $vintage-primary;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 3px;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: inherit;
+  font-family: $vintage-font;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background-color: darken($primary-color, 10%);
+    background-color: darken($vintage-primary, 10%);
+    transform: translateY(-1px);
+  }
+}
+
+@mixin vintage-card {
+  background-color: $vintage-paper;
+  border: 1px solid $vintage-border;
+  border-radius: 0;
+  box-shadow: $vintage-shadow;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23BCAAA4" stroke-width="0.5" stroke-dasharray="5,5"/></svg>');
+    opacity: 0.1;
+    pointer-events: none;
+  }
+}
+
+@mixin vintage-tab {
+  background: none;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  color: $vintage-text-light;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  position: relative;
+  font-family: $vintage-font;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  &:hover {
+    color: $vintage-primary;
+    background: rgba($vintage-primary, 0.1);
+  }
+
+  &.active {
+    color: $vintage-primary;
+    font-weight: 600;
+    border-bottom: 2px solid $vintage-primary;
   }
 }
 
@@ -40,552 +93,410 @@ $box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);          // Sombra normal
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  font-family: 'Roboto', sans-serif;
+  font-family: $vintage-font-secondary;
+  background-color: $vintage-bg;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23D2B48C" stroke-width="0.5" stroke-dasharray="5,5"/></svg>');
+  border: 1px solid $vintage-border;
 
   h1 {
-    color: $primary-color;
+    color: $vintage-primary;
     text-align: center;
     margin-bottom: 2rem;
     font-weight: 700;
+    font-family: $vintage-font;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 1rem;
+    
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      width: 50%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, $vintage-primary, transparent);
+    }
   }
-  
-    .tabs {
-      display: flex;
-      justify-content: center;
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid $vintage-border;
+    padding-bottom: 0.5rem;
+
+    button {
+      @include vintage-tab;
+    }
+  }
+
+  .calendar-section {
+    .calendar-container {
+      @include vintage-card;
+      padding: 1.5rem;
       margin-bottom: 2rem;
-      border-bottom: 1px solid $border-color;
-      padding-bottom: 0.5rem;
-  
-      button {
-        background: none;
+
+      .rbc-calendar {
+        height: 600px;
+        font-family: $vintage-font-secondary;
+      }
+
+      .rbc-header {
+        background: $vintage-secondary;
+        color: $vintage-text;
+        font-family: $vintage-font;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid $vintage-border;
+      }
+
+      .rbc-today {
+        background: rgba($vintage-secondary, 0.3);
+      }
+
+      .rbc-event {
+        background: $vintage-primary;
         border: none;
-        padding: 0.75rem 1.5rem;
-        margin: 0 0.5rem;
-        cursor: pointer;
-        font-size: 1rem;
-        color: $text-secondary;
-        border-radius: 6px;
-        transition: all 0.3s ease;
-        position: relative;
-  
-        &:hover {
-          color: $primary-color;
-          background: rgba($primary-color, 0.1);
+        color: white;
+        font-family: $vintage-font-secondary;
+        padding: 0.25rem 0.5rem;
+      }
+
+      .rbc-button-link {
+        color: $vintage-text;
+        font-family: $vintage-font-secondary;
+      }
+
+      .rbc-toolbar {
+        .rbc-toolbar-label {
+          font-family: $vintage-font;
+          color: $vintage-primary;
+          font-weight: 700;
         }
-  
-        &.active {
-          color: $primary-color;
-          font-weight: 600;
-  
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: -0.5rem;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: $primary-color;
-            border-radius: 3px;
+
+        button {
+          color: $vintage-text;
+          font-family: $vintage-font-secondary;
+          border: 1px solid $vintage-border;
+          background: $vintage-paper;
+
+          &:hover {
+            background: $vintage-secondary;
+          }
+
+          &.rbc-active {
+            background: $vintage-primary;
+            color: white;
           }
         }
       }
     }
-  
-    .calendar-section {
-      .calendar-container {
-        background: white;
-        border-radius: 10px;
-        padding: 1.5rem;
-        box-shadow: $box-shadow;
-        margin-bottom: 2rem;
-  
-        .rbc-calendar {
-          height: 600px;
-        }
-  
-        .rbc-event {
-          background: $primary-color;
-          border-color: darken($primary-color, 10%);
-        }
-  
-        .rbc-today {
-          background: rgba($primary-color, 0.1);
-        }
+
+    .add-fitting-form {
+      @include vintage-card;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+
+      h2 {
+        color: $vintage-primary;
+        margin-bottom: 1.5rem;
+        font-family: $vintage-font;
       }
-  
-      .add-fitting-form {
-        background: white;
-        border-radius: 10px;
-        padding: 1.5rem;
-        box-shadow: $box-shadow;
-        margin-bottom: 2rem;
-  
-        h2 {
-          color: $primary-color;
-          margin-bottom: 1.5rem;
+
+      .form-group {
+        margin-bottom: 1rem;
+
+        label {
+          display: block;
+          margin-bottom: 0.5rem;
+          color: $vintage-text-light;
+          font-size: 0.9rem;
+          font-family: $vintage-font-secondary;
         }
-  
-        .form-group {
-          margin-bottom: 1rem;
-  
-          label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: $text-secondary;
-            font-size: 0.9rem;
-          }
-  
-          input, textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid $border-color;
-            border-radius: 6px;
-            font-family: inherit;
-  
-            &:focus {
-              outline: none;
-              border-color: $primary-color;
-            }
-          }
-  
-          textarea {
-            min-height: 100px;
-            resize: vertical;
-          }
-        }
-  
-        .form-row {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1rem;
-  
-          @media (max-width: 768px) {
-            grid-template-columns: 1fr;
-          }
-        }
-  
-        .btn-add {
-          @include primary-button;
+
+        input, textarea {
           width: 100%;
           padding: 0.75rem;
-          margin-top: 1rem;
+          border: 1px solid $vintage-border;
+          border-radius: 0;
+          font-family: inherit;
+          background-color: rgba(255, 255, 255, 0.7);
+
+          &:focus {
+            outline: none;
+            border-color: $vintage-primary;
+          }
+        }
+
+        textarea {
+          min-height: 100px;
+          resize: vertical;
         }
       }
-  
-      .upcoming-fittings {
-        .fitting-card {
-          background: white;
-          border-radius: 10px;
-          padding: 1.5rem;
-          box-shadow: $box-shadow;
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+
+        @media (max-width: 768px) {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .btn-add {
+        @include vintage-button;
+        width: 100%;
+        padding: 0.75rem;
+        margin-top: 1rem;
+      }
+    }
+
+    .upcoming-fittings {
+      .fitting-card {
+        @include vintage-card;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        .fitting-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
           margin-bottom: 1rem;
+          padding-bottom: 0.5rem;
+          border-bottom: 1px solid $vintage-border;
+
+          h3 {
+            color: $vintage-primary;
+            margin: 0;
+            font-family: $vintage-font;
+          }
+
+          .date {
+            color: $vintage-text-light;
+            font-size: 0.9rem;
+            font-family: $vintage-font-secondary;
+          }
+        }
+
+        .fitting-details {
+          p {
+            margin: 0.5rem 0;
+            color: $vintage-text;
+            font-family: $vintage-font-secondary;
+
+            strong {
+              color: $vintage-text-light;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .items-section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+    }
+
+    .add-item-form {
+      @include vintage-card;
+      padding: 1.5rem;
+      height: fit-content;
+
+      h2 {
+        color: $vintage-primary;
+        margin-bottom: 1.5rem;
+        font-family: $vintage-font;
+      }
+
+      .form-group {
+        margin-bottom: 1rem;
+
+        label {
+          display: block;
+          margin-bottom: 0.5rem;
+          color: $vintage-text-light;
+          font-size: 0.9rem;
+          font-family: $vintage-font-secondary;
+        }
+
+        input, select, textarea {
+          width: 100%;
+          padding: 0.75rem;
+          border: 1px solid $vintage-border;
+          border-radius: 0;
+          font-family: inherit;
+          background-color: rgba(255, 255, 255, 0.7);
+
+          &:focus {
+            outline: none;
+            border-color: $vintage-primary;
+          }
+        }
+
+        textarea {
+          min-height: 100px;
+          resize: vertical;
+        }
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .btn-add {
+        @include vintage-button;
+        width: 100%;
+        padding: 0.75rem;
+        margin-top: 1rem;
+      }
+    }
+
+    .items-list {
+      h2 {
+        color: $vintage-primary;
+        margin-bottom: 1.5rem;
+        font-family: $vintage-font;
+      }
+
+      .items-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+
+        .item-card {
+          @include vintage-card;
+          padding: 1.5rem;
           transition: transform 0.3s ease;
-  
+          position: relative;
+
           &:hover {
             transform: translateY(-5px);
           }
-  
-          .fitting-header {
+
+          .item-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid $border-color;
-  
+
             h3 {
-              color: $primary-color;
+              color: $vintage-primary;
               margin: 0;
+              font-size: 1.1rem;
+              font-family: $vintage-font;
             }
-  
-            .date {
-              color: $text-secondary;
-              font-size: 0.9rem;
+
+            .status {
+              font-size: 0.8rem;
+              padding: 0.25rem 0.75rem;
+              border-radius: 20px;
+              font-family: $vintage-font-secondary;
+
+              &.pending {
+                background: rgba($vintage-accent, 0.2);
+                color: $vintage-text;
+              }
+
+              &.measured {
+                background: rgba($vintage-secondary, 0.5);
+                color: $vintage-text;
+              }
+
+              &.ordered {
+                background: rgba($vintage-primary, 0.3);
+                color: white;
+              }
+
+              &.purchased {
+                background: rgba(darken($vintage-secondary, 20%), 0.5);
+                color: white;
+              }
+
+              &.received {
+                background: rgba(darken($vintage-primary, 10%), 0.7);
+                color: white;
+              }
             }
           }
-  
-          .fitting-details {
+
+          .description {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: $vintage-text;
+            font-family: $vintage-font-secondary;
+          }
+
+          .item-details {
             p {
               margin: 0.5rem 0;
-              color: $text-primary;
-  
+              color: $vintage-text;
+              font-size: 0.9rem;
+              font-family: $vintage-font-secondary;
+
               strong {
-                color: $text-secondary;
+                color: $vintage-text-light;
               }
             }
           }
-        }
-      }
-    }
-  
-    .items-section {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 2rem;
-  
-      @media (max-width: 992px) {
-        grid-template-columns: 1fr;
-      }
-  
-      .add-item-form {
-        background: white;
-        border-radius: 10px;
-        padding: 1.5rem;
-        box-shadow: $box-shadow;
-        height: fit-content;
-  
-        h2 {
-          color: $primary-color;
-          margin-bottom: 1.5rem;
-        }
-  
-        .form-group {
-          margin-bottom: 1rem;
-  
-          label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: $text-secondary;
-            font-size: 0.9rem;
-          }
-  
-          input, select, textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid $border-color;
-            border-radius: 6px;
-            font-family: inherit;
-  
-            &:focus {
-              outline: none;
-              border-color: $primary-color;
-            }
-          }
-  
-          textarea {
-            min-height: 100px;
-            resize: vertical;
-          }
-        }
-  
-        .form-row {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1rem;
-        }
-  
-        .btn-add {
-          @include primary-button;
-          width: 100%;
-          padding: 0.75rem;
-          margin-top: 1rem;
-        }
-      }
-  
-      .items-list {
-        h2 {
-          color: $primary-color;
-          margin-bottom: 1.5rem;
-        }
-  
-        .items-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-          gap: 1.5rem;
-  
-          .item-card {
-            background: white;
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: $box-shadow;
-            transition: transform 0.3s ease;
-  
-            &:hover {
-              transform: translateY(-5px);
-            }
-  
-            &.status-pending {
-              border-left: 4px solid $warning-color;
-            }
-  
-            &.status-measured {
-              border-left: 4px solid $info-color;
-            }
-  
-            &.status-ordered {
-              border-left: 4px solid $primary-color;
-            }
-  
-            &.status-purchased {
-              border-left: 4px solid $success-color;
-            }
-  
-            &.status-received {
-              border-left: 4px solid darken($success-color, 10%);
-            }
-  
-            .item-header {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              margin-bottom: 1rem;
-  
-              h3 {
-                color: $primary-color;
-                margin: 0;
-                font-size: 1.1rem;
-              }
-  
-              .status {
-                font-size: 0.8rem;
-                padding: 0.25rem 0.75rem;
-                border-radius: 20px;
-  
-                &.pending {
-                  background: rgba($warning-color, 0.2);
-                  color: darken($warning-color, 20%);
-                }
-  
-                &.measured {
-                  background: rgba($info-color, 0.2);
-                  color: darken($info-color, 20%);
-                }
-  
-                &.ordered {
-                  background: rgba($primary-color, 0.2);
-                  color: darken($primary-color, 20%);
-                }
-  
-                &.purchased {
-                  background: rgba($success-color, 0.2);
-                  color: darken($success-color, 20%);
-                }
-  
-                &.received {
-                  background: rgba(darken($success-color, 10%), 0.2);
-                  color: darken($success-color, 30%);
-                }
-              }
-            }
-  
-            .description {
-              font-weight: 600;
-              margin-bottom: 1rem;
-              color: $text-primary;
-            }
-  
-            .item-details {
-              p {
-                margin: 0.5rem 0;
-                color: $text-primary;
-                font-size: 0.9rem;
-  
-                strong {
-                  color: $text-secondary;
-                }
-              }
-            }
-  
-            .item-actions {
-              margin-top: 1.5rem;
-              display: grid;
-              grid-template-columns: 2fr 1fr;
-              gap: 1rem;
-  
-              select {
-                padding: 0.5rem;
-                border: 1px solid $border-color;
-                border-radius: 6px;
-                font-size: 0.8rem;
-                cursor: pointer;
-  
-                &:focus {
-                  outline: none;
-                  border-color: $primary-color;
-                }
-              }
-  
-              .payment-input {
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-  
-                label {
-                  font-size: 0.8rem;
-                  color: $text-secondary;
-                }
-  
-                input {
-                  width: 100%;
-                  padding: 0.5rem;
-                  border: 1px solid $border-color;
-                  border-radius: 6px;
-                  font-size: 0.8rem;
-  
-                  &:focus {
-                    outline: none;
-                    border-color: $primary-color;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  
-    .budget-section {
-      h2 {
-        color: $primary-color;
-        margin-bottom: 1.5rem;
-      }
-  
-      .budget-stats {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-  
-        @media (max-width: 768px) {
-          grid-template-columns: 1fr;
-        }
-  
-        .stat-card {
-          background: white;
-          border-radius: 10px;
-          padding: 1.5rem;
-          box-shadow: $box-shadow;
-          text-align: center;
-  
-          h3 {
-            color: $text-secondary;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-          }
-  
-          .amount {
-            font-size: 2rem;
-            font-weight: 700;
-            color: $primary-color;
-  
-            &.paid {
-              color: $success-color;
-            }
-  
-            &.pending {
-              color: $warning-color;
-            }
-          }
-        }
-      }
-  
-      .budget-breakdown {
-        background: white;
-        border-radius: 10px;
-        padding: 1.5rem;
-        box-shadow: $box-shadow;
-        margin-bottom: 2rem;
-        overflow-x: auto;
-  
-        h3 {
-          color: $primary-color;
-          margin-bottom: 1.5rem;
-        }
-  
-        table {
-          width: 100%;
-          border-collapse: collapse;
-  
-          th, td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid $border-color;
-          }
-  
-          th {
-            background-color: $background-light;
-            color: $primary-color;
-            font-weight: 600;
-          }
-  
-          tr:hover {
-            background-color: $background-light;
-          }
-  
-          .progress-container {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-  
-            .progress-bar {
-              flex: 1;
-              height: 8px;
-              background: $background-light;
-              border-radius: 4px;
-              overflow: hidden;
-  
-              .progress {
-                height: 100%;
-                background: $primary-color;
-              }
-            }
-          }
-        }
-      }
-  
-      .payment-schedule {
-        background: white;
-        border-radius: 10px;
-        padding: 1.5rem;
-        box-shadow: $box-shadow;
-  
-        h3 {
-          color: $primary-color;
-          margin-bottom: 1.5rem;
-        }
-  
-        .payment-card {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1rem;
-          padding: 1rem;
-          border-bottom: 1px solid $border-color;
-  
-          &:last-child {
-            border-bottom: none;
-          }
-  
-          h4 {
-            color: $primary-color;
-            margin: 0;
-            font-size: 1.1rem;
-          }
-  
-          .vendor {
-            color: $text-secondary;
-            font-size: 0.9rem;
-            margin: 0.25rem 0;
-          }
-  
-          .payment-details {
-            display: flex;
-            align-items: center;
+
+          .item-actions {
+            margin-top: 1.5rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
             gap: 1rem;
-  
-            .pending-amount {
-              font-weight: 600;
-              color: $warning-color;
-            }
-  
-            input {
-              width: 100px;
+
+            select {
               padding: 0.5rem;
-              border: 1px solid $border-color;
-              border-radius: 6px;
-  
+              border: 1px solid $vintage-border;
+              border-radius: 0;
+              font-size: 0.8rem;
+              cursor: pointer;
+              font-family: $vintage-font-secondary;
+              background-color: rgba(255, 255, 255, 0.7);
+
               &:focus {
                 outline: none;
-                border-color: $primary-color;
+                border-color: $vintage-primary;
+              }
+            }
+
+            .payment-input {
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+
+              label {
+                font-size: 0.8rem;
+                color: $vintage-text-light;
+                font-family: $vintage-font-secondary;
+              }
+
+              input {
+                width: 100%;
+                padding: 0.5rem;
+                border: 1px solid $vintage-border;
+                border-radius: 0;
+                font-size: 0.8rem;
+                background-color: rgba(255, 255, 255, 0.7);
+
+                &:focus {
+                  outline: none;
+                  border-color: $vintage-primary;
+                }
               }
             }
           }
@@ -593,3 +504,212 @@ $box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);          // Sombra normal
       }
     }
   }
+
+  .budget-section {
+    h2 {
+      color: $vintage-primary;
+      margin-bottom: 1.5rem;
+      font-family: $vintage-font;
+    }
+
+    .budget-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-card {
+        @include vintage-card;
+        padding: 1.5rem;
+        text-align: center;
+
+        h3 {
+          color: $vintage-text-light;
+          font-size: 1rem;
+          margin-bottom: 0.5rem;
+          font-family: $vintage-font-secondary;
+        }
+
+        .amount {
+          font-size: 2rem;
+          font-weight: 700;
+          color: $vintage-primary;
+          font-family: $vintage-font;
+
+          &.paid {
+            color: darken($vintage-secondary, 30%);
+          }
+
+          &.pending {
+            color: $vintage-accent;
+          }
+        }
+      }
+    }
+
+    .budget-breakdown {
+      @include vintage-card;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      overflow-x: auto;
+
+      h3 {
+        color: $vintage-primary;
+        margin-bottom: 1.5rem;
+        font-family: $vintage-font;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: $vintage-font-secondary;
+
+        th, td {
+          padding: 1rem;
+          text-align: left;
+          border-bottom: 1px solid $vintage-border;
+        }
+
+        th {
+          background-color: $vintage-secondary;
+          color: $vintage-text;
+          font-weight: 600;
+          font-family: $vintage-font;
+        }
+
+        tr:hover {
+          background-color: rgba($vintage-secondary, 0.2);
+        }
+
+        .progress-container {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: $vintage-secondary;
+            border-radius: 4px;
+            overflow: hidden;
+
+            .progress {
+              height: 100%;
+              background: $vintage-primary;
+            }
+          }
+        }
+      }
+    }
+
+    .payment-schedule {
+      @include vintage-card;
+      padding: 1.5rem;
+
+      h3 {
+        color: $vintage-primary;
+        margin-bottom: 1.5rem;
+        font-family: $vintage-font;
+      }
+
+      .payment-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        padding: 1rem;
+        border-bottom: 1px solid $vintage-border;
+        font-family: $vintage-font-secondary;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        h4 {
+          color: $vintage-primary;
+          margin: 0;
+          font-size: 1.1rem;
+          font-family: $vintage-font;
+        }
+
+        .vendor {
+          color: $vintage-text-light;
+          font-size: 0.9rem;
+          margin: 0.25rem 0;
+        }
+
+        .payment-details {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+
+          .pending-amount {
+            font-weight: 600;
+            color: $vintage-accent;
+          }
+
+          input {
+            width: 100px;
+            padding: 0.5rem;
+            border: 1px solid $vintage-border;
+            border-radius: 0;
+            background-color: rgba(255, 255, 255, 0.7);
+
+            &:focus {
+              outline: none;
+              border-color: $vintage-primary;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Efecto de papel antiguo */
+.vestuario-container::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(210, 180, 140, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(210, 180, 140, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Estilos para el calendario react-big-calendar */
+.rbc-calendar {
+  font-family: $vintage-font-secondary !important;
+  
+  .rbc-toolbar {
+    .rbc-toolbar-label {
+      font-family: $vintage-font !important;
+    }
+    
+    button {
+      font-family: $vintage-font-secondary !important;
+    }
+  }
+  
+  .rbc-event {
+    background: $vintage-primary !important;
+    border: none !important;
+  }
+  
+  .rbc-today {
+    background: rgba($vintage-secondary, 0.3) !important;
+  }
+  
+  .rbc-header {
+    background: $vintage-secondary !important;
+    color: $vintage-text !important;
+    font-family: $vintage-font !important;
+  }
+}

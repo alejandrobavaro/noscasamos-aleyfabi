@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import "../assets/scss/_03-Componentes/_Regalos.scss";
+import GiftForm from './GiftForm';
+import GiftList from './GiftList';
+import ReceivedGifts from './ReceivedGifts';
+import ThankYouSection from './ThankYouSection';
 
 const initialGifts = {
   wishlist: [
@@ -18,272 +23,192 @@ const initialGifts = {
 function Regalos() {
   const [gifts, setGifts] = useState(initialGifts);
   const [activeTab, setActiveTab] = useState('wishlist');
-  const [newGift, setNewGift] = useState({
-    name: '',
-    description: '',
-    price: '',
-    priority: 'medium'
+  const [filters, setFilters] = useState({
+    priority: 'all',
+    reserved: 'all',
+    search: ''
   });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewGift({ ...newGift, [name]: value });
-  };
-
-  const addGift = () => {
+  const addGift = (newGift) => {
     if (!newGift.name) return;
     
     const gift = {
       id: Math.max(...gifts.wishlist.map(g => g.id)) + 1,
-      name: newGift.name,
-      description: newGift.description,
+      ...newGift,
       price: Number(newGift.price),
-      priority: newGift.priority,
       reserved: false
     };
     
-    setGifts({
-      ...gifts,
-      wishlist: [...gifts.wishlist, gift]
-    });
-    
-    setNewGift({
-      name: '',
-      description: '',
-      price: '',
-      priority: 'medium'
-    });
-  };
-
-  const markThankYouSent = (id) => {
-    setGifts({
-      ...gifts,
-      received: gifts.received.map(gift => 
-        gift.id === id ? { ...gift, thankYouSent: true } : gift
-      )
-    });
+    setGifts(prev => ({
+      ...prev,
+      wishlist: [...prev.wishlist, gift]
+    }));
   };
 
   const toggleReserved = (id) => {
-    setGifts({
-      ...gifts,
-      wishlist: gifts.wishlist.map(gift => 
+    setGifts(prev => ({
+      ...prev,
+      wishlist: prev.wishlist.map(gift => 
         gift.id === id ? { ...gift, reserved: !gift.reserved } : gift
       )
-    });
+    }));
+  };
+
+  const markThankYouSent = (id) => {
+    setGifts(prev => ({
+      ...prev,
+      received: prev.received.map(gift => 
+        gift.id === id ? { ...gift, thankYouSent: true } : gift
+      )
+    }));
+  };
+
+  const filteredWishlist = gifts.wishlist.filter(gift => {
+    return (
+      (filters.priority === 'all' || gift.priority === filters.priority) &&
+      (filters.reserved === 'all' || gift.reserved === (filters.reserved === 'reserved')) &&
+      (gift.name.toLowerCase().includes(filters.search.toLowerCase()) ||
+      gift.description.toLowerCase().includes(filters.search.toLowerCase()))
+    );
+  });
+
+  const budgetStats = {
+    total: gifts.wishlist.reduce((sum, gift) => sum + gift.price, 0),
+    reserved: gifts.wishlist
+      .filter(gift => gift.reserved)
+      .reduce((sum, gift) => sum + gift.price, 0),
+    remaining: gifts.wishlist
+      .filter(gift => !gift.reserved)
+      .reduce((sum, gift) => sum + gift.price, 0)
   };
 
   return (
-    <div className="regalos-container">
-      <h1>Gestión de Regalos</h1>
+    <div className="regalos-container vintage-design">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="header-section"
+      >
+        <h1>Lista de Regalos</h1>
+        <p className="subtitle">Nuestros deseos para comenzar nuestra vida juntos</p>
+        <div className="divider floral"></div>
+      </motion.div>
       
-      <div className="tabs">
-        <button 
-          className={activeTab === 'wishlist' ? 'active' : ''}
-          onClick={() => setActiveTab('wishlist')}
-        >
-          Lista de Deseos
-        </button>
-        <button 
-          className={activeTab === 'received' ? 'active' : ''}
-          onClick={() => setActiveTab('received')}
-        >
-          Regalos Recibidos ({gifts.received.length})
-        </button>
-        <button 
-          className={activeTab === 'thankyous' ? 'active' : ''}
-          onClick={() => setActiveTab('thankyous')}
-        >
-          Agradecimientos ({gifts.received.filter(g => !g.thankYouSent).length})
-        </button>
+      <div className="tabs-container">
+        <div className="tabs-nav">
+          <button 
+            className={`tab-button ${activeTab === 'wishlist' ? 'active' : ''}`}
+            onClick={() => setActiveTab('wishlist')}
+          >
+            <i className="bi bi-heart"></i>
+            Lista de Deseos
+            <span className="badge">{gifts.wishlist.length}</span>
+          </button>
+          <button 
+            className={`tab-button ${activeTab === 'received' ? 'active' : ''}`}
+            onClick={() => setActiveTab('received')}
+          >
+            <i className="bi bi-gift"></i>
+            Regalos Recibidos
+            <span className="badge">{gifts.received.length}</span>
+          </button>
+          <button 
+            className={`tab-button ${activeTab === 'thankyous' ? 'active' : ''}`}
+            onClick={() => setActiveTab('thankyous')}
+          >
+            <i className="bi bi-envelope"></i>
+            Agradecimientos
+            <span className="badge">{gifts.received.filter(g => !g.thankYouSent).length}</span>
+          </button>
+        </div>
+        
+        <div className="tabs-content">
+          <AnimatePresence mode="wait">
+            {activeTab === 'wishlist' && (
+              <motion.div
+                key="wishlist"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.3 }}
+                className="tab-pane"
+              >
+                <div className="wishlist-grid">
+                  <GiftForm onAddGift={addGift} />
+                  <GiftList 
+                    gifts={filteredWishlist} 
+                    onToggleReserved={toggleReserved}
+                    filters={filters}
+                    onFilterChange={setFilters}
+                    budgetStats={budgetStats}
+                  />
+                </div>
+              </motion.div>
+            )}
+            
+            {activeTab === 'received' && (
+              <motion.div
+                key="received"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.3 }}
+                className="tab-pane"
+              >
+                <ReceivedGifts 
+                  gifts={gifts.received} 
+                  onThankYouSent={markThankYouSent} 
+                />
+              </motion.div>
+            )}
+            
+            {activeTab === 'thankyous' && (
+              <motion.div
+                key="thankyous"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.3 }}
+                className="tab-pane"
+              >
+                <ThankYouSection 
+                  gifts={gifts.received.filter(g => !g.thankYouSent)} 
+                  onThankYouSent={markThankYouSent} 
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
       
-      {activeTab === 'wishlist' && (
-        <div className="wishlist-section">
-          <div className="add-gift-form">
-            <h2>Agregar a la Lista de Deseos</h2>
-            <div className="form-group">
-              <label>Artículo:</label>
-              <input 
-                type="text" 
-                name="name" 
-                value={newGift.name}
-                onChange={handleInputChange}
-                placeholder="Ej. Juego de vajilla"
-              />
-            </div>
-            <div className="form-group">
-              <label>Descripción:</label>
-              <textarea 
-                name="description" 
-                value={newGift.description}
-                onChange={handleInputChange}
-                placeholder="Detalles sobre el artículo"
-              ></textarea>
-            </div>
-            <div className="form-row">
-              <div className="form-group">
-                <label>Precio aproximado:</label>
-                <input 
-                  type="number" 
-                  name="price" 
-                  value={newGift.price}
-                  onChange={handleInputChange}
-                  placeholder="$"
-                />
-              </div>
-              <div className="form-group">
-                <label>Prioridad:</label>
-                <select 
-                  name="priority" 
-                  value={newGift.priority}
-                  onChange={handleInputChange}
-                >
-                  <option value="high">Alta</option>
-                  <option value="medium">Media</option>
-                  <option value="low">Baja</option>
-                </select>
-              </div>
-            </div>
-            <button className="btn-add" onClick={addGift}>
-              Agregar a la Lista
-            </button>
+      <motion.div 
+        className="budget-summary"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4 }}
+      >
+        <h3>
+          <i className="bi bi-piggy-bank"></i>
+          Presupuesto de Regalos
+        </h3>
+        <div className="budget-cards">
+          <div className="budget-card">
+            <span className="label">Total</span>
+            <span className="amount">${budgetStats.total.toLocaleString()}</span>
           </div>
-          
-          <div className="gift-list">
-            <h2>Tu Lista de Deseos</h2>
-            <div className="gift-grid">
-              {gifts.wishlist.map(gift => (
-                <div 
-                  key={gift.id} 
-                  className={`gift-card ${gift.reserved ? 'reserved' : ''} priority-${gift.priority}`}
-                >
-                  <div className="gift-header">
-                    <h3>{gift.name}</h3>
-                    <span className="price">${gift.price.toLocaleString()}</span>
-                  </div>
-                  <p className="description">{gift.description}</p>
-                  <div className="gift-footer">
-                    <span className={`priority ${gift.priority}`}>
-                      {gift.priority === 'high' ? 'Alta prioridad' : 
-                       gift.priority === 'medium' ? 'Prioridad media' : 'Baja prioridad'}
-                    </span>
-                    <button 
-                      className={`btn-reserve ${gift.reserved ? 'reserved' : ''}`}
-                      onClick={() => toggleReserved(gift.id)}
-                    >
-                      {gift.reserved ? 'Reservado ✓' : 'Marcar como Reservado'}
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="budget-card reserved">
+            <span className="label">Reservados</span>
+            <span className="amount">${budgetStats.reserved.toLocaleString()}</span>
+          </div>
+          <div className="budget-card remaining">
+            <span className="label">Disponibles</span>
+            <span className="amount">${budgetStats.remaining.toLocaleString()}</span>
           </div>
         </div>
-      )}
-      
-      {activeTab === 'received' && (
-        <div className="received-section">
-          <h2>Regalos Recibidos</h2>
-          <div className="stats">
-            <div className="stat-card">
-              <i className="bi bi-gift"></i>
-              <h3>Total Recibidos</h3>
-              <p>{gifts.received.length}</p>
-            </div>
-            <div className="stat-card">
-              <i className="bi bi-envelope-check"></i>
-              <h3>Agradecimientos Enviados</h3>
-              <p>{gifts.received.filter(g => g.thankYouSent).length}</p>
-            </div>
-            <div className="stat-card">
-              <i className="bi bi-envelope-exclamation"></i>
-              <h3>Pendientes por Agradecer</h3>
-              <p>{gifts.received.filter(g => !g.thankYouSent).length}</p>
-            </div>
-          </div>
-          
-          <table className="received-gifts-table">
-            <thead>
-              <tr>
-                <th>Regalo</th>
-                <th>Regalado por</th>
-                <th>Fecha</th>
-                <th>Agradecimiento</th>
-              </tr>
-            </thead>
-            <tbody>
-              {gifts.received.map(gift => (
-                <tr key={gift.id}>
-                  <td>{gift.name}</td>
-                  <td>{gift.giver}</td>
-                  <td>{formatDate(gift.date)}</td>
-                  <td>
-                    {gift.thankYouSent ? (
-                      <span className="thank-you-sent">Enviado ✓</span>
-                    ) : (
-                      <button 
-                        className="btn-thank-you"
-                        onClick={() => markThankYouSent(gift.id)}
-                      >
-                        Marcar como Agradecido
-                      </button>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
-      
-      {activeTab === 'thankyous' && (
-        <div className="thankyous-section">
-          <h2>Agradecimientos Pendientes</h2>
-          {gifts.received.filter(g => !g.thankYouSent).length === 0 ? (
-            <div className="no-pending">
-              <i className="bi bi-check2-circle"></i>
-              <p>¡Todos los agradecimientos han sido enviados!</p>
-            </div>
-          ) : (
-            <div className="pending-cards">
-              {gifts.received.filter(g => !g.thankYouSent).map(gift => (
-                <div key={gift.id} className="thankyou-card">
-                  <div className="card-header">
-                    <h3>Para: {gift.giver}</h3>
-                    <span className="date">{formatDate(gift.date)}</span>
-                  </div>
-                  <div className="card-body">
-                    <p className="gift-name">{gift.name}</p>
-                    <textarea 
-                      placeholder="Escribe tu mensaje de agradecimiento aquí..."
-                      defaultValue={`¡Queridos ${gift.giver.split(' ')[0]}!\n\nMuchas gracias por el hermoso ${gift.name}. Lo apreciamos mucho y...`}
-                    ></textarea>
-                  </div>
-                  <div className="card-footer">
-                    <button 
-                      className="btn-send"
-                      onClick={() => markThankYouSent(gift.id)}
-                    >
-                      <i className="bi bi-envelope-paper"></i> Enviar Agradecimiento
-                    </button>
-                    <button className="btn-reminder">
-                      <i className="bi bi-bell"></i> Recordarme más tarde
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
+      </motion.div>
     </div>
   );
-}
-
-function formatDate(dateString) {
-  const options = { day: 'numeric', month: 'short', year: 'numeric' };
-  return new Date(dateString).toLocaleDateString('es-ES', options);
 }
 
 export default Regalos;

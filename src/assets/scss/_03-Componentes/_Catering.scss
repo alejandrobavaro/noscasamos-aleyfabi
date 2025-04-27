@@ -1,52 +1,88 @@
-// _Catering.scss - Versión completa con variables y mixins incluidos
+// _Catering.scss - Estilo Vintage
 
 /* ==================== */
-/* VARIABLES DEFINIDAS */
+/* VARIABLES VINTAGE */
 /* ==================== */
-$primary-color: #3f51b5;        // Color primario (azul)
-$text-primary: #333333;         // Texto principal
-$text-secondary: #666666;       // Texto secundario
-$border-color: #e0e0e0;         // Color de bordes
-$background-light: #f5f5f5;     // Fondo claro
-$info-color: #2196f3;           // Color informativo (azul claro)
-$success-color: #4caf50;        // Color de éxito (verde)
-$warning-color: #ff9800;        // Color de advertencia (naranja)
-$error-color: #f44336;          // Color de error (rojo)
-$box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);          // Sombra normal
-$box-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);       // Sombra pequeña
+$vintage-primary: #8B4513;        // Color principal (marrón saddle)
+$vintage-secondary: #D2B48C;     // Color secundario (tan)
+$vintage-accent: #5F4B32;        // Color de acento (marrón oscuro)
+$vintage-text: #3E2723;           // Texto principal
+$vintage-text-light: #5D4037;     // Texto secundario
+$vintage-bg: #FAF0E6;             // Fondo (linen)
+$vintage-border: #BCAAA4;         // Color de bordes
+$vintage-paper: #FFF8E1;          // Color papel antiguo
+$vintage-shadow: 0 2px 8px rgba(94, 71, 44, 0.2); // Sombra vintage
+$vintage-font:    'Cinzel', serif;
+$vintage-font-secondary: 'Cormorant Garamond', serif;
 
 /* ==================== */
-/* MIXINS DEFINIDOS */
+/* MIXINS VINTAGE */
 /* ==================== */
-@mixin primary-button {
-  background-color: $primary-color;
+@mixin vintage-button {
+  background-color: $vintage-primary;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 3px;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: inherit;
+  font-family: $vintage-font;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background-color: darken($primary-color, 10%);
+    background-color: darken($vintage-primary, 10%);
+    transform: translateY(-1px);
   }
 }
 
-@mixin secondary-button {
-  background-color: white;
-  color: $primary-color;
-  border: 1px solid $primary-color;
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
+@mixin vintage-card {
+  background-color: $vintage-paper;
+  border: 1px solid $vintage-border;
+  border-radius: 0;
+  box-shadow: $vintage-shadow;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23BCAAA4" stroke-width="0.5" stroke-dasharray="5,5"/></svg>');
+    opacity: 0.1;
+    pointer-events: none;
+  }
+}
+
+@mixin vintage-tab {
+  background: none;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  margin: 0 0.5rem;
   cursor: pointer;
+  font-size: 1rem;
+  color: $vintage-text-light;
+  border-radius: 0;
   transition: all 0.3s ease;
-  font-family: inherit;
+  position: relative;
+  font-family: $vintage-font;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 
   &:hover {
-    background-color: rgba($primary-color, 0.1);
+    color: $vintage-primary;
+    background: rgba($vintage-primary, 0.1);
+  }
+
+  &.active {
+    color: $vintage-primary;
+    font-weight: 600;
+    border-bottom: 2px solid $vintage-primary;
   }
 }
 
@@ -57,54 +93,42 @@ $box-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);       // Sombra pequeña
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  font-family: 'Roboto', sans-serif;
+  font-family: $vintage-font-secondary;
+  background-color: $vintage-bg;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23D2B48C" stroke-width="0.5" stroke-dasharray="5,5"/></svg>');
+  border: 1px solid $vintage-border;
 
   h1 {
-    color: $primary-color;
+    color: $vintage-primary;
     text-align: center;
     margin-bottom: 2rem;
     font-weight: 700;
+    font-family: $vintage-font;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 1rem;
+    
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      width: 50%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, $vintage-primary, transparent);
+    }
   }
 
   .tabs {
     display: flex;
     justify-content: center;
     margin-bottom: 2rem;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $vintage-border;
     padding-bottom: 0.5rem;
 
     button {
-      background: none;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      margin: 0 0.5rem;
-      cursor: pointer;
-      font-size: 1rem;
-      color: $text-secondary;
-      border-radius: 6px;
-      transition: all 0.3s ease;
-      position: relative;
-
-      &:hover {
-        color: $primary-color;
-        background: rgba($primary-color, 0.1);
-      }
-
-      &.active {
-        color: $primary-color;
-        font-weight: 600;
-
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: -0.5rem;
-          left: 0;
-          width: 100%;
-          height: 3px;
-          background: $primary-color;
-          border-radius: 3px;
-        }
-      }
+      @include vintage-tab;
     }
   }
 
@@ -116,16 +140,28 @@ $box-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);       // Sombra pequeña
       margin-bottom: 3rem;
 
       .menu-category {
-        background: white;
-        border-radius: 10px;
+        @include vintage-card;
         padding: 1.5rem;
-        box-shadow: $box-shadow;
+        position: relative;
 
         h3 {
-          color: $primary-color;
+          color: $vintage-primary;
           margin-bottom: 1.5rem;
           padding-bottom: 0.5rem;
-          border-bottom: 1px solid $border-color;
+          border-bottom: 1px solid $vintage-border;
+          font-family: $vintage-font;
+          letter-spacing: 1px;
+          position: relative;
+          
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: $vintage-accent;
+          }
         }
 
         .menu-items {
@@ -139,30 +175,41 @@ $box-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);       // Sombra pequeña
             align-items: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            border-bottom: 1px dashed $border-color;
+            border-bottom: 1px dashed $vintage-border;
 
             &:last-child {
               border-bottom: none;
             }
 
             &:hover {
-              background: rgba($primary-color, 0.05);
+              background: rgba($vintage-primary, 0.05);
             }
 
             &.selected {
-              background: rgba($primary-color, 0.1);
+              background: rgba($vintage-primary, 0.1);
             }
 
             input[type="checkbox"] {
               margin-right: 1rem;
               width: 18px;
               height: 18px;
-              accent-color: $primary-color;
+              accent-color: $vintage-primary;
+              position: relative;
+              
+              &::before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border: 1px solid $vintage-border;
+                background: white;
+              }
             }
 
             label {
               flex-grow: 1;
               cursor: pointer;
+              font-family: $vintage-font-secondary;
 
               .restrictions {
                 display: inline-flex;
@@ -173,8 +220,9 @@ $box-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);       // Sombra pequeña
                   font-size: 0.7rem;
                   padding: 0.1rem 0.5rem;
                   border-radius: 10px;
-                  background: $background-light;
-                  color: $text-secondary;
+                  background: $vintage-secondary;
+                  color: $vintage-text;
+                  font-family: $vintage-font;
                 }
               }
             }
@@ -184,15 +232,15 @@ $box-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);       // Sombra pequeña
     }
 
     .selected-menu-summary {
-      background: white;
-      border-radius: 10px;
+      @include vintage-card;
       padding: 1.5rem;
-      box-shadow: $box-shadow;
       margin-bottom: 2rem;
 
       h3 {
-        color: $primary-color;
+        color: $vintage-primary;
         margin-bottom: 1.5rem;
+        font-family: $vintage-font;
+        letter-spacing: 1px;
       }
 
       .summary-grid {
@@ -202,10 +250,11 @@ $box-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);       // Sombra pequeña
 
         .summary-category {
           h4 {
-            color: $primary-color;
+            color: $vintage-primary;
             margin-bottom: 0.5rem;
             padding-bottom: 0.25rem;
-            border-bottom: 1px solid $border-color;
+            border-bottom: 1px solid $vintage-border;
+            font-family: $vintage-font;
           }
 
           ul {
@@ -215,12 +264,22 @@ $box-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);       // Sombra pequeña
 
             li {
               padding: 0.5rem 0;
-              color: $text-primary;
+              color: $vintage-text;
+              position: relative;
+              padding-left: 1rem;
+              
+              &::before {
+                content: "•";
+                position: absolute;
+                left: 0;
+                color: $vintage-primary;
+              }
 
               .restrictions {
-                color: $text-secondary;
+                color: $vintage-text-light;
                 font-size: 0.8rem;
                 margin-left: 0.5rem;
+                font-style: italic;
               }
             }
           }
@@ -231,13 +290,15 @@ $box-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);       // Sombra pequeña
 
   .restrictions-section {
     h2 {
-      color: $primary-color;
+      color: $vintage-primary;
       margin-bottom: 1.5rem;
+      font-family: $vintage-font;
     }
 
     .subtitle {
-      color: $text-secondary;
+      color: $vintage-text-light;
       margin-bottom: 2rem;
+      font-style: italic;
     }
 
     .restrictions-grid {
@@ -247,10 +308,8 @@ $box-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);       // Sombra pequeña
       margin-bottom: 2rem;
 
       .restriction-card {
-        background: white;
-        border-radius: 10px;
+        @include vintage-card;
         padding: 1.5rem;
-        box-shadow: $box-shadow;
         text-align: center;
         transition: transform 0.3s ease;
 
@@ -259,67 +318,72 @@ $box-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);       // Sombra pequeña
         }
 
         h3 {
-          color: $primary-color;
+          color: $vintage-primary;
           margin-bottom: 0.5rem;
+          font-family: $vintage-font;
         }
 
         .count {
           font-size: 1.5rem;
           font-weight: 700;
-          color: $text-primary;
+          color: $vintage-text;
           margin-bottom: 1rem;
+          font-family: $vintage-font-secondary;
         }
 
         .progress-bar {
           height: 8px;
-          background: $background-light;
+          background: $vintage-secondary;
           border-radius: 4px;
           overflow: hidden;
           margin-bottom: 1.5rem;
+          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 
           .progress {
             height: 100%;
-            background: $primary-color;
+            background: $vintage-primary;
           }
         }
 
         .btn-details {
-          @include secondary-button;
+          @include vintage-button;
           width: 100%;
           padding: 0.5rem;
           font-size: 0.9rem;
+          background-color: $vintage-accent;
         }
       }
     }
 
     .restrictions-notes {
-      background: white;
-      border-radius: 10px;
+      @include vintage-card;
       padding: 1.5rem;
-      box-shadow: $box-shadow;
 
       h3 {
-        color: $primary-color;
+        color: $vintage-primary;
         margin-bottom: 1rem;
+        font-family: $vintage-font;
       }
 
       textarea {
         width: 100%;
         min-height: 150px;
         padding: 1rem;
-        border: 1px solid $border-color;
-        border-radius: 6px;
+        border: 1px solid $vintage-border;
+        border-radius: 0;
         font-family: inherit;
         resize: vertical;
+        background-color: rgba(255, 255, 255, 0.7);
+        font-family: $vintage-font-secondary;
 
         &:focus {
           outline: none;
-          border-color: $primary-color;
+          border-color: $vintage-primary;
         }
       }
 
       .btn-save {
-        @include primary-button;
+        @include vintage-button;
         margin-top: 1rem;
         padding: 0.75rem 2rem;
       }
@@ -328,25 +392,26 @@ $box-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);       // Sombra pequeña
 
   .tables-section {
     h2 {
-      color: $primary-color;
+      color: $vintage-primary;
       margin-bottom: 1.5rem;
+      font-family: $vintage-font;
     }
 
     .subtitle {
-      color: $text-secondary;
+      color: $vintage-text-light;
       margin-bottom: 2rem;
+      font-style: italic;
     }
 
     .add-guest-form {
-      background: white;
-      border-radius: 10px;
+      @include vintage-card;
       padding: 1.5rem;
-      box-shadow: $box-shadow;
       margin-bottom: 2rem;
 
       h3 {
-        color: $primary-color;
+        color: $vintage-primary;
         margin-bottom: 1.5rem;
+        font-family: $vintage-font;
       }
 
       .form-row {
@@ -363,26 +428,28 @@ $box-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);       // Sombra pequeña
           label {
             display: block;
             margin-bottom: 0.5rem;
-            color: $text-secondary;
+            color: $vintage-text-light;
             font-size: 0.9rem;
+            font-family: $vintage-font-secondary;
           }
 
           input, select {
             width: 100%;
             padding: 0.75rem;
-            border: 1px solid $border-color;
-            border-radius: 6px;
+            border: 1px solid $vintage-border;
+            border-radius: 0;
             font-family: inherit;
+            background-color: rgba(255, 255, 255, 0.7);
 
             &:focus {
               outline: none;
-              border-color: $primary-color;
+              border-color: $vintage-primary;
             }
           }
         }
 
         .btn-add {
-          @include primary-button;
+          @include vintage-button;
           padding: 0.75rem 1.5rem;
           height: fit-content;
           white-space: nowrap;
@@ -402,18 +469,17 @@ $box-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);       // Sombra pequeña
       margin-bottom: 2rem;
 
       .table-card {
-        background: white;
-        border-radius: 10px;
+        @include vintage-card;
         padding: 1.5rem;
-        box-shadow: $box-shadow;
         transition: transform 0.3s ease;
+        position: relative;
 
         &:hover {
           transform: translateY(-5px);
         }
 
         &.full {
-          border-left: 4px solid $error-color;
+          border-left: 4px solid darken($vintage-primary, 15%);
         }
 
         .table-header {
@@ -422,16 +488,18 @@ $box-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);       // Sombra pequeña
           align-items: center;
           margin-bottom: 1rem;
           padding-bottom: 0.5rem;
-          border-bottom: 1px solid $border-color;
+          border-bottom: 1px solid $vintage-border;
 
           h3 {
-            color: $primary-color;
+            color: $vintage-primary;
             margin: 0;
+            font-family: $vintage-font;
           }
 
           .capacity {
-            color: $text-secondary;
+            color: $vintage-text-light;
             font-size: 0.9rem;
+            font-family: $vintage-font-secondary;
           }
         }
 
@@ -443,8 +511,9 @@ $box-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);       // Sombra pequeña
 
           li {
             padding: 0.5rem 0;
-            color: $text-primary;
-            border-bottom: 1px dashed $border-color;
+            color: $vintage-text;
+            border-bottom: 1px dashed $vintage-border;
+            font-family: $vintage-font-secondary;
 
             &:last-child {
               border-bottom: none;
@@ -453,52 +522,69 @@ $box-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);       // Sombra pequeña
         }
 
         .empty-message {
-          color: $text-secondary;
+          color: $vintage-text-light;
           font-style: italic;
           text-align: center;
           padding: 2rem 0;
         }
 
         .full-message {
-          color: $error-color;
+          color: darken($vintage-primary, 15%);
           font-weight: 600;
           text-align: center;
           margin-top: 1rem;
+          font-family: $vintage-font;
         }
       }
     }
 
     .seating-plan-notes {
-      background: white;
-      border-radius: 10px;
+      @include vintage-card;
       padding: 1.5rem;
-      box-shadow: $box-shadow;
 
       h3 {
-        color: $primary-color;
+        color: $vintage-primary;
         margin-bottom: 1rem;
+        font-family: $vintage-font;
       }
 
       textarea {
         width: 100%;
         min-height: 150px;
         padding: 1rem;
-        border: 1px solid $border-color;
-        border-radius: 6px;
+        border: 1px solid $vintage-border;
+        border-radius: 0;
         font-family: inherit;
         resize: vertical;
+        background-color: rgba(255, 255, 255, 0.7);
+        font-family: $vintage-font-secondary;
 
         &:focus {
           outline: none;
-          border-color: $primary-color;
+          border-color: $vintage-primary;
         }
       }
 
       .btn-save {
-        @include primary-button;
+        @include vintage-button;
         margin-top: 1rem;
         padding: 0.75rem 2rem;
       }
     }
   }
+}
+
+/* Efecto de papel antiguo */
+.catering-container::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(210, 180, 140, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(210, 180, 140, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: -1;
 }

@@ -1,34 +1,103 @@
 /* ==================== */
-/* VARIABLES VINTAGE */
+/* VARIABLES Y MIXINS */
 /* ==================== */
-$primary-color: #8B4513; // Marrón oscuro vintage
-$secondary-color: #F5DEB3; // Beige claro
-$accent-color: #A0522D; // Marrón rojizo
-$gold-color: #D4AF37; // Oro para detalles
-$text-color: #3A2E29;
-$text-light: #777;
-$border-color: rgba(139, 69, 19, 0.3);
-$background-light: #FFF8E7;
-$box-shadow: 0 10px 30px rgba(139, 69, 19, 0.15);
-$success-color: #5a8f5a;
-$warning-color: #b08d57;
-$error-color: #8f5a5a;
-$info-color: #5a7b8f;
-$transition: all 0.3s ease;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Old+Standard+TT:wght@400;700&display=swap');
+
+// Colores vintage
+$vintage-primary: #8B4513; // SaddleBrown
+$vintage-secondary: #D2B48C; // Tan
+$vintage-accent: #5F4B32; // DarkBrown
+$vintage-gold: #D4AF37; // Gold
+$vintage-text: #3E2723; // DarkText
+$vintage-text-light: #5D4037; // LightText
+$vintage-border: #BCAAA4; // LightBorder
+$vintage-paper: #FFF8E1; // Paper
+$vintage-shadow: 0 2px 8px rgba(94, 71, 44, 0.2);
+
+// Colores para asignaciones
+$color-fabiola: #C9A0DC; // Lila
+$color-alejandro: #89CFF0; // Azul claro
+$color-both: #77DD77; // Verde
+
+// Prioridades
+$priority-high: #E74C3C;
+$priority-medium: #F39C12;
+$priority-low: #2ECC71;
+
+// Mixins
+@mixin vintage-button {
+  background-color: $vintage-primary;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: $vintage-shadow;
+  font-family: 'Old Standard TT', serif;
+
+  &:hover {
+    background-color: darken($vintage-primary, 10%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  i {
+    margin-right: 0.5rem;
+  }
+}
+
+@mixin vintage-card {
+  background-color: $vintage-paper;
+  border: 1px solid $vintage-border;
+  border-radius: 0;
+  box-shadow: $vintage-shadow;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23BCAAA4" stroke-width="0.5" stroke-dasharray="5,5"/></svg>');
+    opacity: 0.1;
+    pointer-events: none;
+  }
+}
+
+@mixin divider-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, $vintage-gold, transparent);
+  margin: 1.5rem auto;
+  width: 80%;
+  max-width: 500px;
+  position: relative;
+}
 
 /* ==================== */
-/* ESTILOS GENERALES */
+/* ESTRUCTURA PRINCIPAL */
 /* ==================== */
-.checklist-container.vintage-design {
+.checklist-container {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
   font-family: 'Cormorant Garamond', serif;
-  background: url('../assets/images/vintage-paper-bg.jpg') center/cover;
-  border-radius: 8px;
+  background-color: $vintage-paper;
+  border: 1px solid $vintage-border;
   position: relative;
   overflow: hidden;
 
+  // Fondo con patrón vintage
   &::before {
     content: '';
     position: absolute;
@@ -36,8 +105,10 @@ $transition: all 0.3s ease;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 248, 231, 0.9);
-    z-index: 0;
+    background: linear-gradient(rgba(210, 180, 140, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(210, 180, 140, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
   }
 
   > * {
@@ -46,26 +117,22 @@ $transition: all 0.3s ease;
   }
 
   h1, h2, h3 {
-    color: $primary-color;
-    font-family: 'Cinzel', serif;
-    font-weight: 500;
+    color: $vintage-primary;
+    font-family: 'Old Standard TT', serif;
+    letter-spacing: 1px;
+    font-weight: 700;
   }
 
   .divider {
-    height: 2px;
-    background: linear-gradient(90deg, transparent, $gold-color, transparent);
-    margin: 1.5rem auto;
-    width: 80%;
-    max-width: 500px;
-    position: relative;
-
+    @include divider-line;
+    
     &.floral {
       &::before, &::after {
         content: '❀';
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        color: $gold-color;
+        color: $vintage-gold;
         font-size: 1.2rem;
       }
 
@@ -78,351 +145,494 @@ $transition: all 0.3s ease;
       }
     }
   }
+}
 
-  .header-section {
-    text-align: center;
-    margin-bottom: 2rem;
+/* ==================== */
+/* CABECERA Y FILTROS */
+/* ==================== */
+.header-section {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: 1px;
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  .subtitle {
+    color: $vintage-text-light;
+    font-style: italic;
+    font-size: 1.2rem;
+  }
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+
+  button {
+    @include vintage-button;
+    display: inline-flex;
+    align-items: center;
+    
+    &.export-btn {
+      background-color: $vintage-accent;
+    }
+    
+    &.whatsapp-btn {
+      background-color: #25D366;
+    }
+  }
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1.5rem auto;
+  max-width: 800px;
+  flex-wrap: wrap;
+
+  .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    label {
+      color: $vintage-text;
+      font-family: 'Old Standard TT', serif;
+      white-space: nowrap;
     }
 
-    .subtitle {
-      color: $accent-color;
-      font-style: italic;
+    select {
+      background-color: $vintage-paper;
+      border: 1px solid $vintage-border;
+      padding: 0.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      color: $vintage-text;
+      min-width: 120px;
+    }
+  }
+
+  .search-filter {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    i {
+      position: absolute;
+      left: 0.8rem;
+      color: $vintage-text-light;
+    }
+
+    input {
+      padding: 0.5rem 1rem 0.5rem 2rem;
+      border: 1px solid $vintage-border;
+      background-color: $vintage-paper;
+      font-family: 'Cormorant Garamond', serif;
+      color: $vintage-text;
+      min-width: 200px;
+
+      &::placeholder {
+        color: $vintage-text-light;
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+/* ==================== */
+/* LISTA DE CATEGORÍAS */
+/* ==================== */
+.categories-container {
+  margin: 2rem 0;
+
+  .no-results {
+    text-align: center;
+    padding: 2rem;
+    color: $vintage-text-light;
+    font-style: italic;
+
+    i {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: $vintage-primary;
+      display: block;
+    }
+  }
+}
+
+.category-card {
+  @include vintage-card;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(94, 71, 44, 0.25);
+  }
+
+  .category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 1.25rem 1.5rem;
+    background: rgba($vintage-primary, 0.05);
+    border-bottom: 1px solid $vintage-border;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: rgba($vintage-primary, 0.1);
+    }
+
+    .category-title {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      i {
+        color: $vintage-gold;
+        font-size: 1.2rem;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 1.25rem;
+      }
+    }
+
+    .progress-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      .progress-bar {
+        width: 120px;
+        height: 8px;
+        background: $vintage-secondary;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+
+        .progress {
+          height: 100%;
+          background: linear-gradient(90deg, $vintage-gold, $vintage-accent);
+          border-radius: 4px;
+        }
+      }
+
+      span {
+        color: $vintage-text-light;
+        font-size: 0.85rem;
+        min-width: 70px;
+      }
+    }
+
+    i.bi-chevron-down, i.bi-chevron-up {
+      color: $vintage-primary;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+  }
+}
+
+/* ==================== */
+/* LISTA DE TAREAS */
+/* ==================== */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+
+  .task-item {
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px dashed $vintage-border;
+    transition: all 0.3s ease;
+    position: relative;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background: rgba($vintage-gold, 0.05);
+    }
+
+    &.completed {
+      opacity: 0.7;
+
+      label {
+        color: $vintage-text-light;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 3.5rem;
+        right: 1.5rem;
+        top: 50%;
+        height: 1px;
+        background: $vintage-gold;
+        transform: translateY(-50%);
+      }
+    }
+
+    // Estilos para checkbox personalizado
+    input[type="checkbox"] {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid $vintage-gold;
+      border-radius: 4px;
+      margin-right: 1rem;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+      background-color: rgba(255, 255, 255, 0.7);
+      flex-shrink: 0;
+
+      &:checked {
+        background: $vintage-gold;
+
+        &::after {
+          content: '✓';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: white;
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+      cursor: pointer;
+      font-size: 1.05rem;
+      color: $vintage-text;
+      transition: all 0.3s ease;
+      font-family: 'Cormorant Garamond', serif;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+
+      .task-name {
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .task-details {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+
+        > span {
+          display: flex;
+          align-items: center;
+          gap: 0.3rem;
+          font-size: 0.85rem;
+
+          i {
+            font-size: 0.9rem;
+          }
+        }
+
+        .due-date {
+          background: rgba($vintage-gold, 0.1);
+          padding: 0.3rem 0.8rem;
+          border-radius: 20px;
+          color: $vintage-accent;
+        }
+
+        .assigned-to {
+          padding: 0.2rem 0.6rem;
+          border-radius: 12px;
+          text-transform: capitalize;
+          
+          &.fabiola {
+            background-color: rgba($color-fabiola, 0.2);
+            color: darken($color-fabiola, 30%);
+            border: 1px solid $color-fabiola;
+          }
+          
+          &.alejandro {
+            background-color: rgba($color-alejandro, 0.2);
+            color: darken($color-alejandro, 30%);
+            border: 1px solid $color-alejandro;
+          }
+          
+          &.both {
+            background-color: rgba($color-both, 0.2);
+            color: darken($color-both, 30%);
+            border: 1px solid $color-both;
+          }
+        }
+
+        .priority {
+          padding: 0.2rem 0.6rem;
+          border-radius: 12px;
+          font-weight: 500;
+          
+          &.high {
+            background-color: rgba($priority-high, 0.1);
+            color: $priority-high;
+            border: 1px solid $priority-high;
+          }
+          
+          &.medium {
+            background-color: rgba($priority-medium, 0.1);
+            color: $priority-medium;
+            border: 1px solid $priority-medium;
+          }
+          
+          &.low {
+            background-color: rgba($priority-low, 0.1);
+            color: $priority-low;
+            border: 1px solid $priority-low;
+          }
+        }
+      }
+    }
+
+    // Estilos para tareas según asignación
+    &.assigned-fabiola {
+      border-left: 3px solid $color-fabiola;
+    }
+    
+    &.assigned-alejandro {
+      border-left: 3px solid $color-alejandro;
+    }
+    
+    &.assigned-both {
+      border-left: 3px solid $color-both;
+    }
+  }
+}
+
+/* ==================== */
+/* ESTADO DE CARGA */
+/* ==================== */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+
+  .loading-spinner {
+    text-align: center;
+    
+    i {
+      font-size: 3rem;
+      color: $vintage-primary;
+      animation: spin 1s linear infinite;
+    }
+    
+    p {
+      margin-top: 1rem;
+      color: $vintage-text;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1.2rem;
     }
   }
 }
 
-/* ==================== */
-/* TIMELINE Y FASES */
-/* ==================== */
-.timeline-container {
-  margin: 3rem 0;
-
-  .phase-card {
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 8px;
-    margin-bottom: 2rem;
-    box-shadow: $box-shadow;
-    border: 1px solid rgba($primary-color, 0.1);
-    overflow: hidden;
-    transition: $transition;
-
-    &:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(139, 69, 19, 0.2);
-    }
-
-    .phase-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      padding: 1.5rem;
-      background: rgba($primary-color, 0.05);
-      border-bottom: 1px solid $border-color;
-      transition: $transition;
-
-      &:hover {
-        background: rgba($primary-color, 0.1);
-      }
-
-      h3 {
-        margin: 0;
-        font-size: 1.3rem;
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-
-        i {
-          color: $gold-color;
-        }
-      }
-
-      .progress-container {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-
-        .progress-bar {
-          width: 150px;
-          height: 10px;
-          background: $background-light;
-          border-radius: 5px;
-          overflow: hidden;
-          box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-
-          .progress {
-            height: 100%;
-            background: linear-gradient(90deg, $gold-color, $accent-color);
-            border-radius: 5px;
-          }
-        }
-
-        span {
-          color: $accent-color;
-          font-size: 0.9rem;
-          font-family: 'Raleway', sans-serif;
-          min-width: 80px;
-        }
-      }
-
-      i.bi-chevron-down, i.bi-chevron-up {
-        color: $primary-color;
-        font-size: 1.3rem;
-        transition: $transition;
-      }
-    }
-
-    .phase-tasks {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-
-      li {
-        padding: 1rem 1.5rem;
-        display: flex;
-        align-items: center;
-        border-bottom: 1px dashed $border-color;
-        transition: $transition;
-
-        &:last-child {
-          border-bottom: none;
-        }
-
-        &:hover {
-          background: rgba($gold-color, 0.05);
-        }
-
-        &.completed {
-          opacity: 0.7;
-          position: relative;
-
-          &::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            width: 100%;
-            height: 1px;
-            background: $gold-color;
-            transform: translateY(-50%);
-          }
-
-          label {
-            color: $text-light;
-          }
-        }
-
-        input[type="checkbox"] {
-          appearance: none;
-          width: 20px;
-          height: 20px;
-          border: 2px solid $gold-color;
-          border-radius: 4px;
-          margin-right: 1rem;
-          cursor: pointer;
-          position: relative;
-          transition: $transition;
-
-          &:checked {
-            background: $gold-color;
-
-            &::after {
-              content: '✓';
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              color: white;
-              font-size: 0.8rem;
-            }
-          }
-        }
-
-        label {
-          display: flex;
-          align-items: center;
-          flex-grow: 1;
-          cursor: pointer;
-          font-size: 1.1rem;
-          color: $text-color;
-          transition: $transition;
-
-          .due-date {
-            margin-left: auto;
-            background: rgba($gold-color, 0.1);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: $accent-color;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            font-family: 'Raleway', sans-serif;
-
-            i {
-              font-size: 0.9rem;
-            }
-          }
-        }
-      }
-    }
-  }
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* ==================== */
-/* SECCIÓN DOCUMENTACIÓN */
-/* ==================== */
-.documentacion-section {
-  margin-top: 4rem;
-  padding: 0 1rem;
-
-  h2 {
-    text-align: center;
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
-
-    i {
-      color: $gold-color;
-    }
-  }
-
-  .document-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-
-    .document-card {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: $box-shadow;
-      text-align: center;
-      transition: $transition;
-      border-top: 4px solid;
-      position: relative;
-      overflow: hidden;
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: currentColor;
-        opacity: 0.3;
-      }
-
-      .card-icon {
-        width: 60px;
-        height: 60px;
-        margin: 0 auto 1.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba($gold-color, 0.1);
-        border-radius: 50%;
-        color: $primary-color;
-        font-size: 1.8rem;
-      }
-
-      h3 {
-        font-size: 1.3rem;
-        margin-bottom: 0.8rem;
-        color: $primary-color;
-      }
-
-      p {
-        color: $text-light;
-        font-size: 0.95rem;
-        line-height: 1.5;
-        margin-bottom: 1.5rem;
-        font-family: 'Raleway', sans-serif;
-      }
-
-      .status {
-        display: inline-block;
-        padding: 0.4rem 1rem;
-        border-radius: 20px;
-        font-size: 0.85rem;
-        font-weight: 500;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        font-family: 'Raleway', sans-serif;
-      }
-
-      &.pending {
-        border-color: $warning-color;
-        color: $warning-color;
-      }
-
-      &.completed {
-        border-color: $success-color;
-        color: $success-color;
-      }
-
-      &.not-started {
-        border-color: $error-color;
-        color: $error-color;
-      }
-
-      &.in-progress {
-        border-color: $info-color;
-        color: $info-color;
-      }
-    }
-  }
-}
-
-/* ==================== */
-/* RESPONSIVE */
+/* RESPONSIVE DESIGN */
 /* ==================== */
 @media (max-width: 992px) {
-  .checklist-container.vintage-design {
+  .checklist-container {
     padding: 1.5rem;
 
     .header-section h1 {
       font-size: 2rem;
     }
 
-    .phase-card .phase-header {
+    .filters {
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       gap: 1rem;
 
-      .progress-container {
+      .filter-group, .search-filter {
         width: 100%;
-        justify-content: space-between;
+        max-width: 300px;
       }
     }
   }
 }
 
 @media (max-width: 768px) {
-  .document-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .phase-tasks li {
+  .category-card .category-header {
     flex-direction: column;
-    align-items: flex-start !important;
-    gap: 0.5rem;
+    align-items: flex-start;
+    gap: 1rem;
 
-    .due-date {
-      margin-left: 0 !important;
-      margin-top: 0.5rem;
-      align-self: flex-end;
+    .progress-container {
+      width: 100%;
+      justify-content: space-between;
     }
   }
+
+  .task-list .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+
+    label .task-details {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .action-buttons {
+    flex-direction: column;
+    gap: 1rem;
+
+    button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .checklist-container {
+    padding: 1rem;
+  }
+}
+
+/* ==================== */
+/* SCROLLBAR PERSONALIZADA */
+/* ==================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba($vintage-secondary, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: $vintage-primary;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: darken($vintage-primary, 10%);
 }

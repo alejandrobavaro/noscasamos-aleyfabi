@@ -1,0 +1,210 @@
+.received-gifts-container {
+    /* ==================== */
+    /* VARIABLES LOCALES */
+    /* ==================== */
+    $primary-color: #8B4513;
+    $secondary-color: #F5DEB3;
+    $accent-color: #A0522D;
+    $gold-color: #D4AF37;
+    $text-color: #3A2E29;
+    $border-color: rgba(139, 69, 19, 0.3);
+    $background-light: #FFF8E7;
+    $box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
+    $transition: all 0.3s ease;
+    $success-color: #5a8f5a;
+    $warning-color: #b08d57;
+    $error-color: #8f5a5a;
+  
+    /* ==================== */
+    /* MIXINS LOCALES */
+    /* ==================== */
+    @mixin card-style {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: $box-shadow;
+      border: 1px solid $border-color;
+      transition: $transition;
+      
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(139, 69, 19, 0.2);
+      }
+    }
+  
+    @mixin vintage-button {
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: $transition;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  
+    /* ==================== */
+    /* ESTILOS PRINCIPALES */
+    /* ==================== */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+  
+      .stat-card {
+        @include card-style;
+        text-align: center;
+        padding: 1.5rem;
+        position: relative;
+        overflow: hidden;
+        border-top: 4px solid currentColor;
+  
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: currentColor;
+          opacity: 0.3;
+        }
+  
+        .stat-icon {
+          width: 60px;
+          height: 60px;
+          margin: 0 auto 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba($gold-color, 0.1);
+          border-radius: 50%;
+          color: $primary-color;
+          font-size: 1.8rem;
+        }
+  
+        h3 {
+          font-size: 1rem;
+          color: $text-color;
+          margin-bottom: 0.5rem;
+          font-family: 'Raleway', sans-serif;
+          font-weight: 500;
+        }
+  
+        p {
+          font-size: 1.8rem;
+          font-weight: 600;
+          color: $primary-color;
+          margin: 0;
+          font-family: 'Cinzel', serif;
+        }
+  
+        &.total {
+          color: $primary-color;
+        }
+  
+        &.thanked {
+          color: $success-color;
+        }
+  
+        &.pending {
+          color: $warning-color;
+        }
+      }
+    }
+  
+    .gifts-table {
+      @include card-style;
+      overflow: hidden;
+      padding: 0;
+  
+      .table-header {
+        display: grid;
+        grid-template-columns: 2fr 2fr 1fr 1.5fr;
+        background: rgba($primary-color, 0.8);
+        color: white;
+        font-weight: 500;
+        font-family: 'Raleway', sans-serif;
+  
+        .header-cell {
+          padding: 1rem;
+          text-align: left;
+        }
+      }
+  
+      .table-body {
+        .table-row {
+          display: grid;
+          grid-template-columns: 2fr 2fr 1fr 1.5fr;
+          border-bottom: 1px solid $border-color;
+  
+          &:last-child {
+            border-bottom: none;
+          }
+  
+          &:hover {
+            background: rgba($gold-color, 0.05);
+          }
+  
+          .table-cell {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            color: $text-color;
+            font-size: 0.95rem;
+          }
+  
+          .thank-you-sent {
+            color: $success-color;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Raleway', sans-serif;
+  
+            i {
+              font-size: 1.1rem;
+            }
+          }
+  
+          .thank-you-btn {
+            @include vintage-button;
+            background: linear-gradient(to right, $primary-color, $accent-color);
+            color: white;
+  
+            &:hover {
+              background: linear-gradient(to right, darken($primary-color, 5%), darken($accent-color, 5%));
+            }
+  
+            i {
+              font-size: 1rem;
+            }
+          }
+        }
+  
+        .no-gifts {
+          grid-column: 1 / -1;
+          padding: 2rem;
+          text-align: center;
+          color: $accent-color;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+  
+          i {
+            font-size: 2rem;
+            color: $gold-color;
+          }
+  
+          p {
+            margin: 0;
+            font-style: italic;
+          }
+        }
+      }
+    }
+  }
