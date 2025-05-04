@@ -1,5 +1,6 @@
-/*--------------Estilos Globales--------------*/
-@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300&display=swap');
+/*--------------Estilos Globales Mejorados--------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Cinzel:wght@400;500;600&display=swap');
 
 * {
   margin: 0;
@@ -14,153 +15,198 @@ html {
 /*--------------Estilos Body--------------*/
 
 body {
-  
-  background-image: url(../../../../img/00-fondos/fondo2.jpg);
-  background-size: cover; // Asegúrate de que la imagen cubra todo el fondo
-  animation: backgroundAnimation 15s linear infinite; // Fondo animado
-  // font-family: 'Oxanium', sans-serif; // Cambia aquí
-  // font-family: 'Montserrat', sans-serif;
-  font-family: 'Cinzel', serif;
-
+  background: #FFF9F5; // Fondo sólido vintage
+  font-family: 'Cormorant Garamond', serif;
   text-align: center;
-
-
-  // Animación de desplazamiento de fondo
-  @keyframes backgroundAnimation {
-    0% {
-      background-position: 0% 0%; // Posición inicial
-    }
-    25% {
-      background-position: 50% 0%; // Mueve el fondo hacia la mitad
-    }
-    50% {
-      background-position: 100% 0%; // Mueve el fondo hacia la derecha
-    }
-    75% {
-      background-position: 50% 0%; // Regresa a la mitad
-    }
-    100% {
-      background-position: 0% 0%; // Regresa a la posición inicial
-    }
-  }
-
+  color: #3A2E29;
+  line-height: 1.6;
+  min-height: 100vh;
 }
 
 /*--------------Estilos para el Contenedor Principal--------------*/
 
 .app {
-  padding: 2em;
-  transition: background-color 0.3s, box-shadow 0.3s;
-
-
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(255, 249, 245, 0.9);
+  min-height: 100vh;
 }
 
 .main-content {
   display: flex;
-  gap: 2em;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 /*--------------Estilos para Textos y Encabezados--------------*/
 
 p {
-  font-size: medium;
-  padding: 20px;
-  color: #dcdcdc;
-
-
+  font-size: 1.1rem;
+  padding: 1rem;
+  color: #5a4a42;
+  line-height: 1.8;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-bottom: 1em;
-  
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
 }
 
 h1 {
-  font-size: xx-large;
-  color: #fff4c8; // Amarillo patito
+  font-size: 2.2rem;
+  color: #8B4513;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: #D4AF37;
+  }
 }
 
 h2 {
-  font-size: large;
-  color: #a8bddb; // Amarillo patito
+  font-size: 1.8rem;
+  color: #8B4513;
+  margin-top: 2rem;
 }
 
-h3,
-h4,
-h5 {
+h3 {
+  font-size: 1.5rem;
+  color: #A0522D;
+}
 
+h4 {
+  font-size: 1.3rem;
+  color: #5a4a42;
+}
+
+h5 {
+  font-size: 1.1rem;
+  color: #5a4a42;
 }
 
 h6 {
-  font-size: xx-small;
-  color: rgb(252, 252, 252);
+  font-size: 1rem;
+  color: #5a4a42;
 }
 
 /*--------------Estilos para Listas--------------*/
 
+ul, ol {
+  padding-left: 1.5rem;
+}
+
 li {
   list-style-type: none;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #5a4a42;
 }
 
-ol {
-  list-style-type: circle;
+/*--------------Estilos para Tablas--------------*/
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
 }
 
-td {
-
+td, th {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(139, 69, 19, 0.2);
 }
 
 /*--------------Estilos para Enlaces--------------*/
 
 a {
-  color: rgba(252, 248, 230, 0.857);
+  color: #8B4513;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  
+  &:hover {
+    color: #A0522D;
+    text-decoration: underline;
+  }
+}
 
-  &:link,
-  &:visited {
-    text-decoration: none;
+/*--------------Estilos para el Contenedor de Contenido--------------*/
 
-    body.light-mode & {
-      color: #000000;
+.content {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+}
+
+/*--------------Estilos para Modo Claro/Oscuro--------------*/
+
+body.light-mode {
+  background: #FFF9F5;
+  color: #3A2E29;
+  
+  a {
+    color: #8B4513;
+    
+    &:hover {
+      color: #A0522D;
     }
   }
+}
 
-  &:hover {
-    color: #ffcc00; // Amarillo patito al pasar el mouse
-    animation: shake 0.5s ease;
+/*--------------Media Queries--------------*/
+
+@media (max-width: 900px) {
+  .app {
+    padding: 1.5rem;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
   }
 }
 
-/* Animación de sacudida */
-@keyframes shake {
-  0% {
-    transform: translateX(0);
+@media (max-width: 600px) {
+  .app {
+    padding: 1rem;
   }
-  50% {
-    transform: translateX(-5px);
+  
+  h1 {
+    font-size: 1.5rem;
+    
+    &::after {
+      width: 80px;
+      bottom: -8px;
+    }
   }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-
-/*--------------Estilos para el Contenedor Principal--------------*/
-
-.main-content {
-  display: flex;
-  justify-content: center; // Centra horizontalmente
-  align-items: center; // Centra verticalmente
-  flex-direction: column; // Apila los componentes verticalmente
-  gap: 2em; // Espacio entre los componentes
-
+  
   .content {
-    max-width: 1200px; // Ajusta según el ancho deseado
-    width: 100%; // Asegúrate de que ocupe el ancho total
-    padding: 0px; // Espacio interno
+    padding: 0.75rem;
   }
+}
+
+/* Scrollbars delgadas */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+  border-radius: 3px;
 }

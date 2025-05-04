@@ -1,476 +1,258 @@
-// Variables específicas del componente
-$color-bordo: #7A4F50;
-$color-dorado: #C2A78D;
-$color-blanco: #FFF9F5;
-$color-gris: #F5F0EC;
-$color-verde: #4CAF50;
-$color-rojo: #F44336;
-$color-azul: #4a6baf;
-$color-rosa: #af4a8a;
-
-// Mixins específicos del componente
-@mixin card-style {
-  background: $color-blanco;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-5px);
-  }
-}
-
-@mixin tab-button {
-  background: none;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  cursor: pointer;
-  font-size: 1rem;
-  color: $color-bordo;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  white-space: nowrap;
-  
-  &:hover {
-    background: rgba($color-bordo, 0.1);
-  }
-  
-  &.active {
-    background: $color-bordo;
-    color: white;
-    
-    i {
-      color: white;
-    }
-  }
-  
-  i {
-    color: $color-dorado;
-    font-size: 1.2rem;
-  }
-}
+/* PanelOrganizacion.scss - Versión Mejorada */
 
 .panel-organizacion {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 2rem;
   font-family: 'Cormorant Garamond', serif;
-  color: $color-bordo;
-}
+  color: #3A2E29;
+  background: #FFF9F5;
+  min-height: 100vh;
 
-.encabezado-panel {
-  text-align: center;
-  margin-bottom: 2rem;
-  
-  h1 {
-    font-family: 'Playfair Display', serif;
-    color: $color-bordo;
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+  .encabezado-panel {
+    text-align: center;
+    margin-bottom: 2rem;
+    
+    h1 {
+      font-family: 'Cinzel', serif;
+      color: #8B4513;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    p {
+      font-size: 1.1rem;
+      color: #5a4a42;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
   }
-  
-  p {
-    color: lighten($color-bordo, 20%);
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-  }
-  
+
   .wedding-countdown {
-    background: rgba($color-dorado, 0.1);
+    background: rgba(212, 175, 55, 0.1);
     padding: 1rem;
     border-radius: 8px;
-    max-width: 500px;
-    margin: 0 auto;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(139, 69, 19, 0.3);
     
     span {
       display: block;
-      font-weight: 600;
-      color: $color-bordo;
       margin-bottom: 0.5rem;
+      font-weight: 500;
     }
     
     .progress-bar {
       height: 6px;
-      background: rgba($color-bordo, 0.1);
+      background: rgba(139, 69, 19, 0.1);
       border-radius: 3px;
       overflow: hidden;
       
       .progress {
         height: 100%;
-        background: $color-bordo;
-        transition: width 0.5s ease;
+        background: linear-gradient(to right, #8B4513, #A0522D);
       }
     }
   }
-}
 
-.tabs-container {
-  margin-bottom: 2rem;
-  overflow-x: auto;
-  
-  .tabs {
-    display: flex;
-    gap: 0.5rem;
-    padding-bottom: 0.5rem;
+  .tabs-container {
+    margin-bottom: 2rem;
     
-    button {
-      @include tab-button;
-    }
-  }
-}
-
-.content-container {
-  background: $color-blanco;
-  border-radius: 10px;
-  padding: 2rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  min-height: 500px;
-}
-
-/* Estilos específicos para la pestaña de Organización */
-.resumen-estadisticas {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-
-.estadistica {
-  @include card-style;
-  padding: 1.5rem;
-  text-align: center;
-  position: relative;
-  
-  .icono {
-    font-size: 2rem;
-    color: $color-dorado;
-    margin-bottom: 0.5rem;
-  }
-  
-  h3 {
-    color: $color-bordo;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-  }
-  
-  .numero {
-    font-family: 'Cinzel', serif;
-    color: $color-bordo;
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin: 0.5rem 0;
-  }
-  
-  .meta {
-    color: lighten($color-bordo, 20%);
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .progress-bar {
-    height: 4px;
-    background: rgba($color-bordo, 0.1);
-    border-radius: 2px;
-    overflow: hidden;
-    
-    .progress {
-      height: 100%;
-      background: $color-bordo;
-    }
-  }
-}
-
-.filtros-tareas {
-  display: flex;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  padding: 1rem;
-  background: rgba($color-dorado, 0.1);
-  border-radius: 8px;
-  
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .filtro {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    
-    label {
-      font-weight: 600;
-      color: $color-bordo;
-      white-space: nowrap;
-    }
-    
-    select {
-      padding: 0.5rem;
-      border: 1px solid rgba($color-bordo, 0.3);
-      border-radius: 4px;
-      background: $color-blanco;
-      color: $color-bordo;
-      font-family: 'Cormorant Garamond', serif;
-      min-width: 150px;
-      
-      &:focus {
-        outline: none;
-        border-color: $color-dorado;
-      }
-    }
-  }
-}
-
-.categorias-tareas {
-  margin-bottom: 2rem;
-  
-  h2 {
-    font-family: 'Playfair Display', serif;
-    color: $color-bordo;
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-  }
-}
-
-.grid-categorias {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1.5rem;
-}
-
-.categoria {
-  @include card-style;
-  padding: 1.5rem 1rem;
-  text-align: center;
-  cursor: pointer;
-  border: 1px solid rgba($color-bordo, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  
-  &:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  &.activa {
-    background: $color-bordo;
-    color: white;
-    
-    i, span {
-      color: white;
-    }
-    
-    .contador {
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-    }
-  }
-  
-  i {
-    font-size: 2rem;
-    color: $color-dorado;
-    margin-bottom: 0.8rem;
-    transition: color 0.3s ease;
-  }
-  
-  span {
-    color: $color-bordo;
-    font-size: 1.1rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    margin-bottom: 0.5rem;
-  }
-  
-  .contador {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    background: rgba($color-bordo, 0.1);
-    color: $color-bordo;
-    font-size: 0.8rem;
-    padding: 0.2rem 0.5rem;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-  }
-}
-
-.lista-tareas-completa {
-  h2 {
-    font-family: 'Playfair Display', serif;
-    color: $color-bordo;
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba($color-bordo, 0.1);
-  }
-}
-
-.sin-tareas {
-  text-align: center;
-  padding: 2rem;
-  background: $color-blanco;
-  border-radius: 8px;
-  
-  i {
-    font-size: 3rem;
-    color: $color-dorado;
-    margin-bottom: 1rem;
-  }
-  
-  p {
-    color: lighten($color-bordo, 20%);
-    font-size: 1.1rem;
-  }
-}
-
-.lista-tareas {
-  list-style: none;
-  padding: 0;
-  
-  li {
-    @include card-style;
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    margin-bottom: 0.8rem;
-    
-    &:hover {
-      transform: translateX(5px);
-    }
-    
-    &.completada {
-      opacity: 0.7;
-      
-      label {
-        text-decoration: line-through;
-        color: lighten($color-bordo, 30%);
-      }
-      
-      .categoria-tarea {
-        opacity: 0.7;
-      }
-    }
-    
-    input[type="checkbox"] {
-      margin-right: 1rem;
-      width: 18px;
-      height: 18px;
-      accent-color: $color-bordo;
-      cursor: pointer;
-    }
-    
-    label {
-      color: $color-bordo;
-      flex-grow: 1;
-      cursor: pointer;
-      font-weight: 500;
+    .tabs {
       display: flex;
-      align-items: center;
       flex-wrap: wrap;
       gap: 0.5rem;
+      justify-content: center;
       
-      .categoria-tarea {
-        font-size: 0.7rem;
-        padding: 0.2rem 0.5rem;
-        border-radius: 10px;
-        color: white;
-        font-weight: bold;
+      button {
+        background: none;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        cursor: pointer;
+        font-size: 1rem;
+        color: #5a4a42;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: 'Cormorant Garamond', serif;
+        
+        &:hover {
+          background: rgba(139, 69, 19, 0.1);
+        }
+        
+        &.active {
+          background: #8B4513;
+          color: white;
+          font-weight: 500;
+        }
+        
+        i {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  .default-organization-view {
+    .section-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      
+      h2 {
+        font-family: 'Cinzel', serif;
+        color: #8B4513;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        position: relative;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100px;
+          height: 2px;
+          background: #D4AF37;
+        }
       }
     }
     
-    .detalles-tarea {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      min-width: 120px;
-      margin-left: 1rem;
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
       
-      .fecha {
-        color: lighten($color-bordo, 20%);
-        font-size: 0.9rem;
+      @media (max-width: 900px) {
+        grid-template-columns: repeat(2, 1fr);
       }
       
-      .categoria {
-        font-size: 0.8rem;
-        color: $color-dorado;
-        font-weight: 500;
+      @media (max-width: 500px) {
+        grid-template-columns: 1fr;
+      }
+      
+      .stat-card {
+        background: white;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+        text-align: center;
+        border-top: 3px solid #D4AF37;
+        transition: transform 0.3s ease;
+        
+        &:hover {
+          transform: translateY(-5px);
+        }
+        
+        .stat-image {
+          margin-bottom: 1rem;
+          
+          img {
+            height: 60px;
+            width: auto;
+          }
+        }
+        
+        h3 {
+          font-family: 'Cinzel', serif;
+          color: #8B4513;
+          font-size: 2rem;
+          margin: 0.5rem 0;
+        }
+        
+        p {
+          color: #5a4a42;
+          font-size: 0.9rem;
+          margin-bottom: 1rem;
+        }
+        
+        .progress-bar {
+          height: 6px;
+          background: rgba(139, 69, 19, 0.1);
+          border-radius: 3px;
+          overflow: hidden;
+          
+          .progress {
+            height: 100%;
+            background: #8B4513;
+          }
+        }
+      }
+    }
+    
+    .wedding-details {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+      margin-top: 2rem;
+      
+      h3 {
+        font-family: 'Cinzel', serif;
+        color: #8B4513;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      
+      .details-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        
+        @media (max-width: 600px) {
+          grid-template-columns: 1fr;
+        }
+        
+        .detail-card {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem;
+          border-radius: 6px;
+          background: #fafafa;
+          
+          .detail-icon {
+            background: #FFF9F5;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8B4513;
+            font-size: 1.5rem;
+          }
+          
+          .detail-content {
+            h4 {
+              font-family: 'Cormorant Garamond', serif;
+              color: #8B4513;
+              margin-bottom: 0.25rem;
+              font-size: 1.1rem;
+              font-weight: 600;
+            }
+            
+            p {
+              color: #5a4a42;
+              font-size: 0.9rem;
+            }
+          }
+        }
       }
     }
   }
 }
 
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .tabs {
-    button {
-      padding: 0.75rem 1rem;
-      font-size: 0.9rem;
-    }
-  }
+/* Scrollbars delgadas */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-@media (max-width: 992px) {
-  .tabs {
-    flex-wrap: wrap;
-  }
-  
-  .grid-categorias {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .panel-organizacion {
-    padding: 0.5rem;
-  }
-  
-  .encabezado-panel {
-    h1 {
-      font-size: 2rem;
-    }
-  }
-  
-  .resumen-estadisticas {
-    grid-template-columns: 1fr;
-  }
-  
-  .grid-categorias {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .lista-tareas {
-    li {
-      flex-wrap: wrap;
-      
-      .detalles-tarea {
-        width: 100%;
-        flex-direction: row;
-        justify-content: space-between;
-        margin-top: 0.5rem;
-        padding-left: 2rem;
-      }
-    }
-  }
-}
-
-@media (max-width: 576px) {
-  .grid-categorias {
-    grid-template-columns: 1fr;
-  }
-  
-  .tabs {
-    button {
-      padding: 0.5rem;
-      font-size: 0.8rem;
-      
-      i {
-        display: none;
-      }
-    }
-  }
+::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+  border-radius: 3px;
 }

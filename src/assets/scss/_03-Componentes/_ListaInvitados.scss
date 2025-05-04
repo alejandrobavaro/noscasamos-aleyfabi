@@ -1,19 +1,31 @@
-// ListaInvitados.scss
-$color-bordo: #7A4F50;
-$color-dorado: #C2A78D;
-$color-blanco: #FFF9F5;
-$color-gris: #F5F0EC;
+/* ListaInvitados.scss - Versión Mejorada */
 
 .lista-invitados {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  
+  font-family: 'Cormorant Garamond', serif;
+  color: #3A2E29;
+  background: #FFF9F5;
+  min-height: 100vh;
+
   h1 {
-    font-family: 'Playfair Display', serif;
-    color: $color-bordo;
+    font-family: 'Cinzel', serif;
+    color: #8B4513;
     font-size: 2.2rem;
     margin-bottom: 1.5rem;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 2px;
+      background: #D4AF37;
+    }
   }
 }
 
@@ -28,15 +40,16 @@ $color-gris: #F5F0EC;
 .busqueda {
   display: flex;
   align-items: center;
-  background: $color-blanco;
+  background: white;
   padding: 0.5rem 1rem;
   border-radius: 30px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
   flex-grow: 1;
   max-width: 400px;
+  border: 1px solid rgba(139, 69, 19, 0.2);
   
   i {
-    color: $color-dorado;
+    color: #A0522D;
     margin-right: 0.5rem;
   }
   
@@ -44,45 +57,44 @@ $color-gris: #F5F0EC;
     border: none;
     outline: none;
     background: transparent;
-    font-family: 'Cormorant Garamond', serif;
     font-size: 1rem;
     width: 100%;
     
     &::placeholder {
-      color: lighten($color-bordo, 40%);
+      color: #A38B8B;
     }
   }
 }
 
 .boton-agregar {
-  background: $color-bordo;
+  background: #8B4513;
   color: white;
   border: none;
-  padding: 0.7rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 30px;
-  font-family: 'Cormorant Garamond', serif;
   font-size: 1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
   
   &:hover {
-    background: darken($color-bordo, 10%);
+    background: #A0522D;
   }
 }
 
 .formulario-invitado {
-  background: $color-blanco;
+  background: white;
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
   margin-bottom: 2rem;
+  border: 1px solid rgba(139, 69, 19, 0.1);
   
   h2 {
-    font-family: 'Cormorant Garamond', serif;
-    color: $color-bordo;
+    font-family: 'Cinzel', serif;
+    color: #8B4513;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
   }
@@ -93,8 +105,7 @@ $color-gris: #F5F0EC;
   
   label {
     display: block;
-    font-family: 'Cormorant Garamond', serif;
-    color: $color-bordo;
+    color: #8B4513;
     margin-bottom: 0.5rem;
     font-size: 1rem;
   }
@@ -105,13 +116,12 @@ $color-gris: #F5F0EC;
   input[type="number"] {
     width: 100%;
     padding: 0.7rem;
-    border: 1px solid rgba($color-bordo, 0.2);
-    border-radius: 5px;
-    font-family: 'Cormorant Garamond', serif;
+    border: 1px solid rgba(139, 69, 19, 0.3);
+    border-radius: 4px;
     
     &:focus {
       outline: none;
-      border-color: $color-dorado;
+      border-color: #D4AF37;
     }
   }
   
@@ -126,9 +136,8 @@ $color-gris: #F5F0EC;
   margin-top: 1.5rem;
   
   button {
-    padding: 0.7rem 1.5rem;
-    border-radius: 5px;
-    font-family: 'Cormorant Garamond', serif;
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -136,66 +145,66 @@ $color-gris: #F5F0EC;
 }
 
 .boton-guardar {
-  background: $color-bordo;
+  background: #8B4513;
   color: white;
   border: none;
   
   &:hover {
-    background: darken($color-bordo, 10%);
+    background: #A0522D;
   }
 }
 
 .boton-cancelar {
   background: transparent;
-  color: $color-bordo;
-  border: 1px solid $color-bordo;
+  color: #8B4513;
+  border: 1px solid #8B4513;
   
   &:hover {
-    background: rgba($color-bordo, 0.1);
+    background: rgba(139, 69, 19, 0.1);
   }
 }
 
 .resumen-invitados {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1.5rem;
   margin-bottom: 2rem;
   
   .estadistica {
-    background: $color-blanco;
-    padding: 1rem 1.5rem;
+    background: white;
+    padding: 1.5rem;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    flex: 1;
+    box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+    border-top: 3px solid #D4AF37;
     
     .numero {
       font-family: 'Cinzel', serif;
-      color: $color-bordo;
+      color: #8B4513;
       font-size: 1.8rem;
       font-weight: bold;
       display: block;
     }
     
     .texto {
-      font-family: 'Cormorant Garamond', serif;
-      color: lighten($color-bordo, 20%);
+      color: #5a4a42;
       font-size: 0.9rem;
     }
   }
 }
 
 .tabla-invitados {
-  background: $color-blanco;
-  border-radius: 10px;
+  background: white;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+  border: 1px solid rgba(139, 69, 19, 0.1);
 }
 
 .encabezado-tabla {
   display: flex;
-  background: $color-bordo;
+  background: #8B4513;
   color: white;
-  font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
   padding: 1rem;
   
@@ -213,8 +222,7 @@ $color-gris: #F5F0EC;
 .fila-invitado {
   display: flex;
   padding: 1rem;
-  border-bottom: 1px solid rgba($color-bordo, 0.1);
-  font-family: 'Cormorant Garamond', serif;
+  border-bottom: 1px solid rgba(139, 69, 19, 0.1);
   
   &:last-child {
     border-bottom: none;
@@ -236,7 +244,7 @@ $color-gris: #F5F0EC;
       align-items: flex-start;
       gap: 0.3rem;
       font-size: 0.9rem;
-      color: lighten($color-bordo, 20%);
+      color: #5a4a42;
     }
     
     &.confirmacion { width: 15%; }
@@ -253,26 +261,25 @@ $color-gris: #F5F0EC;
   border: none;
   padding: 0.3rem 0.8rem;
   border-radius: 30px;
-  font-family: 'Cormorant Garamond', serif;
   font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.3s ease;
   
   &.confirmado {
-    background: rgba(#28a745, 0.2);
+    background: rgba(40, 167, 69, 0.2);
     color: #28a745;
     
     &:hover {
-      background: rgba(#28a745, 0.3);
+      background: rgba(40, 167, 69, 0.3);
     }
   }
   
   &.pendiente {
-    background: rgba(#ffc107, 0.2);
+    background: rgba(255, 193, 7, 0.2);
     color: #d39e00;
     
     &:hover {
-      background: rgba(#ffc107, 0.3);
+      background: rgba(255, 193, 7, 0.3);
     }
   }
 }
@@ -285,33 +292,55 @@ $color-gris: #F5F0EC;
   transition: color 0.3s ease;
   
   &:hover {
-    color: $color-dorado;
+    color: #D4AF37;
   }
 }
 
 .boton-editar {
-  color: $color-bordo;
+  color: #8B4513;
 }
 
 .boton-eliminar {
-  color: #dc3545;
+  color: #8f5a5a;
 }
 
 .sin-resultados {
   padding: 2rem;
   text-align: center;
-  font-family: 'Cormorant Garamond', serif;
-  color: lighten($color-bordo, 30%);
+  color: #5a4a42;
 }
 
-@media (max-width: 768px) {
+/* Scrollbars delgadas */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+  border-radius: 3px;
+}
+
+@media (max-width: 900px) {
+  .lista-invitados {
+    padding: 1.5rem;
+  }
+  
+  .resumen-invitados {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
   .lista-invitados {
     padding: 1rem;
   }
   
-  .encabezado-tabla, .fila-invitado {
-    display: none; // O implementar un diseño responsive alternativo
+  .resumen-invitados {
+    grid-template-columns: 1fr;
   }
   
-  // Implementar aquí un diseño alternativo para móviles
+  .encabezado-tabla, .fila-invitado {
+    display: none;
+  }
 }

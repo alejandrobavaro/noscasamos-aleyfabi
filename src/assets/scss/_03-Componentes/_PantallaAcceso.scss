@@ -1,8 +1,4 @@
-// Variables
-$color-bordo: #662a2b;
-$color-dorado: #C2A78D;
-$color-blanco: rgba(255, 249, 245, 0.836);
-$color-error: #d9534f;
+/* PantallaAcceso.scss - Versión corregida */
 
 .pantalla-acceso {
   display: flex;
@@ -31,12 +27,12 @@ $color-error: #d9534f;
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba($color-bordo, 0.05);
+      background: rgba(102, 42, 43, 0.05); /* RGBA del color bordo (#662a2b) */
       z-index: 0;
     }
 
     h4 {
-      color: $color-bordo;
+      color: #662a2b; /* Color bordo directo */
       font-weight: 900;
       font-size: x-large;
       text-transform: uppercase;
@@ -62,7 +58,7 @@ $color-error: #d9534f;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.4s ease;
-  border: 1px solid rgba($color-bordo, 0.15);
+  border: 1px solid rgba(102, 42, 43, 0.15); /* RGBA del color bordo */
   backdrop-filter: blur(2px);
   position: relative;
   z-index: 1;
@@ -95,7 +91,7 @@ $color-error: #d9534f;
     text-transform: uppercase;
     font-weight: 900;
     margin: 0 0;
-    color: $color-bordo;
+    color: #662a2b; /* Color bordo directo */
     text-shadow: 0 1px 2px rgba(0,0,0,0.1);
     position: relative;
   }
@@ -104,29 +100,51 @@ $color-error: #d9534f;
     font-size: small;
     font-weight: 900;
     text-transform: uppercase;
-    color: lighten($color-bordo, 15%);
+    color: #8a5a5b; /* Color bordo aclarado manualmente (15%) */
     margin-top: 0.5rem;
   }
 }
 
 // Estilos específicos para cada tarjeta
-@each $tipo, $color in (
-  'publico': rgba(#F5E1E4, 0.9),
-  'invitado': rgba($color-dorado, 0.4),
-  'organizacion': rgba($color-bordo, 0.2)
-) {
-  .tarjeta-#{$tipo} {
-    .icono-container {
-      background: $color;
-      
-      &:hover {
-        background: saturate($color, 20%);
-      }
-    }
+.tarjeta-publico {
+  .icono-container {
+    background: rgba(245, 225, 228, 0.9); /* RGBA del color rosado */
     
-    i {
-      color: darken($color-bordo, 5%);
+    &:hover {
+      background: rgba(245, 200, 203, 0.9); /* Color saturado manualmente */
     }
+  }
+  
+  i {
+    color: #5a1a1b; /* Color bordo oscurecido manualmente (5%) */
+  }
+}
+
+.tarjeta-invitado {
+  .icono-container {
+    background: rgba(194, 167, 141, 0.4); /* RGBA del color dorado */
+    
+    &:hover {
+      background: rgba(194, 167, 141, 0.6); /* Color saturado manualmente */
+    }
+  }
+  
+  i {
+    color: #5a1a1b; /* Color bordo oscurecido manualmente (5%) */
+  }
+}
+
+.tarjeta-organizacion {
+  .icono-container {
+    background: rgba(102, 42, 43, 0.2); /* RGBA del color bordo */
+    
+    &:hover {
+      background: rgba(102, 42, 43, 0.3); /* Color saturado manualmente */
+    }
+  }
+  
+  i {
+    color: #5a1a1b; /* Color bordo oscurecido manualmente (5%) */
   }
 }
 
@@ -141,7 +159,7 @@ $color-error: #d9534f;
   z-index: 1;
 
   h2 {
-    color: $color-bordo;
+    color: #662a2b; /* Color bordo directo */
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
     text-shadow: 0 1px 2px rgba(255,255,255,0.5);
@@ -167,12 +185,12 @@ $color-error: #d9534f;
       }
       
       &::placeholder {
-        color: lighten($color-bordo, 25%);
+        color: #9a7a7b; /* Color bordo aclarado manualmente (25%) */
       }
     }
 
     button {
-      background: $color-bordo;
+      background: #662a2b; /* Color bordo directo */
       color: white;
       border: none;
       padding: 0 1.5rem;
@@ -180,7 +198,7 @@ $color-error: #d9534f;
       transition: all 0.3s;
 
       &:hover {
-        background: darken($color-bordo, 10%);
+        background: #5a1a1b; /* Color bordo oscurecido manualmente (10%) */
         
         i {
           transform: translateX(3px);
@@ -194,7 +212,7 @@ $color-error: #d9534f;
   }
 
   .error {
-    color: $color-error;
+    color: #d9534f; /* Color error directo */
     font-size: 0.9rem;
     margin-bottom: 1rem;
     text-shadow: 0 1px 1px rgba(255,255,255,0.5);
@@ -203,7 +221,7 @@ $color-error: #d9534f;
   .volver {
     background: none;
     border: none;
-    color: $color-bordo;
+    color: #662a2b; /* Color bordo directo */
     cursor: pointer;
     font-family: inherit;
     display: inline-flex;
@@ -213,7 +231,7 @@ $color-error: #d9534f;
     transition: all 0.3s;
 
     &:hover {
-      color: darken($color-bordo, 10%);
+      color: #5a1a1b; /* Color bordo oscurecido manualmente (10%) */
       text-decoration: underline;
       
       i {

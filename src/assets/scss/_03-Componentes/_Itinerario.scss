@@ -1,10 +1,3 @@
-// Variables
-$color-bordo: #7A4F50;
-$color-dorado: #C2A78D;
-$color-blanco: #FFF9F5;
-$color-beige: #F8F1E9;
-$color-oscuro: #3A2A2A;
-
 // Animaciones
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
@@ -34,12 +27,11 @@ $color-oscuro: #3A2A2A;
 
 .itinerario-header {
   text-align: center;
-  // margin-bottom: 3rem;
   position: relative;
 
   h1 {
     font-family: 'Playfair Display', serif;
-    color: $color-bordo;
+    color: #7A4F50;
     font-size: xx-large;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
@@ -48,7 +40,7 @@ $color-oscuro: #3A2A2A;
 
   p {
     font-family: 'Cormorant Garamond', serif;
-    color: lighten($color-bordo, 20%);
+    color: #9a7a7b;
     font-size: x-large;
     font-style: italic;
   }
@@ -64,12 +56,11 @@ $color-oscuro: #3A2A2A;
 
 .timeline-controls {
   text-align: center;
-  // margin: 2rem 0;
 
   button {
-    background: rgba($color-dorado, 0.2);
-    border: 1px solid $color-dorado;
-    color: $color-bordo;
+    background: rgba(194, 167, 141, 0.2);
+    border: 1px solid #C2A78D;
+    color: #7A4F50;
     padding: 0.5rem 1.5rem;
     border-radius: 30px;
     font-family: 'Cormorant Garamond', serif;
@@ -78,7 +69,7 @@ $color-oscuro: #3A2A2A;
     transition: all 0.3s ease;
 
     &:hover {
-      background: $color-dorado;
+      background: #C2A78D;
       color: white;
     }
   }
@@ -94,7 +85,7 @@ $color-oscuro: #3A2A2A;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: $color-dorado;
+    background: #C2A78D;
     border-radius: 10px;
   }
 }
@@ -104,15 +95,14 @@ $color-oscuro: #3A2A2A;
   justify-content: center;
   gap: 5px;
   min-width: max-content;
-  // padding: 0 2rem;
 }
 
 .timeline-marker {
   padding: 5px 8px;
-  background: $color-beige;
+  background: #F8F1E9;
   border-radius: 30px;
   font-family: 'Cormorant Garamond', serif;
-  color: $color-bordo;
+  color: #7A4F50;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -126,16 +116,16 @@ $color-oscuro: #3A2A2A;
   }
 
   &.active {
-    background: $color-bordo;
+    background: #7A4F50;
     color: white;
-    border-color: $color-dorado;
+    border-color: #C2A78D;
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   }
 }
 
 .timeline-content-container {
-  background: rgba($color-beige, 0.5);
+  background: rgba(248, 241, 233, 0.5);
   border-radius: 20px;
   padding: 0px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
@@ -148,7 +138,7 @@ $color-oscuro: #3A2A2A;
   
   .timeline-time {
     font-family: 'Cormorant Garamond', serif;
-    color: $color-dorado;
+    color: #C2A78D;
     font-size: 1.8rem;
     font-weight: 700;
     margin-bottom: 1rem;
@@ -157,7 +147,7 @@ $color-oscuro: #3A2A2A;
 }
 
 .timeline-content {
-  background: $color-blanco;
+  background: #FFF9F5;
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.08);
@@ -166,7 +156,7 @@ $color-oscuro: #3A2A2A;
 
   h3 {
     font-family: 'Playfair Display', serif;
-    color: $color-bordo;
+    color: #7A4F50;
     font-size: 2rem;
     margin-bottom: 1rem;
     text-align: center;
@@ -181,13 +171,13 @@ $color-oscuro: #3A2A2A;
       transform: translateX(-50%);
       width: 100px;
       height: 2px;
-      background: $color-dorado;
+      background: #C2A78D;
     }
   }
 
   p {
     font-family: 'Cormorant Garamond', serif;
-    color: $color-oscuro;
+    color: #3A2A2A;
     font-size: 1.2rem;
     line-height: 1.6;
     text-align: center;
@@ -233,27 +223,27 @@ $color-oscuro: #3A2A2A;
     bottom: 20px;
 
     li button:before {
-      color: $color-blanco;
+      color: #FFF9F5;
       opacity: 0.5;
       font-size: 10px;
     }
 
     li.slick-active button:before {
-      color: $color-dorado;
+      color: #C2A78D;
       opacity: 1;
     }
   }
 }
 
 .timeline-extras {
-  background: rgba($color-dorado, 0.1);
+  background: rgba(194, 167, 141, 0.1);
   padding: 1.5rem;
   border-radius: 10px;
   margin-top: 2rem;
 
   h4 {
     font-family: 'Cormorant Garamond', serif;
-    color: $color-bordo;
+    color: #7A4F50;
     font-size: 1.3rem;
     margin-bottom: 1rem;
     text-align: center;
@@ -269,7 +259,7 @@ $color-oscuro: #3A2A2A;
 
     li {
       font-family: 'Cormorant Garamond', serif;
-      color: $color-oscuro;
+      color: #3A2A2A;
       font-size: 1.1rem;
       position: relative;
       padding-left: 1.5rem;
@@ -278,7 +268,7 @@ $color-oscuro: #3A2A2A;
         content: '✧';
         position: absolute;
         left: 0;
-        color: $color-dorado;
+        color: #C2A78D;
       }
     }
   }
@@ -288,20 +278,20 @@ $color-oscuro: #3A2A2A;
   text-align: center;
   margin: 3rem 0;
   padding: 2rem;
-  background: linear-gradient(135deg, rgba($color-dorado, 0.1) 0%, rgba($color-bordo, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(194, 167, 141, 0.1) 0%, rgba(122, 79, 80, 0.05) 100%);
   border-radius: 15px;
-  border: 1px solid rgba($color-dorado, 0.3);
+  border: 1px solid rgba(194, 167, 141, 0.3);
 
   h3 {
     font-family: 'Playfair Display', serif;
-    color: $color-bordo;
+    color: #7A4F50;
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
   }
 
   p {
     font-family: 'Cormorant Garamond', serif;
-    color: $color-oscuro;
+    color: #3A2A2A;
     font-size: 1.2rem;
     line-height: 1.6;
     max-width: 800px;
@@ -313,9 +303,9 @@ $color-oscuro: #3A2A2A;
   text-align: center;
   margin: 3rem 0;
   padding: 2rem;
-  background: rgba($color-bordo, 0.8);
+  background: rgba(122, 79, 80, 0.8);
   border-radius: 15px;
-  color: $color-blanco;
+  color: #FFF9F5;
 
   h3 {
     font-family: 'Playfair Display', serif;
@@ -351,20 +341,20 @@ $color-oscuro: #3A2A2A;
   display: block;
   text-align: center;
   font-family: 'Cormorant Garamond', serif;
-  color: $color-bordo;
+  color: #7A4F50;
   font-size: 1.2rem;
   text-decoration: none;
   margin: 3rem auto;
   padding: 1rem 2rem;
-  border: 1px solid $color-bordo;
+  border: 1px solid #7A4F50;
   border-radius: 30px;
   transition: all 0.3s ease;
   max-width: 300px;
-  background: rgba($color-dorado, 0.2);
+  background: rgba(194, 167, 141, 0.2);
 
   &:hover {
-    background: $color-bordo;
-    color: $color-blanco;
+    background: #7A4F50;
+    color: #FFF9F5;
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   }

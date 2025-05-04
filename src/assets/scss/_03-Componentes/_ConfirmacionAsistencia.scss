@@ -1,28 +1,4 @@
-// Variables
-$color-bordo: #7A4F50;
-$color-dorado: #C2A78D;
-$color-blanco: #FFF9F5;
-$color-beige: #F8F1E9;
-$color-verde: #4CAF50;
-$color-rojo: #F44336;
-$color-azul: #2196F3;
-$color-gris: #E0E0E0;
-
-// Mixins
-@mixin card-style {
-  background: $color-blanco;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-}
-
-@mixin flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-// Animaciones
+/* ConfirmacionAsistencia.scss */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -50,21 +26,34 @@ $color-gris: #E0E0E0;
   100% { transform: translateY(0px); }
 }
 
-// Estilos principales
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
+
 .confirmacion-asistencia {
   max-width: 1400px;
   margin: 0 auto;
   padding: 2rem 1rem;
   font-family: 'Cormorant Garamond', serif;
-  color: $color-bordo;
+  color: #7A4F50;
   
   h1, h2, h3 {
     font-family: 'Playfair Display', serif;
-    color: $color-bordo;
+    color: #7A4F50;
   }
 }
 
-// Slider de fotos novios
 .slider-novios {
   margin: 0 auto 3rem;
   max-height: 150px;
@@ -127,25 +116,23 @@ $color-gris: #E0E0E0;
       }
       
       &:hover::before {
-        color: $color-dorado;
+        color: #C2A78D;
       }
     }
     
     li.slick-active button::before {
-      color: $color-dorado;
+      color: #C2A78D;
       opacity: 1;
       font-size: 10px;
     }
   }
 }
 
-// Contenedor principal
 .contenedor-principal {
   display: grid;
   gap: 0;
 }
 
-// Estadísticas
 .estadisticas-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -153,7 +140,10 @@ $color-gris: #E0E0E0;
   margin-bottom: 15px;
   
   .estadistica-card {
-    @include card-style;
+    background: #FFF9F5;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     padding: 5px;
@@ -166,15 +156,15 @@ $color-gris: #E0E0E0;
     }
     
     &.confirmados {
-      border-top: 5px solid $color-verde;
+      border-top: 5px solid #4CAF50;
     }
     
     &.acompanantes {
-      border-top: 5px solid $color-azul;
+      border-top: 5px solid #2196F3;
     }
     
     &.pendientes {
-      border-top: 5px solid $color-rojo;
+      border-top: 5px solid #F44336;
     }
     
     .estadistica-icon {
@@ -182,10 +172,12 @@ $color-gris: #E0E0E0;
       margin-right: 1.2rem;
       width: 60px;
       height: 60px;
-      @include flex-center;
-      background: rgba($color-dorado, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(194, 167, 141, 0.1);
       border-radius: 50%;
-      color: $color-bordo;
+      color: #7A4F50;
     }
     
     .estadistica-texto {
@@ -196,7 +188,7 @@ $color-gris: #E0E0E0;
         font-size: 2rem;
         font-weight: 700;
         line-height: 1;
-        color: $color-bordo;
+        color: #7A4F50;
       }
       
       .label {
@@ -208,7 +200,6 @@ $color-gris: #E0E0E0;
   }
 }
 
-// Contenedor secundario
 .contenedor-secundario {
   display: grid;
   grid-template-columns: 1fr;
@@ -219,15 +210,16 @@ $color-gris: #E0E0E0;
   }
 }
 
-// Formulario
 .formulario-container {
-  @include card-style;
+  background: #FFF9F5;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: all 0.5s ease;
   opacity: 0;
   height: 0;
   overflow: hidden;
   padding: 0;
   margin: 0;
-  transition: all 0.5s ease;
   
   &.visible {
     opacity: 1;
@@ -252,7 +244,7 @@ $color-gris: #E0E0E0;
       transform: translateX(-50%);
       width: 100px;
       height: 3px;
-      background: $color-dorado;
+      background: #C2A78D;
     }
   }
   
@@ -260,12 +252,11 @@ $color-gris: #E0E0E0;
     text-align: center;
     margin-bottom: 2.5rem;
     font-size: 1.2rem;
-    color: lighten($color-bordo, 20%);
+    color: #9a7a7b;
     font-style: italic;
   }
 }
 
-// Buscador
 .buscador-invitados {
   position: relative;
   margin-bottom: 2.5rem;
@@ -273,21 +264,21 @@ $color-gris: #E0E0E0;
   .input-busqueda {
     width: 100%;
     padding: 1.2rem 1.5rem;
-    border: 1px solid rgba($color-bordo, 0.3);
+    border: 1px solid rgba(122, 79, 80, 0.3);
     border-radius: 10px;
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.1rem;
     transition: all 0.3s ease;
-    background-color: rgba($color-beige, 0.3);
+    background-color: rgba(248, 241, 233, 0.3);
     
     &:focus {
       outline: none;
-      border-color: $color-dorado;
-      box-shadow: 0 0 0 3px rgba($color-dorado, 0.2);
+      border-color: #C2A78D;
+      box-shadow: 0 0 0 3px rgba(194, 167, 141, 0.2);
     }
     
     &::placeholder {
-      color: lighten($color-bordo, 40%);
+      color: #b8a3a3;
       font-style: italic;
     }
   }
@@ -297,8 +288,8 @@ $color-gris: #E0E0E0;
     top: 100%;
     left: 0;
     right: 0;
-    background: $color-blanco;
-    border: 1px solid rgba($color-bordo, 0.2);
+    background: #FFF9F5;
+    border: 1px solid rgba(122, 79, 80, 0.2);
     border-top: none;
     border-radius: 0 0 10px 10px;
     max-height: 300px;
@@ -313,14 +304,14 @@ $color-gris: #E0E0E0;
       padding: 1.2rem 1.5rem;
       cursor: pointer;
       font-family: 'Cormorant Garamond', serif;
-      color: $color-bordo;
-      border-bottom: 1px solid rgba($color-bordo, 0.1);
+      color: #7A4F50;
+      border-bottom: 1px solid rgba(122, 79, 80, 0.1);
       transition: all 0.2s;
       display: flex;
       justify-content: space-between;
       
       &:hover {
-        background: $color-beige;
+        background: #F8F1E9;
       }
       
       &:last-child {
@@ -328,7 +319,7 @@ $color-gris: #E0E0E0;
       }
       
       span {
-        color: lighten($color-bordo, 30%);
+        color: #9a7a7b;
         font-size: 0.9rem;
         font-style: italic;
       }
@@ -336,7 +327,6 @@ $color-gris: #E0E0E0;
   }
 }
 
-// Grupos de formulario
 .form-group {
   margin-bottom: 1.8rem;
   
@@ -345,7 +335,7 @@ $color-gris: #E0E0E0;
     margin-bottom: 0.8rem;
     font-size: 1.1rem;
     font-weight: 600;
-    color: darken($color-bordo, 10%);
+    color: #6a3f40;
   }
   
   input[type="text"],
@@ -353,17 +343,17 @@ $color-gris: #E0E0E0;
   textarea {
     width: 100%;
     padding: 1.2rem 1.5rem;
-    border: 1px solid rgba($color-bordo, 0.3);
+    border: 1px solid rgba(122, 79, 80, 0.3);
     border-radius: 10px;
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.1rem;
     transition: all 0.3s ease;
-    background-color: rgba($color-beige, 0.3);
+    background-color: rgba(248, 241, 233, 0.3);
     
     &:focus {
       outline: none;
-      border-color: $color-dorado;
-      box-shadow: 0 0 0 3px rgba($color-dorado, 0.2);
+      border-color: #C2A78D;
+      box-shadow: 0 0 0 3px rgba(194, 167, 141, 0.2);
     }
   }
   
@@ -373,7 +363,6 @@ $color-gris: #E0E0E0;
   }
 }
 
-// Select personalizado
 .select-wrapper {
   position: relative;
   
@@ -383,7 +372,7 @@ $color-gris: #E0E0E0;
     top: 50%;
     right: 20px;
     transform: translateY(-50%);
-    color: $color-bordo;
+    color: #7A4F50;
     pointer-events: none;
     font-size: 0.9rem;
     opacity: 0.7;
@@ -392,11 +381,10 @@ $color-gris: #E0E0E0;
   select {
     appearance: none;
     padding-right: 3rem;
-    background-color: rgba($color-beige, 0.3);
+    background-color: rgba(248, 241, 233, 0.3);
   }
 }
 
-// Opciones de asistencia
 .opciones-asistencia {
   display: flex;
   flex-direction: column;
@@ -407,10 +395,10 @@ $color-gris: #E0E0E0;
     align-items: center;
     padding: 1.2rem 1.5rem;
     border-radius: 10px;
-    border: 1px solid rgba($color-bordo, 0.2);
+    border: 1px solid rgba(122, 79, 80, 0.2);
     transition: all 0.3s ease;
     cursor: pointer;
-    background-color: rgba($color-beige, 0.3);
+    background-color: rgba(248, 241, 233, 0.3);
     
     input {
       margin-right: 1rem;
@@ -423,15 +411,14 @@ $color-gris: #E0E0E0;
     }
     
     &.activa {
-      border-color: $color-dorado;
-      background: rgba($color-dorado, 0.15);
+      border-color: #C2A78D;
+      background: rgba(194, 167, 141, 0.15);
       font-weight: 600;
-      color: darken($color-bordo, 10%);
+      color: #6a3f40;
     }
   }
 }
 
-// Grupo de checkboxes
 .checkbox-group {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -446,14 +433,14 @@ $color-gris: #E0E0E0;
     transition: all 0.2s ease;
     
     &:hover {
-      background: rgba($color-dorado, 0.1);
+      background: rgba(194, 167, 141, 0.1);
     }
     
     input {
       margin-right: 0.8rem;
       width: 18px;
       height: 18px;
-      accent-color: $color-bordo;
+      accent-color: #7A4F50;
     }
     
     span {
@@ -462,9 +449,8 @@ $color-gris: #E0E0E0;
   }
 }
 
-// Botón de confirmar
 .boton-confirmar {
-  background: $color-bordo;
+  background: #7A4F50;
   color: white;
   border: none;
   padding: 1.4rem 2.5rem;
@@ -500,7 +486,7 @@ $color-gris: #E0E0E0;
   }
   
   &:hover {
-    background: darken($color-bordo, 8%);
+    background: #6a3f40;
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(122, 79, 80, 0.3);
   }
@@ -510,24 +496,11 @@ $color-gris: #E0E0E0;
   }
 }
 
-@keyframes ripple {
-  0% {
-    transform: scale(0, 0);
-    opacity: 1;
-  }
-  20% {
-    transform: scale(25, 25);
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: scale(40, 40);
-  }
-}
-
-// Listado de invitados
 .listado-container {
-  @include card-style;
+  background: #FFF9F5;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
   padding: 2rem;
   
   .filtros {
@@ -544,12 +517,11 @@ $color-gris: #E0E0E0;
     h2 {
       margin: 0;
       font-size: x-large;
-      color: darken($color-bordo, 10%);
+      color: #6a3f40;
     }
   }
 }
 
-// Estilos para la lista compacta
 .lista-invitados-compacta {
   max-height: 600px;
   overflow-y: auto;
@@ -561,11 +533,11 @@ $color-gris: #E0E0E0;
   }
   
   &::-webkit-scrollbar-thumb {
-    background: rgba($color-bordo, 0.2);
+    background: rgba(122, 79, 80, 0.2);
     border-radius: 3px;
     
     &:hover {
-      background: rgba($color-bordo, 0.4);
+      background: rgba(122, 79, 80, 0.4);
     }
   }
 }
@@ -588,22 +560,22 @@ $color-gris: #E0E0E0;
   border-left: 3px solid transparent;
   
   &:hover {
-    background-color: rgba($color-dorado, 0.1);
+    background-color: rgba(194, 167, 141, 0.1);
   }
   
   &.confirmado {
-    border-left-color: $color-verde;
-    background-color: rgba($color-verde, 0.05);
+    border-left-color: #4CAF50;
+    background-color: rgba(76, 175, 80, 0.05);
   }
   
   &.pendiente {
-    border-left-color: $color-rojo;
-    background-color: rgba($color-rojo, 0.05);
+    border-left-color: #F44336;
+    background-color: rgba(244, 67, 54, 0.05);
   }
   
   &.seleccionado {
-    background-color: rgba($color-dorado, 0.2);
-    box-shadow: 0 0 0 1px rgba($color-dorado, 0.3);
+    background-color: rgba(194, 167, 141, 0.2);
+    box-shadow: 0 0 0 1px rgba(194, 167, 141, 0.3);
   }
   
   .nombre-grupo-container {
@@ -613,20 +585,20 @@ $color-gris: #E0E0E0;
   }
 
   .nombre-invitado {
-    color: $color-bordo;
+    color: #7A4F50;
     font-weight: 600;
     font-size: medium;
     font-family: 'Playfair Display', serif;
   }
 
   .separador {
-    color: lighten($color-bordo, 30%);
+    color: #9a7a7b;
     margin: 0 5px;
     font-weight: normal;
   }
 
   .grupo-invitado {
-    color: lighten($color-bordo, 20%);
+    color: #9a7a7b;
     font-style: italic;
     font-size: 0.95rem;
   }
@@ -638,11 +610,11 @@ $color-gris: #E0E0E0;
     text-align: right;
     
     &.asiste {
-      color: $color-verde;
+      color: #4CAF50;
     }
     
     &.no-asiste {
-      color: $color-rojo;
+      color: #F44336;
     }
   }
 }
@@ -650,7 +622,7 @@ $color-gris: #E0E0E0;
 .sin-resultados {
   text-align: center;
   padding: 2rem;
-  color: lighten($color-bordo, 30%);
+  color: #9a7a7b;
   font-size: 1rem;
   
   &::before {
@@ -661,9 +633,11 @@ $color-gris: #E0E0E0;
   }
 }
 
-// Confirmación exitosa
 .confirmacion-exitosa {
-  @include card-style;
+  background: #FFF9F5;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
   text-align: center;
   max-width: 650px;
   margin: 3rem auto;
@@ -673,10 +647,12 @@ $color-gris: #E0E0E0;
   .icono-exito {
     width: 100px;
     height: 100px;
-    background: $color-verde;
+    background: #4CAF50;
     color: white;
     border-radius: 50%;
-    @include flex-center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 3rem;
     margin: 0 auto 2rem;
     animation: bounceIn 0.8s ease;
@@ -686,13 +662,13 @@ $color-gris: #E0E0E0;
   h2 {
     font-size: 2.2rem;
     margin-bottom: 1.5rem;
-    color: darken($color-bordo, 10%);
+    color: #6a3f40;
   }
   
   p {
     font-size: 1.3rem;
     margin-bottom: 1rem;
-    color: lighten($color-bordo, 15%);
+    color: #9a7a7b;
     
     &:last-of-type {
       margin-bottom: 2.5rem;
@@ -707,7 +683,10 @@ $color-gris: #E0E0E0;
     flex-wrap: wrap;
     
     .estadistica {
-      @include card-style;
+      background: #FFF9F5;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
       padding: 1.5rem;
       min-width: 150px;
       transition: all 0.3s ease;
@@ -720,20 +699,20 @@ $color-gris: #E0E0E0;
       .numero {
         font-size: 2.2rem;
         font-weight: 700;
-        color: $color-bordo;
+        color: #7A4F50;
         line-height: 1;
       }
       
       .texto {
         font-size: 1rem;
-        color: lighten($color-bordo, 20%);
+        color: #9a7a7b;
         margin-top: 0.5rem;
       }
     }
   }
   
   .boton-volver {
-    background: $color-dorado;
+    background: #C2A78D;
     color: white;
     border: none;
     padding: 1.2rem 2.5rem;
@@ -753,7 +732,7 @@ $color-gris: #E0E0E0;
     }
     
     &:hover {
-      background: darken($color-dorado, 10%);
+      background: #b0977f;
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(194, 167, 141, 0.3);
     }
@@ -764,7 +743,6 @@ $color-gris: #E0E0E0;
   }
 }
 
-// Media queries para responsividad
 @media (max-width: 1200px) {
   .slider-novios {
     max-width: 700px;

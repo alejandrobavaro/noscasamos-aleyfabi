@@ -1,119 +1,95 @@
-// _IdeasEpicas.scss
-
-// Variables específicas del componente
-$primary-color: #7A4F50;
-$text-secondary: #666666;
-$success-color: #4CAF50;
-$warning-color: #FFC107;
-$error-color: #F44336;
-$border-color: #e0e0e0;
-$box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-
-// Mixins específicos del componente
-@mixin primary-button {
-  background: $primary-color;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-family: inherit;
-  font-weight: 500;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: darken($primary-color, 10%);
-    transform: translateY(-2px);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-}
-
-@mixin secondary-button {
-  background: white;
-  color: $primary-color;
-  border: 1px solid $primary-color;
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-family: inherit;
-  font-weight: 500;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba($primary-color, 0.1);
-    transform: translateY(-2px);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-}
+/* IdeasEpicas.scss - Versión Mejorada */
 
 .ideas-container {
-  padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  font-family: 'Roboto', sans-serif;
+  padding: 2rem;
+  font-family: 'Cormorant Garamond', serif;
+  color: #3A2E29;
+  background: #FFF9F5;
+  min-height: 100vh;
 
   h1 {
-    color: $primary-color;
+    font-family: 'Cinzel', serif;
+    color: #8B4513;
+    font-size: 2.2rem;
     text-align: center;
     margin-bottom: 1rem;
-    font-weight: 700;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 2px;
+      background: #D4AF37;
+    }
   }
-
+  
   .subtitle {
-    color: $text-secondary;
-    text-align: center;
-    margin-bottom: 3rem;
     font-size: 1.1rem;
+    color: #5a4a42;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-style: italic;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
   }
 
   .category-section {
-    margin-bottom: 4rem;
-
+    margin-bottom: 3rem;
+    
     h2 {
-      color: $primary-color;
-      margin-bottom: 2rem;
+      font-family: 'Cinzel', serif;
+      color: #8B4513;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
       padding-bottom: 0.5rem;
-      border-bottom: 1px solid $border-color;
+      border-bottom: 1px solid rgba(139, 69, 19, 0.2);
     }
 
     .ideas-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 1.5rem;
 
       .idea-card {
         background: white;
-        border-radius: 10px;
+        border-radius: 8px;
         overflow: hidden;
-        box-shadow: $box-shadow;
-        transition: transform 0.3s ease;
+        box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(139, 69, 19, 0.1);
 
         &:hover {
           transform: translateY(-5px);
+          box-shadow: 0 5px 15px rgba(139, 69, 19, 0.15);
         }
 
         .idea-image {
           height: 200px;
           overflow: hidden;
+          position: relative;
+
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(139, 69, 19, 0.1), transparent);
+          }
 
           img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
-
-            &:hover {
-              transform: scale(1.05);
-            }
           }
         }
 
@@ -121,14 +97,18 @@ $box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
           padding: 1.5rem;
 
           h3 {
-            color: $primary-color;
+            font-family: 'Cinzel', serif;
+            color: #8B4513;
+            font-size: 1.2rem;
             margin: 0 0 1rem 0;
+            font-weight: 500;
           }
 
           p {
-            color: $text-secondary;
+            color: #5a4a42;
             margin-bottom: 1.5rem;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
           }
 
           .idea-meta {
@@ -142,15 +122,15 @@ $box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
               font-weight: 600;
 
               &.low {
-                color: $success-color;
+                color: #5a8f5a;
               }
 
               &.medium {
-                color: $warning-color;
+                color: #b08d57;
               }
 
               &.high {
-                color: $error-color;
+                color: #8f5a5a;
               }
             }
 
@@ -160,29 +140,44 @@ $box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
               border-radius: 20px;
 
               &.low {
-                background: rgba($success-color, 0.2);
-                color: darken($success-color, 20%);
+                background: rgba(90, 143, 90, 0.1);
+                color: #5a8f5a;
               }
 
               &.medium {
-                background: rgba($warning-color, 0.2);
-                color: darken($warning-color, 20%);
+                background: rgba(176, 141, 87, 0.1);
+                color: #8d6d3d;
               }
 
               &.high {
-                background: rgba($error-color, 0.2);
-                color: darken($error-color, 20%);
+                background: rgba(143, 90, 90, 0.1);
+                color: #8f5a5a;
               }
             }
           }
 
           .btn-save {
-            @include secondary-button;
+            background: transparent;
+            color: #8B4513;
+            border: 1px solid #8B4513;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
+
+            &:hover {
+              background: rgba(139, 69, 19, 0.1);
+            }
+
+            i {
+              font-size: 1rem;
+            }
           }
         }
       }
@@ -191,38 +186,86 @@ $box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 
   .saved-ideas-section {
     background: white;
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 2rem;
-    box-shadow: $box-shadow;
+    box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
     text-align: center;
+    border: 1px solid rgba(139, 69, 19, 0.1);
 
     h2 {
-      color: $primary-color;
+      font-family: 'Cinzel', serif;
+      color: #8B4513;
+      font-size: 1.5rem;
       margin-bottom: 1.5rem;
+      font-weight: 500;
     }
 
     p {
-      color: $text-secondary;
+      color: #5a4a42;
       margin-bottom: 2rem;
+      font-size: 1rem;
+      line-height: 1.6;
     }
 
     .btn-export {
-      @include primary-button;
+      background: #8B4513;
+      color: white;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.75rem 2rem;
+
+      &:hover {
+        background: #A0522D;
+      }
+
+      i {
+        font-size: 1rem;
+      }
     }
   }
 }
 
-// Media queries para responsive design
-@media (max-width: 768px) {
+/* Scrollbars delgadas */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+  border-radius: 3px;
+}
+
+@media (max-width: 900px) {
+  .ideas-container {
+    padding: 1.5rem;
+    
+    h1 {
+      font-size: 1.8rem;
+    }
+    
+    .ideas-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 600px) {
   .ideas-container {
     padding: 1rem;
     
     .ideas-grid {
-      grid-template-columns: 1fr !important;
+      grid-template-columns: 1fr;
+    }
+    
+    .category-section h2 {
+      font-size: 1.3rem;
     }
   }
 }

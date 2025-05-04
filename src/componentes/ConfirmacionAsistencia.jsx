@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import invitadosData from '../../public/invitados.json';
+import invitadosData from '/src/json/invitados.json';
 import "../assets/scss/_03-Componentes/_ConfirmacionAsistencia.scss";
 
 const ConfirmacionAsistencia = () => {

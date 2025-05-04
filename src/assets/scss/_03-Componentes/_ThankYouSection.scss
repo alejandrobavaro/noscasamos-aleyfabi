@@ -1,22 +1,4 @@
 /* ==================== */
-/* VARIABLES VINTAGE */
-/* ==================== */
-$primary-color: #8B4513; // Marrón oscuro vintage
-$secondary-color: #F5DEB3; // Beige claro
-$accent-color: #A0522D; // Marrón rojizo
-$gold-color: #D4AF37; // Oro para detalles
-$text-color: #3A2E29;
-$text-light: #777;
-$border-color: rgba(139, 69, 19, 0.3);
-$background-light: #FFF8E7;
-$box-shadow: 0 10px 30px rgba(139, 69, 19, 0.15);
-$success-color: #5a8f5a;
-$warning-color: #b08d57;
-$error-color: #8f5a5a;
-$info-color: #5a7b8f;
-$transition: all 0.3s ease;
-
-/* ==================== */
 /* ESTILOS GENERALES */
 /* ==================== */
 .thank-you-container.vintage-design {
@@ -46,7 +28,7 @@ $transition: all 0.3s ease;
   }
 
   h2 {
-    color: $primary-color;
+    color: #8B4513; /* Marrón oscuro vintage */
     font-family: 'Cinzel', serif;
     font-size: 2rem;
     margin-bottom: 2rem;
@@ -66,11 +48,11 @@ $transition: all 0.3s ease;
       transform: translateX(-50%);
       width: 100px;
       height: 2px;
-      background: linear-gradient(to right, transparent, $gold-color, transparent);
+      background: linear-gradient(to right, transparent, #D4AF37, transparent); /* Oro */
     }
 
     svg, i {
-      color: $gold-color;
+      color: #D4AF37; /* Oro */
       font-size: 1.8rem;
     }
   }
@@ -80,8 +62,8 @@ $transition: all 0.3s ease;
     padding: 3rem;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
-    box-shadow: $box-shadow;
-    border: 1px solid $border-color;
+    box-shadow: 0 10px 30px rgba(139, 69, 19, 0.15);
+    border: 1px solid rgba(139, 69, 19, 0.3);
     max-width: 500px;
     margin: 0 auto;
 
@@ -92,15 +74,15 @@ $transition: all 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba($success-color, 0.1);
+      background: rgba(90, 143, 90, 0.1); /* Verde suave */
       border-radius: 50%;
-      color: $success-color;
+      color: #5a8f5a; /* Verde */
       font-size: 3rem;
-      border: 2px solid $success-color;
+      border: 2px solid #5a8f5a; /* Verde */
     }
 
     p {
-      color: $accent-color;
+      color: #A0522D; /* Marrón rojizo */
       font-size: 1.3rem;
       margin: 0;
       font-style: italic;
@@ -118,12 +100,12 @@ $transition: all 0.3s ease;
       background: rgba(255, 255, 255, 0.9);
       border-radius: 8px;
       padding: 2rem;
-      box-shadow: $box-shadow;
-      border: 1px solid $border-color;
-      border-top: 4px solid $gold-color;
+      box-shadow: 0 10px 30px rgba(139, 69, 19, 0.15);
+      border: 1px solid rgba(139, 69, 19, 0.3);
+      border-top: 4px solid #D4AF37; /* Oro */
       display: flex;
       flex-direction: column;
-      transition: $transition;
+      transition: all 0.3s ease;
 
       .card-header {
         display: flex;
@@ -131,10 +113,10 @@ $transition: all 0.3s ease;
         align-items: center;
         margin-bottom: 1.5rem;
         padding-bottom: 1rem;
-        border-bottom: 1px dashed $border-color;
+        border-bottom: 1px dashed rgba(139, 69, 19, 0.3);
 
         h3 {
-          color: $primary-color;
+          color: #8B4513; /* Marrón oscuro vintage */
           margin: 0;
           font-size: 1.3rem;
           display: flex;
@@ -144,13 +126,13 @@ $transition: all 0.3s ease;
           font-weight: 500;
 
           svg, i {
-            color: $gold-color;
+            color: #D4AF37; /* Oro */
             font-size: 1.2rem;
           }
         }
 
         .date {
-          color: $accent-color;
+          color: #A0522D; /* Marrón rojizo */
           font-size: 0.9rem;
           display: flex;
           align-items: center;
@@ -158,7 +140,7 @@ $transition: all 0.3s ease;
           font-family: 'Raleway', sans-serif;
 
           svg, i {
-            color: $gold-color;
+            color: #D4AF37; /* Oro */
             font-size: 1rem;
           }
         }
@@ -171,7 +153,7 @@ $transition: all 0.3s ease;
         .gift-name {
           font-weight: 600;
           margin-bottom: 1rem;
-          color: $text-color;
+          color: #3A2E29; /* Texto oscuro */
           display: flex;
           align-items: center;
           gap: 0.8rem;
@@ -179,7 +161,7 @@ $transition: all 0.3s ease;
           font-size: 1.1rem;
 
           svg, i {
-            color: $gold-color;
+            color: #D4AF37; /* Oro */
             font-size: 1.2rem;
           }
         }
@@ -188,24 +170,24 @@ $transition: all 0.3s ease;
           width: 100%;
           min-height: 180px;
           padding: 1.2rem;
-          border: 1px solid $border-color;
+          border: 1px solid rgba(139, 69, 19, 0.3);
           border-radius: 6px;
           font-family: 'Cormorant Garamond', serif;
           font-size: 1.1rem;
           resize: vertical;
           background: rgba(255, 255, 255, 0.8);
-          transition: $transition;
-          color: $text-color;
+          transition: all 0.3s ease;
+          color: #3A2E29; /* Texto oscuro */
           line-height: 1.6;
 
           &:focus {
             outline: none;
-            border-color: $gold-color;
-            box-shadow: 0 0 0 3px rgba($gold-color, 0.2);
+            border-color: #D4AF37; /* Oro */
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2); /* Oro con transparencia */
           }
 
           &::placeholder {
-            color: rgba($text-color, 0.5);
+            color: rgba(58, 46, 41, 0.5); /* Texto oscuro con transparencia */
             font-style: italic;
           }
         }
@@ -221,7 +203,7 @@ $transition: all 0.3s ease;
           border-radius: 4px;
           font-size: 0.95rem;
           cursor: pointer;
-          transition: $transition;
+          transition: all 0.3s ease;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -236,24 +218,24 @@ $transition: all 0.3s ease;
         }
 
         .btn-send {
-          background: linear-gradient(135deg, $primary-color, $accent-color);
+          background: linear-gradient(135deg, #8B4513, #A0522D); /* Marrón oscuro a marrón rojizo */
           color: white;
           border: none;
 
           &:hover {
-            background: linear-gradient(135deg, darken($primary-color, 5%), darken($accent-color, 5%));
+            background: linear-gradient(135deg, #7a3c10, #8d4828); /* Colores oscurecidos manualmente */
           }
         }
 
         .btn-reminder {
           background: none;
-          border: 1px solid $border-color;
-          color: $text-color;
+          border: 1px solid rgba(139, 69, 19, 0.3);
+          color: #3A2E29; /* Texto oscuro */
 
           &:hover {
-            border-color: $primary-color;
-            color: $primary-color;
-            background: rgba($primary-color, 0.05);
+            border-color: #8B4513; /* Marrón oscuro vintage */
+            color: #8B4513; /* Marrón oscuro vintage */
+            background: rgba(139, 69, 19, 0.05); /* Marrón oscuro con transparencia */
           }
         }
       }

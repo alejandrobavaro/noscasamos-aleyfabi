@@ -1,298 +1,259 @@
 /* ==================== */
-/* VARIABLES VINTAGE */
+/* VARIABLES DEFINIDAS */
 /* ==================== */
-$primary-color: #8B4513; // Marrón oscuro vintage
-$secondary-color: #F5DEB3; // Beige claro
-$accent-color: #A0522D; // Marrón rojizo
-$gold-color: #D4AF37; // Oro para detalles
-$text-color: #3A2E29;
-$text-light: #777;
-$border-color: rgba(139, 69, 19, 0.3);
-$background-light: #FFF8E7;
-$box-shadow: 0 10px 30px rgba(139, 69, 19, 0.15);
-$success-color: #5a8f5a;
-$warning-color: #b08d57;
-$error-color: #8f5a5a;
-$info-color: #5a7b8f;
-$transition: all 0.3s ease;
+$primary-color: #8B4513;        // Color principal marrón vintage
+$secondary-color: #F5DEB3;      // Color secundario beige
+$accent-color: #A0522D;         // Color de acento marrón oscuro
+$gold-color: #D4AF37;           // Color dorado para detalles
+$text-color: #3A2E29;           // Color de texto principal
+$text-light: #5a4a42;           // Color de texto secundario
+$border-color: rgba(139, 69, 19, 0.3); // Color de bordes
+$background-light: #FFF8E7;      // Fondo claro
+$success-color: #5a8f5a;        // Verde para éxito/reservado
+$warning-color: #b08d57;        // Naranja/mostaza para medio
+$info-color: #5a7b8f;           // Azul claro para bajo
+$error-color: #8f5a5a;          // Rojo oscuro para alta prioridad
+$box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1); // Sombra suave
+$transition: all 0.3s ease;     // Transición suave
 
 /* ==================== */
-/* ESTILOS GENERALES */
+/* ESTILOS PRINCIPALES */
 /* ==================== */
-.regalos-container.vintage-design {
-  padding: 2rem;
+.regalos-container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 2rem 1rem;
   font-family: 'Cormorant Garamond', serif;
-  background: url('../assets/images/vintage-paper-bg.jpg') center/cover;
+  color: $text-color;
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 8px;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 248, 231, 0.9);
-    z-index: 0;
-  }
-
-  > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  h1, h2, h3 {
-    color: $primary-color;
-    font-family: 'Cinzel', serif;
-    font-weight: 500;
-  }
-
-  .divider {
-    height: 2px;
-    background: linear-gradient(90deg, transparent, $gold-color, transparent);
-    margin: 1.5rem auto;
-    width: 80%;
-    max-width: 500px;
-    position: relative;
-
-    &.floral {
-      &::before, &::after {
-        content: '❀';
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        color: $gold-color;
-        font-size: 1.2rem;
-      }
-
-      &::before {
-        left: 0;
-      }
-
-      &::after {
-        right: 0;
-      }
-    }
-  }
+  box-shadow: $box-shadow;
+  border: 1px solid $border-color;
 
   .header-section {
     text-align: center;
     margin-bottom: 2rem;
 
     h1 {
-      font-size: 2.5rem;
+      color: $primary-color;
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
       margin-bottom: 0.5rem;
       letter-spacing: 1px;
     }
 
     .subtitle {
-      color: $accent-color;
+      font-size: 1.1rem;
+      color: $text-light;
       font-style: italic;
-      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
     }
-  }
-}
 
-/* ==================== */
-/* PESTAÑAS */
-/* ==================== */
-.tabs-container {
-  margin: 2rem 0;
+    .divider {
+      height: 2px;
+      background: linear-gradient(to right, transparent, $gold-color, transparent);
+      margin: 0 auto;
+      width: 60%;
 
-  .tabs-nav {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-
-    .tab-button {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.8rem 1.5rem;
-      background: rgba($primary-color, 0.05);
-      border: 1px solid $border-color;
-      border-radius: 30px;
-      color: $text-color;
-      font-family: 'Raleway', sans-serif;
-      font-weight: 500;
-      cursor: pointer;
-      transition: $transition;
-      position: relative;
-      overflow: hidden;
-
-      i {
-        color: $gold-color;
-        font-size: 1.1rem;
-      }
-
-      .badge {
-        background: rgba($gold-color, 0.2);
-        color: $primary-color;
-        border-radius: 50%;
-        width: 24px;
-        height: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.8rem;
-        margin-left: 0.3rem;
-      }
-
-      &:hover {
-        background: rgba($primary-color, 0.1);
-        transform: translateY(-2px);
-      }
-
-      &.active {
-        background: $primary-color;
-        color: white;
-        box-shadow: 0 5px 15px rgba($primary-color, 0.3);
-
-        i, .badge {
-          color: white;
-        }
-
-        .badge {
-          background: rgba(white, 0.2);
+      &.floral {
+        position: relative;
+        height: 20px;
+        background: none;
+        
+        &::before {
+          content: "";
+          display: block;
+          height: 1px;
+          background: linear-gradient(to right, transparent, $gold-color, transparent);
+          position: absolute;
+          top: 10px;
+          left: 0;
+          right: 0;
         }
 
         &::after {
-          content: '';
-          position: absolute;
-          bottom: -10px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 60%;
-          height: 3px;
-          background: $gold-color;
-          border-radius: 3px;
+          content: "❀";
+          display: inline-block;
+          color: $gold-color;
+          font-size: 1.2rem;
+          background: white;
+          padding: 0 1rem;
+          position: relative;
+          top: -5px;
         }
       }
     }
   }
 
-  .tabs-content {
-    min-height: 400px;
-    position: relative;
+  .tabs-container {
+    margin-bottom: 2rem;
 
-    .tab-pane {
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 8px;
-      padding: 2rem;
-      box-shadow: $box-shadow;
-      border: 1px solid $border-color;
-    }
-  }
-}
+    .tabs-nav {
+      display: flex;
+      justify-content: space-around;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
 
-/* ==================== */
-/* RESUMEN DE PRESUPUESTO */
-/* ==================== */
-.budget-summary {
-  margin-top: 3rem;
-  text-align: center;
-
-  h3 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-
-    i {
-      color: $gold-color;
-    }
-  }
-
-  .budget-cards {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-
-    .budget-card {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 8px;
-      padding: 1.5rem;
-      min-width: 180px;
-      box-shadow: $box-shadow;
-      border-top: 4px solid $gold-color;
-      transition: $transition;
-
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(139, 69, 19, 0.2);
-      }
-
-      .label {
-        display: block;
-        color: $text-light;
-        font-size: 0.9rem;
-        margin-bottom: 0.5rem;
+      .tab-button {
+        position: relative;
+        background: none;
+        border: none;
+        padding: 0.75rem 1.5rem;
         font-family: 'Raleway', sans-serif;
+        font-size: 1rem;
+        color: $text-light;
+        cursor: pointer;
+        transition: $transition;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border-radius: 30px;
+
+        i {
+          font-size: 1.1rem;
+        }
+
+        .badge {
+          background: $gold-color;
+          color: white;
+          border-radius: 50%;
+          width: 22px;
+          height: 22px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.7rem;
+          margin-left: 0.3rem;
+        }
+
+        &:hover {
+          color: $primary-color;
+          background: rgba($gold-color, 0.1);
+        }
+
+        &.active {
+          color: white;
+          background: linear-gradient(to right, $primary-color, $accent-color);
+          font-weight: 500;
+
+          .badge {
+            background: white;
+            color: $primary-color;
+          }
+        }
+      }
+    }
+
+    .tabs-content {
+      min-height: 400px;
+      position: relative;
+
+      .tab-pane {
+        animation: fadeIn 0.5s ease;
+      }
+    }
+  }
+
+  .wishlist-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .budget-summary {
+    background: rgba($secondary-color, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border: 1px solid $border-color;
+
+    h3 {
+      font-family: 'Cinzel', serif;
+      color: $primary-color;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      justify-content: center;
+
+      i {
+        color: $gold-color;
+      }
+    }
+
+    .budget-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
       }
 
-      .amount {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: $primary-color;
-        font-family: 'Cinzel', serif;
-      }
+      .budget-card {
+        background: white;
+        border-radius: 6px;
+        padding: 1rem;
+        text-align: center;
+        box-shadow: $box-shadow;
+        border-top: 3px solid $gold-color;
 
-      &.reserved {
-        border-color: $success-color;
-      }
+        &.total {
+          border-top-color: $primary-color;
+        }
 
-      &.remaining {
-        border-color: $info-color;
+        &.reserved {
+          border-top-color: $success-color;
+        }
+
+        &.remaining {
+          border-top-color: $accent-color;
+        }
+
+        .label {
+          display: block;
+          font-size: 0.9rem;
+          color: $text-light;
+          margin-bottom: 0.5rem;
+        }
+
+        .amount {
+          font-family: 'Cinzel', serif;
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: $primary-color;
+        }
       }
     }
   }
 }
 
-/* ==================== */
-/* RESPONSIVE */
-/* ==================== */
-@media (max-width: 992px) {
-  .regalos-container.vintage-design {
-    padding: 1.5rem;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-    .header-section h1 {
-      font-size: 2rem;
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .regalos-container {
+    padding: 1rem;
+
+    .header-section {
+      h1 {
+        font-size: 1.8rem;
+      }
     }
 
     .tabs-nav {
-      flex-direction: column;
-      align-items: center;
-
       .tab-button {
-        width: 100%;
-        max-width: 300px;
-        justify-content: center;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
       }
-    }
-
-    .wishlist-grid {
-      grid-template-columns: 1fr !important;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .budget-cards {
-    flex-direction: column;
-    align-items: center;
-
-    .budget-card {
-      width: 100%;
-      max-width: 250px;
     }
   }
 }

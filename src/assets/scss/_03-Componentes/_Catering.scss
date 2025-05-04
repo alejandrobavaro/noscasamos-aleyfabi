@@ -1,228 +1,312 @@
-// _Catering.scss - Estilo Vintage
+/* Catering.scss - Versión Mejorada */
 
-/* ==================== */
-/* VARIABLES VINTAGE */
-/* ==================== */
-$vintage-primary: #8B4513;        // Color principal (marrón saddle)
-$vintage-secondary: #D2B48C;     // Color secundario (tan)
-$vintage-accent: #5F4B32;        // Color de acento (marrón oscuro)
-$vintage-text: #3E2723;           // Texto principal
-$vintage-text-light: #5D4037;     // Texto secundario
-$vintage-bg: #FAF0E6;             // Fondo (linen)
-$vintage-border: #BCAAA4;         // Color de bordes
-$vintage-paper: #FFF8E1;          // Color papel antiguo
-$vintage-shadow: 0 2px 8px rgba(94, 71, 44, 0.2); // Sombra vintage
-$vintage-font:    'Cinzel', serif;
-$vintage-font-secondary: 'Cormorant Garamond', serif;
-
-/* ==================== */
-/* MIXINS VINTAGE */
-/* ==================== */
-@mixin vintage-button {
-  background-color: $vintage-primary;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: $vintage-font;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-  &:hover {
-    background-color: darken($vintage-primary, 10%);
-    transform: translateY(-1px);
-  }
-}
-
-@mixin vintage-card {
-  background-color: $vintage-paper;
-  border: 1px solid $vintage-border;
-  border-radius: 0;
-  box-shadow: $vintage-shadow;
+.catering-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Cormorant Garamond', serif;
+  color: #3A2E29;
+  background: #FFF9F5;
+  min-height: 100vh;
   position: relative;
   overflow: hidden;
-  
+
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23BCAAA4" stroke-width="0.5" stroke-dasharray="5,5"/></svg>');
-    opacity: 0.1;
-    pointer-events: none;
-  }
-}
-
-@mixin vintage-tab {
-  background: none;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  margin: 0 0.5rem;
-  cursor: pointer;
-  font-size: 1rem;
-  color: $vintage-text-light;
-  border-radius: 0;
-  transition: all 0.3s ease;
-  position: relative;
-  font-family: $vintage-font;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-
-  &:hover {
-    color: $vintage-primary;
-    background: rgba($vintage-primary, 0.1);
+    height: 4px;
+    background: linear-gradient(90deg, #8B4513, #D4AF37, #8B4513);
   }
 
-  &.active {
-    color: $vintage-primary;
-    font-weight: 600;
-    border-bottom: 2px solid $vintage-primary;
-  }
-}
-
-/* ==================== */
-/* ESTILOS PRINCIPALES */
-/* ==================== */
-.catering-container {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  font-family: $vintage-font-secondary;
-  background-color: $vintage-bg;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23D2B48C" stroke-width="0.5" stroke-dasharray="5,5"/></svg>');
-  border: 1px solid $vintage-border;
-
-  h1 {
-    color: $vintage-primary;
+  .catering-header {
     text-align: center;
     margin-bottom: 2rem;
-    font-weight: 700;
-    font-family: $vintage-font;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    position: relative;
-    padding-bottom: 1rem;
     
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 25%;
-      width: 50%;
-      height: 1px;
-      background: linear-gradient(to right, transparent, $vintage-primary, transparent);
+    h1 {
+      font-family: 'Cinzel', serif;
+      color: #8B4513;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 2px;
+        background: #D4AF37;
+      }
+    }
+    
+    .wedding-subtitle {
+      font-size: 1.1rem;
+      color: #5a4a42;
+      font-style: italic;
+      margin-bottom: 1.5rem;
     }
   }
 
-  .tabs {
+  .catering-tabs {
     display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     justify-content: center;
     margin-bottom: 2rem;
-    border-bottom: 1px solid $vintage-border;
-    padding-bottom: 0.5rem;
-
-    button {
-      @include vintage-tab;
+    padding: 0.5rem;
+    background: rgba(139, 69, 19, 0.1);
+    border-radius: 8px;
+    
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #5a4a42;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      
+      &:hover {
+        background: rgba(139, 69, 19, 0.1);
+      }
+      
+      &.active {
+        background: #8B4513;
+        color: white;
+        font-weight: 500;
+      }
+      
+      i {
+        font-size: 1.2rem;
+      }
     }
   }
 
-  .menu-section {
-    .menu-categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-
-      .menu-category {
-        @include vintage-card;
-        padding: 1.5rem;
+  .catering-content {
+    .section-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      
+      h2 {
+        font-family: 'Cinzel', serif;
+        color: #8B4513;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
         position: relative;
-
-        h3 {
-          color: $vintage-primary;
-          margin-bottom: 1.5rem;
-          padding-bottom: 0.5rem;
-          border-bottom: 1px solid $vintage-border;
-          font-family: $vintage-font;
-          letter-spacing: 1px;
-          position: relative;
-          
-          &::after {
-            content: "";
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: $vintage-accent;
-          }
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100px;
+          height: 2px;
+          background: #D4AF37;
         }
+      }
+      
+      p {
+        color: #5a4a42;
+        font-size: 1rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+    }
 
-        .menu-items {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-
-          .menu-item {
-            padding: 0.75rem 0;
+    .menu-section {
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        
+        .menu-category {
+          background: white;
+          border-radius: 8px;
+          padding: 1.5rem;
+          box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+          transition: transform 0.3s ease;
+          border-top: 3px solid #D4AF37;
+          
+          &:hover {
+            transform: translateY(-5px);
+          }
+          
+          .category-header {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
             display: flex;
             align-items: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-bottom: 1px dashed $vintage-border;
-
-            &:last-child {
-              border-bottom: none;
+            justify-content: space-between;
+            
+            h3 {
+              font-family: 'Cinzel', serif;
+              color: #8B4513;
+              font-size: 1.2rem;
+              margin: 0;
             }
-
-            &:hover {
-              background: rgba($vintage-primary, 0.05);
+            
+            .counter {
+              background: rgba(139, 69, 19, 0.1);
+              color: #8B4513;
+              padding: 0.25rem 0.75rem;
+              border-radius: 20px;
+              font-size: 0.8rem;
+              font-weight: 500;
             }
-
-            &.selected {
-              background: rgba($vintage-primary, 0.1);
-            }
-
-            input[type="checkbox"] {
-              margin-right: 1rem;
-              width: 18px;
-              height: 18px;
-              accent-color: $vintage-primary;
-              position: relative;
+          }
+          
+          .menu-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            
+            .menu-item {
+              padding: 0.75rem 0;
+              border-bottom: 1px dashed rgba(139, 69, 19, 0.1);
+              display: flex;
+              align-items: flex-start;
               
-              &::before {
-                content: "";
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                border: 1px solid $vintage-border;
-                background: white;
+              &:last-child {
+                border-bottom: none;
+              }
+              
+              &.selected {
+                .item-checkbox {
+                  background: #8B4513;
+                  border-color: #8B4513;
+                  
+                  .checkmark {
+                    opacity: 1;
+                  }
+                }
+              }
+              
+              .item-checkbox {
+                width: 18px;
+                height: 18px;
+                border: 1px solid #8B4513;
+                border-radius: 4px;
+                margin-right: 0.75rem;
+                margin-top: 0.15rem;
+                flex-shrink: 0;
+                position: relative;
+                transition: all 0.3s ease;
+                
+                .checkmark {
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  color: white;
+                  font-size: 0.7rem;
+                  opacity: 0;
+                }
+              }
+              
+              .item-content {
+                flex-grow: 1;
+                
+                .item-name {
+                  font-weight: 500;
+                  color: #3A2E29;
+                  margin-bottom: 0.25rem;
+                  display: block;
+                }
+                
+                .restrictions {
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 0.5rem;
+                  margin-top: 0.5rem;
+                  
+                  .restriction-tag {
+                    font-size: 0.7rem;
+                    padding: 0.15rem 0.5rem;
+                    border-radius: 4px;
+                    text-transform: uppercase;
+                    
+                    &.vegetariano { background: rgba(46, 125, 50, 0.1); color: #2e7d32; }
+                    &.vegano { background: rgba(27, 94, 32, 0.1); color: #1b5e20; }
+                    &.gluten { background: rgba(230, 81, 0, 0.1); color: #e65100; }
+                    &.lacteos { background: rgba(21, 101, 192, 0.1); color: #1565c0; }
+                    &.pescado, &.mariscos { background: rgba(198, 40, 40, 0.1); color: #c62828; }
+                    &.alcohol { background: rgba(106, 27, 154, 0.1); color: #6a1b9a; }
+                  }
+                }
               }
             }
-
-            label {
-              flex-grow: 1;
-              cursor: pointer;
-              font-family: $vintage-font-secondary;
-
-              .restrictions {
-                display: inline-flex;
-                gap: 0.25rem;
-                margin-left: 0.5rem;
-
-                .restriction {
-                  font-size: 0.7rem;
-                  padding: 0.1rem 0.5rem;
-                  border-radius: 10px;
-                  background: $vintage-secondary;
-                  color: $vintage-text;
-                  font-family: $vintage-font;
+          }
+        }
+      }
+      
+      .menu-summary {
+        background: white;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+        background: rgba(139, 69, 19, 0.05);
+        border: 1px dashed rgba(139, 69, 19, 0.3);
+        
+        h3 {
+          font-family: 'Cinzel', serif;
+          color: #8B4513;
+          font-size: 1.5rem;
+          text-align: center;
+          margin-bottom: 1.5rem;
+        }
+        
+        .summary-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 1.5rem;
+          
+          .summary-category {
+            h4 {
+              font-family: 'Cinzel', serif;
+              color: #8B4513;
+              font-size: 1.1rem;
+              margin-bottom: 1rem;
+              padding-bottom: 0.5rem;
+              border-bottom: 1px dashed rgba(139, 69, 19, 0.3);
+            }
+            
+            ul {
+              list-style: none;
+              padding: 0;
+              
+              li {
+                padding: 0.5rem 0;
+                color: #5a4a42;
+                border-bottom: 1px dashed rgba(139, 69, 19, 0.1);
+                display: flex;
+                align-items: center;
+                
+                &:last-child {
+                  border-bottom: none;
+                }
+                
+                i {
+                  color: #8B4513;
+                  margin-right: 0.5rem;
+                }
+                
+                .restrictions {
+                  font-size: 0.8rem;
+                  color: #777;
+                  margin-left: 0.5rem;
                 }
               }
             }
@@ -230,361 +314,381 @@ $vintage-font-secondary: 'Cormorant Garamond', serif;
         }
       }
     }
-
-    .selected-menu-summary {
-      @include vintage-card;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-
-      h3 {
-        color: $vintage-primary;
-        margin-bottom: 1.5rem;
-        font-family: $vintage-font;
-        letter-spacing: 1px;
-      }
-
-      .summary-grid {
+    
+    .restrictions-section {
+      .restrictions-cards {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 2rem;
-
-        .summary-category {
-          h4 {
-            color: $vintage-primary;
-            margin-bottom: 0.5rem;
-            padding-bottom: 0.25rem;
-            border-bottom: 1px solid $vintage-border;
-            font-family: $vintage-font;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        
+        .restriction-card {
+          background: white;
+          border-radius: 8px;
+          padding: 1.5rem;
+          box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+          text-align: center;
+          transition: transform 0.3s ease;
+          border-top: 3px solid #D4AF37;
+          
+          &:hover {
+            transform: translateY(-5px);
           }
-
-          ul {
+          
+          h3 {
+            font-family: 'Cinzel', serif;
+            color: #8B4513;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+          }
+          
+          .guest-count {
+            font-size: 1.8rem;
+            color: #3A2E29;
+            margin-bottom: 1rem;
+          }
+          
+          .progress-container {
+            height: 6px;
+            background: rgba(139, 69, 19, 0.1);
+            border-radius: 3px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            
+            .progress-bar {
+              height: 100%;
+              background: #8B4513;
+            }
+          }
+          
+          .details-btn {
+            background: none;
+            border: 1px solid #8B4513;
+            color: #8B4513;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            
+            &:hover {
+              background: rgba(139, 69, 19, 0.1);
+            }
+          }
+        }
+      }
+      
+      .notes-section {
+        background: white;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+        margin-top: 2rem;
+        
+        h3 {
+          font-family: 'Cinzel', serif;
+          color: #8B4513;
+          font-size: 1.3rem;
+          margin-bottom: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        
+        textarea {
+          width: 100%;
+          min-height: 120px;
+          padding: 1rem;
+          border: 1px solid rgba(139, 69, 19, 0.3);
+          border-radius: 6px;
+          resize: vertical;
+          margin-bottom: 1rem;
+          
+          &:focus {
+            outline: none;
+            border-color: #8B4513;
+          }
+        }
+        
+        .save-btn {
+          background: #8B4513;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          padding: 0.5rem 1.5rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          
+          &:hover {
+            background: #A0522D;
+          }
+        }
+      }
+    }
+    
+    .tables-section {
+      .add-guest-form {
+        background: white;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+        margin-bottom: 2rem;
+        
+        h3 {
+          font-family: 'Cinzel', serif;
+          color: #8B4513;
+          font-size: 1.3rem;
+          margin-bottom: 1.5rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        
+        .form-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 1rem;
+          align-items: flex-end;
+          
+          .form-group {
+            label {
+              display: block;
+              margin-bottom: 0.5rem;
+              color: #8B4513;
+              font-weight: 500;
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+            }
+            
+            input, select {
+              width: 100%;
+              padding: 0.5rem;
+              border: 1px solid rgba(139, 69, 19, 0.3);
+              border-radius: 4px;
+              
+              &:focus {
+                outline: none;
+                border-color: #8B4513;
+              }
+            }
+          }
+          
+          .add-btn {
+            background: #8B4513;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            
+            &:hover {
+              background: #A0522D;
+            }
+          }
+        }
+      }
+      
+      .tables-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        
+        .table-card {
+          background: white;
+          border-radius: 8px;
+          padding: 1.5rem;
+          box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+          transition: transform 0.3s ease;
+          border-top: 3px solid #D4AF37;
+          
+          &:hover {
+            transform: translateY(-5px);
+          }
+          
+          &.full {
+            border-left: 3px solid #8B4513;
+          }
+          
+          .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+            
+            h3 {
+              font-family: 'Cinzel', serif;
+              color: #8B4513;
+              font-size: 1.2rem;
+              margin: 0;
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+            }
+            
+            .capacity {
+              color: #5a4a42;
+              font-size: 0.9rem;
+            }
+          }
+          
+          .guest-list {
             list-style: none;
             padding: 0;
             margin: 0;
-
+            max-height: 200px;
+            overflow-y: auto;
+            
             li {
               padding: 0.5rem 0;
-              color: $vintage-text;
-              position: relative;
-              padding-left: 1rem;
+              color: #5a4a42;
+              border-bottom: 1px dashed rgba(139, 69, 19, 0.1);
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
               
-              &::before {
-                content: "•";
-                position: absolute;
-                left: 0;
-                color: $vintage-primary;
+              &:last-child {
+                border-bottom: none;
               }
-
-              .restrictions {
-                color: $vintage-text-light;
-                font-size: 0.8rem;
-                margin-left: 0.5rem;
-                font-style: italic;
+              
+              i {
+                color: #8B4513;
               }
             }
           }
+          
+          .empty-state, .full-state {
+            text-align: center;
+            padding: 1rem 0;
+            color: #5a4a42;
+            font-style: italic;
+            
+            i {
+              font-size: 1.5rem;
+              display: block;
+              margin-bottom: 0.5rem;
+              color: #8B4513;
+            }
+          }
+          
+          .full-state {
+            color: #8B4513;
+          }
         }
       }
-    }
-  }
-
-  .restrictions-section {
-    h2 {
-      color: $vintage-primary;
-      margin-bottom: 1.5rem;
-      font-family: $vintage-font;
-    }
-
-    .subtitle {
-      color: $vintage-text-light;
-      margin-bottom: 2rem;
-      font-style: italic;
-    }
-
-    .restrictions-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-
-      .restriction-card {
-        @include vintage-card;
+      
+      .notes-section {
+        background: white;
+        border-radius: 8px;
         padding: 1.5rem;
-        text-align: center;
-        transition: transform 0.3s ease;
-
-        &:hover {
-          transform: translateY(-5px);
-        }
-
+        box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+        margin-top: 2rem;
+        
         h3 {
-          color: $vintage-primary;
-          margin-bottom: 0.5rem;
-          font-family: $vintage-font;
-        }
-
-        .count {
-          font-size: 1.5rem;
-          font-weight: 700;
-          color: $vintage-text;
+          font-family: 'Cinzel', serif;
+          color: #8B4513;
+          font-size: 1.3rem;
           margin-bottom: 1rem;
-          font-family: $vintage-font-secondary;
-        }
-
-        .progress-bar {
-          height: 8px;
-          background: $vintage-secondary;
-          border-radius: 4px;
-          overflow: hidden;
-          margin-bottom: 1.5rem;
-          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-
-          .progress {
-            height: 100%;
-            background: $vintage-primary;
-          }
-        }
-
-        .btn-details {
-          @include vintage-button;
-          width: 100%;
-          padding: 0.5rem;
-          font-size: 0.9rem;
-          background-color: $vintage-accent;
-        }
-      }
-    }
-
-    .restrictions-notes {
-      @include vintage-card;
-      padding: 1.5rem;
-
-      h3 {
-        color: $vintage-primary;
-        margin-bottom: 1rem;
-        font-family: $vintage-font;
-      }
-
-      textarea {
-        width: 100%;
-        min-height: 150px;
-        padding: 1rem;
-        border: 1px solid $vintage-border;
-        border-radius: 0;
-        font-family: inherit;
-        resize: vertical;
-        background-color: rgba(255, 255, 255, 0.7);
-        font-family: $vintage-font-secondary;
-
-        &:focus {
-          outline: none;
-          border-color: $vintage-primary;
-        }
-      }
-
-      .btn-save {
-        @include vintage-button;
-        margin-top: 1rem;
-        padding: 0.75rem 2rem;
-      }
-    }
-  }
-
-  .tables-section {
-    h2 {
-      color: $vintage-primary;
-      margin-bottom: 1.5rem;
-      font-family: $vintage-font;
-    }
-
-    .subtitle {
-      color: $vintage-text-light;
-      margin-bottom: 2rem;
-      font-style: italic;
-    }
-
-    .add-guest-form {
-      @include vintage-card;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-
-      h3 {
-        color: $vintage-primary;
-        margin-bottom: 1.5rem;
-        font-family: $vintage-font;
-      }
-
-      .form-row {
-        display: grid;
-        grid-template-columns: 2fr 1fr auto;
-        gap: 1rem;
-        align-items: flex-end;
-
-        @media (max-width: 768px) {
-          grid-template-columns: 1fr;
-        }
-
-        .form-group {
-          label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: $vintage-text-light;
-            font-size: 0.9rem;
-            font-family: $vintage-font-secondary;
-          }
-
-          input, select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid $vintage-border;
-            border-radius: 0;
-            font-family: inherit;
-            background-color: rgba(255, 255, 255, 0.7);
-
-            &:focus {
-              outline: none;
-              border-color: $vintage-primary;
-            }
-          }
-        }
-
-        .btn-add {
-          @include vintage-button;
-          padding: 0.75rem 1.5rem;
-          height: fit-content;
-          white-space: nowrap;
-
-          &:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-          }
-        }
-      }
-    }
-
-    .tables-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-
-      .table-card {
-        @include vintage-card;
-        padding: 1.5rem;
-        transition: transform 0.3s ease;
-        position: relative;
-
-        &:hover {
-          transform: translateY(-5px);
-        }
-
-        &.full {
-          border-left: 4px solid darken($vintage-primary, 15%);
-        }
-
-        .table-header {
           display: flex;
-          justify-content: space-between;
           align-items: center;
+          gap: 0.5rem;
+        }
+        
+        textarea {
+          width: 100%;
+          min-height: 120px;
+          padding: 1rem;
+          border: 1px solid rgba(139, 69, 19, 0.3);
+          border-radius: 6px;
+          resize: vertical;
           margin-bottom: 1rem;
-          padding-bottom: 0.5rem;
-          border-bottom: 1px solid $vintage-border;
-
-          h3 {
-            color: $vintage-primary;
-            margin: 0;
-            font-family: $vintage-font;
-          }
-
-          .capacity {
-            color: $vintage-text-light;
-            font-size: 0.9rem;
-            font-family: $vintage-font-secondary;
+          
+          &:focus {
+            outline: none;
+            border-color: #8B4513;
           }
         }
-
-        .guest-list {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-          min-height: 100px;
-
-          li {
-            padding: 0.5rem 0;
-            color: $vintage-text;
-            border-bottom: 1px dashed $vintage-border;
-            font-family: $vintage-font-secondary;
-
-            &:last-child {
-              border-bottom: none;
-            }
+        
+        .save-btn {
+          background: #8B4513;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          padding: 0.5rem 1.5rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          
+          &:hover {
+            background: #A0522D;
           }
         }
-
-        .empty-message {
-          color: $vintage-text-light;
-          font-style: italic;
-          text-align: center;
-          padding: 2rem 0;
-        }
-
-        .full-message {
-          color: darken($vintage-primary, 15%);
-          font-weight: 600;
-          text-align: center;
-          margin-top: 1rem;
-          font-family: $vintage-font;
-        }
-      }
-    }
-
-    .seating-plan-notes {
-      @include vintage-card;
-      padding: 1.5rem;
-
-      h3 {
-        color: $vintage-primary;
-        margin-bottom: 1rem;
-        font-family: $vintage-font;
-      }
-
-      textarea {
-        width: 100%;
-        min-height: 150px;
-        padding: 1rem;
-        border: 1px solid $vintage-border;
-        border-radius: 0;
-        font-family: inherit;
-        resize: vertical;
-        background-color: rgba(255, 255, 255, 0.7);
-        font-family: $vintage-font-secondary;
-
-        &:focus {
-          outline: none;
-          border-color: $vintage-primary;
-        }
-      }
-
-      .btn-save {
-        @include vintage-button;
-        margin-top: 1rem;
-        padding: 0.75rem 2rem;
       }
     }
   }
 }
 
-/* Efecto de papel antiguo */
-.catering-container::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(rgba(210, 180, 140, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(210, 180, 140, 0.1) 1px, transparent 1px);
-  background-size: 20px 20px;
-  pointer-events: none;
-  z-index: -1;
+/* Scrollbars delgadas */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+  border-radius: 3px;
+}
+
+@media (max-width: 900px) {
+  .catering-container {
+    padding: 1.5rem;
+    
+    .catering-header h1 {
+      font-size: 1.8rem;
+    }
+    
+    .menu-section .menu-grid,
+    .restrictions-section .restrictions-cards,
+    .tables-section .tables-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .catering-container {
+    padding: 1rem;
+    
+    .catering-header h1 {
+      font-size: 1.5rem;
+    }
+    
+    .menu-section .menu-grid,
+    .restrictions-section .restrictions-cards,
+    .tables-section .tables-grid,
+    .menu-summary .summary-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .tables-section .add-guest-form .form-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 }

@@ -1,8 +1,4 @@
-// AsignacionMesas.scss
-$color-bordo: #7A4F50;
-$color-dorado: #C2A78D;
-$color-blanco: #FFF9F5;
-$color-gris: #F5F0EC;
+// AsignacionMesas.scss - Versión corregida
 
 .asignacion-mesas {
   max-width: 1200px;
@@ -11,7 +7,7 @@ $color-gris: #F5F0EC;
   
   h1 {
     font-family: 'Playfair Display', serif;
-    color: $color-bordo;
+    color: #7A4F50; /* Color bordo directo */
     font-size: 2.2rem;
     margin-bottom: 1.5rem;
   }
@@ -22,7 +18,7 @@ $color-gris: #F5F0EC;
 }
 
 .boton-nueva-mesa {
-  background: $color-bordo;
+  background: #7A4F50; /* Color bordo directo */
   color: white;
   border: none;
   padding: 0.7rem 1.5rem;
@@ -36,7 +32,7 @@ $color-gris: #F5F0EC;
   transition: background 0.3s ease;
   
   &:hover {
-    background: darken($color-bordo, 10%);
+    background: #6c4546; /* Color bordo oscurecido manualmente */
   }
   
   i {
@@ -45,7 +41,7 @@ $color-gris: #F5F0EC;
 }
 
 .formulario-mesa {
-  background: $color-blanco;
+  background: #FFF9F5; /* Color blanco directo */
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -53,7 +49,7 @@ $color-gris: #F5F0EC;
   
   h2 {
     font-family: 'Cormorant Garamond', serif;
-    color: $color-bordo;
+    color: #7A4F50; /* Color bordo directo */
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
   }
@@ -65,7 +61,7 @@ $color-gris: #F5F0EC;
   label {
     display: block;
     font-family: 'Cormorant Garamond', serif;
-    color: $color-bordo;
+    color: #7A4F50; /* Color bordo directo */
     margin-bottom: 0.5rem;
     font-size: 1rem;
   }
@@ -73,13 +69,13 @@ $color-gris: #F5F0EC;
   input, select {
     width: 100%;
     padding: 0.7rem;
-    border: 1px solid rgba($color-bordo, 0.2);
+    border: 1px solid rgba(122, 79, 80, 0.2); /* RGBA del color bordo */
     border-radius: 5px;
     font-family: 'Cormorant Garamond', serif;
     
     &:focus {
       outline: none;
-      border-color: $color-dorado;
+      border-color: #C2A78D; /* Color dorado directo */
     }
   }
 }
@@ -100,22 +96,22 @@ $color-gris: #F5F0EC;
 }
 
 .boton-guardar {
-  background: $color-bordo;
+  background: #7A4F50; /* Color bordo directo */
   color: white;
   border: none;
   
   &:hover {
-    background: darken($color-bordo, 10%);
+    background: #6c4546; /* Color bordo oscurecido manualmente */
   }
 }
 
 .boton-cancelar {
   background: transparent;
-  color: $color-bordo;
-  border: 1px solid $color-bordo;
+  color: #7A4F50; /* Color bordo directo */
+  border: 1px solid #7A4F50; /* Color bordo directo */
   
   &:hover {
-    background: rgba($color-bordo, 0.1);
+    background: rgba(122, 79, 80, 0.1); /* RGBA del color bordo */
   }
 }
 
@@ -125,7 +121,7 @@ $color-gris: #F5F0EC;
   margin-bottom: 2rem;
   
   .estadistica {
-    background: $color-blanco;
+    background: #FFF9F5; /* Color blanco directo */
     padding: 1rem 1.5rem;
     border-radius: 8px;
     text-align: center;
@@ -134,7 +130,7 @@ $color-gris: #F5F0EC;
     
     .numero {
       font-family: 'Cinzel', serif;
-      color: $color-bordo;
+      color: #7A4F50; /* Color bordo directo */
       font-size: 1.8rem;
       font-weight: bold;
       display: block;
@@ -142,7 +138,7 @@ $color-gris: #F5F0EC;
     
     .texto {
       font-family: 'Cormorant Garamond', serif;
-      color: lighten($color-bordo, 20%);
+      color: #9a7a7b; /* Color bordo aclarado manualmente (20%) */
       font-size: 0.9rem;
     }
   }
@@ -155,7 +151,7 @@ $color-gris: #F5F0EC;
 }
 
 .mesa {
-  background: $color-blanco;
+  background: #FFF9F5; /* Color blanco directo */
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -164,7 +160,7 @@ $color-gris: #F5F0EC;
 }
 
 .encabezado-mesa {
-  background: $color-bordo;
+  background: #7A4F50; /* Color bordo directo */
   color: white;
   padding: 1rem;
   display: flex;
@@ -180,7 +176,7 @@ $color-gris: #F5F0EC;
   .capacidad {
     font-family: 'Cormorant Garamond', serif;
     font-size: 0.9rem;
-    background: rgba(white, 0.2);
+    background: rgba(255, 255, 255, 0.2); /* RGBA blanco */
     padding: 0.2rem 0.5rem;
     border-radius: 30px;
   }
@@ -197,7 +193,7 @@ $color-gris: #F5F0EC;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 0;
-  border-bottom: 1px solid rgba($color-bordo, 0.1);
+  border-bottom: 1px solid rgba(122, 79, 80, 0.1); /* RGBA del color bordo */
   font-family: 'Cormorant Garamond', serif;
   
   &:last-child {
@@ -207,19 +203,19 @@ $color-gris: #F5F0EC;
   .boton-quitar {
     background: transparent;
     border: none;
-    color: lighten($color-bordo, 20%);
+    color: #9a7a7b; /* Color bordo aclarado manualmente (20%) */
     cursor: pointer;
     transition: color 0.3s ease;
     
     &:hover {
-      color: $color-bordo;
+      color: #7A4F50; /* Color bordo directo */
     }
   }
 }
 
 .sin-invitados {
   font-family: 'Cormorant Garamond', serif;
-  color: lighten($color-bordo, 30%);
+  color: #b8a1a1; /* Color bordo aclarado manualmente (30%) */
   text-align: center;
   padding: 1rem 0;
 }
@@ -230,13 +226,13 @@ $color-gris: #F5F0EC;
   select {
     width: 100%;
     padding: 0.5rem;
-    border: 1px solid rgba($color-bordo, 0.2);
+    border: 1px solid rgba(122, 79, 80, 0.2); /* RGBA del color bordo */
     border-radius: 5px;
     font-family: 'Cormorant Garamond', serif;
     
     &:focus {
       outline: none;
-      border-color: $color-dorado;
+      border-color: #C2A78D; /* Color dorado directo */
     }
   }
 }

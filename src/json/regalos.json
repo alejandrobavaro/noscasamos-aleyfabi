@@ -1,0 +1,853 @@
+{
+    "wishlist": [
+      {
+        "id": 1,
+        "name": "Juego de vajilla",
+        "description": "Un elegante juego de vajilla para 12 personas.",
+        "price": 250,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/vajilla.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda A",
+            "url": "https://tiendaA.com/vajilla"
+          },
+          {
+            "name": "Tienda B",
+            "url": "https://tiendaB.com/vajilla"
+          }
+        ],
+        "notes": "Preferiblemente en color blanco."
+      },
+      {
+        "id": 2,
+        "name": "Cámara fotográfica",
+        "description": "Una cámara réflex digital para capturar momentos especiales.",
+        "price": 800,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/camara.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda C",
+            "url": "https://tiendaC.com/camara"
+          }
+        ],
+        "notes": "Incluir lente adicional si es posible."
+      },
+      {
+        "id": 3,
+        "name": "Set de cocina",
+        "description": "Un completo set de utensilios de cocina de acero inoxidable.",
+        "price": 150,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/cocina.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda D",
+            "url": "https://tiendaD.com/cocina"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 4,
+        "name": "Aspiradora robot",
+        "description": "Una aspiradora robot para mantener la casa limpia sin esfuerzo.",
+        "price": 300,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/aspiradora.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda E",
+            "url": "https://tiendaE.com/aspiradora"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 5,
+        "name": "Cafetera express",
+        "description": "Una cafetera express para disfrutar de café recién hecho.",
+        "price": 200,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/cafetera.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda F",
+            "url": "https://tiendaF.com/cafetera"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 6,
+        "name": "Altavoces inteligentes",
+        "description": "Altavoces inteligentes para escuchar música y controlar dispositivos con voz.",
+        "price": 150,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/altavoces.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda G",
+            "url": "https://tiendaG.com/altavoces"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 7,
+        "name": "Juego de sábanas",
+        "description": "Un juego de sábanas de algodón egipcio para una noche de sueño confortable.",
+        "price": 100,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/sabanas.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda H",
+            "url": "https://tiendaH.com/sabanas"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 8,
+        "name": "Reloj inteligente",
+        "description": "Un reloj inteligente para monitorear la actividad física y recibir notificaciones.",
+        "price": 250,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/reloj.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda I",
+            "url": "https://tiendaI.com/reloj"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 9,
+        "name": "Juego de toallas",
+        "description": "Un juego de toallas suaves y absorbentes para el baño.",
+        "price": 80,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/toallas.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda J",
+            "url": "https://tiendaJ.com/toallas"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 10,
+        "name": "Televisor 4K",
+        "description": "Un televisor 4K para disfrutar de películas y series con la mejor calidad.",
+        "price": 600,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/televisor.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda K",
+            "url": "https://tiendaK.com/televisor"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 11,
+        "name": "Manta eléctrica",
+        "description": "Una manta eléctrica para mantenerse caliente en las noches frías.",
+        "price": 60,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/manta.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda L",
+            "url": "https://tiendaL.com/manta"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 12,
+        "name": "Licuadora de alta potencia",
+        "description": "Una licuadora de alta potencia para preparar smoothies y sopas.",
+        "price": 120,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/licuadora.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda M",
+            "url": "https://tiendaM.com/licuadora"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 13,
+        "name": "Cámara de seguridad",
+        "description": "Una cámara de seguridad para vigilar el hogar.",
+        "price": 100,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/camara_seguridad.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda N",
+            "url": "https://tiendaN.com/camara_seguridad"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 14,
+        "name": "Juego de ollas y sartenes",
+        "description": "Un juego de ollas y sartenes de acero inoxidable.",
+        "price": 200,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/ollas.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda O",
+            "url": "https://tiendaO.com/ollas"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 15,
+        "name": "Consola de videojuegos",
+        "description": "Una consola de videojuegos para disfrutar de juegos en alta definición.",
+        "price": 500,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/consola.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda P",
+            "url": "https://tiendaP.com/consola"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 16,
+        "name": "Juego de copas de vino",
+        "description": "Un juego de copas de vino de cristal para ocasiones especiales.",
+        "price": 70,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/copas.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda Q",
+            "url": "https://tiendaQ.com/copas"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 17,
+        "name": "Tablet",
+        "description": "Una tablet para navegar por internet y ver películas.",
+        "price": 300,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/tablet.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda R",
+            "url": "https://tiendaR.com/tablet"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 18,
+        "name": "Juego de cuchillos",
+        "description": "Un juego de cuchillos de cocina de alta calidad.",
+        "price": 100,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/cuchillos.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda S",
+            "url": "https://tiendaS.com/cuchillos"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 19,
+        "name": "Impresora multifunción",
+        "description": "Una impresora multifunción para imprimir, escanear y copiar documentos.",
+        "price": 150,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/impresora.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda T",
+            "url": "https://tiendaT.com/impresora"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 20,
+        "name": "Juego de manteles",
+        "description": "Un juego de manteles para decorar la mesa en ocasiones especiales.",
+        "price": 80,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/manteles.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda U",
+            "url": "https://tiendaU.com/manteles"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 21,
+        "name": "Auriculares inalámbricos",
+        "description": "Auriculares inalámbricos con cancelación de ruido.",
+        "price": 200,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/auriculares.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda V",
+            "url": "https://tiendaV.com/auriculares"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 22,
+        "name": "Juego de vasos",
+        "description": "Un juego de vasos de cristal para bebidas.",
+        "price": 50,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/vasos.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda W",
+            "url": "https://tiendaW.com/vasos"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 23,
+        "name": "Proyector",
+        "description": "Un proyector para disfrutar de películas en una pantalla grande.",
+        "price": 400,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/proyector.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda X",
+            "url": "https://tiendaX.com/proyector"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 24,
+        "name": "Juego de platos",
+        "description": "Un juego de platos de porcelana para la mesa.",
+        "price": 120,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/platos.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda Y",
+            "url": "https://tiendaY.com/platos"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 25,
+        "name": "Cámara de acción",
+        "description": "Una cámara de acción para grabar aventuras al aire libre.",
+        "price": 300,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/camara_accion.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda Z",
+            "url": "https://tiendaZ.com/camara_accion"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 26,
+        "name": "Juego de cubiertos",
+        "description": "Un juego de cubiertos de acero inoxidable para 12 personas.",
+        "price": 150,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/cubiertos.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda AA",
+            "url": "https://tiendaAA.com/cubiertos"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 27,
+        "name": "Drone",
+        "description": "Un drone para tomar fotos y videos aéreos.",
+        "price": 500,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/drone.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda BB",
+            "url": "https://tiendaBB.com/drone"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 28,
+        "name": "Juego de tazas",
+        "description": "Un juego de tazas de cerámica para el desayuno.",
+        "price": 60,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/tazas.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda CC",
+            "url": "https://tiendaCC.com/tazas"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 29,
+        "name": "Altavoz portátil",
+        "description": "Un altavoz portátil para llevar la música a cualquier lugar.",
+        "price": 100,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/altavoz_portatil.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda DD",
+            "url": "https://tiendaDD.com/altavoz_portatil"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 30,
+        "name": "Juego de bandejas",
+        "description": "Un juego de bandejas para servir aperitivos.",
+        "price": 70,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/bandejas.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda EE",
+            "url": "https://tiendaEE.com/bandejas"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 31,
+        "name": "Cámara instantánea",
+        "description": "Una cámara instantánea para imprimir fotos al instante.",
+        "price": 150,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/camara_instantanea.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda FF",
+            "url": "https://tiendaFF.com/camara_instantanea"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 32,
+        "name": "Juego de cuencos",
+        "description": "Un juego de cuencos de cerámica para servir ensaladas.",
+        "price": 80,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/cuencos.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda GG",
+            "url": "https://tiendaGG.com/cuencos"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 33,
+        "name": "Reloj despertador",
+        "description": "Un reloj despertador con radio y carga USB.",
+        "price": 50,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/reloj_despertador.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda HH",
+            "url": "https://tiendaHH.com/reloj_despertador"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 34,
+        "name": "Juego de jarras",
+        "description": "Un juego de jarras de vidrio para servir bebidas.",
+        "price": 60,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/jarras.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda II",
+            "url": "https://tiendaII.com/jarras"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 35,
+        "name": "Lámpara de mesa",
+        "description": "Una lámpara de mesa moderna para iluminar la sala.",
+        "price": 80,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/lampara.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda JJ",
+            "url": "https://tiendaJJ.com/lampara"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 36,
+        "name": "Cámara deportiva",
+        "description": "Una cámara deportiva resistente al agua.",
+        "price": 200,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/camara_deportiva.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda KK",
+            "url": "https://tiendaKK.com/camara_deportiva"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 37,
+        "name": "Juego de cazuelas",
+        "description": "Un juego de cazuelas de hierro fundido.",
+        "price": 150,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/cazuelas.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda LL",
+            "url": "https://tiendaLL.com/cazuelas"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 38,
+        "name": "Reloj de pared",
+        "description": "Un reloj de pared decorativo.",
+        "price": 60,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/reloj_pared.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda MM",
+            "url": "https://tiendaMM.com/reloj_pared"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 39,
+        "name": "Cámara de vigilancia",
+        "description": "Una cámara de vigilancia con visión nocturna.",
+        "price": 120,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/camara_vigilancia.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda NN",
+            "url": "https://tiendaNN.com/camara_vigilancia"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 40,
+        "name": "Juego de espejos",
+        "description": "Un juego de espejos decorativos para el hogar.",
+        "price": 100,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/espejos.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda OO",
+            "url": "https://tiendaOO.com/espejos"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 41,
+        "name": "Cámara de fotos instantáneas",
+        "description": "Una cámara de fotos instantáneas para capturar momentos especiales.",
+        "price": 100,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/camara_instantaneas.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda PP",
+            "url": "https://tiendaPP.com/camara_instantaneas"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 42,
+        "name": "Juego de alfombras",
+        "description": "Un juego de alfombras para decorar el hogar.",
+        "price": 150,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/alfombras.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda QQ",
+            "url": "https://tiendaQQ.com/alfombras"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 43,
+        "name": "Cámara de video",
+        "description": "Una cámara de video para grabar momentos especiales.",
+        "price": 300,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/camara_video.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda RR",
+            "url": "https://tiendaRR.com/camara_video"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 44,
+        "name": "Juego de cortinas",
+        "description": "Un juego de cortinas para decorar las ventanas.",
+        "price": 120,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/cortinas.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda SS",
+            "url": "https://tiendaSS.com/cortinas"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 45,
+        "name": "Cámara de fotos compacta",
+        "description": "Una cámara de fotos compacta para llevar a todas partes.",
+        "price": 200,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/camara_compacta.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda TT",
+            "url": "https://tiendaTT.com/camara_compacta"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 46,
+        "name": "Juego de cojines",
+        "description": "Un juego de cojines decorativos para el sofá.",
+        "price": 80,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/cojines.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda UU",
+            "url": "https://tiendaUU.com/cojines"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 47,
+        "name": "Cámara de fotos profesional",
+        "description": "Una cámara de fotos profesional para capturar imágenes de alta calidad.",
+        "price": 800,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/camara_profesional.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda VV",
+            "url": "https://tiendaVV.com/camara_profesional"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 48,
+        "name": "Juego de velas",
+        "description": "Un juego de velas aromáticas para crear ambiente.",
+        "price": 50,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/velas.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda WW",
+            "url": "https://tiendaWW.com/velas"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 49,
+        "name": "Cámara de fotos réflex",
+        "description": "Una cámara de fotos réflex para capturar momentos especiales.",
+        "price": 600,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/camara_reflex.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda XX",
+            "url": "https://tiendaXX.com/camara_reflex"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 50,
+        "name": "Juego de marcos de fotos",
+        "description": "Un juego de marcos de fotos para decorar el hogar.",
+        "price": 70,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/marcos.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda YY",
+            "url": "https://tiendaYY.com/marcos"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 51,
+        "name": "Cámara de fotos instantáneas",
+        "description": "Una cámara de fotos instantáneas para capturar momentos especiales.",
+        "price": 100,
+        "reserved": false,
+        "category": "Tecnología",
+        "image": "https://example.com/images/camara_instantaneas.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda ZZ",
+            "url": "https://tiendaZZ.com/camara_instantaneas"
+          }
+        ],
+        "notes": ""
+      },
+      {
+        "id": 52,
+        "name": "Juego de cuadros decorativos",
+        "description": "Un juego de cuadros decorativos para el hogar.",
+        "price": 100,
+        "reserved": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/cuadros.jpg",
+        "storeLinks": [
+          {
+            "name": "Tienda AAA",
+            "url": "https://tiendaAAA.com/cuadros"
+          }
+        ],
+        "notes": ""
+      }
+    ],
+    "received": [
+      {
+        "id": 1,
+        "name": "Tostadora",
+        "description": "Una tostadora de 4 rebanadas.",
+        "price": 50,
+        "thankYouSent": false,
+        "category": "Hogar",
+        "image": "https://example.com/images/tostadora.jpg",
+        "notes": ""
+      }
+    ]
+  }
+  
