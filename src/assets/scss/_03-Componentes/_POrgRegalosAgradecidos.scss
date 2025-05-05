@@ -1,0 +1,274 @@
+/* ==================== */
+/* ESTILOS GENERALES */
+/* ==================== */
+.thank-you-container.vintage-design {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Cormorant Garamond', serif;
+  background: rgba(255, 248, 231, 0.322);
+  border-radius: 16px;
+  // box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  // border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+
+  h2 {
+    color: #7A4F50; /* Color vino */
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #C2A78D, transparent); /* Beige */
+    }
+
+    svg, i {
+      color: #C2A78D; /* Beige */
+      font-size: 1.8rem;
+    }
+  }
+
+  .no-pending {
+    text-align: center;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(122, 79, 80, 0.1);
+    border: 1px solid rgba(122, 79, 80, 0.15);
+    max-width: 500px;
+    margin: 0 auto;
+
+    .icon-wrapper {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(90, 143, 90, 0.1); /* Verde suave */
+      border-radius: 50%;
+      color: #5a8f5a; /* Verde */
+      font-size: 3rem;
+      border: 2px solid #5a8f5a; /* Verde */
+    }
+
+    p {
+      color: #7A4F50; /* Color vino */
+      font-size: 1.3rem;
+      margin: 0;
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+    }
+  }
+
+  .thank-you-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+
+    .thank-you-card {
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 10px 20px rgba(122, 79, 80, 0.1);
+      border: 1px solid rgba(122, 79, 80, 0.15);
+      border-left: 4px solid #C2A78D; /* Beige */
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(122, 79, 80, 0.15);
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px dashed rgba(122, 79, 80, 0.2);
+
+        h3 {
+          color: #5A2D2D; /* Marrón oscuro */
+          margin: 0;
+          font-size: 1.3rem;
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          font-family: 'Cinzel', serif;
+          font-weight: 500;
+
+          svg, i {
+            color: #8C5E3D; /* Marrón medio */
+            font-size: 1.2rem;
+          }
+        }
+
+        .date {
+          color: #8C5E3D; /* Marrón medio */
+          font-size: 0.9rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-family: 'Cormorant Garamond', serif;
+
+          svg, i {
+            color: #8C5E3D; /* Marrón medio */
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .card-body {
+        flex-grow: 1;
+        margin-bottom: 1.5rem;
+
+        .gift-name {
+          font-weight: 600;
+          margin-bottom: 1rem;
+          color: #5A2D2D; /* Marrón oscuro */
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 1.1rem;
+
+          svg, i {
+            color: #8C5E3D; /* Marrón medio */
+            font-size: 1.2rem;
+          }
+        }
+
+        .vintage-textarea {
+          width: 100%;
+          min-height: 180px;
+          padding: 1.2rem;
+          border: 1px solid rgba(122, 79, 80, 0.2);
+          border-radius: 8px;
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 1.1rem;
+          resize: vertical;
+          background: rgba(255, 255, 255, 0.8);
+          transition: all 0.3s ease;
+          color: #5A2D2D; /* Marrón oscuro */
+          line-height: 1.6;
+
+          &:focus {
+            outline: none;
+            border-color: #7A4F50; /* Color vino */
+            box-shadow: 0 0 0 3px rgba(122, 79, 80, 0.1);
+          }
+
+          &::placeholder {
+            color: rgba(90, 45, 45, 0.5); /* Marrón oscuro con transparencia */
+            font-style: italic;
+          }
+        }
+      }
+
+      .card-footer {
+        display: flex;
+        gap: 1rem;
+
+        button {
+          flex: 1;
+          padding: 0.9rem;
+          border-radius: 30px;
+          font-size: 0.95rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.8rem;
+          font-family: 'Cormorant Garamond', serif;
+          font-weight: 500;
+          letter-spacing: 0.5px;
+
+          svg, i {
+            font-size: 1.1rem;
+          }
+        }
+
+        .btn-send {
+          background: linear-gradient(135deg, #7A4F50, #8C5E3D); /* Vino a marrón */
+          color: white;
+          border: none;
+
+          &:hover {
+            background: linear-gradient(135deg, #5A2D2D, #7A4F50); /* Tonos más oscuros */
+            box-shadow: 0 3px 10px rgba(122, 79, 80, 0.2);
+          }
+        }
+
+        .btn-reminder {
+          background: none;
+          border: 1px solid rgba(122, 79, 80, 0.3);
+          color: #5A2D2D; /* Marrón oscuro */
+
+          &:hover {
+            border-color: #7A4F50; /* Color vino */
+            color: #7A4F50; /* Color vino */
+            background: rgba(122, 79, 80, 0.05);
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ==================== */
+/* RESPONSIVE */
+/* ==================== */
+@media (max-width: 992px) {
+  .thank-you-container.vintage-design {
+    padding: 1.5rem;
+
+    h2 {
+      font-size: 1.8rem;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      svg, i {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .thank-you-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .thank-you-card {
+    padding: 1.5rem !important;
+
+    .card-footer {
+      flex-direction: column;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}

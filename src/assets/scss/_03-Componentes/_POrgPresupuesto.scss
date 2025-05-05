@@ -1,0 +1,522 @@
+.pantalla-presupuesto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-size: cover;
+  padding: 0;
+
+  .contenedor-presupuesto {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+   
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    .encabezado-boda {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(122, 79, 80, 0.2);
+      text-align: center;
+      
+      h1 {
+        font-family: 'Cinzel', serif;
+        color: #7A4F50;
+        font-size: xx-large;
+        margin-bottom: 0.5rem;
+        letter-spacing: 1px;
+      }
+      
+      h2 {
+        font-family: 'Cormorant Garamond', serif;
+        color: #8C5E3D;
+        font-weight: 500;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+      
+      .mensaje-bienvenida {
+        font-family: 'Cormorant Garamond', serif;
+        color: #7A4F50;
+        font-size: 1.2rem;
+      }
+    }
+
+    .resumen-presupuesto {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      
+      .estadistica {
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(122, 79, 80, 0.15);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 20px rgba(122, 79, 80, 0.1);
+        }
+        
+        .icono-titulo {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          margin-bottom: 1rem;
+          
+          i {
+            font-size: 1.8rem;
+            color: #7A4F50;
+          }
+          
+          h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #5A2D2D;
+            font-size: 1.2rem;
+            margin: 0;
+          }
+        }
+        
+        .valor {
+          font-family: 'Cinzel', serif;
+          font-size: 1.8rem;
+          margin: 1rem 0;
+          text-align: center;
+          color: #7A4F50;
+        }
+        
+        .meta {
+          font-family: 'Cormorant Garamond', serif;
+          color: #7A4F50;
+          font-size: 1rem;
+          text-align: center;
+        }
+        
+        &.sobrepasado {
+          .valor {
+            color: #8f5a5a;
+          }
+        }
+      }
+    }
+
+    .toggle-vista {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+      
+      .toggle-btn {
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(122, 79, 80, 0.15);
+        padding: 0.8rem 1.5rem;
+        border-radius: 30px;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1rem;
+        color: #5A2D2D;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        
+        i {
+          font-size: 1.1rem;
+        }
+        
+        &:hover {
+          background: rgba(122, 79, 80, 0.1);
+        }
+        
+        &.activo {
+          background: #7A4F50;
+          color: white;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .seccion-grafico,
+    .seccion-tabla,
+    .seccion-pagos,
+    .detalles-categoria {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(122, 79, 80, 0.15);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      
+      h3 {
+        font-family: 'Cinzel', serif;
+        color: #5A2D2D;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        position: relative;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100px;
+          height: 2px;
+          background: #7A4F50;
+        }
+        
+        i {
+          color: #7A4F50;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+
+    .grafico-container {
+      height: 400px;
+      position: relative;
+      margin: 1rem 0;
+    }
+
+    .leyenda {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+      
+      .item-leyenda {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 0.5rem;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.9);
+        
+        .color {
+          width: 16px;
+          height: 16px;
+          border-radius: 3px;
+          flex-shrink: 0;
+        }
+        
+        .nombre {
+          flex-grow: 1;
+          font-size: 0.9rem;
+          color: #5A2D2D;
+          font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .porcentaje {
+          font-weight: 600;
+          color: #7A4F50;
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .tabla-container {
+      overflow-x: auto;
+      
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        
+        th, td {
+          padding: 1rem;
+          text-align: left;
+          border-bottom: 1px solid rgba(122, 79, 80, 0.2);
+        }
+        
+        th {
+          background-color: rgba(122, 79, 80, 0.1);
+          color: #5A2D2D;
+          font-family: 'Cinzel', serif;
+          font-weight: 500;
+        }
+        
+        tr {
+          transition: all 0.3s ease;
+          
+          &:hover {
+            background-color: rgba(122, 79, 80, 0.05);
+          }
+          
+          &.activo {
+            background-color: rgba(194, 167, 141, 0.1);
+          }
+          
+          &.sobrepasado {
+            td {
+              color: #8f5a5a;
+            }
+          }
+        }
+        
+        td {
+          color: #5A2D2D;
+          font-family: 'Cormorant Garamond', serif;
+          
+          i {
+            color: #7A4F50;
+            margin-right: 0.5rem;
+          }
+        }
+        
+        .barra-progreso {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          
+          .progreso {
+            flex: 1;
+            height: 6px;
+            background: rgba(122, 79, 80, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            
+            > div {
+              height: 100%;
+              transition: width 1s ease;
+            }
+          }
+        }
+      }
+    }
+
+    .formulario-pago {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: rgba(255, 249, 245, 0.7);
+      border-radius: 8px;
+      border: 1px dashed rgba(122, 79, 80, 0.3);
+      
+      .grupo-formulario {
+        label {
+          display: block;
+          margin-bottom: 0.5rem;
+          color: #5A2D2D;
+          font-family: 'Cormorant Garamond', serif;
+          font-weight: 500;
+        }
+        
+        select, input {
+          width: 100%;
+          padding: 0.7rem;
+          border: 1px solid rgba(122, 79, 80, 0.3);
+          border-radius: 6px;
+          background: white;
+          font-family: 'Cormorant Garamond', serif;
+          
+          &:focus {
+            outline: none;
+            border-color: #7A4F50;
+            box-shadow: 0 0 0 2px rgba(122, 79, 80, 0.2);
+          }
+        }
+      }
+      
+      .btn-agregar {
+        background: #7A4F50;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 0.8rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1rem;
+        
+        &:hover {
+          background: #5A2D2D;
+        }
+      }
+    }
+
+    .lista-pagos {
+      h4 {
+        font-family: 'Cinzel', serif;
+        color: #5A2D2D;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      
+      ul {
+        list-style: none;
+        padding: 0;
+        
+        li {
+          background: rgba(255, 255, 255, 0.9);
+          border-radius: 8px;
+          padding: 1rem;
+          margin-bottom: 1rem;
+          box-shadow: 0 2px 4px rgba(122, 79, 80, 0.1);
+          border-left: 3px solid #7A4F50;
+          
+          .info-pago {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            
+            .categoria {
+              font-family: 'Cormorant Garamond', serif;
+              font-weight: 600;
+              color: #5A2D2D;
+            }
+            
+            .monto {
+              font-family: 'Cinzel', serif;
+              color: #7A4F50;
+              font-weight: 500;
+            }
+          }
+          
+          .meta-pago {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #7A4F50;
+            font-family: 'Cormorant Garamond', serif;
+          }
+          
+          .notas {
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px dashed rgba(122, 79, 80, 0.2);
+            color: #5A2D2D;
+            font-size: 0.9rem;
+          }
+        }
+      }
+      
+      .sin-pagos {
+        text-align: center;
+        color: #7A4F50;
+        font-style: italic;
+        padding: 1rem;
+      }
+    }
+
+    .detalles-categoria {
+      .contenido-detalles {
+        > div {
+          margin-bottom: 1.5rem;
+          
+          h4 {
+            color: #7A4F50;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+          }
+          
+          p {
+            color: #5A2D2D;
+            line-height: 1.6;
+          }
+        }
+        
+        textarea {
+          width: 100%;
+          min-height: 120px;
+          padding: 1rem;
+          border: 1px solid rgba(122, 79, 80, 0.3);
+          border-radius: 6px;
+          resize: vertical;
+          margin-bottom: 1rem;
+          font-family: 'Cormorant Garamond', serif;
+          
+          &:focus {
+            outline: none;
+            border-color: #7A4F50;
+          }
+        }
+        
+        .btn-guardar {
+          background: #7A4F50;
+          color: white;
+          border: none;
+          border-radius: 6px;
+          padding: 0.7rem 1.5rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-left: auto;
+          font-family: 'Cormorant Garamond', serif;
+          
+          &:hover {
+            background: #5A2D2D;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .pantalla-presupuesto {
+    padding: 1.5rem;
+    
+    .contenedor-presupuesto {
+      padding: 2rem 1.5rem;
+      
+      .encabezado-boda {
+        h1 {
+          font-size: 2.2rem;
+        }
+        
+        h2 {
+          font-size: 1.5rem;
+        }
+      }
+      
+      .resumen-presupuesto {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .pantalla-presupuesto {
+    padding: 1rem;
+    
+    .contenedor-presupuesto {
+      padding: 1.5rem 1rem;
+      
+      .encabezado-boda {
+        h1 {
+          font-size: 1.8rem;
+        }
+        
+        h2 {
+          font-size: 1.3rem;
+        }
+      }
+      
+      .resumen-presupuesto {
+        grid-template-columns: 1fr;
+      }
+      
+      .formulario-pago {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}

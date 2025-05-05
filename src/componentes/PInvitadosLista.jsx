@@ -1,0 +1,322 @@
+import React, { useState, useEffect } from 'react';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import invitadosData from '/src/json/invitados.json';
+import "../assets/scss/_03-Componentes/_PInvitadosLista.scss";
+
+function PInvitadosLista() {
+  const [busqueda, setBusqueda] = useState('');
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const [nuevoInvitado, setNuevoInvitado] = useState({
+    nombre: '',
+    email: '',
+    telefono: '',
+    confirmado: false,
+    acompanantes: 0,
+    grupo: '',
+    relacion: ''
+  });
+
+  // Cargar invitados desde el JSON
+  const [invitados, setInvitados] = useState([]);
+  const [grupos, setGrupos] = useState([]);
+
+  useEffect(() => {
+    // Extraer todos los invitados de los grupos
+    const todosInvitados = invitadosData.grupos.flatMap(grupo => 
+      grupo.invitados.map(invitado => ({
+        ...invitado,
+        grupo: grupo.nombre,
+        pendiente: grupo.pendiente || false,
+        confirmado: false,
+        acompanantes: invitado.relacion.includes('Pareja') || invitado.relacion.includes('Esposa') || invitado.relacion.includes('Hija') || invitado.relacion.includes('Hijo') ? 0 : 1,
+        email: '',
+        telefono: ''
+      }))
+    );
+    
+    setInvitados(todosInvitados);
+    setGrupos(invitadosData.grupos.map(g => g.nombre));
+  }, []);
+
+  const handleBusquedaChange = (e) => {
+    setBusqueda(e.target.value);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setNuevoInvitado(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  const agregarInvitado = (e) => {
+    e.preventDefault();
+    const nuevoId = Math.max(...invitados.map(i => i.id), 0) + 1;
+    setInvitados([...invitados, { 
+      ...nuevoInvitado, 
+      id: nuevoId,
+      pendiente: false
+    }]);
+    setNuevoInvitado({
+      nombre: '',
+      email: '',
+      telefono: '',
+      confirmado: false,
+      acompanantes: 0,
+      grupo: '',
+      relacion: ''
+    });
+    setMostrarFormulario(false);
+  };
+
+  const toggleConfirmacion = (id) => {
+    setInvitados(invitados.map(invitado => 
+      invitado.id === id ? { ...invitado, confirmado: !invitado.confirmado } : invitado
+    ));
+  };
+
+  const eliminarInvitado = (id) => {
+    setInvitados(invitados.filter(invitado => invitado.id !== id));
+  };
+
+  const invitadosFiltrados = invitados.filter(invitado =>
+    invitado.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
+    invitado.grupo.toLowerCase().includes(busqueda.toLowerCase()) ||
+    invitado.relacion.toLowerCase().includes(busqueda.toLowerCase())
+  );
+
+  // Estadísticas
+  const totalInvitados = invitados.length;
+  const totalConfirmados = invitados.filter(i => i.confirmado).length;
+  const totalPersonas = invitados.reduce((total, invitado) => 
+    total + (invitado.confirmado ? 1 + invitado.acompanantes : 0), 0);
+
+  return (
+    <div className="pantalla-organizacion">
+      <div className="contenedor-organizacion">
+        <div className="contenido-pestana">
+          <div className="lista-invitados">
+            <div className="encabezado-boda">
+              <h1>Lista de Invitados</h1>
+              <h2>Organización de invitados</h2>
+              <p className="mensaje-bienvenida">
+                Gestiona la lista de invitados para {invitadosData.novios.novia} & {invitadosData.novios.novio}
+              </p>
+            </div>
+            
+            <div className="controles-lista">
+              <div className="search-box">
+                <i className="bi bi-search"></i>
+                <input
+                  type="text"
+                  placeholder="Buscar por nombre, grupo o relación..."
+                  value={busqueda}
+                  onChange={handleBusquedaChange}
+                />
+              </div>
+              
+              <button 
+                className="pestana"
+                onClick={() => setMostrarFormulario(true)}
+              >
+                <i className="bi bi-plus-lg"></i> Agregar Invitado
+              </button>
+            </div>
+            
+            {mostrarFormulario && (
+              <div className="formulario-invitado">
+                <h3>Agregar Nuevo Invitado</h3>
+                <form onSubmit={agregarInvitado}>
+                  <div className="form-group">
+                    <label>Nombre Completo *</label>
+                    <input
+                      type="text"
+                      name="nombre"
+                      value={nuevoInvitado.nombre}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label>Grupo *</label>
+                    <select
+                      name="grupo"
+                      value={nuevoInvitado.grupo}
+                      onChange={handleInputChange}
+                      required
+                    >
+                      <option value="">Seleccionar grupo</option>
+                      {grupos.map(grupo => (
+                        <option key={grupo} value={grupo}>{grupo}</option>
+                      ))}
+                    </select>
+                  </div>
+                  
+                  <div className="form-group">
+                    <label>Relación *</label>
+                    <input
+                      type="text"
+                      name="relacion"
+                      value={nuevoInvitado.relacion}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="Ej: Amigo, Familiar, etc."
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label>Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={nuevoInvitado.email}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label>Teléfono</label>
+                    <input
+                      type="tel"
+                      name="telefono"
+                      value={nuevoInvitado.telefono}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="confirmado"
+                        checked={nuevoInvitado.confirmado}
+                        onChange={handleInputChange}
+                      />
+                      Confirmado
+                    </label>
+                  </div>
+                  
+                  <div className="form-group">
+                    <label>Acompañantes</label>
+                    <input
+                      type="number"
+                      name="acompanantes"
+                      min="0"
+                      value={nuevoInvitado.acompanantes}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  
+                  <div className="botones-formulario">
+                    <button type="submit" className="pestana activa">
+                      <i className="bi bi-check-lg"></i> Guardar
+                    </button>
+                    <button 
+                      type="button" 
+                      className="pestana"
+                      onClick={() => setMostrarFormulario(false)}
+                    >
+                      <i className="bi bi-x-lg"></i> Cancelar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            )}
+            
+            <div className="resumen-invitados">
+              <div className="tarjeta-estadistica">
+                <div className="icono-titulo">
+                  <i className="bi bi-people-fill"></i>
+                  <h4>Total Invitados</h4>
+                </div>
+                <div className="valor">{totalInvitados}</div>
+              </div>
+              
+              <div className="tarjeta-estadistica">
+                <div className="icono-titulo">
+                  <i className="bi bi-check-circle"></i>
+                  <h4>Confirmados</h4>
+                </div>
+                <div className="valor">{totalConfirmados}</div>
+              </div>
+              
+              <div className="tarjeta-estadistica">
+                <div className="icono-titulo">
+                  <i className="bi bi-person-lines-fill"></i>
+                  <h4>Total Personas</h4>
+                </div>
+                <div className="valor">{totalPersonas}</div>
+              </div>
+            </div>
+            
+            <div className="tabla-invitados">
+              <div className="encabezado-tabla">
+                <div className="columna nombre">Nombre</div>
+                <div className="columna grupo">Grupo</div>
+                <div className="columna relacion">Relación</div>
+                <div className="columna confirmacion">Confirmación</div>
+                <div className="columna acompanantes">Acompañantes</div>
+                <div className="columna acciones">Acciones</div>
+              </div>
+              
+              {invitadosFiltrados.length > 0 ? (
+                invitadosFiltrados.map((invitado, index) => (
+                  <div key={invitado.id} className="fila-invitado">
+                    <div className="columna nombre">
+                      {invitado.nombre}
+                    </div>
+                    
+                    <div className="columna grupo">
+                      {invitado.grupo}
+                    </div>
+                    
+                    <div className="columna relacion">
+                      {invitado.relacion}
+                    </div>
+                    
+                    <div className="columna confirmacion">
+                      <button
+                        className={`pestana ${invitado.confirmado ? 'activa' : ''}`}
+                        onClick={() => toggleConfirmacion(invitado.id)}
+                      >
+                        {invitado.confirmado ? (
+                          <><i className="bi bi-check-circle-fill"></i> Confirmado</>
+                        ) : (
+                          <><i className="bi bi-circle"></i> Pendiente</>
+                        )}
+                      </button>
+                    </div>
+                    
+                    <div className="columna acompanantes">
+                      {invitado.acompanantes}
+                    </div>
+                    
+                    <div className="columna acciones">
+                      <button className="pestana">
+                        <i className="bi bi-pencil-fill"></i> Editar
+                      </button>
+                      <button 
+                        className="pestana"
+                        onClick={() => eliminarInvitado(invitado.id)}
+                      >
+                        <i className="bi bi-trash-fill"></i> Eliminar
+                      </button>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="sin-resultados">
+                  <i className="bi bi-emoji-frown"></i> No se encontraron invitados que coincidan con la búsqueda
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default PInvitadosLista;

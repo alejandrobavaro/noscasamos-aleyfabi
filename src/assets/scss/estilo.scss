@@ -18,7 +18,7 @@
 
 //-----------HOME-MAIN-----------------//
 @import "./_03-Componentes/MainPublicidadSlider";
-@import "./_03-Componentes/MainContent";
+@import "./_03-Componentes/PPublico";
 
 //------------------CLIENTES--------------//
 @import "./_03-Componentes/Clientes.scss";
@@ -36,8 +36,8 @@
 @import "./_03-Componentes/Servicio";
 
 //-------CONTACTOS--------//
-@import "./_03-Componentes/ContactoLogoRedes";
-@import "./_03-Componentes/ContactoFormularioSlider";
+@import "./_03-Componentes/PPublicoContacto";
+@import "./_03-Componentes/PPublicoContactoForm1";
 
 
 
@@ -50,58 +50,57 @@
 
 
 
-@import "./_03-Componentes/AreaInvitados";
+@import "./_03-Componentes/PInvitados";
 
-@import "./_03-Componentes/AsignacionMesas";
+@import "./_03-Componentes/POrgMesas";
 
-@import "./_03-Componentes/ConfirmacionAsistencia";
+@import "./_03-Componentes/PinvitadosConfirmAsist";
 
-@import "./_03-Componentes/ListaInvitados";
+@import "./_03-Componentes/PInvitadosLista";
 
 
 
-@import "./_03-Componentes/PantallaAcceso";
+@import "./_03-Componentes/PAcceso";
 
-@import "./_03-Componentes/TareasBoda";
+@import "./_03-Componentes/POrgTareasBoda";
 
-@import "./_03-Componentes/UbicacionInvitados";
+@import "./_03-Componentes/PInvitadosUbicacion";
 
 
 @import "./_03-Componentes/DressCode";
 
-@import "./_03-Componentes/Itinerario";
+@import "./_03-Componentes/PInvitadoItinerario";
 
 @import "./_03-Componentes/AvatarSelector";
 
 
-@import "./_03-Componentes/PanelOrganizacion";
+@import "./_03-Componentes/POrganizacion";
 
-@import "./_03-Componentes/Presupuesto";
-
-
-@import "./_03-Componentes/ChecklistBoda";
-
-@import "./_03-Componentes/Regalos";
-
-@import "./_03-Componentes/Catering";
-
-@import "./_03-Componentes/Invitaciones";
-
-@import "./_03-Componentes/IdeasEpicas";
-
-@import "./_03-Componentes/GiftForm";
+@import "./_03-Componentes/POrgPresupuesto";
 
 
-@import "./_03-Componentes/GiftList";
+@import "./_03-Componentes/POrgChecklistBoda";
+
+@import "./_03-Componentes/POrgRegalos";
+
+@import "./_03-Componentes/POrgCatering";
+
+@import "./_03-Componentes/POrgInvitaciones";
+
+@import "./_03-Componentes/POrgIdeas";
 
 
-@import "./_03-Componentes/ReceivedGifts";
+
+@import "./_03-Componentes/POrgRegalosListaDeseos";
 
 
-@import "./_03-Componentes/ThankYouSection";
+@import "./_03-Componentes/POrgRegalosRecibidos";
 
 
-@import "./_03-Componentes/Mesas";
+@import "./_03-Componentes/POrgRegalosAgradecidos";
+
+
+@import "./_03-Componentes/POrgMesas";
 
 
 //--------------FOOTER----------------//

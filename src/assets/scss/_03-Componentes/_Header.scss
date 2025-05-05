@@ -4,7 +4,7 @@ $bordo-oscuro: #5A2D2D;
 $tierra-claro: #C2A78D;
 $tierra-medio: #A67C52;
 $tierra-oscuro: #8C5E3D;
-$blanco: rgba(255, 255, 255, 0.12);
+$blanco: rgba(255, 255, 255, 0.9);
 $negro: #2A2621;
 
 /* Estilos base */
@@ -14,10 +14,11 @@ $negro: #2A2621;
   font-family: 'Cormorant Garamond', serif;
   position: relative;
   width: 100%;
+  z-index: 1000;
 
   /* Líneas decorativas */
   .baroque-line-top, .baroque-line-bottom {
-    height: 4px;
+    height: 3px;
     width: 100%;
     background: linear-gradient(90deg, 
       transparent, 
@@ -31,57 +32,45 @@ $negro: #2A2621;
   }
 
   .baroque-line-bottom {
-    margin-top: 5px;
+    margin-top: 3px;
   }
 
   /* Navbar personalizado */
   .navbar-custom {
-    padding: 0 0;
+    padding: 0.5rem 0;
     
     .header-container {
       display: flex;
-      justify-content:space-around;
+      justify-content: space-between;
       align-items: center;
-      position: relative;
       width: 100%;
-      // max-width: 1200px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
     }
   }
 
-/* Logo */
-.logo-brand {
-  margin-right: auto; /* Empuja todo lo demás hacia la derecha */
-  padding: 0;
-  display: flex;
-  align-items: center;
-  z-index: 10;
-  
-  .logo-header {
-    max-width: 80px;
-    height: auto;
-    transition: all 0.4s ease;
+  /* Logo */
+  .logo-brand {
+    padding: 0;
+    z-index: 10;
     
-    &:hover {
-      transform: scale(1.03);
-      opacity: 0.9;
+    .logo-header {
+      max-width: 100px;
+      height: auto;
+      transition: all 0.4s ease;
+      
+      &:hover {
+        transform: scale(1.03);
+        opacity: 0.9;
+      }
     }
   }
-}
-
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; /* Alinea todo a la izquierda */
-  width: 100%;
-}
 
   /* Menú móvil */
   .mobile-toggle {
     border: none;
     padding: 0.5rem;
-    order: -1;
     
     &:focus {
       box-shadow: none;
@@ -102,6 +91,7 @@ $negro: #2A2621;
   /* Colapso del menú */
   .navbar-collapse-custom {
     flex-grow: 0;
+    transition: all 0.3s ease;
   }
 
   /* Enlaces de navegación */
@@ -113,14 +103,17 @@ $negro: #2A2621;
     .nav-link {
       color: $bordo-oscuro;
       font-weight: 600;
-      font-size: 1.1rem;
-      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
       position: relative;
       transition: all 0.3s ease;
       white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 1px;
       
       &:hover {
         color: $tierra-oscuro;
+        text-decoration: none;
         
         &::after {
           width: 100%;
@@ -132,10 +125,10 @@ $negro: #2A2621;
         content: '';
         position: absolute;
         width: 0;
-        height: 1px;
-        bottom: 6px;
+        height: 2px;
+        bottom: 4px;
         left: 50%;
-        background: linear-gradient(90deg, transparent, $tierra-medio, transparent);
+        background: $tierra-medio;
         transition: all 0.3s ease;
       }
     }
@@ -159,16 +152,21 @@ $negro: #2A2621;
       gap: 10px;
       color: $bordo-oscuro;
       font-size: 0.95rem;
+      font-weight: 600;
     }
     
     .access-btn, .logout-btn {
       color: $bordo-oscuro;
       font-weight: 600;
       transition: all 0.3s ease;
-      padding: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid $bordo-elegante;
+      border-radius: 4px;
       
       &:hover {
         color: $tierra-oscuro;
+        background: rgba($tierra-claro, 0.1);
+        text-decoration: none;
       }
     }
     
@@ -195,22 +193,30 @@ $negro: #2A2621;
     .navbar-custom {
       .header-container {
         flex-wrap: wrap;
-        padding-top: 70px;
+        padding: 10px 15px;
       }
     }
     
     .logo-brand {
-      top: 10px;
+      order: 1;
       
       .logo-header {
-        max-width: 180px;
+        max-width: 80px;
       }
     }
     
-    .navbar-collapse-custom {
-      width: 100%;
+    .mobile-toggle {
       order: 2;
+    }
+    
+    .navbar-collapse-custom {
+      order: 3;
+      width: 100%;
       padding: 15px 0;
+      background: rgba(255, 255, 255, 0.95);
+      margin-top: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
     
     .nav-links {
@@ -219,7 +225,7 @@ $negro: #2A2621;
       
       .nav-link {
         padding: 0.8rem 0;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         
         &::after {
           bottom: 8px;
@@ -235,6 +241,8 @@ $negro: #2A2621;
       margin: 15px 0 0;
       width: 100%;
       text-align: center;
+      padding-top: 15px;
+      border-top: 1px solid rgba($bordo-elegante, 0.2);
     }
   }
 }

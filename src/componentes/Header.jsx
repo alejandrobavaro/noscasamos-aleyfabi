@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { BsBoxArrowRight, BsList } from "react-icons/bs";
@@ -9,63 +9,58 @@ const Header = ({ isDarkMode, toggleDarkMode }) => {
   const { nivelAcceso, logout } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    document.body.classList.toggle("dark-mode", isDarkMode);
-  }, [isDarkMode]);
-
   const handleToggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
     <header className="header">
       <div className="baroque-line-top"></div>
-    
+      
       <Navbar expand="lg" className="navbar-custom">
-     
-
-      <Navbar.Brand as={Link} to="/" className="logo-brand header-container">
+        <Container className="header-container">
+          {/* Logo y toggle móvil */}
+          <Navbar.Brand as={Link} to="/" className="logo-brand">
             <img
               src="../../img/02-logos/logo-bodaaleyfabi1d.png"
               alt="Logo Boda Ale y Fabi"
               className="logo-header"
             />
           </Navbar.Brand>
-
-          <Nav.Link as={Link} to="/" onClick={() => setIsMobileMenuOpen(false)}>
-                INICIO
-              </Nav.Link>
-
-
-        <Container className="header-container">
+          
           <Navbar.Toggle 
             aria-controls="basic-navbar-nav" 
-            className="mobile-toggle"
             onClick={handleToggleMobileMenu}
+            className="mobile-toggle"
           >
             <BsList className="menu-icon" />
           </Navbar.Toggle>
 
-
-       
-
-       
-
+          {/* Menú principal */}
           <Navbar.Collapse id="basic-navbar-nav" className={`navbar-collapse-custom ${isMobileMenuOpen ? "show" : ""}`}>
             <Nav className="nav-links">
+              {/* Sección Pública (siempre visible) */}
+              <Nav.Link as={Link} to="/inicio" onClick={() => setIsMobileMenuOpen(false)}>
+                NUESTRA HISTORIA
+              </Nav.Link>
+              
+              <div className="baroque-divider"></div>
+              
+              <Nav.Link as={Link} to="/contacto" onClick={() => setIsMobileMenuOpen(false)}>
+                CONTACTO
+              </Nav.Link>
 
-            
-           
-
+              {/* Sección Invitados */}
               {nivelAcceso === 'invitado' && (
                 <>
                   <div className="baroque-divider"></div>
-                  <Nav.Link as={Link} to="/invitados/confirmar" onClick={() => setIsMobileMenuOpen(false)}>
-                    CONFIRMAR
+                  <Nav.Link as={Link} to="/invitados" onClick={() => setIsMobileMenuOpen(false)}>
+                    ÁREA INVITADOS
                   </Nav.Link>
-
-
-             
-
-
+                  
+                  <div className="baroque-divider"></div>
+                  <Nav.Link as={Link} to="/invitados/confirmar" onClick={() => setIsMobileMenuOpen(false)}>
+                    CONFIRMAR ASISTENCIA
+                  </Nav.Link>
+                  
                   <div className="baroque-divider"></div>
                   <Nav.Link as={Link} to="/invitados/ubicacion" onClick={() => setIsMobileMenuOpen(false)}>
                     UBICACIÓN
@@ -73,24 +68,32 @@ const Header = ({ isDarkMode, toggleDarkMode }) => {
                 </>
               )}
 
+              {/* Sección Organización */}
               {nivelAcceso === 'organizacion' && (
                 <>
                   <div className="baroque-divider"></div>
+                  <Nav.Link as={Link} to="/organizacion" onClick={() => setIsMobileMenuOpen(false)}>
+                    PANEL ORGANIZACIÓN
+                  </Nav.Link>
+                  
+                  <div className="baroque-divider"></div>
                   <Nav.Link as={Link} to="/organizacion/invitados" onClick={() => setIsMobileMenuOpen(false)}>
-                    INVITADOS
+                    LISTA INVITADOS
+                  </Nav.Link>
+                  
+                  <div className="baroque-divider"></div>
+                  <Nav.Link as={Link} to="/organizacion/POrgMesas" onClick={() => setIsMobileMenuOpen(false)}>
+                    ASIGNAR Mesas
                   </Nav.Link>
                 </>
               )}
             </Nav>
 
-
-          
-
-
+            {/* Sección de autenticación */}
             <div className="auth-section">
               {nivelAcceso ? (
                 <div className="auth-welcome">
-                  <span>Hola, {nivelAcceso}</span>
+                  <span>Hola, {nivelAcceso === 'organizacion' ? 'Alejandro & Fabiola' : 'Invitado'}</span>
                   <Link
                     to="/"
                     onClick={() => {
@@ -103,8 +106,8 @@ const Header = ({ isDarkMode, toggleDarkMode }) => {
                   </Link>
                 </div>
               ) : (
-                <Link to="/admin" className="access-btn">
-                  ACCESO
+                <Link to="/" className="access-btn">
+                  ACCESO INVITADOS
                 </Link>
               )}
             </div>

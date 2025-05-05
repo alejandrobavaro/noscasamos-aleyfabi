@@ -1,0 +1,325 @@
+// Variables de color
+$bordo-elegante: #7A4F50;
+$bordo-oscuro: #5A2D2D;
+$tierra-claro: #C2A78D;
+$tierra-medio: #A67C52;
+$tierra-oscuro: #8C5E3D;
+$blanco: #FFF9F5;
+$crema: #FCE8DC;
+$negro: #2A2621;
+
+// Estilos base
+.love-story-container {
+  font-family: 'Cormorant Garamond', serif;
+  color: $negro;
+  background: $blanco;
+  line-height: 1.8;
+}
+
+// Hero Slider
+.love-story-hero {
+  position: relative;
+  height: 60vh;
+  max-height: 600px;
+  overflow: hidden;
+
+  .hero-slide {
+    height: 100%;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .slide-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.1));
+    }
+  }
+
+  .slick-dots {
+    bottom: 30px;
+    
+    li {
+      button {
+        &:before {
+          color: $crema;
+          opacity: 0.7;
+          font-size: 12px;
+        }
+      }
+      
+      &.slick-active {
+        button:before {
+          color: $crema;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+// Contenido principal
+.love-story-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+// Introducción
+.story-intro {
+  text-align: center;
+  margin-bottom: 4rem;
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    color: $bordo-oscuro;
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+
+    .decorative-line {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(to right, transparent, $tierra-medio, transparent);
+      max-width: 150px;
+    }
+  }
+
+  .intro-subtitle {
+    font-size: 1.3rem;
+    color: $tierra-oscuro;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+
+  .intro-text {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: $negro;
+  }
+}
+
+// Capítulos de la historia
+.story-chapter {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  align-items: center;
+  position: relative;
+  padding-bottom: 4rem;
+
+  &:not(:last-child):after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, $tierra-medio, transparent);
+  }
+
+  &.reverse-layout {
+    flex-direction: row-reverse;
+  }
+
+  .chapter-image {
+    flex: 1;
+    min-width: 0;
+
+    img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 5px 20px rgba(122, 79, 80, 0.1);
+      transition: transform 0.5s ease;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  .chapter-text {
+    flex: 1;
+    min-width: 0;
+
+    h3 {
+      font-family: 'Cinzel', serif;
+      color: $bordo-oscuro;
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 2px;
+        background: $tierra-medio;
+      }
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+      color: $negro;
+    }
+  }
+}
+
+// Elementos especiales
+.love-quote {
+  font-style: italic;
+  color: $tierra-oscuro;
+  padding: 1.5rem;
+  border-left: 3px solid $tierra-medio;
+  background: rgba(194, 167, 141, 0.1);
+  margin: 1.5rem 0;
+  font-size: 1.2rem;
+  position: relative;
+
+  &:before, &:after {
+    content: '"';
+    font-size: 1.5rem;
+    color: $tierra-medio;
+    position: absolute;
+  }
+
+  &:before {
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+
+  &:after {
+    bottom: 0.5rem;
+    right: 0.5rem;
+  }
+}
+
+// Epílogo
+.story-epilogue {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(rgba(252, 232, 220, 0.7), rgba(252, 232, 220, 0.7)), 
+              url('/img/00-fondos/fondoaleyfabi1.jpg') center/cover;
+  border-radius: 8px;
+  margin-top: 3rem;
+
+  .epilogue-content {
+    max-width: 800px;
+    margin: 0 auto;
+
+    h3 {
+      font-family: 'Cinzel', serif;
+      color: $bordo-oscuro;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .signature {
+    font-family: 'Cinzel', serif;
+    color: $bordo-oscuro;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+
+    p:last-child {
+      font-size: 1.8rem;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 992px) {
+  .love-story-hero {
+    height: 50vh;
+  }
+
+  .story-chapter {
+    flex-direction: column;
+    gap: 2rem;
+    padding-bottom: 3rem;
+
+    &.reverse-layout {
+      flex-direction: column;
+    }
+
+    .chapter-image img {
+      height: 350px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .love-story-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .story-intro {
+    .section-title {
+      font-size: 2rem;
+      gap: 1rem;
+
+      .decorative-line {
+        max-width: 100px;
+      }
+    }
+  }
+
+  .story-chapter {
+    .chapter-text h3 {
+      font-size: 1.4rem;
+    }
+  }
+
+  .story-epilogue {
+    padding: 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .love-story-hero {
+    height: 40vh;
+  }
+
+  .story-intro {
+    .section-title {
+      font-size: 1.8rem;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .decorative-line {
+        width: 100px;
+        height: 1px;
+      }
+    }
+  }
+
+  .story-chapter {
+    .chapter-image img {
+      height: 250px;
+    }
+  }
+}

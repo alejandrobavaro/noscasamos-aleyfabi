@@ -4,7 +4,7 @@ import '../assets/scss/_03-Componentes/_MainWhatsappIcon.scss';
 
 function MainWhatsappIcon() {
   return (
-    <div className='telefonoWhatsappMainContent'>
+    <div className='telefonoWhatsappPPublico'>
       <a
         href="https://api.whatsapp.com/send?phone=+542235455451&text=Hola!,%20en%20que%20puedo%20ayudarte?"
         rel="link whatsapp"
@@ -12,7 +12,7 @@ function MainWhatsappIcon() {
       >
         <img
           alt="WhatsApp Icon"
-          className="logoWhatsappMainContent"
+          className="logoWhatsappPPublico"
           src="/img/02-logos/logowhattsapp1.png"
         />
       </a>

@@ -1,0 +1,164 @@
+{
+  "categories": [
+    {
+      "id": "salon",
+      "name": "Salón & Decoración",
+      "tasks": [
+        {"id": "salon-1", "name": "Confirmar reserva del salón", "assigned": "both", "dueDate": "2025-03-01", "completed": true},
+        {"id": "salon-2", "name": "Definir diseño de centros de mesa", "assigned": "fabiola", "dueDate": "2025-04-15", "completed": false},
+        {"id": "salon-3", "name": "Contratar florista para arreglos", "assigned": "fabiola", "dueDate": "2025-05-01", "completed": false},
+        {"id": "salon-4", "name": "Diseñar y construir arco nupcial", "assigned": "alejandro", "dueDate": "2025-08-01", "completed": false},
+        {"id": "salon-5", "name": "Seleccionar mantelería", "assigned": "fabiola", "dueDate": "2025-05-15", "completed": false},
+        {"id": "salon-6", "name": "Elegir decoración de POrgMesas", "assigned": "fabiola", "dueDate": "2025-06-01", "completed": false},
+        {"id": "salon-7", "name": "Contratar servicio de iluminación", "assigned": "alejandro", "dueDate": "2025-06-15", "completed": false},
+        {"id": "salon-8", "name": "Planificar distribución de POrgMesas", "assigned": "both", "dueDate": "2025-07-01", "completed": false},
+        {"id": "salon-9", "name": "Seleccionar mobiliario adicional", "assigned": "fabiola", "dueDate": "2025-07-15", "completed": false},
+        {"id": "salon-10", "name": "Confirmar entrega de decoración", "assigned": "alejandro", "dueDate": "2025-08-15", "completed": false}
+      ]
+    },
+    {
+      "id": "vestuario",
+      "name": "Vestuario",
+      "tasks": [
+        {"id": "vestuario-1", "name": "Seleccionar y comprar vestido de novia", "assigned": "fabiola", "dueDate": "2025-02-01", "completed": true},
+        {"id": "vestuario-2", "name": "Seleccionar traje de novio", "assigned": "alejandro", "dueDate": "2025-04-01", "completed": false},
+        {"id": "vestuario-3", "name": "Pruebas de vestuario", "assigned": "both", "dueDate": "2025-08-15", "completed": false},
+        {"id": "vestuario-4", "name": "Elegir zapatos para la novia", "assigned": "fabiola", "dueDate": "2025-03-01", "completed": false},
+        {"id": "vestuario-5", "name": "Seleccionar accesorios para la novia", "assigned": "fabiola", "dueDate": "2025-03-15", "completed": false},
+        {"id": "vestuario-6", "name": "Elegir zapatos para el novio", "assigned": "alejandro", "dueDate": "2025-04-15", "completed": false},
+        {"id": "vestuario-7", "name": "Seleccionar vestimenta para damas de honor", "assigned": "fabiola", "dueDate": "2025-05-01", "completed": false},
+        {"id": "vestuario-8", "name": "Seleccionar vestimenta para padrinos", "assigned": "alejandro", "dueDate": "2025-05-15", "completed": false},
+        {"id": "vestuario-9", "name": "Coordinar pruebas de vestuario para la fiesta", "assigned": "both", "dueDate": "2025-06-01", "completed": false},
+        {"id": "vestuario-10", "name": "Confirmar entrega de vestuario", "assigned": "both", "dueDate": "2025-07-01", "completed": false}
+      ]
+    },
+    {
+      "id": "POrgCatering",
+      "name": "POrgCatering & Banquete",
+      "tasks": [
+        {"id": "POrgCatering-1", "name": "Seleccionar menú principal", "assigned": "both", "dueDate": "2025-05-01", "completed": false},
+        {"id": "POrgCatering-2", "name": "Definir opciones para vegetarianos", "assigned": "fabiola", "dueDate": "2025-05-15", "completed": false},
+        {"id": "POrgCatering-3", "name": "Seleccionar torta nupcial", "assigned": "both", "dueDate": "2025-06-01", "completed": false},
+        {"id": "POrgCatering-4", "name": "Contratar servicio de POrgCatering", "assigned": "both", "dueDate": "2025-04-01", "completed": false},
+        {"id": "POrgCatering-5", "name": "Definir menú para niños", "assigned": "fabiola", "dueDate": "2025-05-30", "completed": false},
+        {"id": "POrgCatering-6", "name": "Seleccionar bebidas", "assigned": "alejandro", "dueDate": "2025-06-15", "completed": false},
+        {"id": "POrgCatering-7", "name": "Coordinar degustación de menú", "assigned": "both", "dueDate": "2025-07-01", "completed": false},
+        {"id": "POrgCatering-8", "name": "Confirmar cantidad de invitados para POrgCatering", "assigned": "both", "dueDate": "2025-07-15", "completed": false},
+        {"id": "POrgCatering-9", "name": "Seleccionar postres adicionales", "assigned": "fabiola", "dueDate": "2025-08-01", "completed": false},
+        {"id": "POrgCatering-10", "name": "Confirmar entrega de torta nupcial", "assigned": "both", "dueDate": "2025-08-15", "completed": false}
+      ]
+    },
+    {
+      "id": "POrgInvitaciones",
+      "name": "POrgInvitaciones & Comunicación",
+      "tasks": [
+        {"id": "POrgInvitaciones-1", "name": "Diseñar tarjetas de invitación", "assigned": "both", "dueDate": "2025-01-15", "completed": true},
+        {"id": "POrgInvitaciones-2", "name": "Enviar POrgInvitaciones", "assigned": "both", "dueDate": "2025-03-01", "completed": false},
+        {"id": "POrgInvitaciones-3", "name": "Confirmar asistencia de invitados", "assigned": "both", "dueDate": "2025-07-01", "completed": false},
+        {"id": "POrgInvitaciones-4", "name": "Crear lista de invitados", "assigned": "both", "dueDate": "2025-01-01", "completed": false},
+        {"id": "POrgInvitaciones-5", "name": "Diseñar tarjetas de agradecimiento", "assigned": "fabiola", "dueDate": "2025-02-01", "completed": false},
+        {"id": "POrgInvitaciones-6", "name": "Enviar recordatorios de RSVP", "assigned": "both", "dueDate": "2025-06-01", "completed": false},
+        {"id": "POrgInvitaciones-7", "name": "Crear grupo de chat para invitados", "assigned": "alejandro", "dueDate": "2025-03-15", "completed": false},
+        {"id": "POrgInvitaciones-8", "name": "Diseñar tarjetas de lugar", "assigned": "fabiola", "dueDate": "2025-04-01", "completed": false},
+        {"id": "POrgInvitaciones-9", "name": "Coordinar entrega de POrgInvitaciones", "assigned": "both", "dueDate": "2025-02-15", "completed": false},
+        {"id": "POrgInvitaciones-10", "name": "Confirmar recepción de POrgInvitaciones", "assigned": "both", "dueDate": "2025-03-30", "completed": false}
+      ]
+    },
+    {
+      "id": "entretenimiento",
+      "name": "Entretenimiento",
+      "tasks": [
+        {"id": "entretenimiento-1", "name": "Contratar DJ/Banda", "assigned": "alejandro", "dueDate": "2025-04-01", "completed": false},
+        {"id": "entretenimiento-2", "name": "Seleccionar lista de canciones", "assigned": "both", "dueDate": "2025-09-01", "completed": false},
+        {"id": "entretenimiento-3", "name": "Contratar animación para niños", "assigned": "fabiola", "dueDate": "2025-05-01", "completed": false},
+        {"id": "entretenimiento-4", "name": "Planificar juegos y actividades", "assigned": "both", "dueDate": "2025-06-01", "completed": false},
+        {"id": "entretenimiento-5", "name": "Contratar fotomatón", "assigned": "alejandro", "dueDate": "2025-05-15", "completed": false},
+        {"id": "entretenimiento-6", "name": "Seleccionar música para la ceremonia", "assigned": "both", "dueDate": "2025-07-01", "completed": false},
+        {"id": "entretenimiento-7", "name": "Coordinar ensayos con banda/DJ", "assigned": "alejandro", "dueDate": "2025-08-01", "completed": false},
+        {"id": "entretenimiento-8", "name": "Confirmar lista final de canciones", "assigned": "both", "dueDate": "2025-08-15", "completed": false},
+        {"id": "entretenimiento-9", "name": "Preparar discursos y brindis", "assigned": "both", "dueDate": "2025-09-15", "completed": false},
+        {"id": "entretenimiento-10", "name": "Confirmar horarios con banda/DJ", "assigned": "alejandro", "dueDate": "2025-10-01", "completed": false}
+      ]
+    },
+    {
+      "id": "fotografia",
+      "name": "Fotografía & Video",
+      "tasks": [
+        {"id": "fotografia-1", "name": "Contratar fotógrafo", "assigned": "both", "dueDate": "2025-03-01", "completed": false},
+        {"id": "fotografia-2", "name": "Planificar sesión pre-boda", "assigned": "both", "dueDate": "2025-07-01", "completed": false},
+        {"id": "fotografia-3", "name": "Contratar videógrafo", "assigned": "both", "dueDate": "2025-03-15", "completed": false},
+        {"id": "fotografia-4", "name": "Seleccionar locaciones para fotos", "assigned": "both", "dueDate": "2025-04-01", "completed": false},
+        {"id": "fotografia-5", "name": "Coordinar horarios con fotógrafo", "assigned": "both", "dueDate": "2025-05-01", "completed": false},
+        {"id": "fotografia-6", "name": "Planificar sesión post-boda", "assigned": "both", "dueDate": "2025-07-15", "completed": false},
+        {"id": "fotografia-7", "name": "Confirmar lista de fotos esenciales", "assigned": "both", "dueDate": "2025-08-01", "completed": false},
+        {"id": "fotografia-8", "name": "Seleccionar estilo de fotografía", "assigned": "both", "dueDate": "2025-04-15", "completed": false},
+        {"id": "fotografia-9", "name": "Coordinar entrega de fotos y videos", "assigned": "both", "dueDate": "2025-09-01", "completed": false},
+        {"id": "fotografia-10", "name": "Confirmar POrgPresupuesto con fotógrafo y videógrafo", "assigned": "both", "dueDate": "2025-03-30", "completed": false}
+      ]
+    },
+    {
+      "id": "POrgRegalos",
+      "name": "POrgRegalos & Souvenirs",
+      "tasks": [
+        {"id": "POrgRegalos-1", "name": "Seleccionar souvenirs para invitados", "assigned": "fabiola", "dueDate": "2025-06-01", "completed": false},
+        {"id": "POrgRegalos-2", "name": "Crear lista de POrgRegalos", "assigned": "both", "dueDate": "2025-04-01", "completed": false},
+        {"id": "POrgRegalos-3", "name": "Personalizar souvenirs", "assigned": "fabiola", "dueDate": "2025-06-15", "completed": false},
+        {"id": "POrgRegalos-4", "name": "Contratar servicio de entrega de POrgRegalos", "assigned": "alejandro", "dueDate": "2025-07-01", "completed": false},
+        {"id": "POrgRegalos-5", "name": "Seleccionar POrgRegalos para padrinos y damas de honor", "assigned": "both", "dueDate": "2025-05-01", "completed": false},
+        {"id": "POrgRegalos-6", "name": "Confirmar entrega de souvenirs", "assigned": "fabiola", "dueDate": "2025-08-01", "completed": false},
+        {"id": "POrgRegalos-7", "name": "Preparar mesa de POrgRegalos", "assigned": "both", "dueDate": "2025-08-15", "completed": false},
+        {"id": "POrgRegalos-8", "name": "Seleccionar POrgRegalos para familiares cercanos", "assigned": "both", "dueDate": "2025-05-15", "completed": false},
+        {"id": "POrgRegalos-9", "name": "Coordinar entrega de POrgRegalos especiales", "assigned": "both", "dueDate": "2025-07-15", "completed": false},
+        {"id": "POrgRegalos-10", "name": "Confirmar lista final de POrgRegalos", "assigned": "both", "dueDate": "2025-08-30", "completed": false}
+      ]
+    },
+    {
+      "id": "web",
+      "name": "Página Web",
+      "tasks": [
+        {"id": "web-1", "name": "Diseñar página web de la boda", "assigned": "alejandro", "dueDate": "2025-02-01", "completed": true},
+        {"id": "web-2", "name": "Actualizar información en la web", "assigned": "both", "dueDate": "2025-10-01", "completed": false},
+        {"id": "web-3", "name": "Crear sección de RSVP en línea", "assigned": "alejandro", "dueDate": "2025-03-01", "completed": false},
+        {"id": "web-4", "name": "Agregar galería de fotos", "assigned": "alejandro", "dueDate": "2025-04-01", "completed": false},
+        {"id": "web-5", "name": "Incluir información de alojamiento", "assigned": "both", "dueDate": "2025-04-15", "completed": false},
+        {"id": "web-6", "name": "Actualizar lista de POrgRegalos en la web", "assigned": "both", "dueDate": "2025-05-01", "completed": false},
+        {"id": "web-7", "name": "Agregar sección de agradecimientos", "assigned": "alejandro", "dueDate": "2025-05-15", "completed": false},
+        {"id": "web-8", "name": "Publicar historias y anécdotas", "assigned": "both", "dueDate": "2025-06-01", "completed": false},
+        {"id": "web-9", "name": "Actualizar información de contacto", "assigned": "both", "dueDate": "2025-06-15", "completed": false},
+        {"id": "web-10", "name": "Revisar y corregir errores en la web", "assigned": "alejandro", "dueDate": "2025-07-01", "completed": false}
+      ]
+    },
+    {
+      "id": "ceremonia",
+      "name": "Ceremonia",
+      "tasks": [
+        {"id": "ceremonia-1", "name": "Seleccionar oficiante", "assigned": "both", "dueDate": "2025-03-01", "completed": false},
+        {"id": "ceremonia-2", "name": "Escribir votos matrimoniales", "assigned": "both", "dueDate": "2025-08-01", "completed": false},
+        {"id": "ceremonia-3", "name": "Coordinar ensayo de ceremonia", "assigned": "both", "dueDate": "2025-09-01", "completed": false},
+        {"id": "ceremonia-4", "name": "Seleccionar música para la ceremonia", "assigned": "both", "dueDate": "2025-04-01", "completed": false},
+        {"id": "ceremonia-5", "name": "Confirmar asistencia de oficiante", "assigned": "both", "dueDate": "2025-05-01", "completed": false},
+        {"id": "ceremonia-6", "name": "Preparar lecturas y discursos", "assigned": "both", "dueDate": "2025-07-01", "completed": false},
+        {"id": "ceremonia-7", "name": "Coordinar entrega de anillos", "assigned": "both", "dueDate": "2025-08-15", "completed": false},
+        {"id": "ceremonia-8", "name": "Seleccionar decoración para la ceremonia", "assigned": "fabiola", "dueDate": "2025-05-15", "completed": false},
+        {"id": "ceremonia-9", "name": "Confirmar horarios con oficiante", "assigned": "both", "dueDate": "2025-09-15", "completed": false},
+        {"id": "ceremonia-10", "name": "Preparar programa de la ceremonia", "assigned": "both", "dueDate": "2025-08-30", "completed": false}
+      ]
+    },
+    {
+      "id": "transporte",
+      "name": "Transporte",
+      "tasks": [
+        {"id": "transporte-1", "name": "Contratar servicio de transporte para invitados", "assigned": "alejandro", "dueDate": "2025-04-01", "completed": false},
+        {"id": "transporte-2", "name": "Seleccionar vehículo para novios", "assigned": "both", "dueDate": "2025-05-01", "completed": false},
+        {"id": "transporte-3", "name": "Coordinar rutas y horarios de transporte", "assigned": "alejandro", "dueDate": "2025-06-01", "completed": false},
+        {"id": "transporte-4", "name": "Confirmar reserva de vehículo para novios", "assigned": "both", "dueDate": "2025-07-01", "completed": false},
+        {"id": "transporte-5", "name": "Preparar mapas y direcciones", "assigned": "alejandro", "dueDate": "2025-06-15", "completed": false},
+        {"id": "transporte-6", "name": "Confirmar rutas con choferes", "assigned": "alejandro", "dueDate": "2025-07-15", "completed": false},
+        {"id": "transporte-7", "name": "Coordinar transporte para proveedores", "assigned": "alejandro", "dueDate": "2025-08-01", "completed": false},
+        {"id": "transporte-8", "name": "Confirmar horarios de transporte", "assigned": "alejandro", "dueDate": "2025-08-15", "completed": false},
+        {"id": "transporte-9", "name": "Preparar señalización para transporte", "assigned": "alejandro", "dueDate": "2025-09-01", "completed": false},
+        {"id": "transporte-10", "name": "Revisar y ajustar rutas de transporte", "assigned": "alejandro", "dueDate": "2025-09-15", "completed": false}
+      ]
+    }
+  ]
+}

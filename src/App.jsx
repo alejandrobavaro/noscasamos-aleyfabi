@@ -16,30 +16,29 @@ import MainWhatsappIcon from "./componentes/MainWhatsappIcon";
 import MainPublicidadSlider from "./componentes/MainPublicidadSlider";
 
 //------------PANTALLA DE ACCESO--------------//
-import PantallaAcceso from "./componentes/PantallaAcceso";
+import PAcceso from "./componentes/PAcceso";
 
 //------------RUTAS PÚBLICAS--------------//
-import MainContent from "./componentes/MainContent";
-import ContactoLogoRedes from "./componentes/ContactoLogoRedes";
-import ContactoFormularioSlider from "./componentes/ContactoFormularioSlider";
-import Clientes from "./componentes/Clientes";
-import Servicio from "./componentes/Servicio";
+import PPublico from "./componentes/PPublico";
+import PPublicoContacto from "./componentes/PPublicoContacto";
+import PPublicoContactoForm from "./componentes/PPublicoContactoForm";
+
 
 //------------RUTAS DE INVITADOS--------------//
-import AreaInvitados from "./componentes/AreaInvitados";
-import ConfirmacionAsistencia from "./componentes/ConfirmacionAsistencia";
-import UbicacionInvitados from "./componentes/UbicacionInvitados";
+import PInvitados from "./componentes/PInvitados";
+import PinvitadosConfirmAsist from "./componentes/PinvitadosConfirmAsist";
+import PInvitadosUbicacion from "./componentes/PInvitadosUbicacion";
 import DressCode from "./componentes/DressCode";
-import Itinerario from "./componentes/Itinerario";
+import PInvitadoItinerario from "./componentes/PInvitadoItinerario";
 
 //------------RUTAS DE ORGANIZACIÓN--------------//
-import PanelOrganizacion from "./componentes/PanelOrganizacion";
-import ListaInvitados from "./componentes/ListaInvitados";
-import AsignacionMesas from "./componentes/AsignacionMesas";
-import TareasBoda from "./componentes/TareasBoda";
+import POrganizacion from "./componentes/POrganizacion";
+import PInvitadosLista from "./componentes/PInvitadosLista";
+import POrgMesas from "./componentes/POrgMesas";
+
 
 //------------CONTEXTO DE AUTENTICACIÓN--------------//
-import { AuthProvider } from "./context/AuthContext"; // Eliminamos useAuth de aquí
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -61,35 +60,30 @@ function App() {
           <div className="content centered">
             <Routes>
               {/* Ruta principal - Pantalla de acceso */}
-              <Route path="/" element={<PantallaAcceso />} />
+              <Route path="/" element={<PAcceso />} />
 
               {/* RUTAS PÚBLICAS (acceso sin autenticación) */}
-              <Route path="/inicio" element={<MainContent />} />
+              <Route path="/inicio" element={<PPublico />} />
               <Route path="/contacto" element={
-                <>
-                  <ContactoLogoRedes />
-                  <ContactoFormularioSlider />
-                </>
+                <div className="contacto-container">
+                  <PPublicoContacto />
+                  <PPublicoContactoForm />
+                </div>
               } />
-              <Route path="/clientes" element={<Clientes />} />
-              <Route path="/servicio" element={<Servicio />} />
+     
 
-              {/* 
-                Rutas protegidas ahora manejadas por cada componente interno
-                Cada componente protegido manejará su propia lógica de autenticación
-                usando useAuth()
-              */}
-              <Route path="/invitados" element={<AreaInvitados />} />
-              <Route path="/invitados/confirmar" element={<ConfirmacionAsistencia />} />
-              <Route path="/invitados/ubicacion" element={<UbicacionInvitados />} />
+              {/* RUTAS DE INVITADOS */}
+              <Route path="/invitados" element={<PInvitados />} />
+              <Route path="/invitados/confirmar" element={<PinvitadosConfirmAsist />} />
+              <Route path="/invitados/ubicacion" element={<PInvitadosUbicacion />} />
               <Route path="/invitados/dresscode" element={<DressCode />} />
-              <Route path="/invitados/itinerario" element={<Itinerario />} />
+              <Route path="/invitados/PInvitadoItinerario" element={<PInvitadoItinerario />} />
 
-
-              <Route path="/organizacion" element={<PanelOrganizacion />} />
-              <Route path="/organizacion/invitados" element={<ListaInvitados />} />
-              <Route path="/organizacion/mesas" element={<AsignacionMesas />} />
-              <Route path="/organizacion/tareas" element={<TareasBoda />} />
+              {/* RUTAS DE ORGANIZACIÓN */}
+              <Route path="/organizacion" element={<POrganizacion />} />
+              <Route path="/organizacion/invitados" element={<PInvitadosLista />} />
+              <Route path="/organizacion/POrgMesas" element={<POrgMesas />} />
+         
 
               {/* Redirección para rutas no encontradas */}
               <Route path="*" element={<Navigate to="/" replace />} />
