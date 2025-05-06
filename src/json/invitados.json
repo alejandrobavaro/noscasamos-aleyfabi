@@ -1,143 +1,152 @@
 {
-    "novios": {
-      "novia": "Fabiola Lutrario",
-      "novio": "Alejandro Bavaro"
+  "novios": {
+    "novia": "Fabiola Lutrario",
+    "novio": "Alejandro Bavaro",
+    "contacto": {
+      "telefono": "+54 9 223 555-1234",
+      "email": "fabiolayalejandro@bodas.com"
+    }
+  },
+  "grupos": [
+    {
+      "nombre": "Familia Novia",
+      "invitados": [
+        {"id": 1, "nombre": "Ana Maria Lutrario", "relacion": "Tía paterna", "acompanantes": 0},
+        {"id": 2, "nombre": "Mario Vincenzo Lutrario", "relacion": "Padre de la novia", "acompanantes": 0},
+        {"id": 3, "nombre": "Norma Perez", "relacion": "Amiga de la tía Ana", "acompanantes": 0},
+        {"id": 4, "nombre": "Monica Tetamantti", "relacion": "Amiga de la tía Ana", "acompanantes": 0},
+        {"id": 5, "nombre": "Maria Teresa", "relacion": "Amiga de la tía Ana", "acompanantes": 0},
+        {"id": 6, "nombre": "Deliana Fernandez", "relacion": "Ahijada de la tía Ana", "acompanantes": 1},
+        {"id": 7, "nombre": "Jorge Di Norcia", "relacion": "Primo paterno", "acompanantes": 2},
+        {"id": 8, "nombre": "Mirta Arrighini", "relacion": "Prima paterna", "acompanantes": 0},
+        {"id": 9, "nombre": "Joaquin Conti", "relacion": "Hermastro (Fefe)", "acompanantes": 0},
+        {"id": 10, "nombre": "Julieta Ruiz Conti", "relacion": "Cuñada (esposa de Joaquín)", "acompanantes": 0},
+        {"id": 11, "nombre": "GianFranco Lutrario", "relacion": "Hermano de la novia", "acompanantes": 1},
+        {"id": 12, "nombre": "Francis Arteaga", "relacion": "Amiga de Fabiola desde la infancia", "acompanantes": 0},
+        {"id": 13, "nombre": "Aurimar Gómez", "relacion": "Amiga de Fabiola de la universidad", "acompanantes": 1},
+        {"id": 14, "nombre": "Antonio Álvarez", "relacion": "Amigo de Fabiola del trabajo", "acompanantes": 0}
+      ]
     },
-    "grupos": [
-      {
-        "nombre": "Familia Novia",
-        "invitados": [
-          {"id": 1, "nombre": "Ana Maria Lutrario", "relacion": "Tía"},
-          {"id": 2, "nombre": "Mario Vincenzo Lutrario", "relacion": "Padre"},
-          {"id": 3, "nombre": "Norma Perez", "relacion": "Amiga Tía"},
-          {"id": 4, "nombre": "Monica Tetamantti", "relacion": "Amiga Tía"},
-          {"id": 5, "nombre": "Maria Teresa", "relacion": "Amiga Tía"},
-          {"id": 6, "nombre": "Deliana", "relacion": "Ahijada Tía"},
-          {"id": 7, "nombre": "Jorge Di Norcia", "relacion": "Primo"},
-          {"id": 8, "nombre": "Mirta Arrighini", "relacion": "Prima"},
-          {"id": 9, "nombre": "Joaquin Conti", "relacion": "Fefe"},
-          {"id": 10, "nombre": "Julieta Ruiz Conti", "relacion": "Esposa Fefe"},
-          {"id": 11, "nombre": "GianFranco", "relacion": "Hermano Fabi"},
-          {"id": 12, "nombre": "Francis Arteaga", "relacion": "Amiga Fabi"},
-          {"id": 13, "nombre": "Aurimar Gómez", "relacion": "Amiga Fabi"},
-          {"id": 14, "nombre": "Antonio Álvarez", "relacion": "Amigo Fabi"}
-        ]
-      },
-      {
-        "nombre": "Familia Novio",
-        "invitados": [
-          {"id": 15, "nombre": "Miguel Bavaro", "relacion": "Padre"},
-          {"id": 16, "nombre": "Elina Calvo Parra Bavaro", "relacion": "Madre"},
-          {"id": 17, "nombre": "Emilia Calvo Parra", "relacion": "Tía"},
-          {"id": 18, "nombre": "Pantaleon Mattiolli", "relacion": "Tío"},
-          {"id": 19, "nombre": "Gabriela Mattiolli", "relacion": "Prima"},
-          {"id": 20, "nombre": "Alba Mattiolli", "relacion": "Ahijada Ale"},
-          {"id": 21, "nombre": "Silvana Mattiolli", "relacion": "Prima"},
-          {"id": 22, "nombre": "Pepe", "relacion": "Pareja Silvana"},
-          {"id": 23, "nombre": "Carmela Ozzano", "relacion": "Tía Abuela"},
-          {"id": 24, "nombre": "Mavi Ozzano", "relacion": "Ahijada Ale"},
-          {"id": 25, "nombre": "Livia Ozzano", "relacion": "Prima"},
-          {"id": 26, "nombre": "Raul Luna", "relacion": "Pareja Livia"}
-        ]
-      },
-      {
-        "nombre": "Amigos San Alberto",
-        "invitados": [
-          {"id": 27, "nombre": "Mariano Marmol", "relacion": "Amigo Ale"},
-          {"id": 28, "nombre": "Juliana Lukaszewicz", "relacion": "Pareja Mariano"},
-          {"id": 29, "nombre": "Juan Laffitte", "relacion": "Amigo Ale"},
-          {"id": 30, "nombre": "Eugenia", "relacion": "Pareja Juan"},
-          {"id": 31, "nombre": "Joaquin Moran", "relacion": "Amigo Ale"},
-          {"id": 32, "nombre": "Agustina Keeteman", "relacion": "Pareja Joaquin"},
-          {"id": 33, "nombre": "Lucrecia Letamendia", "relacion": "Amiga Ale"},
-          {"id": 34, "nombre": "Agustin Saez", "relacion": "Amigo Ale"},
-          {"id": 35, "nombre": "Marcela Barragan", "relacion": "Amiga Ale"},
-          {"id": 36, "nombre": "Clarita", "relacion": "Amiga Ale"},
-          {"id": 37, "nombre": "Nacho Dámbra", "relacion": "Amigo Ale"},
-          {"id": 38, "nombre": "Victoria Dámbra", "relacion": "Pareja Nacho"},
-          {"id": 39, "nombre": "Patricio Conti", "relacion": "Amigo Ale"},
-          {"id": 40, "nombre": "Dominique Negri", "relacion": "Pareja Patricio"},
-          {"id": 41, "nombre": "Ines Conti", "relacion": "Hija Patricio"},
-          {"id": 42, "nombre": "Felicitas Conti", "relacion": "Hija Patricio"}
-        ]
-      },
-      {
-        "nombre": "Banda AlmanGo",
-        "invitados": [
-          {"id": 43, "nombre": "Nicolas Traficando", "relacion": "Bajista"},
-          {"id": 44, "nombre": "Ana Laura Rodriguez", "relacion": "Pareja Nico"},
-          {"id": 45, "nombre": "Santiago Sotille", "relacion": "Baterista"},
-          {"id": 46, "nombre": "Florencia Hernandez", "relacion": "Pareja Santi"},
-          {"id": 47, "nombre": "Mariano Vattino", "relacion": "Amigo Ale"},
-          {"id": 48, "nombre": "Cintia Vattino", "relacion": "Pareja Mariano"},
-          {"id": 49, "nombre": "Lorena Martinez", "relacion": "Amiga Ale"},
-          {"id": 50, "nombre": "Ximena Garcea", "relacion": "Amiga Ale"},
-          {"id": 51, "nombre": "Jorge Luis Lazo", "relacion": "Amigo Ale"},
-          {"id": 52, "nombre": "Leandro Castrillon", "relacion": "Amigo Ale"},
-          {"id": 53, "nombre": "Carolina", "relacion": "Pareja Leandro"},
-          {"id": 54, "nombre": "Cristian Telleria Telle", "relacion": "Amigo Ale"},
-          {"id": 55, "nombre": "Jeremias Rodriguez", "relacion": "Amigo Ale"},
-          {"id": 56, "nombre": "Julieta", "relacion": "Pareja Jeremias"},
-          {"id": 57, "nombre": "Roberto Zubillaga", "relacion": "Amigo Ale"},
-          {"id": 58, "nombre": "Javier Carnero", "relacion": "Amigo Ale"},
-          {"id": 59, "nombre": "Dario Guevara", "relacion": "Amigo Ale"},
-          {"id": 60, "nombre": "Gonza Izurieta", "relacion": "Amigo Ale (Brasil)"},
-          {"id": 61, "nombre": "Pareja Gonza Izurieta", "relacion": "Pareja (Brasil)"},
-          {"id": 62, "nombre": "Pablo Garcea", "relacion": "Amigo Ale"},
-          {"id": 63, "nombre": "Pareja Pablo Garcea", "relacion": "Pareja"},
-          {"id": 64, "nombre": "Lore Moreno", "relacion": "Amiga Ale"},
-          {"id": 65, "nombre": "Pareja Lore Moreno", "relacion": "Pareja"},
-          {"id": 66, "nombre": "Guille Villan", "relacion": "Amigo Ale"},
-          {"id": 67, "nombre": "Melina Ludueña", "relacion": "Amiga Ale"},
-          {"id": 68, "nombre": "Pareja Melina Ludueña", "relacion": "Pareja"},
-          {"id": 69, "nombre": "Nino Alvez", "relacion": "Amigo Ale"},
-          {"id": 70, "nombre": "Pareja Nino Alvez", "relacion": "Pareja"}
-        ]
-      },
-      {
-        "nombre": "Amigos Familia",
-        "invitados": [
-          {"id": 71, "nombre": "Alberto Castelli", "relacion": "Amigo Familia"},
-          {"id": 72, "nombre": "Pocha Castelli", "relacion": "Pareja Alberto"},
-          {"id": 73, "nombre": "Oscar Lozzano", "relacion": "Amigo Familia"},
-          {"id": 74, "nombre": "Gloria Lozzano", "relacion": "Pareja Oscar"},
-          {"id": 75, "nombre": "Laura Lozzano", "relacion": "Hija Oscar"},
-          {"id": 76, "nombre": "Soledad Lozzano", "relacion": "Hija Oscar"},
-          {"id": 77, "nombre": "Gerardo Guazzelli", "relacion": "Amigo Familia"},
-          {"id": 78, "nombre": "Nora Guazzelli", "relacion": "Pareja Gerardo"},
-          {"id": 79, "nombre": "Andres Guazzelli", "relacion": "Hijo Gerardo"},
-          {"id": 80, "nombre": "Pareja Andres Guazzelli", "relacion": "Pareja"}
-        ]
-      },
-      {
-        "nombre": "Amigos Varios",
-        "invitados": [
-          {"id": 81, "nombre": "Hector Guzman", "relacion": "Amigo Ale"},
-          {"id": 82, "nombre": "Pareja Hector Guzman", "relacion": "Pareja"},
-          {"id": 83, "nombre": "Noelia Vaccaro", "relacion": "Amiga Ale"},
-          {"id": 84, "nombre": "Pareja Noelia Vaccaro", "relacion": "Pareja"},
-          {"id": 85, "nombre": "Maria Mozcuzza", "relacion": "Amiga Trabajo"},
-          {"id": 86, "nombre": "Pareja Maria Mozcuzza", "relacion": "Pareja"}
-        ]
-      },
-      {
-        "nombre": "Invitados por Confirmar",
-        "pendiente": true,
-        "invitados": [
-          {"id": 87, "nombre": "Lucas Ozzano", "relacion": "Primo"},
-          {"id": 88, "nombre": "Paloma", "relacion": "Pareja Lucas"},
-          {"id": 89, "nombre": "Martin Ozzano", "relacion": "Primo"},
-          {"id": 90, "nombre": "Emma Ozzano", "relacion": "Pareja Martin"},
-          {"id": 91, "nombre": "Federico Letamendia", "relacion": "Amigo Ale"},
-          {"id": 92, "nombre": "Cristina Estrada", "relacion": "Mama Fede"},
-          {"id": 93, "nombre": "Freedie", "relacion": "Pareja Cristina"},
-          {"id": 94, "nombre": "Flor Leiba", "relacion": "Amiga"},
-          {"id": 95, "nombre": "Rob Bodrato", "relacion": "Amigo"},
-          {"id": 96, "nombre": "Paula Giacomaso", "relacion": "Amiga"},
-          {"id": 97, "nombre": "Marido Paula", "relacion": "Pareja"},
-          {"id": 98, "nombre": "Nicolas Bartolucchi", "relacion": "Amigo"},
-          {"id": 99, "nombre": "Mariana Guazzelli", "relacion": "Amiga"}
-        ]
-      }
-    ]
-  }
+    {
+      "nombre": "Familia Novio",
+      "invitados": [
+        {"id": 15, "nombre": "Miguel Bavaro", "relacion": "Padre del novio", "acompanantes": 0},
+        {"id": 16, "nombre": "Elina Calvo Parra", "relacion": "Madre del novio", "acompanantes": 0},
+        {"id": 17, "nombre": "Emilia Calvo Parra", "relacion": "Tía materna", "acompanantes": 0},
+        {"id": 18, "nombre": "Pantaleon Mattiolli", "relacion": "Tío político", "acompanantes": 0},
+        {"id": 19, "nombre": "Gabriela Mattiolli", "relacion": "Prima materna", "acompanantes": 1},
+        {"id": 20, "nombre": "Alba Mattiolli", "relacion": "Ahijada del novio", "acompanantes": 0},
+        {"id": 21, "nombre": "Silvana Mattiolli", "relacion": "Prima materna", "acompanantes": 1},
+        {"id": 22, "nombre": "José 'Pepe' Martinez", "relacion": "Pareja de Silvana", "acompanantes": 0},
+        {"id": 23, "nombre": "Carmela Ozzano", "relacion": "Tía abuela materna", "acompanantes": 0},
+        {"id": 24, "nombre": "Mavi Ozzano", "relacion": "Ahijada del novio", "acompanantes": 1},
+        {"id": 25, "nombre": "Livia Ozzano", "relacion": "Prima materna", "acompanantes": 1},
+        {"id": 26, "nombre": "Raul Luna", "relacion": "Pareja de Livia", "acompanantes": 0}
+      ]
+    },
+    {
+      "nombre": "Amigos San Alberto",
+      "invitados": [
+        {"id": 27, "nombre": "Mariano Marmol", "relacion": "Amigo del colegio", "acompanantes": 0},
+        {"id": 28, "nombre": "Juliana Lukaszewicz", "relacion": "Pareja de Mariano", "acompanantes": 0},
+        {"id": 29, "nombre": "Juan Laffitte", "relacion": "Amigo de la infancia", "acompanantes": 1},
+        {"id": 30, "nombre": "Eugenia Morales", "relacion": "Pareja de Juan", "acompanantes": 0},
+        {"id": 31, "nombre": "Joaquin Moran", "relacion": "Amigo del barrio", "acompanantes": 1},
+        {"id": 32, "nombre": "Agustina Keeteman", "relacion": "Pareja de Joaquín", "acompanantes": 0},
+        {"id": 33, "nombre": "Lucrecia Letamendia", "relacion": "Amiga de la adolescencia", "acompanantes": 0},
+        {"id": 34, "nombre": "Agustin Saez", "relacion": "Amigo del club", "acompanantes": 0},
+        {"id": 35, "nombre": "Marcela Barragan", "relacion": "Amiga de viaje", "acompanantes": 0},
+        {"id": 36, "nombre": "Clara 'Clarita' Dominguez", "relacion": "Amiga de la facultad", "acompanantes": 1},
+        {"id": 37, "nombre": "Nacho Dámbra", "relacion": "Amigo de la música", "acompanantes": 1},
+        {"id": 38, "nombre": "Victoria Dámbra", "relacion": "Pareja de Nacho", "acompanantes": 0},
+        {"id": 39, "nombre": "Patricio Conti", "relacion": "Amigo del trabajo", "acompanantes": 3},
+        {"id": 40, "nombre": "Dominique Negri", "relacion": "Pareja de Patricio", "acompanantes": 0},
+        {"id": 41, "nombre": "Ines Conti", "relacion": "Hija de Patricio", "acompanantes": 0},
+        {"id": 42, "nombre": "Felicitas Conti", "relacion": "Hija de Patricio", "acompanantes": 0}
+      ]
+    },
+    {
+      "nombre": "Banda AlmanGo",
+      "subgrupos": [
+        "Integrantes",
+        "Parejas",
+        "Amigos cercanos"
+      ],
+      "invitados": [
+        {"id": 43, "nombre": "Nicolas Traficando", "relacion": "Bajista de la banda", "subgrupo": "Integrantes", "acompanantes": 1},
+        {"id": 44, "nombre": "Ana Laura Rodriguez", "relacion": "Pareja de Nico", "subgrupo": "Parejas", "acompanantes": 0},
+        {"id": 45, "nombre": "Santiago Sotille", "relacion": "Baterista de la banda", "subgrupo": "Integrantes", "acompanantes": 1},
+        {"id": 46, "nombre": "Florencia Hernandez", "relacion": "Pareja de Santi", "subgrupo": "Parejas", "acompanantes": 0},
+        {"id": 47, "nombre": "Mariano Vattino", "relacion": "Amigo de la escena musical", "subgrupo": "Amigos cercanos", "acompanantes": 1},
+        {"id": 48, "nombre": "Cintia Vattino", "relacion": "Pareja de Mariano", "subgrupo": "Parejas", "acompanantes": 0},
+        {"id": 49, "nombre": "Lorena Martinez", "relacion": "Amiga de los ensayos", "subgrupo": "Amigos cercanos", "acompanantes": 0},
+        {"id": 50, "nombre": "Ximena Garcea", "relacion": "Amiga de conciertos", "subgrupo": "Amigos cercanos", "acompanantes": 0},
+        {"id": 51, "nombre": "Jorge Luis Lazo", "relacion": "Técnico de sonido", "subgrupo": "Amigos cercanos", "acompanantes": 0},
+        {"id": 52, "nombre": "Leandro Castrillon", "relacion": "Road manager", "subgrupo": "Amigos cercanos", "acompanantes": 1},
+        {"id": 53, "nombre": "Carolina Gutierrez", "relacion": "Pareja de Leandro", "subgrupo": "Parejas", "acompanantes": 0},
+        {"id": 54, "nombre": "Cristian Telleria", "relacion": "Amigo productor", "subgrupo": "Amigos cercanos", "acompanantes": 0},
+        {"id": 55, "nombre": "Jeremias Rodriguez", "relacion": "Amigo compositor", "subgrupo": "Amigos cercanos", "acompanantes": 1},
+        {"id": 56, "nombre": "Julieta Sanchez", "relacion": "Pareja de Jeremias", "subgrupo": "Parejas", "acompanantes": 0},
+        {"id": 57, "nombre": "Roberto Zubillaga", "relacion": "Amigo de giras", "subgrupo": "Amigos cercanos", "acompanantes": 0},
+        {"id": 58, "nombre": "Javier Carnero", "relacion": "Colega músico", "subgrupo": "Amigos cercanos", "acompanantes": 0},
+        {"id": 59, "nombre": "Dario Guevara", "relacion": "Amigo de festivales", "subgrupo": "Amigos cercanos", "acompanantes": 0},
+        {"id": 60, "nombre": "Gonzalo Izurieta", "relacion": "Amigo de Brasil", "subgrupo": "Amigos cercanos", "acompanantes": 1},
+        {"id": 61, "nombre": "Camila Fernandez", "relacion": "Pareja de Gonza", "subgrupo": "Parejas", "acompanantes": 0},
+        {"id": 62, "nombre": "Pablo Garcea", "relacion": "Hermano de Ximena", "subgrupo": "Amigos cercanos", "acompanantes": 1},
+        {"id": 63, "nombre": "Valeria Sosa", "relacion": "Pareja de Pablo", "subgrupo": "Parejas", "acompanantes": 0},
+        {"id": 64, "nombre": "Lorena Moreno", "relacion": "Amiga de backstage", "subgrupo": "Amigos cercanos", "acompanantes": 1},
+        {"id": 65, "nombre": "Martin Rios", "relacion": "Pareja de Lorena", "subgrupo": "Parejas", "acompanantes": 0},
+        {"id": 66, "nombre": "Guillermo Villan", "relacion": "Amigo de grabaciones", "subgrupo": "Amigos cercanos", "acompanantes": 0},
+        {"id": 67, "nombre": "Melina Ludueña", "relacion": "Amiga de letras", "subgrupo": "Amigos cercanos", "acompanantes": 1},
+        {"id": 68, "nombre": "Lucas Pereyra", "relacion": "Pareja de Melina", "subgrupo": "Parejas", "acompanantes": 0},
+        {"id": 69, "nombre": "Nino Alvez", "relacion": "Amigo de covers", "subgrupo": "Amigos cercanos", "acompanantes": 1},
+        {"id": 70, "nombre": "Sofia Mendieta", "relacion": "Pareja de Nino", "subgrupo": "Parejas", "acompanantes": 0}
+      ]
+    },
+    {
+      "nombre": "Amigos Familia",
+      "invitados": [
+        {"id": 71, "nombre": "Alberto Castelli", "relacion": "Amigo de la familia Bavaro", "acompanantes": 1},
+        {"id": 72, "nombre": "Graciela 'Pocha' Fernandez", "relacion": "Pareja de Alberto", "acompanantes": 0},
+        {"id": 73, "nombre": "Oscar Lozzano", "relacion": "Amigo de los padres", "acompanantes": 3},
+        {"id": 74, "nombre": "Gloria Mendez", "relacion": "Pareja de Oscar", "acompanantes": 0},
+        {"id": 75, "nombre": "Laura Lozzano", "relacion": "Hija de Oscar", "acompanantes": 1},
+        {"id": 76, "nombre": "Soledad Lozzano", "relacion": "Hija de Oscar", "acompanantes": 1},
+        {"id": 77, "nombre": "Gerardo Guazzelli", "relacion": "Amigo de la familia", "acompanantes": 1},
+        {"id": 78, "nombre": "Nora Guzman", "relacion": "Pareja de Gerardo", "acompanantes": 0},
+        {"id": 79, "nombre": "Andres Guazzelli", "relacion": "Hijo de Gerardo", "acompanantes": 1},
+        {"id": 80, "nombre": "Lucia Perez", "relacion": "Pareja de Andrés", "acompanantes": 0}
+      ]
+    },
+    {
+      "nombre": "Amigos Varios",
+      "invitados": [
+        {"id": 81, "nombre": "Hector Guzman", "relacion": "Amigo del gimnasio", "acompanantes": 1},
+        {"id": 82, "nombre": "Maria Gonzalez", "relacion": "Pareja de Héctor", "acompanantes": 0},
+        {"id": 83, "nombre": "Noelia Vaccaro", "relacion": "Amiga de eventos", "acompanantes": 1},
+        {"id": 84, "nombre": "Carlos Bianchi", "relacion": "Pareja de Noelia", "acompanantes": 0},
+        {"id": 85, "nombre": "Maria Mozcuzza", "relacion": "Colega de trabajo", "acompanantes": 1},
+        {"id": 86, "nombre": "Roberto Sosa", "relacion": "Pareja de María", "acompanantes": 0}
+      ]
+    },
+    {
+      "nombre": "Invitados por Confirmar",
+      "pendiente": true,
+      "invitados": [
+        {"id": 87, "nombre": "Lucas Ozzano", "relacion": "Primo materno", "acompanantes": 1},
+        {"id": 88, "nombre": "Paloma Rodriguez", "relacion": "Pareja de Lucas", "acompanantes": 0},
+        {"id": 89, "nombre": "Martin Ozzano", "relacion": "Primo materno", "acompanantes": 1},
+        {"id": 90, "nombre": "Emma Sanchez", "relacion": "Pareja de Martín", "acompanantes": 0},
+        {"id": 91, "nombre": "Federico Letamendia", "relacion": "Amigo de viaje", "acompanantes": 0},
+        {"id": 92, "nombre": "Cristina Estrada", "relacion": "Madre de Federico", "acompanantes": 1},
+        {"id": 93, "nombre": "Alfredo 'Freddie' Gomez", "relacion": "Pareja de Cristina", "acompanantes": 0},
+        {"id": 94, "nombre": "Florencia Leiba", "relacion": "Amiga de la infancia", "acompanantes": 0},
+        {"id": 95, "nombre": "Roberto Bodrato", "relacion": "Amigo del club", "acompanantes": 0},
+        {"id": 96, "nombre": "Paula Giacomaso", "relacion": "Amiga de facultad", "acompanantes": 1},
+        {"id": 97, "nombre": "Juan Perez", "relacion": "Marido de Paula", "acompanantes": 0},
+        {"id": 98, "nombre": "Nicolas Bartolucchi", "relacion": "Amigo de deportes", "acompanantes": 0},
+        {"id": 99, "nombre": "Mariana Guazzelli", "relacion": "Prima lejana", "acompanantes": 0}
+      ]
+    }
+  ]
+}

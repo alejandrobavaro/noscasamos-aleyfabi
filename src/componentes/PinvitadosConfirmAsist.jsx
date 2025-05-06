@@ -1,89 +1,122 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import PropTypes from 'prop-types';
+import invitadosData from '../json/invitados.json';
 import '../assets/scss/_03-Componentes/_PinvitadosConfirmAsist.scss';
 
-const PinvitadosConfirmAsist = ({ invitadosData = { grupos: [], novios: {} } }) => {
+const PinvitadosConfirmAsist = () => {
+  const { invitadoId } = useParams();
   const [invitado, setInvitado] = useState(null);
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [guestData, setGuestData] = useState(null);
-  const [additionalGuests, setAdditionalGuests] = useState(0);
-  const [dietaryRestrictions, setDietaryRestrictions] = useState('');
-  const [message, setMessage] = useState('');
-  const [attendance, setAttendance] = useState('yes');
-  const { search } = useLocation();
+  const [formData, setFormData] = useState({
+    attendance: 'yes',
+    additionalGuests: 0,
+    dietaryRestrictions: '',
+    message: ''
+  });
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
-  // Datos seguros con valores por defecto
-  const safeInvitadosData = {
-    grupos: invitadosData.grupos || [],
-    novios: {
-      novia: invitadosData.novios?.novia || 'Novia',
-      novio: invitadosData.novios?.novio || 'Novio'
+  // Busca el invitado al cargar el componente
+  useEffect(() => {
+    if (!invitadoId) {
+      setIsLoading(false);
+      return;
+    }
+
+    setIsLoading(true);
+    
+    // Busca en todos los grupos
+    let invitadoEncontrado = null;
+    let nombreGrupo = '';
+
+    for (const grupo of invitadosData.grupos) {
+      invitadoEncontrado = grupo.invitados.find(i => i.id.toString() === invitadoId.toString());
+      if (invitadoEncontrado) {
+        nombreGrupo = grupo.nombre;
+        break;
+      }
+    }
+
+    if (invitadoEncontrado) {
+      setInvitado({
+        ...invitadoEncontrado,
+        grupoNombre: nombreGrupo
+      });
+
+      // Verifica confirmación previa
+      const confirmacionesGuardadas = localStorage.getItem('weddingConfirmations');
+      if (confirmacionesGuardadas) {
+        try {
+          const confirmaciones = JSON.parse(confirmacionesGuardadas);
+          const confirmacionExistente = confirmaciones[invitadoId];
+          
+          if (confirmacionExistente) {
+            setIsConfirmed(true);
+            setFormData({
+              attendance: confirmacionExistente.attendance || 'yes',
+              additionalGuests: confirmacionExistente.additionalGuests || 0,
+              dietaryRestrictions: confirmacionExistente.dietaryRestrictions || '',
+              message: confirmacionExistente.message || ''
+            });
+          }
+        } catch (error) {
+          console.error('Error al leer confirmaciones:', error);
+        }
+      }
+    }
+
+    setIsLoading(false);
+  }, [invitadoId]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: name === 'additionalGuests' ? parseInt(value) || 0 : value
+    }));
+    
+    // Limpia errores al cambiar
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: undefined }));
     }
   };
 
-  useEffect(() => {
-    const params = new URLSearchParams(search);
-    const invitadoId = params.get('invitadoId');
+  const validateForm = () => {
+    const newErrors = {};
     
-    if (invitadoId) {
-      // Simulamos la carga de datos (en una app real sería una API)
-      setTimeout(() => {
-        const allInvitados = safeInvitadosData.grupos.flatMap(g => g.invitados || []);
-        const foundInvitado = allInvitados.find(i => i.id === parseInt(invitadoId));
-        
-        if (foundInvitado) {
-          setInvitado(foundInvitado);
-          
-          // Verificar confirmación previa en localStorage
-          const savedConfirmations = localStorage.getItem('weddingConfirmations');
-          if (savedConfirmations) {
-            const confirmations = JSON.parse(savedConfirmations);
-            const guestConfirmation = confirmations[invitadoId];
-            
-            if (guestConfirmation) {
-              setIsConfirmed(true);
-              setAdditionalGuests(guestConfirmation.additionalGuests || 0);
-              setDietaryRestrictions(guestConfirmation.dietaryRestrictions || '');
-              setMessage(guestConfirmation.message || '');
-              setAttendance(guestConfirmation.attendance || 'yes');
-            }
-          }
-        }
-        
-        setIsLoading(false);
-      }, 800);
-    } else {
-      setIsLoading(false);
+    if (formData.attendance === 'yes' && 
+        (isNaN(formData.additionalGuests) || formData.additionalGuests < 0)) {
+      newErrors.additionalGuests = 'Número de acompañantes no válido';
     }
-  }, [search, safeInvitadosData.grupos]);
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleConfirm = () => {
-    if (!invitado) return;
+    if (!validateForm() || !invitado) return;
     
-    // Guardar confirmación en localStorage
-    const savedConfirmations = localStorage.getItem('weddingConfirmations');
-    const confirmations = savedConfirmations ? JSON.parse(savedConfirmations) : {};
-    
-    confirmations[invitado.id] = {
-      confirmed: true,
-      date: new Date().toISOString(),
-      attendance,
-      additionalGuests: attendance === 'yes' ? additionalGuests : 0,
-      dietaryRestrictions,
-      message
-    };
-    
-    localStorage.setItem('weddingConfirmations', JSON.stringify(confirmations));
-    setIsConfirmed(true);
-    
-    // Aquí podrías agregar el envío a una API real
-    console.log('Confirmación enviada:', confirmations[invitado.id]);
+    try {
+      const confirmacionesGuardadas = localStorage.getItem('weddingConfirmations');
+      const confirmaciones = confirmacionesGuardadas ? JSON.parse(confirmacionesGuardadas) : {};
+      
+      confirmaciones[invitado.id] = {
+        confirmed: true,
+        date: new Date().toISOString(),
+        ...formData,
+        additionalGuests: formData.attendance === 'yes' ? formData.additionalGuests : 0
+      };
+      
+      localStorage.setItem('weddingConfirmations', JSON.stringify(confirmaciones));
+      setIsConfirmed(true);
+    } catch (error) {
+      console.error('Error al guardar:', error);
+    }
   };
 
+  // Vista de carga
   if (isLoading) {
     return (
       <div className="loading-container">
@@ -97,38 +130,35 @@ const PinvitadosConfirmAsist = ({ invitadosData = { grupos: [], novios: {} } }) 
     );
   }
 
+  // Vista de error si no encuentra invitado
   if (!invitado) {
     return (
       <div className="error-container">
         <i className="bi bi-exclamation-triangle"></i>
         <h3>No se encontró información del invitado</h3>
-        <p>Por favor verifica que el enlace sea correcto o selecciona tu nombre desde la lista de invitados.</p>
-        <button 
+        <p>Por favor verifica que el enlace sea correcto o contacta a los novios.</p>
+        <motion.button 
           onClick={() => navigate('/invitados')} 
           className="back-button"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
           <i className="bi bi-arrow-left"></i> Volver a la lista de invitados
-        </button>
+        </motion.button>
       </div>
     );
   }
 
+  // Vista principal
   return (
     <div className="confirmacion-container">
       <div className="confirmation-header">
         <h2>Confirmación de Asistencia</h2>
-        <p className="subtitle">Para la boda de {safeInvitadosData.novios.novia} & {safeInvitadosData.novios.novio}</p>
+        <p className="subtitle">Para la boda de {invitadosData.novios.novia} & {invitadosData.novios.novio}</p>
       </div>
       
       {isConfirmed ? (
-        <motion.div 
-          className="confirmed-message"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <div className="confirmed-message">
           <div className="confirmation-icon">
             <motion.i 
               className="bi bi-check-circle"
@@ -140,17 +170,17 @@ const PinvitadosConfirmAsist = ({ invitadosData = { grupos: [], novios: {} } }) 
           
           <h3>¡Gracias por confirmar, {invitado.nombre}!</h3>
           
-          {attendance === 'yes' ? (
+          {formData.attendance === 'yes' ? (
             <>
               <p className="confirmation-text">
                 Hemos registrado tu asistencia para nuestra boda.
               </p>
-              {additionalGuests > 0 && (
+              {formData.additionalGuests > 0 && (
                 <p className="additional-info">
-                  <i className="bi bi-people-fill"></i> Has confirmado asistencia para {additionalGuests + 1} personas.
+                  <i className="bi bi-people-fill"></i> Has confirmado asistencia para {formData.additionalGuests + 1} personas.
                 </p>
               )}
-              {dietaryRestrictions && (
+              {formData.dietaryRestrictions && (
                 <p className="additional-info">
                   <i className="bi bi-egg-fried"></i> Hemos tomado nota de tus restricciones dietéticas.
                 </p>
@@ -162,10 +192,10 @@ const PinvitadosConfirmAsist = ({ invitadosData = { grupos: [], novios: {} } }) 
             </p>
           )}
           
-          {message && (
+          {formData.message && (
             <div className="guest-message">
               <p className="message-label">Tu mensaje:</p>
-              <p className="message-content">"{message}"</p>
+              <p className="message-content">"{formData.message}"</p>
             </div>
           )}
           
@@ -186,53 +216,50 @@ const PinvitadosConfirmAsist = ({ invitadosData = { grupos: [], novios: {} } }) 
           >
             <i className="bi bi-envelope-heart"></i> Ver mi invitación
           </motion.button>
-        </motion.div>
+        </div>
       ) : (
-        <motion.div 
-          className="confirmation-form"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
+        <div className="confirmation-form">
           <div className="guest-info">
             <h3>Hola {invitado.nombre}</h3>
+            {invitado.grupoNombre && <p className="guest-group">Grupo: {invitado.grupoNombre}</p>}
             <p>Por favor confirma tu asistencia a nuestra boda</p>
           </div>
           
           <div className="form-group">
             <label>¿Asistirás a la boda?</label>
             <div className="radio-group">
-              <label className={attendance === 'yes' ? 'selected' : ''}>
+              <label className={formData.attendance === 'yes' ? 'selected' : ''}>
                 <input 
                   type="radio" 
                   name="attendance" 
                   value="yes" 
-                  checked={attendance === 'yes'}
-                  onChange={() => setAttendance('yes')} 
+                  checked={formData.attendance === 'yes'}
+                  onChange={handleChange} 
                 />
                 <span><i className="bi bi-check-circle"></i> ¡Sí, con mucho gusto!</span>
               </label>
-              <label className={attendance === 'no' ? 'selected' : ''}>
+              <label className={formData.attendance === 'no' ? 'selected' : ''}>
                 <input 
                   type="radio" 
                   name="attendance" 
                   value="no" 
-                  checked={attendance === 'no'}
-                  onChange={() => setAttendance('no')} 
+                  checked={formData.attendance === 'no'}
+                  onChange={handleChange} 
                 />
                 <span><i className="bi bi-x-circle"></i> Lo siento, no podré asistir</span>
               </label>
             </div>
           </div>
           
-          {attendance === 'yes' && (
+          {formData.attendance === 'yes' && (
             <>
               <div className="form-group">
                 <label>¿Vendrás acompañado? (Incluyéndote a ti)</label>
                 <select 
-                  value={additionalGuests} 
-                  onChange={(e) => setAdditionalGuests(parseInt(e.target.value))}
-                  className="styled-select"
+                  name="additionalGuests"
+                  value={formData.additionalGuests} 
+                  onChange={handleChange}
+                  className={errors.additionalGuests ? 'error' : ''}
                 >
                   {[1, 2, 3, 4, 5].map(num => (
                     <option key={num} value={num - 1}>
@@ -240,14 +267,18 @@ const PinvitadosConfirmAsist = ({ invitadosData = { grupos: [], novios: {} } }) 
                     </option>
                   ))}
                 </select>
+                {errors.additionalGuests && (
+                  <p className="error-message">{errors.additionalGuests}</p>
+                )}
               </div>
               
               <div className="form-group">
                 <label>Restricciones dietéticas (opcional)</label>
                 <textarea 
+                  name="dietaryRestrictions"
                   placeholder="Ej: Vegetariano, alergia a mariscos, etc."
-                  value={dietaryRestrictions}
-                  onChange={(e) => setDietaryRestrictions(e.target.value)}
+                  value={formData.dietaryRestrictions}
+                  onChange={handleChange}
                   rows="3"
                 />
               </div>
@@ -257,9 +288,10 @@ const PinvitadosConfirmAsist = ({ invitadosData = { grupos: [], novios: {} } }) 
           <div className="form-group">
             <label>Mensaje para los novios (opcional)</label>
             <textarea 
+              name="message"
               placeholder="Escribe un mensaje especial..."
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              value={formData.message}
+              onChange={handleChange}
               rows="4"
             />
           </div>
@@ -272,42 +304,10 @@ const PinvitadosConfirmAsist = ({ invitadosData = { grupos: [], novios: {} } }) 
           >
             <i className="bi bi-envelope-check"></i> Confirmar Asistencia
           </motion.button>
-        </motion.div>
+        </div>
       )}
     </div>
   );
-};
-
-PinvitadosConfirmAsist.propTypes = {
-  invitadosData: PropTypes.shape({
-    grupos: PropTypes.arrayOf(
-      PropTypes.shape({
-        nombre: PropTypes.string,
-        invitados: PropTypes.arrayOf(
-          PropTypes.shape({
-            id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-            nombre: PropTypes.string,
-            relacion: PropTypes.string,
-            email: PropTypes.string
-          })
-        )
-      })
-    ),
-    novios: PropTypes.shape({
-      novia: PropTypes.string,
-      novio: PropTypes.string
-    })
-  })
-};
-
-PinvitadosConfirmAsist.defaultProps = {
-  invitadosData: {
-    grupos: [],
-    novios: {
-      novia: 'Novia',
-      novio: 'Novio'
-    }
-  }
 };
 
 export default PinvitadosConfirmAsist;

@@ -1,31 +1,23 @@
-/* Variables de color */
-$bordo-elegante: #7A4F50;
-$bordo-oscuro: #5A2D2D;
-$tierra-claro: #C2A78D;
-$tierra-medio: #A67C52;
-$tierra-oscuro: #8C5E3D;
-$blanco: rgba(255, 255, 255, 0.9);
-$negro: #2A2621;
-
 /* Estilos base */
 .header {
-  background-color: $blanco;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
   position: relative;
   width: 100%;
   z-index: 1000;
 
   /* Líneas decorativas */
-  .baroque-line-top, .baroque-line-bottom {
+  .baroque-line-top,
+  .baroque-line-bottom {
     height: 3px;
     width: 100%;
-    background: linear-gradient(90deg, 
-      transparent, 
-      $tierra-claro, 
-      $bordo-elegante, 
-      $tierra-claro, 
-      transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      #c2a78d,
+      #7a4f50,
+      #c2a78d,
+      transparent
+    );
     background-size: 200% 100%;
     animation: baroqueFlow 8s linear infinite;
     opacity: 0.7;
@@ -37,16 +29,16 @@ $negro: #2A2621;
 
   /* Navbar personalizado */
   .navbar-custom {
-    padding: 0.5rem 0;
-    
+    padding: 0px 0px;
+
     .header-container {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center;
       width: 100%;
-      max-width: 1200px;
+      max-width: auto;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 6px 0px;
     }
   }
 
@@ -54,12 +46,12 @@ $negro: #2A2621;
   .logo-brand {
     padding: 0;
     z-index: 10;
-    
+
     .logo-header {
-      max-width: 100px;
+      max-width: 90px;
       height: auto;
       transition: all 0.4s ease;
-      
+
       &:hover {
         transform: scale(1.03);
         opacity: 0.9;
@@ -71,7 +63,7 @@ $negro: #2A2621;
   .mobile-toggle {
     border: none;
     padding: 0.5rem;
-    
+
     &:focus {
       box-shadow: none;
       outline: none;
@@ -79,12 +71,12 @@ $negro: #2A2621;
   }
 
   .menu-icon {
-    font-size: 1.8rem;
-    color: $bordo-oscuro;
+    font-size: small;
+    color: #5a2d2d;
     transition: all 0.3s ease;
-    
+
     &:hover {
-      color: $tierra-oscuro;
+      color: #8c5e3d;
     }
   }
 
@@ -99,37 +91,51 @@ $negro: #2A2621;
     display: flex;
     align-items: center;
     margin: 0 auto;
-    
+
     .nav-link {
-      color: $bordo-oscuro;
+      color: #5a2d2d;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: small;
       padding: 0.5rem 1rem;
       position: relative;
       transition: all 0.3s ease;
       white-space: nowrap;
       text-transform: uppercase;
       letter-spacing: 1px;
-      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
       &:hover {
-        color: $tierra-oscuro;
+        color: #8c5e3d;
         text-decoration: none;
-        
+
         &::after {
-          width: 100%;
           left: 0;
         }
       }
-      
+
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 0;
         height: 2px;
         bottom: 4px;
         left: 50%;
-        background: $tierra-medio;
+        transform: translateX(-50%);
+        background: #a67c52;
         transition: all 0.3s ease;
+      }
+
+      .menu-item-icon {
+        font-size: 1.4rem;
+        margin-bottom: 0.3rem;
+        transition: all 0.3s ease;
+      }
+
+      &:hover .menu-item-icon {
+        transform: translateY(-3px);
       }
     }
   }
@@ -138,42 +144,43 @@ $negro: #2A2621;
   .baroque-divider {
     width: 1px;
     height: 24px;
-    background: rgba($bordo-elegante, 0.3);
+    background: rgba(122, 79, 80, 0.3);
     margin: 0 5px;
   }
 
   /* Sección de autenticación */
   .auth-section {
     margin-left: 20px;
-    
+
     .auth-welcome {
       display: flex;
       align-items: center;
       gap: 10px;
-      color: $bordo-oscuro;
+      color: #5a2d2d;
       font-size: 0.95rem;
       font-weight: 600;
     }
-    
-    .access-btn, .logout-btn {
-      color: $bordo-oscuro;
+
+    .access-btn,
+    .logout-btn {
+      color: #5a2d2d;
       font-weight: 600;
       transition: all 0.3s ease;
       padding: 0.5rem 1rem;
-      border: 1px solid $bordo-elegante;
+      border: 1px solid #7a4f50;
       border-radius: 4px;
-      
+
       &:hover {
-        color: $tierra-oscuro;
-        background: rgba($tierra-claro, 0.1);
+        color: #8c5e3d;
+        background: rgba(194, 167, 141, 0.1);
         text-decoration: none;
       }
     }
-    
+
     .logout-icon {
       font-size: 1.3rem;
       vertical-align: middle;
-      
+
       &:hover {
         transform: scale(1.1);
       }
@@ -183,8 +190,12 @@ $negro: #2A2621;
 
 /* Animación */
 @keyframes baroqueFlow {
-  0% { background-position: 100% 0; }
-  100% { background-position: -100% 0; }
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
 }
 
 /* Responsive */
@@ -196,19 +207,19 @@ $negro: #2A2621;
         padding: 10px 15px;
       }
     }
-    
+
     .logo-brand {
       order: 1;
-      
+
       .logo-header {
         max-width: 80px;
       }
     }
-    
+
     .mobile-toggle {
       order: 2;
     }
-    
+
     .navbar-collapse-custom {
       order: 3;
       width: 100%;
@@ -218,34 +229,39 @@ $negro: #2A2621;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
-    
+
     .nav-links {
       flex-direction: column;
       width: 100%;
-      
+
       .nav-link {
-        padding: 0.8rem 0;
+        padding: 1rem 0;
         font-size: 1.1rem;
-        
+        flex-direction: row;
+        justify-content: center;
+        gap: 0.8rem;
+
         &::after {
           bottom: 8px;
         }
+
+        .menu-item-icon {
+          margin-bottom: 0;
+          font-size: 1.3rem;
+        }
       }
     }
-    
+
     .baroque-divider {
       display: none;
     }
-    
+
     .auth-section {
       margin: 15px 0 0;
       width: 100%;
       text-align: center;
       padding-top: 15px;
-      border-top: 1px solid rgba($bordo-elegante, 0.2);
+      border-top: 1px solid rgba(122, 79, 80, 0.2);
     }
   }
 }
-
-/* Fuentes */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');

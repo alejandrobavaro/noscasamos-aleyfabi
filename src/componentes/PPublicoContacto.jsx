@@ -20,7 +20,7 @@ const PPublicoContacto = () => {
             </h3>
             <div className="unified-social-icons">
               <a
-                href="https://www.facebook.com/alegondramusic"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="unified-social-link"
@@ -29,7 +29,7 @@ const PPublicoContacto = () => {
                 <span>Facebook</span>
               </a>
               <a
-                href="https://www.instagram.com/chulusservicios/?hl=es"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="unified-social-link"
@@ -38,7 +38,7 @@ const PPublicoContacto = () => {
                 <span>Instagram</span>
               </a>
               <a
-                href="https://www.youtube.com/channel/UCBhJkysp3SnHU1tR3qAA5pQ"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="unified-social-link"
@@ -47,7 +47,7 @@ const PPublicoContacto = () => {
                 <span>YouTube</span>
               </a>
               <a
-                href="mailto:bavaroalejandro@gmail.com"
+                href="mailto:#"
                 className="unified-social-link"
               >
                 <i className="bi bi-envelope-heart" />

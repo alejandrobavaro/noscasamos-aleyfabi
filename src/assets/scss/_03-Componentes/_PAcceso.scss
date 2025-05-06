@@ -1,22 +1,24 @@
 .pantalla-acceso {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 
-  background-size: cover;
-  padding: 2em;
+  padding: 0;
+  gap: 0;
 
   .contenedor-acceso {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    padding: 3rem;
+
+    padding: 5px;
     width: 100%;
+    max-width: 1000px;
     text-align: center;
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    margin-bottom: 2rem;
 
     .encabezado-boda {
       margin-bottom: 0;
@@ -27,7 +29,6 @@
         font-family: "Cinzel", serif;
         color: #7a4f50;
         font-size: xx-large;
-
         margin-bottom: 0.5rem;
         letter-spacing: 1px;
       }
@@ -44,7 +45,7 @@
     .opciones-acceso {
       h3 {
         color: #5a2d2d;
-        margin-bottom: 2.5rem;
+        margin-bottom: 0;
         font-weight: 500;
         font-size: 1.3rem;
         font-family: "Cormorant Garamond", serif;
@@ -53,8 +54,8 @@
       .tarjetas-acceso {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
+        gap: 1rem;
+        margin-top: 0;
 
         .tarjeta {
           border-radius: 12px;
@@ -64,10 +65,11 @@
           overflow: hidden;
           border: 1px solid rgba(122, 79, 80, 0.15);
           background: rgba(255, 255, 255, 0.7);
+          padding: 0.1rem 1.5rem;
 
           .icono-container {
             font-size: 2.8rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0;
             transition: all 0.3s ease;
           }
 
@@ -110,16 +112,6 @@
           }
         }
 
-        .tarjeta-publico {
-          .icono-container {
-            color: #c2a78d;
-          }
-
-          &:hover {
-            background: rgba(255, 249, 245, 0.9);
-          }
-        }
-
         .tarjeta-invitado {
           .icono-container {
             color: #8c5e3d;
@@ -149,7 +141,7 @@
       .form-header {
         display: flex;
         align-items: center;
-        margin-bottom: 2rem;
+        margin-bottom: 0;
 
         .btn-volver {
           background: none;
@@ -237,15 +229,54 @@
       }
     }
   }
+
+  /* Estilos para la sección de historia integrada */
+  .love-story-container {
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 0;
+    
+    .love-story-hero {
+      margin-bottom: 0;
+    }
+    
+    .love-story-content {
+      // background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      padding: 0.5rem;
+      // box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .pantalla-acceso {
+    padding: 1rem;
+    gap: 1rem;
+
+    .contenedor-acceso {
+      padding: 2rem;
+      margin-bottom: 1rem;
+
+      .opciones-acceso {
+        .tarjetas-acceso {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+
+    .love-story-container {
+      .love-story-content {
+        padding: 2rem;
+      }
+    }
+  }
 }
 
 @media (max-width: 768px) {
   .pantalla-acceso {
-    padding: 1rem;
-    background-position: 60% center;
-
     .contenedor-acceso {
-      padding: 2rem 1.5rem;
+      padding: 1.5rem;
 
       .encabezado-boda {
         h1 {
@@ -256,24 +287,11 @@
           font-size: 1.3rem;
         }
       }
+    }
 
-      .opciones-acceso {
-        h3 {
-          font-size: 1.2rem;
-        }
-
-        .tarjetas-acceso {
-          grid-template-columns: 1fr;
-          gap: 1.5rem;
-        }
-      }
-
-      .formulario-clave {
-        .form-header {
-          h2 {
-            font-size: 1.5rem;
-          }
-        }
+    .love-story-container {
+      .love-story-content {
+        padding: 1.5rem;
       }
     }
   }
@@ -281,8 +299,11 @@
 
 @media (max-width: 480px) {
   .pantalla-acceso {
+    padding: 0.5rem;
+
     .contenedor-acceso {
       padding: 1.5rem 1rem;
+      border-radius: 12px;
 
       .encabezado-boda {
         h1 {
@@ -291,6 +312,84 @@
 
         h2 {
           font-size: 1.1rem;
+        }
+      }
+    }
+
+    .love-story-container {
+      .love-story-content {
+        padding: 1rem;
+        border-radius: 12px;
+      }
+    }
+  }
+}
+
+
+/* Panel de acceso flotante */
+.access-panel-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.access-panel-container {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 800px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.btn-cerrar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #7A4F50;
+  cursor: pointer;
+}
+
+/* Estilos para el panel de acceso flotante */
+.pantalla-acceso-flotante {
+  .contenedor-acceso {
+    box-shadow: none;
+    padding: 0;
+    background: transparent;
+    
+    .opciones-acceso {
+      h3 {
+        color: #5A2D2D;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      
+      .tarjetas-acceso {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        
+        .tarjeta {
+          cursor: pointer;
+          padding: 1.5rem;
+          border-radius: 12px;
+          transition: all 0.3s ease;
+          
+          &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+          }
         }
       }
     }

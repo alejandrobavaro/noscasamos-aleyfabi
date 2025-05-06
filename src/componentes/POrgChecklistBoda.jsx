@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors, DragOverlay } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
 
-import '../assets/scss/_03-Componentes/_POrgChecklistBoda.scss';
+import '../assets/scss/_03-Componentes/_POrgTareasBoda.scss';
 import weddingTasks from '/src/json/POrgTareasBoda1.json';
 
-function POrgChecklistBoda() {
+function POrgTareasBoda() {
   const [tasksData, setTasksData] = useState(weddingTasks.categories);
   const [activeId, setActiveId] = useState(null);
   const [filter, setFilter] = useState('all');
@@ -246,4 +246,4 @@ function getCategoryIcon(categoryId) {
   }
 }
 
-export default POrgChecklistBoda;
+export default POrgTareasBoda;

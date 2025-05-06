@@ -1,12 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../assets/scss/_03-Componentes/_Footer.scss";
-import { BsInstagram, BsYoutube, BsFacebook, BsTwitter } from "react-icons/bs";
+import { BsInstagram, BsYoutube, BsFacebook, BsEnvelope } from "react-icons/bs";
 
 function Footer() {
   return (
     <footer className="footer">
-      <div className="baroque-line-top"></div>
-      
+      <div> <Link to="/contacto" className="contact-btn">
+                       CONTACTO
+          </Link></div>
+     
       <div className="footer-content">
         {/* Logos laterales */}
         <div className="footer-logo-container">
@@ -32,12 +35,12 @@ function Footer() {
               <BsFacebook className="social-icon" />
               <span>Facebook</span>
             </a>
-            <a href="#"  target="_blank" rel="noopener noreferrer">
-              <BsTwitter className="social-icon" />
-              <span>Twitter</span>
-            </a>
+        
           </div>
+        
         </div>
+
+        
         
         {/* Logo derecho */}
         <div className="footer-logo-container">

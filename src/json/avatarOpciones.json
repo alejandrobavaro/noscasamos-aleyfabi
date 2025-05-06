@@ -1,21 +1,21 @@
 {
   "avatarHombre": {
-    "base": "/img/14-dresscode-avatar/avatar-hombre/base.png",
+    "base": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/base.png",
     "componentes": {
       "complexion": {
         "titulo": "Tono de Piel",
         "opciones": [
           {
             "nombre": "Claro",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/tono-piel-claro.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/tono-piel-claro.png"
           },
           {
             "nombre": "Medio",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/tono-piel-medio.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/tono-piel-medio.png"
           },
           {
             "nombre": "Oscuro",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/tono-piel-oscuro.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/tono-piel-oscuro.png"
           }
         ]
       },
@@ -24,23 +24,23 @@
         "opciones": [
           {
             "nombre": "Clásico Corto",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/peinado-clasico-corto.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/peinado-clasico-corto.png"
           },
           {
             "nombre": "Peinado con Gel",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/peinado-gel.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/peinado-gel.png"
           },
           {
             "nombre": "Ondas Naturales",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/peinado-ondas.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/peinado-ondas.png"
           },
           {
             "nombre": "Rizado Elegante",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/peinado-rizado.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/peinado-rizado.png"
           },
           {
             "nombre": "Lateral con Fade",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/peinado-fade.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/peinado-fade.png"
           }
         ]
       },
@@ -49,23 +49,23 @@
         "opciones": [
           {
             "nombre": "Negro",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/color-pelo-negro.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/color-pelo-negro.png"
           },
           {
             "nombre": "Castaño Oscuro",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/color-pelo-castano-oscuro.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/color-pelo-castano-oscuro.png"
           },
           {
             "nombre": "Castaño Claro",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/color-pelo-castano-claro.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/color-pelo-castano-claro.png"
           },
           {
             "nombre": "Rubio",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/color-pelo-rubio.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/color-pelo-rubio.png"
           },
           {
             "nombre": "Sal y Pimienta",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/color-pelo-sal-pimienta.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/color-pelo-sal-pimienta.png"
           }
         ]
       },
@@ -74,23 +74,23 @@
         "opciones": [
           {
             "nombre": "Sin Barba",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/barba-sin.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/barba-sin.png"
           },
           {
             "nombre": "Barba Recortada",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/barba-recortada.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/barba-recortada.png"
           },
           {
             "nombre": "Barba Completa",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/barba-completa.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/barba-completa.png"
           },
           {
             "nombre": "Perilla Elegante",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/barba-perilla.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/barba-perilla.png"
           },
           {
             "nombre": "Barba de 3 Días",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/barba-3dias.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/barba-3dias.png"
           }
         ]
       },
@@ -99,23 +99,23 @@
         "opciones": [
           {
             "nombre": "Camisa Blanca Algodón",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/camisa-blanca-algodon.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/camisa-blanca-algodon.png"
           },
           {
             "nombre": "Camisa Azul Claro Lino",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/camisa-azul-claro-lino.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/camisa-azul-claro-lino.png"
           },
           {
             "nombre": "Camisa Gris Perla",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/camisa-gris-perla.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/camisa-gris-perla.png"
           },
           {
             "nombre": "Camisa Vino Satinada",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/camisa-vino-satin.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/camisa-vino-satin.png"
           },
           {
             "nombre": "Camisa Negra Elegante",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/camisa-negra-elegante.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/camisa-negra-elegante.png"
           }
         ]
       },
@@ -124,15 +124,15 @@
         "opciones": [
           {
             "nombre": "Chaleco Gris Pizarra",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/chaleco-gris-pizarra.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/chaleco-gris-pizarra.png"
           },
           {
             "nombre": "Chaleco Terciopelo Vino",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/chaleco-terciopelo-vino.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/chaleco-terciopelo-vino.png"
           },
           {
             "nombre": "Chaleco Negro Satinado",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/chaleco-negro-satin.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/chaleco-negro-satin.png"
           }
         ]
       },
@@ -141,23 +141,23 @@
         "opciones": [
           {
             "nombre": "Saco Azul Marino Lana",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/saco-azul-marino-lana.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/saco-azul-marino-lana.png"
           },
           {
             "nombre": "Saco Gris Carbón Tweed",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/saco-gris-carbon-tweed.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/saco-gris-carbon-tweed.png"
           },
           {
             "nombre": "Saco Negro Cashmere",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/saco-negro-cashmere.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/saco-negro-cashmere.png"
           },
           {
             "nombre": "Saco Beige Lino",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/saco-beige-lino.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/saco-beige-lino.png"
           },
           {
             "nombre": "Saco Terciopelo Burdeos",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/saco-terciopelo-burdeos.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/saco-terciopelo-burdeos.png"
           }
         ]
       },
@@ -166,23 +166,23 @@
         "opciones": [
           {
             "nombre": "Corbata Seda Azul Real",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/corbata-seda-azul-real.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/corbata-seda-azul-real.png"
           },
           {
             "nombre": "Corbata Rayas Plateadas",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/corbata-rayas-plateadas.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/corbata-rayas-plateadas.png"
           },
           {
             "nombre": "Moño Negro Satinado",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/mono-negro-satin.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/mono-negro-satin.png"
           },
           {
             "nombre": "Corbata Vino Texturada",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/corbata-vino-textura.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/corbata-vino-textura.png"
           },
           {
             "nombre": "Moño Dorado con Estampado",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/mono-dorado-estampado.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/mono-dorado-estampado.png"
           }
         ]
       },
@@ -191,19 +191,19 @@
         "opciones": [
           {
             "nombre": "Pantalón Negro Clásico",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/pantalon-negro-clasico.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/pantalon-negro-clasico.png"
           },
           {
             "nombre": "Pantalón Gris Antracita",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/pantalon-gris-antracita.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/pantalon-gris-antracita.png"
           },
           {
             "nombre": "Pantalón Azul Marino",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/pantalon-azul-marino.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/pantalon-azul-marino.png"
           },
           {
             "nombre": "Pantalón Beige Lino",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/pantalon-beige-lino.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/pantalon-beige-lino.png"
           }
         ]
       },
@@ -212,19 +212,19 @@
         "opciones": [
           {
             "nombre": "Oxford Negros Charol",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/oxford-negros-charol.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/oxford-negros-charol.png"
           },
           {
             "nombre": "Derby Marrón Cuero",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/derby-marron-cuero.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/derby-marron-cuero.png"
           },
           {
             "nombre": "Zapatos Borcegos Negros",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/zapatos-borcegos-negros.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/zapatos-borcegos-negros.png"
           },
           {
             "nombre": "Mocasines Negros",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/mocasines-negros.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/mocasines-negros.png"
           }
         ]
       },
@@ -233,53 +233,53 @@
         "opciones": [
           {
             "nombre": "Reloj de Pulsera Clásico",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/reloj-clasico.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/reloj-clasico.png"
           },
           {
             "nombre": "Pañuelo de Bolsillo Vino",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/panuelo-vino.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/panuelo-vino.png"
           },
           {
             "nombre": "Gemelos Plateados",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/gemelos-plateados.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/gemelos-plateados.png"
           },
           {
             "nombre": "Gorra Fedora Negra",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/gorra-fedora-negra.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/gorra-fedora-negra.png"
           },
           {
             "nombre": "Bufanda de Cachemir Gris",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/bufanda-cachemir-gris.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/bufanda-cachemir-gris.png"
           },
           {
             "nombre": "Anteojos de Marco Fino",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/anteojos-marco-fino.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/anteojos-marco-fino.png"
           },
           {
             "nombre": "Cinturón de Cuero Negro",
-            "imagen": "/img/14-dresscode-avatar/avatar-hombre/cinturon-cuero-negro.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-hombre/cinturon-cuero-negro.png"
           }
         ]
       }
     }
   },
   "avatarMujer": {
-    "base": "/img/14-dresscode-avatar/avatar-mujer/base.png",
+    "base": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/base.png",
     "componentes": {
       "complexion": {
         "titulo": "Tono de Piel",
         "opciones": [
           {
             "nombre": "Claro",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/tono-piel-claro.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/tono-piel-claro.png"
           },
           {
             "nombre": "Medio",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/tono-piel-medio.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/tono-piel-medio.png"
           },
           {
             "nombre": "Oscuro",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/tono-piel-oscuro.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/tono-piel-oscuro.png"
           }
         ]
       },
@@ -288,27 +288,27 @@
         "opciones": [
           {
             "nombre": "Recogido Elegante",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/peinado-recogido-elegante.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/peinado-recogido-elegante.png"
           },
           {
             "nombre": "Ondas Sueltas",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/peinado-ondas-sueltas.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/peinado-ondas-sueltas.png"
           },
           {
             "nombre": "Cola de Caballo Alta",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/peinado-cola-alta.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/peinado-cola-alta.png"
           },
           {
             "nombre": "Media Cola con Diadema",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/peinado-media-cola-diadema.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/peinado-media-cola-diadema.png"
           },
           {
             "nombre": "Corto con Peinado Elegante",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/peinado-corto-elegante.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/peinado-corto-elegante.png"
           },
           {
             "nombre": "Moño Francés",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/peinado-mono-frances.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/peinado-mono-frances.png"
           }
         ]
       },
@@ -317,27 +317,27 @@
         "opciones": [
           {
             "nombre": "Negro Azabache",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/color-pelo-negro.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/color-pelo-negro.png"
           },
           {
             "nombre": "Castaño Oscuro",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/color-pelo-castano-oscuro.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/color-pelo-castano-oscuro.png"
           },
           {
             "nombre": "Castaño Claro",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/color-pelo-castano-claro.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/color-pelo-castano-claro.png"
           },
           {
             "nombre": "Rubio Miel",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/color-pelo-rubio-miel.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/color-pelo-rubio-miel.png"
           },
           {
             "nombre": "Pelirrojo",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/color-pelo-pelirrojo.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/color-pelo-pelirrojo.png"
           },
           {
             "nombre": "Rubio Platino",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/color-pelo-rubio-platino.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/color-pelo-rubio-platino.png"
           }
         ]
       },
@@ -346,23 +346,23 @@
         "opciones": [
           {
             "nombre": "Natural",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/maquillaje-natural.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/maquillaje-natural.png"
           },
           {
             "nombre": "Clásico Elegante",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/maquillaje-clasico.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/maquillaje-clasico.png"
           },
           {
             "nombre": "Dramático Nocturno",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/maquillaje-dramatico.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/maquillaje-dramatico.png"
           },
           {
             "nombre": "Tono Vino",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/maquillaje-tono-vino.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/maquillaje-tono-vino.png"
           },
           {
             "nombre": "Dorado",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/maquillaje-dorado.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/maquillaje-dorado.png"
           }
         ]
       },
@@ -371,31 +371,31 @@
         "opciones": [
           {
             "nombre": "Vestido Largo Vino Terciopelo",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/vestido-largo-vino-terciopelo.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/vestido-largo-vino-terciopelo.png"
           },
           {
             "nombre": "Vestido Corto Negro Satinado",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/vestido-corto-negro-satin.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/vestido-corto-negro-satin.png"
           },
           {
             "nombre": "Vestido Seda Dorado",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/vestido-seda-dorado.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/vestido-seda-dorado.png"
           },
           {
             "nombre": "Vestido Verde Botella con Escote",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/vestido-verde-botella-escote.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/vestido-verde-botella-escote.png"
           },
           {
             "nombre": "Vestido Nude con Lentejuelas",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/vestido-nude-lentejuelas.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/vestido-nude-lentejuelas.png"
           },
           {
             "nombre": "Vestido Azul Noche con Volantes",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/vestido-azul-volantes.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/vestido-azul-volantes.png"
           },
           {
             "nombre": "Vestido Blanco Roto con Detalles",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/vestido-blanco-roto.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/vestido-blanco-roto.png"
           }
         ]
       },
@@ -404,27 +404,27 @@
         "opciones": [
           {
             "nombre": "Saco Negro Elegante",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/saco-negro-elegante.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/saco-negro-elegante.png"
           },
           {
             "nombre": "Chaleco Dorado con Lentejuelas",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/chaleco-dorado-lentejuelas.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/chaleco-dorado-lentejuelas.png"
           },
           {
             "nombre": "Blazer Beige Lino",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/blazer-beige-lino.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/blazer-beige-lino.png"
           },
           {
             "nombre": "Capa Corta Vino",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/capa-corta-vino.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/capa-corta-vino.png"
           },
           {
             "nombre": "Chal de Encaje Negro",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/chal-encaje-negro.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/chal-encaje-negro.png"
           },
           {
             "nombre": "Bolero de Seda",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/bolero-seda.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/bolero-seda.png"
           }
         ]
       },
@@ -433,27 +433,27 @@
         "opciones": [
           {
             "nombre": "Tacones Negros Stiletto",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/tacones-negros-stiletto.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/tacones-negros-stiletto.png"
           },
           {
             "nombre": "Sandalias Doradas con Tiras",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/sandalias-doradas-tiras.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/sandalias-doradas-tiras.png"
           },
           {
             "nombre": "Zapatos Nude con Detalle",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/zapatos-nude-detalle.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/zapatos-nude-detalle.png"
           },
           {
             "nombre": "Botines Negros de Tacón",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/botines-negros-tacon.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/botines-negros-tacon.png"
           },
           {
             "nombre": "Tacones Vino Satinados",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/tacones-vino-satin.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/tacones-vino-satin.png"
           },
           {
             "nombre": "Zapatos Plateados",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/zapatos-plateados.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/zapatos-plateados.png"
           }
         ]
       },
@@ -462,23 +462,23 @@
         "opciones": [
           {
             "nombre": "Cartera Dorada con Cristales",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/cartera-dorada-cristales.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/cartera-dorada-cristales.png"
           },
           {
             "nombre": "Bolso Negro de Mano",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/bolso-negro-mano.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/bolso-negro-mano.png"
           },
           {
             "nombre": "Clutch Terciopelo Vino",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/clutch-terciopelo-vino.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/clutch-terciopelo-vino.png"
           },
           {
             "nombre": "Bolso Beige con Detalles Dorados",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/bolso-beige-dorados.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/bolso-beige-dorados.png"
           },
           {
             "nombre": "Minibolsos de Cadena",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/minibolsos-cadena.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/minibolsos-cadena.png"
           }
         ]
       },
@@ -487,23 +487,23 @@
         "opciones": [
           {
             "nombre": "Collar Dorado Elegante",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/collar-dorado-elegante.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/collar-dorado-elegante.png"
           },
           {
             "nombre": "Aretes de Perlas",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/aretes-perlas.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/aretes-perlas.png"
           },
           {
             "nombre": "Set de Joyas Vino",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/set-joyas-vino.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/set-joyas-vino.png"
           },
           {
             "nombre": "Pulsera de Diamantes",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/pulsera-diamantes.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/pulsera-diamantes.png"
           },
           {
             "nombre": "Anillo de Oro",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/anillo-oro.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/anillo-oro.png"
           }
         ]
       },
@@ -512,27 +512,27 @@
         "opciones": [
           {
             "nombre": "Sombrero Fedora Negro",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/sombrero-fedora-negro.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/sombrero-fedora-negro.png"
           },
           {
             "nombre": "Guantes Largos de Encaje",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/guantes-largos-encaje.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/guantes-largos-encaje.png"
           },
           {
             "nombre": "Pañuelo de Seda Vino",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/panuelo-seda-vino.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/panuelo-seda-vino.png"
           },
           {
             "nombre": "Gafas de Sol Doradas",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/gafas-sol-doradas.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/gafas-sol-doradas.png"
           },
           {
             "nombre": "Tiara Elegante",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/tiara-elegante.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/tiara-elegante.png"
           },
           {
             "nombre": "Abánico de Encaje",
-            "imagen": "/img/14-dresscode-avatar/avatar-mujer/abanico-encaje.png"
+            "imagen": "/img/14-PInvitadosCodigoVestimenta-avatar/avatar-mujer/abanico-encaje.png"
           }
         ]
       }

@@ -66,6 +66,7 @@ function PPublico() {
         </Slider>
       </div>
 
+
       {/* Historia principal */}
       <div className="love-story-content">
         {/* Introducción */}

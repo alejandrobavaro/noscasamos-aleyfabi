@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 //------------ESTILOS--------------//
@@ -23,38 +23,31 @@ import PPublico from "./componentes/PPublico";
 import PPublicoContacto from "./componentes/PPublicoContacto";
 import PPublicoContactoForm from "./componentes/PPublicoContactoForm";
 
-
 //------------RUTAS DE INVITADOS--------------//
 import PInvitados from "./componentes/PInvitados";
 import PinvitadosConfirmAsist from "./componentes/PinvitadosConfirmAsist";
 import PInvitadosUbicacion from "./componentes/PInvitadosUbicacion";
-import DressCode from "./componentes/DressCode";
+import PInvitadosCodigoVestimenta from "./componentes/PInvitadosCodigoVestimenta";
 import PInvitadoItinerario from "./componentes/PInvitadoItinerario";
 
 //------------RUTAS DE ORGANIZACIÓN--------------//
 import POrganizacion from "./componentes/POrganizacion";
 import PInvitadosLista from "./componentes/PInvitadosLista";
 import POrgMesas from "./componentes/POrgMesas";
-
+import POrgChecklistBoda from "./componentes/POrgChecklistBoda";
+import POrgRegalos from "./componentes/POrgRegalos";
+import POrgCatering from "./componentes/POrgCatering";
+import POrgPresupuesto from "./componentes/POrgPresupuesto";
+import POrgInvitaciones from "./componentes/POrgInvitaciones";
 
 //------------CONTEXTO DE AUTENTICACIÓN--------------//
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
-  useEffect(() => {
-    document.body.className = isDarkMode ? "dark-mode" : "light-mode";
-  }, [isDarkMode]);
-
   return (
     <AuthProvider>
       <Router>
-        <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+        <Header />
 
         <div className="main-content">
           <div className="content centered">
@@ -71,20 +64,23 @@ function App() {
                 </div>
               } />
      
-
               {/* RUTAS DE INVITADOS */}
               <Route path="/invitados" element={<PInvitados />} />
               <Route path="/invitados/confirmar" element={<PinvitadosConfirmAsist />} />
               <Route path="/invitados/ubicacion" element={<PInvitadosUbicacion />} />
-              <Route path="/invitados/dresscode" element={<DressCode />} />
-              <Route path="/invitados/PInvitadoItinerario" element={<PInvitadoItinerario />} />
+              <Route path="/invitados/codigo-vestimenta" element={<PInvitadosCodigoVestimenta />} />
+              <Route path="/invitados/itinerario" element={<PInvitadoItinerario />} />
 
               {/* RUTAS DE ORGANIZACIÓN */}
               <Route path="/organizacion" element={<POrganizacion />} />
               <Route path="/organizacion/invitados" element={<PInvitadosLista />} />
-              <Route path="/organizacion/POrgMesas" element={<POrgMesas />} />
+              <Route path="/organizacion/mesas" element={<POrgMesas />} />
+              <Route path="/organizacion/checklist" element={<POrgChecklistBoda />} />
+              <Route path="/organizacion/regalos" element={<POrgRegalos />} />
+              <Route path="/organizacion/catering" element={<POrgCatering />} />
+              <Route path="/organizacion/presupuesto" element={<POrgPresupuesto />} />
+              <Route path="/organizacion/invitaciones" element={<POrgInvitaciones />} />
          
-
               {/* Redirección para rutas no encontradas */}
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

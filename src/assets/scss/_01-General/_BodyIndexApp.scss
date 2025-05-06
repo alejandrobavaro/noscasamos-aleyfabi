@@ -1,7 +1,5 @@
 /*--------------Estilos Globales Mejorados--------------*/
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Cinzel:wght@400;500;600&display=swap');
-
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +13,7 @@ html {
 /*--------------Estilos Body--------------*/
 
 body {
-  background: #FFF9F5; // Fondo sólido vintage
+  // background: #ffffff; // Fondo sólido vintage
   font-family: 'Cormorant Garamond', serif;
   text-align: center;
   color: #3A2E29;
@@ -29,7 +27,7 @@ body {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  background: rgba(255, 249, 245, 0.9);
+  // background: rgba(255, 249, 245, 0.9);
   min-height: 100vh;
 }
 
@@ -145,24 +143,9 @@ a {
   width: 100%;
   margin: 0 auto;
   padding: 1rem;
-  background: white;
+  // background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
-}
-
-/*--------------Estilos para Modo Claro/Oscuro--------------*/
-
-body.light-mode {
-  background: #FFF9F5;
-  color: #3A2E29;
-  
-  a {
-    color: #8B4513;
-    
-    &:hover {
-      color: #A0522D;
-    }
-  }
+  // box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
 }
 
 /*--------------Media Queries--------------*/

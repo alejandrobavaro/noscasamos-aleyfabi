@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { FaFemale, FaMale, FaUndo, FaRandom, FaInfoCircle } from "react-icons/fa";
-import "../assets/scss/_03-Componentes/_AvatarSelector.scss";
+import "../assets/scss/_03-Componentes/_PInvitadosProbadorRopaAvatar.scss";
 
-const AvatarSelector = () => {
+const PInvitadosProbadorRopaAvatar = () => {
   const [data, setData] = useState({});
   const [avatarTipo, setAvatarTipo] = useState("avatarHombre");
   const [seleccion, setSeleccion] = useState({});
@@ -162,4 +162,4 @@ const AvatarSelector = () => {
   );
 };
 
-export default AvatarSelector;
+export default PInvitadosProbadorRopaAvatar;

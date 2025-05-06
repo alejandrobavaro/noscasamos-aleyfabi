@@ -4,11 +4,10 @@ import "../assets/scss/_03-Componentes/_POrganizacion.scss";
 
 // Componentes de las pestañas
 import POrgPresupuesto from './POrgPresupuesto';
-import POrgChecklistBoda from './POrgChecklistBoda';
+import POrgChecklistBoda from './POrgChecklistBoda'; // Cambiado de POrgTareasBoda
 import POrgRegalos from './POrgRegalos';
 import POrgCatering from './POrgCatering';
 import POrgInvitaciones from './POrgInvitaciones';
-import POrgIdeas from './POrgIdeas';
 import POrgMesas from './POrgMesas';
 
 function POrganizacion() {
@@ -66,25 +65,18 @@ function POrganizacion() {
   const renderTabContent = () => {
     switch(activeTab) {
       case 'presupuesto': return <POrgPresupuesto />;
-      case 'checklist': return <POrgChecklistBoda />;
+      case 'checklist': return <POrgChecklistBoda />; 
       case 'POrgRegalos': return <POrgRegalos />;
       case 'catering': return <POrgCatering />;
       case 'invitaciones': return <POrgInvitaciones />;
-      case 'ideas': return <POrgIdeas />;
       case 'POrgMesas': return <POrgMesas />;
       default: return <ResumenGeneral stats={weddingStats} />;
     }
   };
 
   const tabs = [
-    { id: 'resumen', icon: 'bi-kanban', label: 'Resumen' },
-    { id: 'presupuesto', icon: 'bi-cash-stack', label: 'Presupuesto' },
-    { id: 'checklist', icon: 'bi-list-check', label: 'Lista de Tareas' },
-    { id: 'POrgRegalos', icon: 'bi-gift', label: 'Regalos' },
-    { id: 'catering', icon: 'bi-egg-fried', label: 'Catering' },
-    { id: 'invitaciones', icon: 'bi-envelope', label: 'Invitaciones' },
-    { id: 'ideas', icon: 'bi-lightbulb', label: 'Ideas' },
-    { id: 'POrgMesas', icon: 'bi-people', label: 'Mesas' }
+  
+ 
   ];
 
   return (
@@ -93,7 +85,6 @@ function POrganizacion() {
         {/* Encabezado */}
         <div className="encabezado-boda">
           <h1>Panel de Organización</h1>
-     
           <p className="mensaje-bienvenida">
             {daysRemaining} días para el gran día
           </p>
@@ -139,30 +130,7 @@ function POrganizacion() {
 function ResumenGeneral({ stats }) {
   return (
     <div className="resumen-general">
-      <h3>Resumen General</h3>
-      
-      <div className="estadisticas">
-        {stats.map((stat) => (
-          <div key={stat.id} className="tarjeta-estadistica">
-            <div className="icono-titulo">
-              <i className={`bi ${stat.icon}`} style={{ color: stat.color }}></i>
-              <h4>{stat.title}</h4>
-            </div>
-            
-            <p className="valor" style={{ color: stat.color }}>{stat.value}</p>
-            
-            <div className="barra-progreso">
-              <div 
-                className="progreso" 
-                style={{ 
-                  width: `${stat.progress}%`,
-                  backgroundColor: stat.color
-                }}
-              ></div>
-            </div>
-          </div>
-        ))}
-      </div>
+      {/* Contenido del resumen general si lo necesitas */}
     </div>
   );
 }

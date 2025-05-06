@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import "../assets/scss/_03-Componentes/_PAcceso.scss";
+import PPublico from './PPublico';
 
 function PAcceso() {
   const [tipoAcceso, setTipoAcceso] = useState(null);
@@ -42,21 +43,12 @@ function PAcceso() {
   return (
     <div className="pantalla-acceso">
       <div className="contenedor-acceso">
-
-        
         {!tipoAcceso ? (
           <div className="opciones-acceso">
-            <h3>Selecciona tu tipo de acceso</h3>
+       
             
             <div className="tarjetas-acceso">
               {[
-                { 
-                  tipo: 'publico', 
-                  icono: 'bi-heart-fill', 
-                  titulo: 'Acceso Público', 
-                  subtitulo: 'Conoce nuestra historia de amor',
-                  clase: 'publico'
-                },
                 { 
                   tipo: 'invitado', 
                   icono: 'bi-envelope-fill', 
@@ -124,6 +116,9 @@ function PAcceso() {
           </div>
         )}
       </div>
+<div>
+      {/* Sección de Nuestra Historia integrada */}
+      {!tipoAcceso && <PPublico />}</div>
     </div>
   );
 }
