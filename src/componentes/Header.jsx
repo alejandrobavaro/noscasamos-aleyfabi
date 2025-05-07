@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import {
   BsBoxArrowRight,
@@ -20,11 +20,45 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import "../assets/scss/_03-Componentes/_Header.scss";
 
 const Header = () => {
-  const { nivelAcceso, logout } = useAuth();
+  const { nivelAcceso, login, logout } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [tipoAcceso, setTipoAcceso] = useState(null);
+  const [clave, setClave] = useState("");
+  const [error, setError] = useState("");
   const location = useLocation();
+  const navigate = useNavigate();
 
   const handleToggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
+  const handleAcceso = (tipo) => {
+    if (tipo === "publico") {
+      navigate("/inicio");
+      return;
+    }
+    setTipoAcceso(tipo);
+    setClave("");
+    setError("");
+  };
+
+  const verificarClave = () => {
+    const credenciales = {
+      invitado: { clave: "invitado", ruta: "/invitados" },
+      organizacion: { clave: "aleyfabi", ruta: "/organizacion" },
+    };
+
+    if (clave === credenciales[tipoAcceso]?.clave) {
+      login(tipoAcceso);
+      navigate(credenciales[tipoAcceso].ruta);
+      setTipoAcceso(null);
+    } else {
+      setError("Clave incorrecta. Por favor intenta nuevamente.");
+      setTimeout(() => setError(""), 3000);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") verificarClave();
+  };
 
   const isInvitadosSection = location.pathname.startsWith("/invitados");
   const isOrganizacionSection = location.pathname.startsWith("/organizacion");
@@ -43,6 +77,77 @@ const Header = () => {
             />
           </Navbar.Brand>
 
+          {!nivelAcceso && (
+            <div className="header-access-buttons">
+              <div className="tarjetas-acceso">
+                {[
+                  {
+                    tipo: "invitado",
+                    icono: "bi-envelope",
+                    titulo: "Invitados",
+                    clase: "invitado",
+                  },
+                  {
+                    tipo: "organizacion",
+                    icono: "bi-lock",
+                    titulo: "Organización",
+                    clase: "organizacion",
+                  },
+                ].map((opcion) => (
+                  <div
+                    key={opcion.tipo}
+                    className={`tarjeta-acceso-mini tarjeta-${opcion.clase}`}
+                    onClick={() => handleAcceso(opcion.tipo)}
+                  >
+                    <i className={`bi ${opcion.icono}`}></i>
+                    <span>{opcion.titulo}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {tipoAcceso && (
+            <div className="access-form-overlay">
+              <div className="access-form-container">
+                <div className="formulario-clave">
+                  <div className="form-header">
+                    <button className="btn-volver" onClick={() => setTipoAcceso(null)}>
+                      <i className="bi bi-arrow-left"></i>
+                    </button>
+                    <h2>
+                      Acceso{" "}
+                      {tipoAcceso === "invitado" ? "Invitados" : "Organización"}
+                    </h2>
+                  </div>
+
+                  <p className="instrucciones">
+                    {tipoAcceso === "invitado"
+                      ? "Ingresa la clave que recibiste en tu invitación"
+                      : "Ingresa la clave de acceso privada"}
+                  </p>
+
+                  <div className="input-group">
+                    <input
+                      type="password"
+                      value={clave}
+                      onChange={(e) => setClave(e.target.value)}
+                      onKeyPress={handleKeyPress}
+                      placeholder="Introduce la clave"
+                      autoFocus
+                      className={error ? "input-error" : ""}
+                    />
+                    <button onClick={verificarClave} className="btn-verificar">
+                      <i className="bi bi-arrow-right"></i>
+                    </button>
+                  </div>
+
+                  {error && <p className="error-message">{error}</p>}
+                </div>
+              </div>
+            </div>
+          )}
+
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"
             onClick={handleToggleMobileMenu}
@@ -58,7 +163,6 @@ const Header = () => {
             }`}
           >
             <Nav className="nav-links">
-              {/* Botón de Inicio siempre visible */}
               <Nav.Link
                 as={Link}
                 to="/"
@@ -67,7 +171,6 @@ const Header = () => {
                 <BsHouseDoor className="menu-item-icon" />
               </Nav.Link>
 
-              {/* Menú completo para invitados */}
               {(nivelAcceso === "invitado" || isInvitadosSection) && (
                 <>
                   <div className="baroque-divider"></div>
@@ -120,7 +223,7 @@ const Header = () => {
                   </Nav.Link>
                 </>
               )}
-              {/* Menú completo para organización */}
+
               {(nivelAcceso === "organizacion" || isOrganizacionSection) && (
                 <>
                   <div className="baroque-divider"></div>

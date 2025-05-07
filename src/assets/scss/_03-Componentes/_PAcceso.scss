@@ -2,232 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  width: 100%;
   padding: 0;
-  gap: 0;
+  margin: 0;
 
+  /* Contenedor principal simplificado */
   .contenedor-acceso {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 16px;
-
-    padding: 5px;
     width: 100%;
     max-width: 1000px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(5px);
-
-    margin-bottom: 2rem;
-
-    .encabezado-boda {
-      margin-bottom: 0;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(122, 79, 80, 0.2);
-
-      h1 {
-        font-family: "Cinzel", serif;
-        color: #7a4f50;
-        font-size: xx-large;
-        margin-bottom: 0.5rem;
-        letter-spacing: 1px;
-      }
-
-      h2 {
-        font-family: "Cormorant Garamond", serif;
-        color: #8c5e3d;
-        font-weight: 500;
-        font-size: large;
-        font-style: italic;
-      }
-    }
-
-    .opciones-acceso {
-      h3 {
-        color: #5a2d2d;
-        margin-bottom: 0;
-        font-weight: 500;
-        font-size: 1.3rem;
-        font-family: "Cormorant Garamond", serif;
-      }
-
-      .tarjetas-acceso {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 1rem;
-        margin-top: 0;
-
-        .tarjeta {
-          border-radius: 12px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          position: relative;
-          overflow: hidden;
-          border: 1px solid rgba(122, 79, 80, 0.15);
-          background: rgba(255, 255, 255, 0.7);
-          padding: 0.1rem 1.5rem;
-
-          .icono-container {
-            font-size: 2.8rem;
-            margin-bottom: 0;
-            transition: all 0.3s ease;
-          }
-
-          h4 {
-            font-family: "Cinzel", serif;
-            margin-bottom: 0.8rem;
-            color: #5a2d2d;
-            font-size: 1.3rem;
-          }
-
-          p {
-            font-size: 1rem;
-            color: #7a4f50;
-            line-height: 1.5;
-          }
-
-          .decoracion-tarjeta {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #c2a78d, #7a4f50);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-          }
-
-          &:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 25px rgba(122, 79, 80, 0.15);
-
-            .icono-container {
-              transform: scale(1.15);
-            }
-
-            .decoracion-tarjeta {
-              transform: scaleX(1);
-            }
-          }
-        }
-
-        .tarjeta-invitado {
-          .icono-container {
-            color: #8c5e3d;
-          }
-
-          &:hover {
-            background: rgba(194, 167, 141, 0.15);
-          }
-        }
-
-        .tarjeta-organizacion {
-          .icono-container {
-            color: #5a2d2d;
-          }
-
-          &:hover {
-            background: rgba(122, 79, 80, 0.15);
-          }
-        }
-      }
-    }
-
-    .formulario-clave {
-      max-width: 450px;
-      margin: 0 auto;
-
-      .form-header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 0;
-
-        .btn-volver {
-          background: none;
-          border: none;
-          color: #7a4f50;
-          font-size: 1.2rem;
-          cursor: pointer;
-          margin-right: 1rem;
-          transition: all 0.3s ease;
-          padding: 0.5rem;
-          border-radius: 50%;
-
-          &:hover {
-            color: #5a2d2d;
-            background: rgba(122, 79, 80, 0.1);
-          }
-        }
-
-        h2 {
-          flex: 1;
-          color: #5a2d2d;
-          font-family: "Cinzel", serif;
-          font-size: 1.8rem;
-          margin: 0;
-        }
-      }
-
-      .instrucciones {
-        color: #7a4f50;
-        margin-bottom: 2rem;
-        font-size: 1.1rem;
-        line-height: 1.6;
-      }
-
-      .input-group {
-        display: flex;
-        margin-bottom: 1.5rem;
-
-        input {
-          flex: 1;
-          padding: 1rem 1.2rem;
-          border: 1px solid #c2a78d;
-          border-radius: 8px 0 0 8px;
-          font-family: "Cormorant Garamond", serif;
-          font-size: 1.1rem;
-          color: #5a2d2d;
-          transition: all 0.3s ease;
-          background: rgba(255, 255, 255, 0.8);
-
-          &::placeholder {
-            color: #c2a78d;
-          }
-
-          &:focus {
-            outline: none;
-            border-color: #7a4f50;
-            box-shadow: 0 0 0 3px rgba(122, 79, 80, 0.2);
-          }
-
-          &.input-error {
-            border-color: #d9534f;
-          }
-        }
-
-        .btn-verificar {
-          background: #7a4f50;
-          color: white;
-          border: none;
-          padding: 0 1.5rem;
-          border-radius: 0 8px 8px 0;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          font-size: 1.2rem;
-
-          &:hover {
-            background: #5a2d2d;
-          }
-        }
-      }
-
-      .error-message {
-        color: #d9534f;
-        margin-bottom: 1.5rem;
-        font-size: 0.95rem;
-      }
-    }
+    margin: 0 auto;
+    padding: 20px;
   }
 
   /* Estilos para la sección de historia integrada */
@@ -235,39 +19,55 @@
     width: 100%;
     max-width: 1000px;
     margin-top: 0;
-    
+
     .love-story-hero {
       margin-bottom: 0;
     }
-    
+
     .love-story-content {
-      // background: rgba(255, 255, 255, 0.9);
       border-radius: 16px;
-      padding: 0.5rem;
-      // box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      
+      h1 {
+        font-family: "Cinzel", serif;
+        color: #7a4f50;
+        font-size: 2.2rem;
+        margin-bottom: 0.5rem;
+        letter-spacing: 1px;
+        text-align: center;
+      }
+
+      h2 {
+        font-family: "Cormorant Garamond", serif;
+        color: #8c5e3d;
+        font-weight: 500;
+        font-size: 1.3rem;
+        font-style: italic;
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
     }
   }
 }
 
+/* Responsive */
 @media (max-width: 992px) {
   .pantalla-acceso {
     padding: 1rem;
-    gap: 1rem;
-
-    .contenedor-acceso {
-      padding: 2rem;
-      margin-bottom: 1rem;
-
-      .opciones-acceso {
-        .tarjetas-acceso {
-          grid-template-columns: 1fr;
-        }
-      }
-    }
 
     .love-story-container {
       .love-story-content {
-        padding: 2rem;
+        padding: 1.5rem;
+        
+        h1 {
+          font-size: 2rem;
+        }
+        
+        h2 {
+          font-size: 1.2rem;
+        }
       }
     }
   }
@@ -275,23 +75,17 @@
 
 @media (max-width: 768px) {
   .pantalla-acceso {
-    .contenedor-acceso {
-      padding: 1.5rem;
-
-      .encabezado-boda {
-        h1 {
-          font-size: 2.2rem;
-        }
-
-        h2 {
-          font-size: 1.3rem;
-        }
-      }
-    }
-
     .love-story-container {
       .love-story-content {
-        padding: 1.5rem;
+        padding: 1.2rem;
+        
+        h1 {
+          font-size: 1.8rem;
+        }
+        
+        h2 {
+          font-size: 1.1rem;
+        }
       }
     }
   }
@@ -301,95 +95,17 @@
   .pantalla-acceso {
     padding: 0.5rem;
 
-    .contenedor-acceso {
-      padding: 1.5rem 1rem;
-      border-radius: 12px;
-
-      .encabezado-boda {
-        h1 {
-          font-size: 1.8rem;
-        }
-
-        h2 {
-          font-size: 1.1rem;
-        }
-      }
-    }
-
     .love-story-container {
       .love-story-content {
         padding: 1rem;
         border-radius: 12px;
-      }
-    }
-  }
-}
-
-
-/* Panel de acceso flotante */
-.access-panel-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-}
-
-.access-panel-container {
-  background: white;
-  border-radius: 16px;
-  padding: 2rem;
-  max-width: 800px;
-  width: 90%;
-  position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.btn-cerrar {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: #7A4F50;
-  cursor: pointer;
-}
-
-/* Estilos para el panel de acceso flotante */
-.pantalla-acceso-flotante {
-  .contenedor-acceso {
-    box-shadow: none;
-    padding: 0;
-    background: transparent;
-    
-    .opciones-acceso {
-      h3 {
-        color: #5A2D2D;
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-      
-      .tarjetas-acceso {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
         
-        .tarjeta {
-          cursor: pointer;
-          padding: 1.5rem;
-          border-radius: 12px;
-          transition: all 0.3s ease;
-          
-          &:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-          }
+        h1 {
+          font-size: 1.6rem;
+        }
+        
+        h2 {
+          font-size: 1rem;
         }
       }
     }

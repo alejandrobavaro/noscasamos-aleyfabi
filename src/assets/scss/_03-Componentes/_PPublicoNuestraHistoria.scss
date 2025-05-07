@@ -1,0 +1,308 @@
+/* Portada principal */
+.featured-story {
+    margin: 3rem 0;
+    position: relative;
+  
+    .featured-slide {
+      position: relative;
+      height: 500px;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease;
+      }
+  
+      .slide-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        padding: 2rem;
+        color: #fff;
+  
+        h2 {
+          font-family: 'Cinzel', serif;
+          font-size: 2.2rem;
+          margin-bottom: 1rem;
+          text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+  
+        .read-more {
+          background: rgba(255, 255, 255, 0.2);
+          color: #fff;
+          border: 1px solid #fff;
+          padding: 0.7rem 1.5rem;
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 1.1rem;
+          border-radius: 30px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+  
+          &:hover {
+            background: rgba(255, 255, 255, 0.3);
+          }
+        }
+      }
+    }
+  }
+  
+  /* Modal de historia completa */
+  .story-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    overflow-y: auto;
+  
+    .modal-content {
+      background: #fff;
+      max-width: 1000px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 8px;
+      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+      position: relative;
+      padding: 2rem;
+  
+      .close-modal {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: #8c5e3d;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+  
+        &:hover {
+          background: #f5e9dd;
+        }
+      }
+  
+      .love-story-content {
+        padding: 1rem;
+  
+        .story-intro {
+          text-align: center;
+          margin-bottom: 3rem;
+  
+          h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: #5a2d2d;
+            margin-bottom: 1rem;
+          }
+  
+          .intro-text {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+          }
+        }
+  
+        .story-chapter {
+          display: flex;
+          align-items: center;
+          gap: 3rem;
+          margin-bottom: 4rem;
+  
+          &.reverse-layout {
+            flex-direction: row-reverse;
+          }
+  
+          .chapter-image {
+            flex: 1;
+            min-width: 0;
+  
+            img {
+              width: 100%;
+              height: 400px;
+              object-fit: cover;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+          }
+  
+          .chapter-text {
+            flex: 1;
+            min-width: 0;
+  
+            h3 {
+              font-family: 'Cinzel', serif;
+              font-size: 1.8rem;
+              color: #5a2d2d;
+              margin-bottom: 1.5rem;
+              position: relative;
+              padding-bottom: 1rem;
+  
+              &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 80px;
+                height: 3px;
+                background: #a67c52;
+              }
+            }
+  
+            p {
+              margin-bottom: 1.5rem;
+              font-size: 1.1rem;
+              line-height: 1.8;
+            }
+  
+            .love-quote {
+              font-style: italic;
+              color: #8c5e3d;
+              padding: 1.5rem;
+              border-left: 3px solid #a67c52;
+              background: #f9f5f0;
+              margin: 2rem 0;
+              font-size: 1.2rem;
+              position: relative;
+  
+              &::before {
+                content: '"';
+                position: absolute;
+                top: 0.5rem;
+                left: 0.5rem;
+                font-size: 2rem;
+                color: #a67c52;
+                opacity: 0.3;
+              }
+            }
+  
+            .animated-hearts {
+              display: flex;
+              justify-content: center;
+              gap: 1rem;
+              margin: 2rem 0;
+  
+              .heart {
+                font-size: 1.5rem;
+                color: #7a4f50;
+                animation: float 3s ease-in-out infinite;
+                opacity: 0.8;
+              }
+            }
+  
+            .sparkle-animation {
+              position: relative;
+              height: 100px;
+              margin: 2rem 0;
+  
+              .sparkle {
+                position: absolute;
+                width: 8px;
+                height: 8px;
+                background: #c2a78d;
+                border-radius: 50%;
+                filter: blur(1px);
+                animation: sparkle 2s infinite;
+                opacity: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  /* Animaciones */
+  @keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+  }
+  
+  @keyframes sparkle {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.5); opacity: 1; }
+    100% { transform: scale(0); opacity: 0; }
+  }
+  
+  /* Responsive */
+  @media (max-width: 992px) {
+    .featured-story .featured-slide {
+      height: 400px;
+    }
+  
+    .story-modal {
+      .modal-content {
+        .love-story-content {
+          .story-chapter {
+            flex-direction: column;
+            gap: 2rem;
+  
+            &.reverse-layout {
+              flex-direction: column;
+            }
+  
+            .chapter-image img {
+              height: 300px;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .featured-story .featured-slide {
+      height: 350px;
+  
+      .slide-caption h2 {
+        font-size: 1.8rem;
+      }
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .featured-story .featured-slide {
+      height: 300px;
+    }
+  
+    .story-modal {
+      padding: 1rem;
+  
+      .modal-content {
+        padding: 1rem;
+  
+        .love-story-content {
+          .story-chapter {
+            .chapter-image img {
+              height: 250px;
+            }
+            
+            .chapter-text {
+              h3 {
+                font-size: 1.5rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }

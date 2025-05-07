@@ -302,9 +302,9 @@ const POrgInvitaciones = () => {
                       
                       {/* Página 3: El Gran Día */}
                       {currentPage === 2 && (
-                        <div className="countdown-page">
+                        <div className="PPublicoContadorDiasDias-page">
                           <h3>El Gran Día</h3>
-                          <div className="countdown-slider">
+                          <div className="PPublicoContadorDiasDias-slider">
                             <img src="/img/venue/1.jpg" alt="Lugar de la boda" />
                           </div>
                           <div className="event-preview">

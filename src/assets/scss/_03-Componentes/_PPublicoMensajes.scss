@@ -1,0 +1,255 @@
+.interactive-board {
+  margin: 5rem 0;
+  padding: 2rem 0;
+  position: relative;
+
+  .board-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #f9f3f0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(122, 79, 80, 0.1);
+  }
+
+  .board-header {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #7a4f50, #5a2d2d);
+    color: white;
+
+    h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+  }
+
+  .board-background {
+    position: relative;
+    height: 500px;
+    background: url('/img/00-fondos/fondo-madera-clara.jpg') center/cover;
+    overflow: hidden;
+    padding: 2rem;
+
+    .couple-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('/img/05-img-costados-larga/3a.jpg') center/contain no-repeat;
+      opacity: 0.1;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+  }
+
+  .message-note {
+    position: absolute;
+    width: 180px;
+    padding: 1.5rem 1rem 1rem;
+    background: #fce8dc;
+    box-shadow: 0 4px 8px rgba(122, 79, 80, 0.2);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform-origin: center;
+
+    &:hover {
+      transform: scale(1.05) rotate(0deg) !important;
+      z-index: 1000 !important;
+      box-shadow: 0 8px 16px rgba(122, 79, 80, 0.3);
+    }
+
+    .message-content {
+      p {
+        margin: 0 0 0.8rem 0;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        font-family: 'Dancing Script', cursive;
+      }
+
+      .message-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.75rem;
+
+        span {
+          font-weight: bold;
+          font-style: italic;
+        }
+
+        small {
+          opacity: 0.7;
+        }
+      }
+    }
+
+    .note-pin {
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      background: #c2a78d;
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: -3px;
+        left: -3px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: rgba(194, 167, 141, 0.3);
+      }
+    }
+  }
+
+  .message-form {
+    padding: 2rem;
+    background: rgba(255, 249, 245, 0.9);
+    border-top: 1px solid #e8d5cc;
+
+    .form-group {
+      margin-bottom: 1.5rem;
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #5a2d2d;
+      }
+
+      input, textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #d8c1b5;
+        border-radius: 6px;
+        background: white;
+        font-family: inherit;
+        transition: border-color 0.3s;
+
+        &:focus {
+          outline: none;
+          border-color: #7a4f50;
+        }
+      }
+
+      textarea {
+        min-height: 80px;
+        resize: vertical;
+      }
+
+      small {
+        display: block;
+        margin-top: 0.25rem;
+        font-size: 0.75rem;
+        color: #9e7e6f;
+      }
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(to right, #7a4f50, #5a2d2d);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        background: linear-gradient(to right, #8a5f60, #6a3d3d);
+        box-shadow: 0 4px 12px rgba(122, 79, 80, 0.3);
+      }
+
+      &:disabled {
+        background: #d8c1b5;
+        cursor: not-allowed;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .form-success {
+    padding: 2rem;
+    text-align: center;
+    background: rgba(255, 249, 245, 0.9);
+    border-top: 1px solid #e8d5cc;
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      color: #5a2d2d;
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      background: #fce8dc;
+      color: #5a2d2d;
+      border: 1px solid #d8c1b5;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        background: #f5d9c8;
+        border-color: #c2a78d;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .interactive-board {
+    .board-header {
+      h3 {
+        font-size: 1.5rem;
+      }
+    }
+
+    .board-background {
+      height: 400px;
+    }
+
+    .message-note {
+      width: 150px;
+      padding: 1rem 0.8rem 0.8rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .interactive-board {
+    padding: 0;
+
+    .board-container {
+      border-radius: 0;
+    }
+
+    .board-background {
+      height: 350px;
+      padding: 1rem;
+    }
+
+    .message-form {
+      padding: 1.5rem;
+    }
+  }
+}

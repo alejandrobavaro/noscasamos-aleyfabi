@@ -190,9 +190,9 @@ const PInvitadoItinerario = () => {
           <p>Contaremos con servicio de fotografía 360° y un equipo de coordinación disponible.</p>
         </div>
 
-        <div className="seccion-countdown opcion-ubicacion">
+        <div className="seccion-PPublicoContadorDiasDias opcion-ubicacion">
           <h3><i className="bi bi-clock"></i> Faltan</h3>
-          <div className="countdown-timer">
+          <div className="PPublicoContadorDiasDias-timer">
             <span>XX</span> días <span>XX</span> horas <span>XX</span> minutos
           </div>
           <p>para el comienzo de esta historia</p>

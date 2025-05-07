@@ -6,9 +6,6 @@
 @import "./_01-General/Toastify";
 
 
-//----------DISEÑO GRAL------------//
-
-
 
 
 
@@ -16,28 +13,32 @@
 @import "./_03-Componentes/Header";
 @import "./_03-Componentes/HeaderNotificaciones";
 
+
 //-----------HOME-MAIN-----------------//
 @import "./_03-Componentes/MainPublicidadSlider";
 @import "./_03-Componentes/PPublico";
 
-//------------------CLIENTES--------------//
-@import "./_03-Componentes/Clientes.scss";
-
-//-----------APLICA----------//
-@import "./_03-Componentes/Aplicar";
-
-@import "./_03-Componentes/AplicaPersonaliza1";
-@import "./_03-Componentes/AplicaPersonaliza2";
-@import "./_03-Componentes/AplicaPersonaliza3";
-@import "./_03-Componentes/AplicaPersonaliza3Productoersonalizable";
-
-
-//---------SERVICIO------------//
-@import "./_03-Componentes/Servicio";
-
-//-------CONTACTOS--------//
 @import "./_03-Componentes/PPublicoContacto";
 @import "./_03-Componentes/PPublicoContactoForm1";
+
+@import "./_03-Componentes/PPublicoMensajes";
+
+
+@import "./_03-Componentes/PPublicoMensajes";
+
+@import "./_03-Componentes/PPublicoLiveStream";
+
+@import "./_03-Componentes/PPublicoContadorDias";
+
+
+@import "./_03-Componentes/PPublicoNuestraHistoria";
+
+@import "./_03-Componentes/PPublicoNovedades";
+
+@import "./_03-Componentes/PPublicoGaleriaFotosHome";
+
+
+
 
 
 
@@ -45,12 +46,14 @@
 @import "./_03-Componentes/SesionLoginRegister";
 
 
-//----------NUEVOS BODA-----------//
-
-
-
-
+//----------INVITADOS-----------//
 @import "./_03-Componentes/PInvitados";
+
+
+
+
+
+//----------ORGANIZACION-----------//
 
 @import "./_03-Componentes/POrgMesas";
 
