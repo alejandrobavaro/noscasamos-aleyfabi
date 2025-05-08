@@ -34,10 +34,10 @@ function PInvitadosUbicacion() {
     <div className="pantalla-ubicacion">
       <div className="contenedor-ubicacion">
         <div className="encabezado-boda">
-          <h1>Ubicación <i className="bi bi-geo-alt-fill"></i></h1>
-          <h2>Casa del Mar <span className="location-subtitle">(Villa García Uriburu)</span></h2>
+          <h1>Ubicación Evento <i className="bi bi-geo-alt-fill"></i></h1>
+          <h2>Salon de Fiestas "Casa del Mar" </h2>
           <p className="mensaje-bienvenida">
-            C. Scaglia 5400, Camet, Mar del Plata
+            C. Scaglia 5400, Camet, Mar del Plata <span className="location-subtitle">(Villa García Uriburu)</span>
           </p>
         </div>
 
@@ -64,45 +64,6 @@ function PInvitadosUbicacion() {
           </div>
         </div>
 
-        <div className="info-detallada">
-          <div className="info-card">
-            <h2>Detalles del Evento</h2>
-            <div className="info-grid">
-              <div className="info-item opcion-confirmar">
-                <i className="bi bi-cup-hot-fill"></i>
-                <div>
-                  <h3>Recepción</h3>
-                  <p>19:00 hs</p>
-                </div>
-              </div>
-
-              <div className="info-item opcion-ubicacion">
-                <i className="bi bi-suit-heart"></i>
-                <div>
-                  <h3>Ceremonia</h3>
-                  <p>19:30 hs</p>
-                </div>
-              </div>
-
-              <div className="info-item opcion-itinerario">
-                <i className="bi bi-moon-stars"></i>
-                <div>
-                  <h3>Fiesta</h3>
-                  <p>Hasta las 4:00 am</p>
-                </div>
-              </div>
-
-              <div className="info-item opcion-dresscode">
-                <i className="bi bi-people-fill"></i>
-                <div>
-                  <h3>Edad</h3>
-                  <p>Mayores de 14 años</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <section className="seccion-transporte">
           <h2><i className="bi bi-signpost-split"></i> Cómo llegar</h2>
           <div className="opciones-transporte">
@@ -115,8 +76,8 @@ function PInvitadosUbicacion() {
             <div className="opcion-transporte opcion-ubicacion">
               <i className="bi bi-taxi-front"></i>
               <h3>Taxi/Remis</h3>
-              <p>Aproximadamente $1,500 desde el centro</p>
-              <p className="detalle">Radio Taxi: 223 499-9999</p>
+              <p>Aproximadamente $...... desde el centro</p>
+              <p className="detalle">Taxi: 223 475-1111</p>
             </div>
           </div>
         </section>
@@ -129,12 +90,10 @@ function PInvitadosUbicacion() {
               <p>La propiedad fue construida en 1930 y perteneció a la familia García Uriburu. En aquellos tiempos, la zona era poco habitada, con playas amplias y acantilados imponentes.</p>
             </div>
             <div className="historia-imagen">
-              <img src="/img/00-fondos/fondoaleyfabi1.jpg" alt="Historia de Casa del Mar" />
+              <img src="../../public/img/09-imagenes-salon/2025-04-05 043.jpg" alt="Historia de Casa del Mar" />
             </div>
           </div>
         </section>
-
-  
       </div>
     </div>
   );

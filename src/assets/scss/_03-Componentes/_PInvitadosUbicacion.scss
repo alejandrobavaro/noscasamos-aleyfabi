@@ -1,4 +1,4 @@
-/* PInvitadosUbicacion.scss - Estilo Coherente con Referencia */
+/* PInvitadosUbicacion.scss - Versión Limpia */
 .pantalla-ubicacion {
   display: flex;
   justify-content: center;
@@ -95,90 +95,6 @@
             background: #7A4F50;
             color: white;
             transform: translateY(-2px);
-          }
-        }
-      }
-    }
-
-    .info-detallada {
-      margin-bottom: 3rem;
-      
-      .info-card {
-        background: rgba(255, 255, 255, 0.7);
-        padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 5px 15px rgba(122, 79, 80, 0.1);
-        border: 1px solid rgba(122, 79, 80, 0.15);
-        
-        h2 {
-          font-family: 'Cinzel', serif;
-          color: #5A2D2D;
-          font-size: 1.8rem;
-          margin-bottom: 1.5rem;
-          position: relative;
-          
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 2px;
-            background: #7A4F50;
-          }
-        }
-        
-        .info-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 1.5rem;
-          
-          .info-item {
-            background: rgba(255, 249, 245, 0.7);
-            padding: 1.5rem 1rem;
-            border-radius: 8px;
-            border: 1px solid rgba(122, 79, 80, 0.1);
-            transition: all 0.3s ease;
-            text-align: center;
-            
-            &:hover {
-              transform: translateY(-5px);
-              box-shadow: 0 8px 20px rgba(122, 79, 80, 0.1);
-            }
-            
-            i {
-              font-size: 2rem;
-              margin-bottom: 1rem;
-              display: block;
-            }
-            
-            h3 {
-              font-family: 'Cinzel', serif;
-              color: #5A2D2D;
-              font-size: 1.2rem;
-              margin-bottom: 0.5rem;
-            }
-            
-            p {
-              font-family: 'Cormorant Garamond', serif;
-              color: #7A4F50;
-              font-size: 1.1rem;
-              margin: 0;
-            }
-            
-            &.opcion-confirmar {
-              i { color: #7A4F50; }
-            }
-            &.opcion-ubicacion {
-              i { color: #8C5E3D; }
-            }
-            &.opcion-itinerario {
-              i { color: #5A2D2D; }
-            }
-            &.opcion-dresscode {
-              i { color: #7A4F50; }
-            }
           }
         }
       }

@@ -63,6 +63,7 @@ const Header = () => {
   const isInvitadosSection = location.pathname.startsWith("/invitados");
   const isOrganizacionSection = location.pathname.startsWith("/organizacion");
 
+
   return (
     <header className="header">
       <div className="baroque-line-top"></div>

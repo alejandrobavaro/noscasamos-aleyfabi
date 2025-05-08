@@ -1,112 +1,68 @@
-
 //------------GENERAL--------------//
 @import "./_01-General/BodyIndexApp";
-
 @import "./_01-General/SweetAlert";
 @import "./_01-General/Toastify";
-
-
-
-
 
 //------------HEADER--------------//
 @import "./_03-Componentes/Header";
 @import "./_03-Componentes/HeaderNotificaciones";
 
-
-//-----------HOME-MAIN-----------------//
-@import "./_03-Componentes/MainPublicidadSlider";
-@import "./_03-Componentes/PPublico";
-
-@import "./_03-Componentes/PPublicoContacto";
-@import "./_03-Componentes/PPublicoContactoForm1";
-
-@import "./_03-Componentes/PPublicoMensajes";
-
-
-@import "./_03-Componentes/PPublicoMensajes";
-
-@import "./_03-Componentes/PPublicoLiveStream";
-
-@import "./_03-Componentes/PPublicoContadorDias";
-
-
-@import "./_03-Componentes/PPublicoNuestraHistoria";
-
-@import "./_03-Componentes/PPublicoNovedades";
-
-@import "./_03-Componentes/PPublicoGaleriaFotosHome";
-
-
-
-
-
+//--------------FOOTER----------------//
+@import "./_03-Componentes/Footer";
+@import "./_03-Componentes/FooterGondraWorldDev";
 
 //----------LOGIN LOG OUT------------//
 @import "./_03-Componentes/SesionLoginRegister";
 
 
-//----------INVITADOS-----------//
-@import "./_03-Componentes/PInvitados";
-
-
-
-
-
-//----------ORGANIZACION-----------//
-
-@import "./_03-Componentes/POrgMesas";
-
-@import "./_03-Componentes/PinvitadosConfirmAsist";
-
-@import "./_03-Componentes/PInvitadosLista";
-
-
-
+//-----------PAcceso-----------------//
 @import "./_03-Componentes/PAcceso";
 
 
+//-----------HOME-MAIN PPublico-----------------//
+@import "./_03-Componentes/MainPublicidadSlider";
+
+@import "./_03-Componentes/PPublico";
+@import "./_03-Componentes/PPublicoContacto";
+@import "./_03-Componentes/PPublicoContactoForm1";
+
+@import "./_03-Componentes/PPublicoContadorDias";
+@import "./_03-Componentes/PPublicoNuestraHistoria";
+@import "./_03-Componentes/PPublicoMensajes";
+@import "./_03-Componentes/PPublicoLiveStream";
+
+@import "./_03-Componentes/PPublicoNovedades";
+@import "./_03-Componentes/PPublicoGaleriaFotosHome";
+
+
+//---------PINVITADOS-----------//
+@import "./_03-Componentes/PInvitados";
+
+@import "./_03-Componentes/PinvitadosConfirmAsist";
 @import "./_03-Componentes/PInvitadosUbicacion";
-
-
 @import "./_03-Componentes/PInvitadosCodigoVestimenta";
-
 @import "./_03-Componentes/PInvitadoItinerario";
+
 
 @import "./_03-Componentes/PInvitadosProbadorRopaAvatar";
 
 
+@import "./_03-Componentes/PInvitadosLista";
+
+
+//----------ORGANIZACION-----------//
 @import "./_03-Componentes/POrganizacion";
 
+@import "./_03-Componentes/POrgInvitaciones";
 @import "./_03-Componentes/POrgPresupuesto";
-
-
+@import "./_03-Componentes/POrgMesas";
 @import "./_03-Componentes/POrgTareasBoda";
-
-@import "./_03-Componentes/POrgRegalos";
-
 @import "./_03-Componentes/POrgCatering";
 
-@import "./_03-Componentes/POrgInvitaciones";
-
-
-
-
+@import "./_03-Componentes/POrgRegalos";
 @import "./_03-Componentes/POrgRegalosListaDeseos";
-
-
 @import "./_03-Componentes/POrgRegalosRecibidos";
-
-
 @import "./_03-Componentes/POrgRegalosAgradecidos";
-
-
-@import "./_03-Componentes/POrgMesas";
-
-
-//--------------FOOTER----------------//
-@import "./_03-Componentes/Footer";
-@import "./_03-Componentes/FooterGondraWorldDev";
 
 
 

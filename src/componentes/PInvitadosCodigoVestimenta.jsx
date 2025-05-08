@@ -9,11 +9,10 @@ const PInvitadosCodigoVestimenta = () => {
   const [showTips, setShowTips] = useState(false);
 
   const inspirationImages = [
-    { src: "/img/PInvitadosCodigoVestimenta/inspiracion1.jpg", alt: "Vestido largo vino con detalles dorados", caption: "Elegante vestido largo en tono vino" },
-    { src: "/img/PInvitadosCodigoVestimenta/inspiracion2.jpg", alt: "Traje azul marino con corbata dorada", caption: "Traje azul marino para caballeros" },
-    { src: "/img/PInvitadosCodigoVestimenta/inspiracion3.jpg", alt: "Conjunto verde botella con accesorios dorados", caption: "Conjunto en verde botella" },
-    { src: "/img/PInvitadosCodigoVestimenta/inspiracion4.jpg", alt: "Vestido de cóctel nude con chal", caption: "Vestido nude perfecto para jardín" },
-    { src: "/img/PInvitadosCodigoVestimenta/inspiracion5.jpg", alt: "Traje gris oscuro con camisa blanca", caption: "Look clásico para caballeros" }
+    { src: "../../public/img/11-codigovestimenta/inspiraciondama1.jpeg", alt: "Vestido largo vino con detalles dorados", caption: "Elegante vestido largo en tono vino" },
+    { src: "../../public/img/11-codigovestimenta/inspiracionhombre1.jpeg", alt: "Traje azul marino con corbata dorada", caption: "Traje azul marino para caballeros" },
+    { src: "../../public/img/11-codigovestimenta/inspiraciondama2.jpeg", alt: "Vestido largo de fiesta", caption: "Elegante vestido largo" },
+    { src: "../../public/img/11-codigovestimenta/inspiracionhombre2.jpeg", alt: "Traje gris oscuro con camisa blanca", caption: "Look clásico para caballeros" }
   ];
 
   const sliderSettings = {

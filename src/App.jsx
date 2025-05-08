@@ -29,6 +29,7 @@ import PinvitadosConfirmAsist from "./componentes/PinvitadosConfirmAsist";
 import PInvitadosUbicacion from "./componentes/PInvitadosUbicacion";
 import PInvitadosCodigoVestimenta from "./componentes/PInvitadosCodigoVestimenta";
 import PInvitadoItinerario from "./componentes/PInvitadoItinerario";
+import PInvitadosProbadorRopaAvatar from "./componentes/PInvitadosProbadorRopaAvatar";
 
 //------------RUTAS DE ORGANIZACIÓN--------------//
 import POrganizacion from "./componentes/POrganizacion";
@@ -40,58 +41,62 @@ import POrgCatering from "./componentes/POrgCatering";
 import POrgPresupuesto from "./componentes/POrgPresupuesto";
 import POrgInvitaciones from "./componentes/POrgInvitaciones";
 
-//------------CONTEXTO DE AUTENTICACIÓN--------------//
+//------------CONTEXTOS--------------//
 import { AuthProvider } from "./context/AuthContext";
+import { PersonalizarAvatarProvider } from "./context/PersonalizarAvatarContext";
 
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <Header />
+      <PersonalizarAvatarProvider>
+        <Router>
+          <Header />
 
-        <div className="main-content">
-          <div className="content centered">
-            <Routes>
-              {/* Ruta principal - Pantalla de acceso */}
-              <Route path="/" element={<PAcceso />} />
+          <div className="main-content">
+            <div className="content centered">
+              <Routes>
+                {/* Ruta principal - Pantalla de acceso */}
+                <Route path="/" element={<PAcceso />} />
 
-              {/* RUTAS PÚBLICAS (acceso sin autenticación) */}
-              <Route path="/inicio" element={<PPublico />} />
-              <Route path="/contacto" element={
-                <div className="contacto-container">
-                  <PPublicoContacto />
-                  <PPublicoContactoForm />
-                </div>
-              } />
-     
-              {/* RUTAS DE INVITADOS */}
-              <Route path="/invitados" element={<PInvitados />} />
-              <Route path="/invitados/confirmar" element={<PinvitadosConfirmAsist />} />
-              <Route path="/invitados/ubicacion" element={<PInvitadosUbicacion />} />
-              <Route path="/invitados/codigo-vestimenta" element={<PInvitadosCodigoVestimenta />} />
-              <Route path="/invitados/itinerario" element={<PInvitadoItinerario />} />
+                {/* RUTAS PÚBLICAS (acceso sin autenticación) */}
+                <Route path="/inicio" element={<PPublico />} />
+                <Route path="/contacto" element={
+                  <div className="contacto-container">
+                    <PPublicoContacto />
+                    <PPublicoContactoForm />
+                  </div>
+                } />
+       
+                {/* RUTAS DE INVITADOS */}
+                <Route path="/invitados" element={<PInvitados />} />
+                <Route path="/invitados/confirmar" element={<PinvitadosConfirmAsist />} />
+                <Route path="/invitados/ubicacion" element={<PInvitadosUbicacion />} />
+                <Route path="/invitados/codigo-vestimenta" element={<PInvitadosCodigoVestimenta />} />
+                <Route path="/invitados/codigo-vestimenta/probador" element={<PInvitadosProbadorRopaAvatar />} />
+                <Route path="/invitados/itinerario" element={<PInvitadoItinerario />} />
 
-              {/* RUTAS DE ORGANIZACIÓN */}
-              <Route path="/organizacion" element={<POrganizacion />} />
-              <Route path="/organizacion/invitados" element={<PInvitadosLista />} />
-              <Route path="/organizacion/mesas" element={<POrgMesas />} />
-              <Route path="/organizacion/checklist" element={<POrgChecklistBoda />} />
-              <Route path="/organizacion/regalos" element={<POrgRegalos />} />
-              <Route path="/organizacion/catering" element={<POrgCatering />} />
-              <Route path="/organizacion/presupuesto" element={<POrgPresupuesto />} />
-              <Route path="/organizacion/invitaciones" element={<POrgInvitaciones />} />
-         
-              {/* Redirección para rutas no encontradas */}
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
+                {/* RUTAS DE ORGANIZACIÓN */}
+                <Route path="/organizacion" element={<POrganizacion />} />
+                <Route path="/organizacion/invitados" element={<PInvitadosLista />} />
+                <Route path="/organizacion/mesas" element={<POrgMesas />} />
+                <Route path="/organizacion/checklist" element={<POrgChecklistBoda />} />
+                <Route path="/organizacion/regalos" element={<POrgRegalos />} />
+                <Route path="/organizacion/catering" element={<POrgCatering />} />
+                <Route path="/organizacion/presupuesto" element={<POrgPresupuesto />} />
+                <Route path="/organizacion/invitaciones" element={<POrgInvitaciones />} />
+           
+                {/* Redirección para rutas no encontradas */}
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </div>
           </div>
-        </div>
 
-        <hr className="border border-0 opacity-20" />
-        <MainPublicidadSlider />
-        <Footer />
-        <MainWhatsappIcon />
-      </Router>
+          <hr className="border border-0 opacity-20" />
+          <MainPublicidadSlider />
+          <Footer />
+          <MainWhatsappIcon />
+        </Router>
+      </PersonalizarAvatarProvider>
     </AuthProvider>
   );
 }

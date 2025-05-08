@@ -31,17 +31,26 @@ function PPublicoGaleriaFotos() {
 
   // Estado para las imágenes (puedes cargarlas dinámicamente después)
   const [fotos, setFotos] = useState([
-    { id: 1, src: "/img/08-imagenes-galeria-home/id10-c10.png", category: "Books" },
-    { id: 1, src: "/img/08-imagenes-galeria-home/id11-c11.png", category: "Viajes" },
-    { id: 2, src: "/img/08-imagenes-galeria-home/id12-c12.png", category: "Ceremonia" },
-    { id: 3, src: "/img/08-imagenes-galeria-home/id13-c13.png", category: "Recepcion" },
-    { id: 4, src: "/img/08-imagenes-galeria-home/id14-c14.png", category: "Aventuras" },
-    { id: 5, src: "/img/08-imagenes-galeria-home/id15-c15.png", category: "Vestuario" },
-    { id: 6, src: "/img/08-imagenes-galeria-home/id16-c16.png", category: "Familia" },
-    { id: 7, src: "/img/08-imagenes-galeria-home/id17-c17.png", category: "Fiesta" },
-    { id: 8, src: "/img/08-imagenes-galeria-home/id18-c18.png", category: "Books 2" },
-    { id: 9, src: "/img/08-imagenes-galeria-home/id19-c19.png", category: "Books 2" },
-
+    { id: 1, src: "/img/08-imagenes-galeria-home/id1-c1.png", category: "" },
+    { id: 2, src: "/img/08-imagenes-galeria-home/id2-c2.png", category: "" },
+    { id: 3, src: "/img/08-imagenes-galeria-home/id3-c3.png", category: "" },
+    { id: 4, src: "/img/08-imagenes-galeria-home/id4-c4.png", category: "" },
+    { id: 5, src: "/img/08-imagenes-galeria-home/id5-c5.png", category: "" },
+    { id: 6, src: "/img/08-imagenes-galeria-home/id6-c6.png", category: "" },
+    { id: 7, src: "/img/08-imagenes-galeria-home/id7-c7.png", category: "" },
+    { id: 8, src: "/img/08-imagenes-galeria-home/id8-c8.png", category: "" },
+    { id: 9, src: "/img/08-imagenes-galeria-home/id9-c9.png", category: "" },
+    { id: 10, src: "/img/08-imagenes-galeria-home/id10-c10.png", category: "" },
+    { id: 11, src: "/img/08-imagenes-galeria-home/id11-c11.png", category: ""},
+    { id: 12, src: "/img/08-imagenes-galeria-home/id12-c12.png", category: "" },
+    { id: 13, src: "/img/08-imagenes-galeria-home/id13-c13.png", category: "" },
+    { id: 14, src: "/img/08-imagenes-galeria-home/id14-c14.png", category: "" },
+    { id: 15, src: "/img/08-imagenes-galeria-home/id15-c15.png", category: "" },
+    { id: 16, src: "/img/08-imagenes-galeria-home/id16-c16.png", category: "" },
+    { id: 17, src: "/img/08-imagenes-galeria-home/id17-c17.png", category: "" },
+    { id: 18, src: "/img/08-imagenes-galeria-home/id18-c18.png", category: "" },
+    { id: 19, src: "/img/08-imagenes-galeria-home/id19-c19.png", category: "" },
+    { id: 20, src: "/img/08-imagenes-galeria-home/id20-c20.png", category: "" },
   ]);
 
   // Efecto para cargar imágenes dinámicamente (opcional)
@@ -53,10 +62,7 @@ function PPublicoGaleriaFotos() {
 
   return (
     <section className="galeria-fotos">
-      <div className="galeria-header">
-        <h2>Nuestra Galería</h2>
-        <p>Momentos especiales capturados para siempre</p>
-      </div>
+   
       
       <div className="galeria-slider">
         <Slider {...sliderSettings}>
@@ -81,7 +87,7 @@ function PPublicoGaleriaFotos() {
         </Slider>
       </div>
       
-      <div className="galeria-grid">
+      {/* <div className="galeria-grid">
         {fotos.map((foto) => (
           <div key={`grid-${foto.id}`} className="grid-item">
             <img 
@@ -94,7 +100,7 @@ function PPublicoGaleriaFotos() {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
     </section>
   );
 }

@@ -1,53 +1,133 @@
+/* Estilos base */
 .pantalla-invitados {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  padding: 2rem;
   background-size: cover;
-  // padding: 2rem;
 
   .contenedor-invitados {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-  
+    padding: 2.5rem;
     width: 100%;
+    max-width: 1200px;
     text-align: center;
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.2);
 
+    /* Encabezado */
     .encabezado-boda {
-      // margin-bottom: 3rem;
-      // padding-bottom: 1.5rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
       border-bottom: 1px solid rgba(122, 79, 80, 0.2);
       
       h1 {
         font-family: 'Cinzel', serif;
         color: #7A4F50;
-        font-size: xx-large;
-  
+        font-size: 2.5rem;
         letter-spacing: 1px;
+        margin-bottom: 0.5rem;
       }
       
       h2 {
         font-family: 'Cormorant Garamond', serif;
         color: #8C5E3D;
         font-weight: 500;
-        font-size: x-large;
-  
-      }
-      
-      .mensaje-bienvenida {
-        font-family: 'Cormorant Garamond', serif;
-        color: #7A4F50;
-        font-size: 1.2rem;
-        font-style: italic;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
       }
     }
 
+    /* Sección de Detalles del Evento - Estilos transferidos */
+    .info-detallada {
+      margin-bottom: 3rem;
+      
+      .info-card {
+        background: rgba(255, 255, 255, 0.7);
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(122, 79, 80, 0.1);
+        border: 1px solid rgba(122, 79, 80, 0.15);
+        
+        h2 {
+          font-family: 'Cinzel', serif;
+          color: #5A2D2D;
+          font-size: 1.8rem;
+          margin-bottom: 1.5rem;
+          position: relative;
+          
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: #7A4F50;
+          }
+        }
+        
+        .info-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1.5rem;
+          
+          .info-item {
+            background: rgba(255, 249, 245, 0.7);
+            padding: 1.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(122, 79, 80, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            
+            &:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 8px 20px rgba(122, 79, 80, 0.1);
+            }
+            
+            i {
+              font-size: 2rem;
+              margin-bottom: 1rem;
+              display: block;
+            }
+            
+            h3 {
+              font-family: 'Cinzel', serif;
+              color: #5A2D2D;
+              font-size: 1.2rem;
+              margin-bottom: 0.5rem;
+            }
+            
+            p {
+              font-family: 'Cormorant Garamond', serif;
+              color: #7A4F50;
+              font-size: 1.1rem;
+              margin: 0;
+            }
+            
+            &.opcion-confirmar {
+              i { color: #7A4F50; }
+            }
+            &.opcion-ubicacion {
+              i { color: #8C5E3D; }
+            }
+            &.opcion-itinerario {
+              i { color: #5A2D2D; }
+            }
+            &.opcion-dresscode {
+              i { color: #7A4F50; }
+            }
+          }
+        }
+      }
+    }
+
+    /* Opciones para invitados */
     .opciones-invitados {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -66,7 +146,6 @@
         
         .icono-container {
           font-size: 2.5rem;
-        
           transition: all 0.3s ease;
         }
         
@@ -152,6 +231,7 @@
       }
     }
 
+    /* Sección de hashtag */
     .seccion-hashtag {
       padding: 2rem;
       background: rgba(255, 249, 245, 0.7);
@@ -182,6 +262,7 @@
   }
 }
 
+/* Animaciones */
 @keyframes float {
   0% {
     transform: translateY(0px);
@@ -194,12 +275,13 @@
   }
 }
 
-@media (max-width: 768px) {
+/* Responsive */
+@media (max-width: 900px) {
   .pantalla-invitados {
-    padding: 1rem;
+    padding: 1.5rem;
     
     .contenedor-invitados {
-      padding: 2rem 1.5rem;
+      padding: 2rem;
       
       .encabezado-boda {
         h1 {
@@ -210,19 +292,26 @@
           font-size: 1.5rem;
         }
       }
-      
-      .opciones-invitados {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+
+      .info-detallada {
+        .info-card {
+          padding: 1.5rem;
+          
+          .info-grid {
+            gap: 1rem;
+          }
+        }
       }
     }
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .pantalla-invitados {
+    padding: 1rem;
+    
     .contenedor-invitados {
-      padding: 1.5rem 1rem;
+      padding: 1.5rem;
       
       .encabezado-boda {
         h1 {
@@ -232,6 +321,21 @@
         h2 {
           font-size: 1.3rem;
         }
+      }
+
+      .info-detallada {
+        .info-card {
+          padding: 1rem;
+          
+          .info-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      }
+      
+      .opciones-invitados {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
       }
       
       .seccion-hashtag {
