@@ -9,10 +9,10 @@ const PInvitadosCodigoVestimenta = () => {
   const [showTips, setShowTips] = useState(false);
 
   const inspirationImages = [
-    { src: "../../public/img/11-codigovestimenta/inspiraciondama1.jpeg", alt: "Vestido largo vino con detalles dorados", caption: "Elegante vestido largo en tono vino" },
-    { src: "../../public/img/11-codigovestimenta/inspiracionhombre1.jpeg", alt: "Traje azul marino con corbata dorada", caption: "Traje azul marino para caballeros" },
-    { src: "../../public/img/11-codigovestimenta/inspiraciondama2.jpeg", alt: "Vestido largo de fiesta", caption: "Elegante vestido largo" },
-    { src: "../../public/img/11-codigovestimenta/inspiracionhombre2.jpeg", alt: "Traje gris oscuro con camisa blanca", caption: "Look clásico para caballeros" }
+    { src: "/img/11-codigovestimenta/inspiraciondama1.jpeg", alt: "Vestido largo vino con detalles dorados", caption: "Elegante vestido largo en tono vino" },
+    { src: "/img/11-codigovestimenta/inspiracionhombre1.jpeg", alt: "Traje azul marino con corbata dorada", caption: "Traje azul marino para caballeros" },
+    { src: "/img/11-codigovestimenta/inspiraciondama2.jpeg", alt: "Vestido largo de fiesta", caption: "Elegante vestido largo" },
+    { src: "/img/11-codigovestimenta/inspiracionhombre2.jpeg", alt: "Traje gris oscuro con camisa blanca", caption: "Look clásico para caballeros" }
   ];
 
   const sliderSettings = {

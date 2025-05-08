@@ -90,7 +90,7 @@ function PInvitadosUbicacion() {
               <p>La propiedad fue construida en 1930 y perteneció a la familia García Uriburu. En aquellos tiempos, la zona era poco habitada, con playas amplias y acantilados imponentes.</p>
             </div>
             <div className="historia-imagen">
-              <img src="../../public/img/09-imagenes-salon/2025-04-05 043.jpg" alt="Historia de Casa del Mar" />
+              <img src="/img/09-imagenes-salon/2025-04-05 043.jpg" alt="Historia de Casa del Mar" />
             </div>
           </div>
         </section>

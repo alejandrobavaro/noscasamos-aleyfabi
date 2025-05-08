@@ -23,8 +23,8 @@ function PPublicoNuestraHistoria() {
   // Capítulos de la historia (completa)
   const chapters = [
     {
-      title: "Febrero 2023: El Destino nos Unió",
-      image: "/img/05-img-costados-larga/1a.jpg",
+      // title: "Febrero 2023: El Destino nos Unió",
+      image: "/img/04-img-banners/banner6.png",
       content: (
         <>
           <p>
@@ -49,8 +49,8 @@ function PPublicoNuestraHistoria() {
       reverse: false,
     },
     {
-      title: "Marzo 2023: Nuestra Primera Cita",
-      image: "/img/05-img-costados-larga/2a.jpg",
+      // title: "Marzo 2023: Nuestra Primera Cita",
+      image: "/img/04-img-banners/banner2.png",
       content: (
         <>
           <p>
@@ -74,8 +74,8 @@ function PPublicoNuestraHistoria() {
       reverse: true,
     },
     {
-      title: "Julio 2023: El Viaje que lo Cambió Todo",
-      image: "/img/05-img-costados-larga/3a.jpg",
+      // title: "Julio 2023: El Viaje que lo Cambió Todo",
+      image: "/img/04-img-banners/banner3.png",
       content: (
         <>
           <p>
@@ -99,8 +99,8 @@ function PPublicoNuestraHistoria() {
       reverse: false,
     },
     {
-      title: "Diciembre 2023: La Primera Navidad Juntos",
-      image: "/img/05-img-costados-larga/4a.jpg",
+      // title: "Diciembre 2023: La Primera Navidad Juntos",
+      image: "/img/04-img-banners/banner5.png",
       content: (
         <>
           <p>
@@ -123,8 +123,8 @@ function PPublicoNuestraHistoria() {
       reverse: true,
     },
     {
-      title: "Junio 2024: La Propuesta",
-      image: "/img/05-img-costados-larga/5a.jpg",
+      // title: "Junio 2024: La Propuesta",
+      image: "/img/04-img-banners/banner4.png",
       content: (
         <>
           <p>
@@ -167,7 +167,7 @@ function PPublicoNuestraHistoria() {
                   className="read-more"
                   onClick={() => setShowFullStory(true)}
                 >
-                  Leer Capítulo Completo
+                  Aqui podras leer Nuestra historia de amor... 
                 </button>
               </div>
             </div>
