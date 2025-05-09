@@ -5,10 +5,12 @@ import "../assets/scss/_03-Componentes/_POrgRegalos.scss";
 import POrgRegalosListaDeseos from './POrgRegalosListaDeseos';
 import POrgRegalosRecibidos from './POrgRegalosRecibidos';
 import POrgRegalosAgradecidos from './POrgRegalosAgradecidos';
-import giftsData from '/src/json/POrgRegalos.json';
 
 function POrgRegalos() {
-  const [gifts, setGifts] = useState(giftsData);
+  const [gifts, setGifts] = useState({
+    wishlist: [],
+    received: []
+  });
   const [activeTab, setActiveTab] = useState('wishlist');
   const [filters, setFilters] = useState({
     priority: 'all',
@@ -16,6 +18,43 @@ function POrgRegalos() {
     search: '',
     category: 'all'
   });
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Cargar datos del JSON
+  useEffect(() => {
+    const loadGiftsData = async () => {
+      try {
+        const response = await fetch('/POrgRegalos.json');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setGifts(data);
+      } catch (error) {
+        console.error("Error al cargar datos de regalos:", error);
+        // Datos de prueba en caso de error
+        setGifts({
+          wishlist: [
+            {
+              id: 1,
+              name: "Juego de vajilla",
+              description: "Vajilla de porcelana para 12 personas",
+              price: 25000,
+              priority: "high",
+              reserved: false,
+              category: "Hogar",
+              image: "/img/regalos/vajilla.jpg"
+            }
+          ],
+          received: []
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadGiftsData();
+  }, []);
 
   const categories = ['all', ...new Set(gifts.wishlist.map(gift => gift.category))];
 
@@ -23,12 +62,12 @@ function POrgRegalos() {
     if (!newGift.name) return;
     
     const gift = {
-      id: Math.max(...gifts.wishlist.map(g => g.id)) + 1,
+      id: Math.max(0, ...gifts.wishlist.map(g => g.id)) + 1,
       ...newGift,
-      price: Number(newGift.price),
+      price: Number(newGift.price) || 0,
       reserved: false,
       category: newGift.category || 'Otros',
-      image: newGift.image || 'https://example.com/images/default-gift.jpg',
+      image: newGift.image || '/img/regalos/default.jpg',
       storeLinks: [],
       notes: ''
     };
@@ -63,19 +102,28 @@ function POrgRegalos() {
       (filters.reserved === 'all' || gift.reserved === (filters.reserved === 'reserved')) &&
       (filters.category === 'all' || gift.category === filters.category) &&
       (gift.name.toLowerCase().includes(filters.search.toLowerCase()) ||
-      gift.description.toLowerCase().includes(filters.search.toLowerCase()))
+      gift.description?.toLowerCase().includes(filters.search.toLowerCase()))
     );
   });
 
   const budgetStats = {
-    total: gifts.wishlist.reduce((sum, gift) => sum + gift.price, 0),
+    total: gifts.wishlist.reduce((sum, gift) => sum + (gift.price || 0), 0),
     reserved: gifts.wishlist
       .filter(gift => gift.reserved)
-      .reduce((sum, gift) => sum + gift.price, 0),
+      .reduce((sum, gift) => sum + (gift.price || 0), 0),
     remaining: gifts.wishlist
       .filter(gift => !gift.reserved)
-      .reduce((sum, gift) => sum + gift.price, 0)
+      .reduce((sum, gift) => sum + (gift.price || 0), 0)
   };
+
+  if (isLoading) {
+    return (
+      <div className="pantalla-regalos loading">
+        <div className="spinner"></div>
+        <p>Cargando lista de regalos...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="pantalla-regalos">
@@ -83,7 +131,6 @@ function POrgRegalos() {
         {/* Encabezado */}
         <div className="encabezado-boda">
           <h1>Lista de Regalos</h1>
-     
         </div>
 
         {/* Pestañas */}
@@ -129,7 +176,6 @@ function POrgRegalos() {
                 className="contenido-pestana"
               >
                 <div className="grid-lista-deseos">
-                  
                   <POrgRegalosListaDeseos 
                     gifts={filteredWishlist} 
                     onToggleReserved={toggleReserved}
@@ -137,6 +183,7 @@ function POrgRegalos() {
                     onFilterChange={setFilters}
                     budgetStats={budgetStats}
                     categories={categories}
+                    onAddGift={addGift}
                   />
                 </div>
               </motion.div>

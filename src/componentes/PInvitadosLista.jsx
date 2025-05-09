@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import invitadosData from '/src/json/invitados.json';
 import "../assets/scss/_03-Componentes/_PInvitadosLista.scss";
 
 function PInvitadosLista() {
+  // Estados para la carga de datos
+  const [invitadosData, setInvitadosData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Estados existentes
   const [busqueda, setBusqueda] = useState('');
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [nuevoInvitado, setNuevoInvitado] = useState({
@@ -15,32 +19,49 @@ function PInvitadosLista() {
     grupo: '',
     relacion: ''
   });
-
-  // Cargar invitados desde el JSON
   const [invitados, setInvitados] = useState([]);
   const [grupos, setGrupos] = useState([]);
 
+  // Cargar datos iniciales
   useEffect(() => {
-    // Extraer todos los invitados de los grupos
-    const todosInvitados = invitadosData.grupos.flatMap(grupo => 
-      grupo.invitados.map(invitado => ({
-        ...invitado,
-        grupo: grupo.nombre,
-        pendiente: grupo.pendiente || false,
-        confirmado: false,
-        acompanantes: invitado.relacion.includes('Pareja') || invitado.relacion.includes('Esposa') || invitado.relacion.includes('Hija') || invitado.relacion.includes('Hijo') ? 0 : 1,
-        email: '',
-        telefono: ''
-      }))
-    );
-    
-    setInvitados(todosInvitados);
-    setGrupos(invitadosData.grupos.map(g => g.nombre));
+    const cargarDatos = async () => {
+      try {
+        const response = await fetch('/invitados.json');
+        if (!response.ok) throw new Error('Error al cargar datos');
+        const data = await response.json();
+        
+        setInvitadosData(data);
+        
+        // Procesar invitados
+        const todosInvitados = data.grupos.flatMap(grupo => 
+          grupo.invitados.map(invitado => ({
+            ...invitado,
+            grupo: grupo.nombre,
+            pendiente: grupo.pendiente || false,
+            confirmado: false,
+            acompanantes: invitado.relacion.includes('Pareja') || 
+                         invitado.relacion.includes('Esposa') || 
+                         invitado.relacion.includes('Hija') || 
+                         invitado.relacion.includes('Hijo') ? 0 : 1,
+            email: '',
+            telefono: ''
+          }))
+        );
+        
+        setInvitados(todosInvitados);
+        setGrupos(data.grupos.map(g => g.nombre));
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    cargarDatos();
   }, []);
 
-  const handleBusquedaChange = (e) => {
-    setBusqueda(e.target.value);
-  };
+  // Handlers (se mantienen igual)
+  const handleBusquedaChange = (e) => setBusqueda(e.target.value);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -80,17 +101,38 @@ function PInvitadosLista() {
     setInvitados(invitados.filter(invitado => invitado.id !== id));
   };
 
+  // Filtrado y cálculos
   const invitadosFiltrados = invitados.filter(invitado =>
     invitado.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
     invitado.grupo.toLowerCase().includes(busqueda.toLowerCase()) ||
     invitado.relacion.toLowerCase().includes(busqueda.toLowerCase())
   );
 
-  // Estadísticas
   const totalInvitados = invitados.length;
   const totalConfirmados = invitados.filter(i => i.confirmado).length;
   const totalPersonas = invitados.reduce((total, invitado) => 
     total + (invitado.confirmado ? 1 + invitado.acompanantes : 0), 0);
+
+  // Estados de carga
+  if (loading) {
+    return (
+      <div className="pantalla-organizacion">
+        <div className="loading-message">
+          <i className="bi bi-hourglass-split"></i> Cargando lista de invitados...
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="pantalla-organizacion">
+        <div className="error-message">
+          <i className="bi bi-exclamation-triangle-fill"></i> Error: {error}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="pantalla-organizacion">
@@ -262,19 +304,11 @@ function PInvitadosLista() {
               </div>
               
               {invitadosFiltrados.length > 0 ? (
-                invitadosFiltrados.map((invitado, index) => (
+                invitadosFiltrados.map((invitado) => (
                   <div key={invitado.id} className="fila-invitado">
-                    <div className="columna nombre">
-                      {invitado.nombre}
-                    </div>
-                    
-                    <div className="columna grupo">
-                      {invitado.grupo}
-                    </div>
-                    
-                    <div className="columna relacion">
-                      {invitado.relacion}
-                    </div>
+                    <div className="columna nombre">{invitado.nombre}</div>
+                    <div className="columna grupo">{invitado.grupo}</div>
+                    <div className="columna relacion">{invitado.relacion}</div>
                     
                     <div className="columna confirmacion">
                       <button
@@ -289,9 +323,7 @@ function PInvitadosLista() {
                       </button>
                     </div>
                     
-                    <div className="columna acompanantes">
-                      {invitado.acompanantes}
-                    </div>
+                    <div className="columna acompanantes">{invitado.acompanantes}</div>
                     
                     <div className="columna acciones">
                       <button className="pestana">

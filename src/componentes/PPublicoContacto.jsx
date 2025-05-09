@@ -59,7 +59,7 @@ const PPublicoContacto = () => {
 
         <div className="unified-contact-banner">
           <img
-            src="/img/04-img-banners/banner2.png"
+            src="/img/03-img-banners/banner2.png"
             alt="Boda Alejandro y Fabiola"
             className="unified-banner-img"
           />

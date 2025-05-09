@@ -1,28 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import invitadosData from '/src/json/invitados.json';
 import "../assets/scss/_03-Componentes/_POrgMesas.scss";
 
 function POrgMesas() {
+  const [invitadosData, setInvitadosData] = useState(null);
   const [tables, setTables] = useState([]);
   const [notes, setNotes] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [activeGroup, setActiveGroup] = useState(null);
   const [selectedTable, setSelectedTable] = useState(null);
 
-  // Inicializar mesas
+  // Cargar datos del JSON
   useEffect(() => {
-    const initialTables = Array.from({ length: 20 }, (_, i) => ({
-      id: `table-${i + 1}`,
-      name: `Mesa ${i + 1}`,
-      capacity: 8,
-      guests: []
-    }));
-    setTables(initialTables);
+    fetch('/invitados.json')
+      .then(res => res.json())
+      .then(data => setInvitadosData(data))
+      .catch(err => console.error("Error cargando invitados.json:", err));
   }, []);
+
+  // Inicializar mesas (solo después de cargar invitadosData)
+  useEffect(() => {
+    if (invitadosData) {
+      const initialTables = Array.from({ length: 20 }, (_, i) => ({
+        id: `table-${i + 1}`,
+        name: `Mesa ${i + 1}`,
+        capacity: 8,
+        guests: []
+      }));
+      setTables(initialTables);
+    }
+  }, [invitadosData]);
 
   // Obtener todos los invitados organizados por grupos
   const getAllGuests = () => {
+    if (!invitadosData) return [];
     return invitadosData.grupos.map(grupo => ({
       id: `group-${grupo.nombre}`,
       nombre: grupo.nombre,
@@ -51,7 +62,7 @@ function POrgMesas() {
 
   // Manejador para drag and drop
   const handleDragEnd = (result) => {
-    if (!result.destination) return;
+    if (!result.destination || !invitadosData) return;
 
     const { source, destination } = result;
 
@@ -106,7 +117,7 @@ function POrgMesas() {
     );
   };
 
-  // Asignar grupo completo a mesa
+  // Asignar grupo completo a mesa (FUNCIÓN CORREGIDA)
   const assignGroupToTable = (groupName, tableId) => {
     const group = getAllGuests().find(g => g.nombre === groupName);
     const table = tables.find(t => t.id === tableId);
@@ -148,6 +159,8 @@ function POrgMesas() {
 
   // Exportar listado de mesas
   const exportTables = () => {
+    if (!invitadosData) return;
+    
     const novios = `Novios: ${invitadosData.novios.novia} & ${invitadosData.novios.novio}`;
     
     const tableList = tables
@@ -167,6 +180,11 @@ function POrgMesas() {
     link.download = `distribucion_mesas_${new Date().toISOString().split('T')[0]}.txt`;
     link.click();
   };
+
+  // Mostrar loading si los datos no están cargados
+  if (!invitadosData) {
+    return <div className="loading-message">Cargando datos de invitados...</div>;
+  }
 
   return (
     <DragDropContext onDragEnd={handleDragEnd}>

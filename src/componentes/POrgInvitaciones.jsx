@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import html2canvas from 'html2canvas';
 import { useNavigate } from 'react-router-dom';
-import invitadosData from '../json/invitados.json';
 import '../assets/scss/_03-Componentes/_POrgInvitaciones.scss';
 
 const POrgInvitaciones = () => {
@@ -20,8 +19,43 @@ const POrgInvitaciones = () => {
     message: ''
   });
   const [petals, setPetals] = useState([]);
+  const [invitadosData, setInvitadosData] = useState(null);
   const invitationRef = useRef(null);
   const navigate = useNavigate();
+
+  // Cargar datos de invitados
+  useEffect(() => {
+    const loadInvitadosData = async () => {
+      try {
+        const response = await fetch('/invitados.json');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setInvitadosData(data);
+      } catch (error) {
+        console.error("Error al cargar datos de invitados:", error);
+        // Datos de prueba en caso de error
+        setInvitadosData({
+          novios: {
+            novia: "Fabiola",
+            novio: "Alejandro"
+          },
+          contacto: "223618-5299",
+          grupos: [
+            {
+              nombre: "Familia",
+              invitados: [
+                { id: 1, nombre: "Invitado de Prueba", relacion: "Familiar" }
+              ]
+            }
+          ]
+        });
+      }
+    };
+
+    loadInvitadosData();
+  }, []);
 
   // Datos del evento
   const eventData = {
@@ -111,15 +145,15 @@ const POrgInvitaciones = () => {
   }, [showInvitation]);
 
   // Filtrar grupos de invitados
-  const filteredGroups = invitadosData.grupos
-    .map(grupo => ({
+  const filteredGroups = invitadosData?.grupos
+    ?.map(grupo => ({
       ...grupo,
       invitados: grupo.invitados.filter(invitado =>
         invitado.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
         (invitado.relacion && invitado.relacion.toLowerCase().includes(searchTerm.toLowerCase()))
       )
     }))
-    .filter(grupo => grupo.invitados.length > 0);
+    .filter(grupo => grupo.invitados.length > 0) || [];
 
   // Descargar invitación como imagen
   const handleDownload = () => {
@@ -202,10 +236,18 @@ const POrgInvitaciones = () => {
     }
   };
 
+  if (!invitadosData) {
+    return (
+      <div className="POrgInvitaciones-page loading">
+        <div className="spinner"></div>
+        <p>Cargando datos de invitados...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="POrgInvitaciones-page">
       <h1>Invitaciones</h1>
-   
 
       <div className="POrgInvitaciones-layout">
         {/* Panel de selección de invitados - columna izquierda */}

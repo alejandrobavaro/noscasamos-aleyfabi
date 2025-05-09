@@ -1,291 +1,237 @@
-import React, { useEffect, useRef, useState } from "react";
-import { FaFemale, FaMale, FaUndo, FaRandom, FaInfoCircle, FaShoppingCart } from "react-icons/fa";
-import html2canvas from "html2canvas";
-import { saveAs } from "file-saver";
-import { usePersonalizarAvatar } from "../context/PersonalizarAvatarContext";
-import toast, { Toaster } from "react-hot-toast";
+import React, { useState, useEffect, useRef } from 'react';
+import html2canvas from 'html2canvas';
+import JSZip from 'jszip';
+import { saveAs } from 'file-saver';
+import { useParams } from 'react-router-dom';
+import { useProbadorRopa } from '../context/ProbadorRopaContext';
 import "../assets/scss/_03-Componentes/_PInvitadosProbadorRopaAvatar.scss";
 
 const PInvitadosProbadorRopaAvatar = () => {
-  const {
-    avatarSeleccion: seleccion,
-    setAvatarSeleccion: setSeleccion,
-    avatarTipo,
-    setAvatarTipo,
-    activeCategory,
-    setActiveCategory,
-    agregarAlCarrito
-  } = usePersonalizarAvatar();
-
-  const [data, setData] = useState({});
-  const [showHelp, setShowHelp] = useState(false);
+  const { productoId } = useParams();
+  const { color, setColor } = useProbadorRopa();
+  const [productoSeleccionado, setProductoSeleccionado] = useState(null);
+  const [seleccion, setSeleccion] = useState({
+    vestido: null,
+    traje: null,
+    accesorios: null,
+    zapatos: null,
+    corbata: null,
+    joyeria: null,
+  });
+  const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
   const previewRef = useRef(null);
 
   useEffect(() => {
     const loadData = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch("/avatarOpciones.json");
-        if (!response.ok) throw new Error('Error al cargar datos');
-        const jsonData = await response.json();
-        setData(jsonData);
+        setError(null);
         
-        const componentes = jsonData[avatarTipo]?.componentes || {};
-        const defaultSeleccion = {};
-        Object.keys(componentes).forEach(tipo => {
-          defaultSeleccion[tipo] = componentes[tipo].opciones[0]?.nombre || "";
+        // Opción 1: Usando fetch (asegúrate que el JSON está en public/json/)
+        const response = await fetch('/json/probadorRopaAvatar.json');
+        
+        if (!response.ok) {
+          throw new Error(`Error HTTP! estado: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (!data || !data.componentes) {
+          throw new Error("Estructura de datos incorrecta");
+        }
+        
+        const producto = data.componentes;
+        setProductoSeleccionado(producto);
+        
+        // Selección automática de la primera opción para cada categoría
+        const seleccionInicial = {};
+        Object.keys(producto).forEach(tipo => {
+          if (producto[tipo].opciones?.length > 0) {
+            seleccionInicial[tipo] = producto[tipo].opciones[0].nombre;
+          }
         });
+        setSeleccion(seleccionInicial);
         
-        setSeleccion(defaultSeleccion);
-        setActiveCategory(Object.keys(componentes)[0] || null);
-      } catch (error) {
-        console.error("Error loading avatar data:", error);
-        toast.error("Error al cargar las opciones del avatar");
+      } catch (err) {
+        console.error("Error al cargar datos:", err);
+        setError("No pudimos cargar las opciones de vestuario. Por favor intenta recargar la página.");
+        
+        // Datos de prueba para desarrollo
+        const testData = {
+          componentes: {
+            vestido: {
+              titulo: "Vestidos",
+              opciones: [{
+                nombre: "Vestido de Prueba",
+                imagen: "/img/11-codigovestimenta/01-vestido-azul-serpiente.png"
+              }]
+            },
+            traje: {
+              titulo: "Trajes",
+              opciones: [{
+                nombre: "Traje de Prueba",
+                imagen: "/img/11-codigovestimenta/02-traje-azul-serpiente.png"
+              }]
+            }
+          }
+        };
+        setProductoSeleccionado(testData.componentes);
+        setSeleccion({
+          vestido: "Vestido de Prueba",
+          traje: "Traje de Prueba"
+        });
       } finally {
         setIsLoading(false);
       }
     };
 
     loadData();
-  }, [avatarTipo, setSeleccion, setActiveCategory]);
+  }, []);
 
-  const handleSeleccion = (tipo, opcion) => {
-    setSeleccion(prev => ({ ...prev, [tipo]: opcion }));
-  };
-
-  const handleAvatarChange = (tipo) => {
-    setAvatarTipo(tipo);
-  };
-
-  const resetOutfit = () => {
-    const componentes = data[avatarTipo]?.componentes || {};
-    const defaultSeleccion = {};
-    Object.keys(componentes).forEach(tipo => {
-      defaultSeleccion[tipo] = componentes[tipo].opciones[0]?.nombre || "";
-    });
-    setSeleccion(defaultSeleccion);
-    toast.success("Atuendo reiniciado correctamente");
-  };
-
-  const randomOutfit = () => {
-    const componentes = data[avatarTipo]?.componentes || {};
-    const randomSeleccion = {};
-    Object.keys(componentes).forEach(tipo => {
-      const opciones = componentes[tipo].opciones;
-      if (opciones && opciones.length > 0) {
-        const randomIndex = Math.floor(Math.random() * opciones.length);
-        randomSeleccion[tipo] = opciones[randomIndex].nombre;
-      }
-    });
-    setSeleccion(randomSeleccion);
-    toast.success("Atuendo aleatorio generado");
+  const handleSeleccionChange = (tipo, opcion) => {
+    setSeleccion(prev => ({
+      ...prev,
+      [tipo]: opcion
+    }));
   };
 
   const handleSaveDesign = async () => {
-    if (!previewRef.current) {
-      toast.error("No se puede capturar la vista previa");
-      return;
-    }
-
     try {
       const canvas = await html2canvas(previewRef.current);
       const image = canvas.toDataURL("image/jpeg", 0.8);
 
-      const detallesTxt = Object.keys(seleccion)
-        .map((tipo) => {
-          const opcionSeleccionada = seleccion[tipo];
-          if (opcionSeleccionada && data[avatarTipo]?.componentes[tipo]) {
-            const opcion = data[avatarTipo].componentes[tipo].opciones.find(
-              (op) => op.nombre === opcionSeleccionada
-            );
-            return opcion ? `${tipo}: ${opcion.nombre}\n` : null;
-          }
-          return null;
-        })
-        .filter(Boolean)
-        .join("\n");
+      const designOptions = `
+        Vestido: ${seleccion.vestido || 'N/A'}
+        Traje: ${seleccion.traje || 'N/A'}
+        Accesorios: ${seleccion.accesorios || 'N/A'}
+        Zapatos: ${seleccion.zapatos || 'N/A'}
+        Corbata/Pañuelo: ${seleccion.corbata || 'N/A'}
+        Joyería: ${seleccion.joyeria || 'N/A'}
+      `.trim();
 
-      // Crear archivo Blob con la imagen
-      const imageBlob = await fetch(image).then(res => res.blob());
-      
-      // Crear archivo Blob con el texto
-      const txtBlob = new Blob([detallesTxt], { type: "text/plain" });
-      
-      // Crear enlace de descarga para la imagen
-      const imageUrl = URL.createObjectURL(imageBlob);
-      const link = document.createElement('a');
-      link.href = imageUrl;
-      link.download = 'atuendo-boda.jpg';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      
-      // Crear enlace de descarga para el texto
-      const txtUrl = URL.createObjectURL(txtBlob);
-      const txtLink = document.createElement('a');
-      txtLink.href = txtUrl;
-      txtLink.download = 'detalles-atuendo.txt';
-      document.body.appendChild(txtLink);
-      txtLink.click();
-      document.body.removeChild(txtLink);
+      const zip = new JSZip();
+      zip.file("outfit_boda.txt", designOptions);
+      zip.file("outfit_boda.jpeg", image.split(",")[1], { base64: true });
 
-      toast.success("Atuendo descargado exitosamente (2 archivos)");
-    } catch (error) {
-      console.error("Error al guardar el diseño:", error);
-      toast.error("Ocurrió un error al guardar el diseño");
+      const content = await zip.generateAsync({ type: "blob" });
+      saveAs(content, "mi_outfit_boda.zip");
+    } catch (err) {
+      console.error("Error al guardar el diseño:", err);
+      alert("Ocurrió un error al guardar tu diseño. Por favor intenta nuevamente.");
     }
   };
 
-  const handleAddToCart = async () => {
-    try {
-      const canvas = await html2canvas(previewRef.current);
-      const image = canvas.toDataURL("image/jpeg", 0.8);
-
-      const diseñoPersonalizado = {
-        tipo: `Avatar ${avatarTipo === 'avatarHombre' ? 'Masculino' : 'Femenino'}`,
-        detalles: seleccion,
-        imagen: image,
-        fecha: new Date().toISOString()
-      };
-
-      agregarAlCarrito(diseñoPersonalizado);
-      toast.success("Atuendo agregado al carrito");
-    } catch (error) {
-      console.error("Error al agregar al carrito:", error);
-      toast.error("Error al agregar al carrito");
-    }
+  const generateWhatsappUrl = () => {
+    const message = `
+      ¡Mira mi outfit para la boda! Aquí están los detalles:
+      Vestido: ${seleccion.vestido || 'N/A'}
+      Traje: ${seleccion.traje || 'N/A'}
+      Accesorios: ${seleccion.accesorios || 'N/A'}
+      Zapatos: ${seleccion.zapatos || 'N/A'}
+      Corbata/Pañuelo: ${seleccion.corbata || 'N/A'}
+      Joyería: ${seleccion.joyeria || 'N/A'}
+    `.trim();
+    
+    return `https://api.whatsapp.com/send?phone=2235168797&text=${encodeURIComponent(message)}`;
   };
 
   if (isLoading) {
     return (
-      <div className="loading-container">
+      <div className="probador-ropa-loading">
         <div className="loading-spinner"></div>
-        <p>Cargando probador de vestimenta...</p>
+        <p>Cargando opciones de vestuario...</p>
       </div>
     );
   }
 
-  const avatarData = data[avatarTipo];
-  if (!avatarData) return <div className="error-message">Error al cargar los datos del avatar</div>;
+  if (error) {
+    return (
+      <div className="probador-ropa-error">
+        <p>{error}</p>
+        <button onClick={() => window.location.reload()}>Recargar Página</button>
+      </div>
+    );
+  }
 
   return (
-    <div className="PInvitadosProbadorRopaAvatar">
-      <Toaster
-        toastOptions={{
-          className: "custom-toast",
-          duration: 3000,
-          success: {
-            className: "custom-toast--success",
-          },
-          error: {
-            className: "custom-toast--error",
-          },
-        }}
-      />
-
-      <div className="avatar-selector">
-        <div className="avatar-header">
-          <h2>Probador Virtual</h2>
-          <p>Diseña tu atuendo perfecto para nuestra boda</p>
-          <button 
-            className="help-button"
-            onClick={() => setShowHelp(!showHelp)}
-          >
-            <FaInfoCircle /> {showHelp ? "Ocultar ayuda" : "Mostrar ayuda"}
-          </button>
-        </div>
-
-        {showHelp && (
-          <div className="help-section">
-            <h3>¿Cómo usar el probador?</h3>
-            <ol>
-              <li>Selecciona si quieres vestir un avatar femenino o masculino</li>
-              <li>Elige una categoría de prendas (superior, inferior, etc.)</li>
-              <li>Selecciona la prenda que prefieras de las opciones disponibles</li>
-              <li>Usa "Reiniciar" para comenzar de nuevo o "Aleatorio" para una combinación sorpresa</li>
-              <li>Experimenta con diferentes combinaciones hasta encontrar tu look ideal</li>
-            </ol>
-          </div>
-        )}
-
-        <div className="avatar-content">
-          <div className="avatar-preview-column">
-            <div className="avatar-preview-container">
-              <div className="avatar-preview" ref={previewRef}>
-                <img src={avatarData.base} alt="Avatar Base" className="avatar-capa base" />
-                {Object.entries(avatarData.componentes).map(([tipo, datos]) => {
-                  const imagenSrc = datos.opciones.find(op => op.nombre === seleccion[tipo])?.imagen;
-                  return imagenSrc ? (
-                    <img 
-                      key={tipo} 
-                      src={imagenSrc} 
-                      alt={tipo} 
-                      className={`avatar-capa ${tipo}`}
+    <div className="probador-ropa-container">
+      <h1>OUTFIT PARA LA BODA</h1>
+      <p className="probador-ropa-subtitle">Personaliza tu look</p>
+      
+      <div className="probador-ropa-grid-wrapper">
+        <div className="probador-ropa-grid">
+          {/* Área de vista previa */}
+          <div className="probador-ropa-preview-fixed-container">
+            <div className="probador-ropa-preview-container probador-ropa-fixed-preview">
+              <div className="probador-ropa-preview" ref={previewRef}>
+                {Object.keys(seleccion).map(tipo => (
+                  seleccion[tipo] && productoSeleccionado[tipo]?.opciones?.find(op => op.nombre === seleccion[tipo]) && (
+                    <img
+                      key={tipo}
+                      src={productoSeleccionado[tipo].opciones.find(op => op.nombre === seleccion[tipo]).imagen}
+                      alt={tipo}
+                      className="probador-ropa-capa"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        console.error(`Error cargando imagen: ${e.target.src}`);
+                      }}
                     />
-                  ) : null;
-                })}
-              </div>
-
-              <div className="avatar-tipo-selector">
-                <button
-                  onClick={() => handleAvatarChange("avatarHombre")}
-                  className={avatarTipo === "avatarHombre" ? "activo" : ""}
-                >
-                  <FaMale /> Caballero
-                </button>
-                <button
-                  onClick={() => handleAvatarChange("avatarMujer")}
-                  className={avatarTipo === "avatarMujer" ? "activo" : ""}
-                >
-                  <FaFemale /> Dama
-                </button>
-              </div>
-
-              <div className="avatar-actions">
-                <button onClick={resetOutfit} className="action-button">
-                  <FaUndo /> Reiniciar
-                </button>
-                <button onClick={randomOutfit} className="action-button">
-                  <FaRandom /> Aleatorio
-                </button>
-                <button onClick={handleSaveDesign} className="action-button">
-                  Descargar Atuendo
-                </button>
-                <button onClick={handleAddToCart} className="action-button cart-button">
-                  <FaShoppingCart /> Guardar
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div className="avatar-controls-column">
-            <div className="category-tabs">
-              {Object.entries(avatarData.componentes).map(([tipo, datos]) => (
-                <button
-                  key={tipo}
-                  className={`category-tab ${activeCategory === tipo ? "activo" : ""}`}
-                  onClick={() => setActiveCategory(tipo)}
-                >
-                  {datos.titulo}
-                </button>
-              ))}
-            </div>
-
-            {activeCategory && (
-              <div className="options-grid">
-                {avatarData.componentes[activeCategory].opciones.map(op => (
-                  <button
-                    key={op.nombre}
-                    className={`option-button ${seleccion[activeCategory] === op.nombre ? "activo" : ""}`}
-                    onClick={() => handleSeleccion(activeCategory, op.nombre)}
-                  >
-                    <img src={op.imagen} alt={op.nombre} />
-                    <span>{op.nombre}</span>
-                  </button>
+                  )
                 ))}
               </div>
-            )}
+            </div>
+          </div>
+
+          {/* Área de selección */}
+          <div className="probador-ropa-personalizacion-capas">
+            {productoSeleccionado && Object.keys(productoSeleccionado).map(tipo => (
+              <div key={tipo}>
+                <h5 className="probador-ropa-tituloopciones">{productoSeleccionado[tipo].titulo}</h5>
+                <div className="probador-ropa-options-container">
+                  {productoSeleccionado[tipo].opciones.map(opcion => (
+                    <div key={opcion.nombre} className="probador-ropa-option-wrapper">
+                      <button
+                        className={`probador-ropa-option-button ${
+                          seleccion[tipo] === opcion.nombre ? 'probador-ropa-selected' : ''
+                        }`}
+                        onClick={() => handleSeleccionChange(tipo, opcion.nombre)}
+                      >
+                        <img 
+                          src={opcion.imagen} 
+                          alt={opcion.nombre} 
+                          className="probador-ropa-option-img"
+                          onError={(e) => {
+                            e.target.src = '/img/placeholder-vestuario.png';
+                          }}
+                        />
+                      </button>
+                      <span className="probador-ropa-option-name">{opcion.nombre}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            {/* Acciones */}
+            <div className="probador-ropa-personalizar-acciones">
+              <button 
+                className="probador-ropa-guardar-btn" 
+                onClick={handleSaveDesign}
+                disabled={!productoSeleccionado}
+              >
+                Guardar Outfit
+              </button>
+              <a 
+                href={generateWhatsappUrl()} 
+                className="probador-ropa-guardar-btn" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                Compartir Outfit
+              </a>
+            </div>
           </div>
         </div>
       </div>

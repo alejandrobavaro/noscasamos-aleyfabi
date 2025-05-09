@@ -1,56 +1,69 @@
 /* Portada principal */
+/* Portada principal */
 .featured-story {
-    margin: 3rem 0;
+  margin: 0 0 3rem 0;
+  position: relative;
+
+  .featured-slide {
     position: relative;
-  
-    .featured-slide {
-      position: relative;
-      height: 500px;
-      overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.8s ease;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .slide-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      padding: 2rem;
+
+      .caption-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        max-width: 1200px;
+        margin: 0 auto;
       }
-  
-      .slide-caption {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-        padding: 2rem;
+
+      h2 {
+        font-family: 'Cinzel', serif;
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         color: #fff;
-  
-        h2 {
-          font-family: 'Cinzel', serif;
-          font-size: 2.2rem;
-          margin-bottom: 1rem;
-          text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-  
-        .read-more {
-          background: rgba(255, 255, 255, 0.2);
-          color: #fff;
-          border: 1px solid #fff;
-          padding: 0.7rem 1.5rem;
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 1.1rem;
-          border-radius: 30px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-  
-          &:hover {
-            background: rgba(255, 255, 255, 0.3);
-          }
+        flex: 1;
+      }
+
+      .read-more {
+        background: transparent;
+        color: #fff;
+        border: 1px solid #fff;
+        padding: 0.5rem 1.5rem;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.1rem;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-left: 2rem;
+        white-space: nowrap;
+        align-self: center;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
         }
       }
     }
   }
+}
   
   /* Modal de historia completa */
   .story-modal {
@@ -137,7 +150,7 @@
   
             img {
               width: 100%;
-              height: 400px;
+              height: 200px;
               object-fit: cover;
               border-radius: 8px;
               box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);

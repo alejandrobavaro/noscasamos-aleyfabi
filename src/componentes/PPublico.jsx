@@ -9,24 +9,27 @@ import PPublicoGaleriaFotosHome from "./PPublicoGaleriaFotosHome";
 
 function PPublico() {
   return (
-    <main className="wedding-journal">
-      <header className="journal-header">
-
+    <div className="public-container">
+      <main className="wedding-journal">
+        <header className="journal-header">
         <PPublicoContadorDias />
-      </header>
-      <PPublicoGaleriaFotosHome />
-      <PPublicoNuestraHistoria />
-   
-    
-      <PPublicoNovedades />
-    
-      <PPublicoLiveStream />
+        </header>
 
-      <section className="compact-messages">
-        <h2>Deja tu mensaje para los novios</h2>
-        <PPublicoMensajes compact={true} />
-      </section>
-    </main>
+        <div className="journal-content">
+        
+
+          <PPublicoGaleriaFotosHome />
+          <PPublicoNuestraHistoria />
+          <PPublicoNovedades />
+          <PPublicoLiveStream />
+
+          <section className="compact-messages">
+            <h2>Deja tu mensaje para los novios</h2>
+            <PPublicoMensajes compact={true} />
+          </section>
+        </div>
+      </main>
+    </div>
   );
 }
 

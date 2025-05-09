@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 html {
   font-size: 100%;
 }
@@ -13,28 +17,38 @@ html {
 /*--------------Estilos Body--------------*/
 
 body {
-  // background: #ffffff; // Fondo sólido vintage
   font-family: 'Cormorant Garamond', serif;
   text-align: center;
   color: #3A2E29;
   line-height: 1.6;
-  min-height: 100vh;
+  background-color: #f8f5f2; // Color de fondo suave
 }
 
-/*--------------Estilos para el Contenedor Principal--------------*/
+/*--------------Contenedor Principal--------------*/
 
-.app {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  // background: rgba(255, 249, 245, 0.9);
-  min-height: 100vh;
-}
-
-.main-content {
+.app-container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  min-height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  background: #fff; // Fondo blanco para el contenedor
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); // Sombra sutil
+}
+
+/*--------------Estilos para el Contenido Principal--------------*/
+
+.main-content {
+  flex: 1;
+  padding: 2rem 1rem;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 /*--------------Estilos para Textos y Encabezados--------------*/
@@ -69,104 +83,33 @@ h1 {
   }
 }
 
-h2 {
-  font-size: 1.8rem;
-  color: #8B4513;
-  margin-top: 2rem;
-}
+/*--------------Estilos para el Footer--------------*/
 
-h3 {
-  font-size: 1.5rem;
-  color: #A0522D;
-}
-
-h4 {
-  font-size: 1.3rem;
-  color: #5a4a42;
-}
-
-h5 {
-  font-size: 1.1rem;
-  color: #5a4a42;
-}
-
-h6 {
-  font-size: 1rem;
-  color: #5a4a42;
-}
-
-/*--------------Estilos para Listas--------------*/
-
-ul, ol {
-  padding-left: 1.5rem;
-}
-
-li {
-  list-style-type: none;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
-  color: #5a4a42;
-}
-
-/*--------------Estilos para Tablas--------------*/
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1.5rem 0;
-}
-
-td, th {
-  padding: 0.75rem;
-  text-align: left;
-  border-bottom: 1px solid rgba(139, 69, 19, 0.2);
-}
-
-/*--------------Estilos para Enlaces--------------*/
-
-a {
-  color: #8B4513;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-weight: 500;
-  
-  &:hover {
-    color: #A0522D;
-    text-decoration: underline;
-  }
-}
-
-/*--------------Estilos para el Contenedor de Contenido--------------*/
-
-.content {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 1rem;
-  // background: white;
-  border-radius: 8px;
-  // box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+footer {
+  margin-top: auto; // Mantiene el footer abajo
 }
 
 /*--------------Media Queries--------------*/
 
+@media (max-width: 1200px) {
+  .app-container {
+    max-width: 100%;
+  }
+}
+
 @media (max-width: 900px) {
-  .app {
-    padding: 1.5rem;
+  .main-content {
+    padding: 1.5rem 0.5rem;
   }
   
   h1 {
     font-size: x-large;
   }
-  
-  h2 {
-    font-size: 1.5rem;
-  }
 }
 
 @media (max-width: 600px) {
-  .app {
-    padding: 1rem;
+  .main-content {
+    padding: 1rem 0.25rem;
   }
   
   h1 {
@@ -176,10 +119,6 @@ a {
       width: 80px;
       bottom: -8px;
     }
-  }
-  
-  .content {
-    padding: 0.75rem;
   }
 }
 

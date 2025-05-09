@@ -1,25 +1,40 @@
+/* Contenedor principal */
+.public-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem 2rem 1rem; /* Eliminado padding-top */
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
 /* Estilo general revista elegante */
 .wedding-journal {
   font-family: 'Cormorant Garamond', serif;
   color: #333;
   line-height: 1.6;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 0px;
+  width: 100%;
+}
+
+/* Contenedor de contenido */
+.journal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 0; /* Reducido de 2rem a 0 */
 }
 
 /* Encabezado estilo revista */
 .journal-header {
   text-align: center;
-  padding: 0 0;
-  // border-bottom: 1px solid #e0d6c9;
-  margin-bottom: 0;
+  padding: 0;
+  margin: 0; /* Aseguramos margen 0 en todos lados */
 
   h1 {
     font-family: 'Cinzel', serif;
     font-size: 3rem;
     color: #5a2d2d;
-    margin-bottom: 0;
+    margin: 0; /* Eliminamos margen inferior */
     letter-spacing: 1px;
   }
 
@@ -27,32 +42,57 @@
     font-size: 1.3rem;
     color: #8c5e3d;
     font-style: italic;
+    margin-top: 0.5rem; /* Ajuste fino */
   }
+}
+
+/* Secciones de contenido */
+.journal-content > * {
+  width: 100%;
 }
 
 /* Muro de mensajes compacto */
 .compact-messages {
-  // max-width: 1200px;
-  // margin: 4rem auto;
-  // padding: 0 1rem;
-
   h2 {
     font-family: 'Cinzel', serif;
     font-size: 1.8rem;
     color: #5a2d2d;
     text-align: center;
-    // margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+  .public-container {
+    padding: 0 2rem 2rem 2rem; /* Mantenemos sin padding-top */
   }
 }
 
 @media (max-width: 768px) {
+  .public-container {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+  }
+  
   .journal-header h1 {
     font-size: 2.5rem;
+  }
+  
+  .journal-content {
+    gap: 2rem;
   }
 }
 
 @media (max-width: 576px) {
+  .public-container {
+    padding: 0 1rem 1rem 1rem;
+  }
+  
   .journal-header h1 {
     font-size: 2rem;
+  }
+  
+  .compact-messages h2 {
+    font-size: 1.5rem;
   }
 }

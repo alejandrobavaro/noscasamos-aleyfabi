@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../assets/scss/_03-Componentes/_PPublicoContadorDias.scss";
+import { FaWhatsapp } from "react-icons/fa";
 
 function PPublicoContadorDias() {
   const [timeLeft, setTimeLeft] = useState({
@@ -11,6 +12,31 @@ function PPublicoContadorDias() {
     weeks: 0
   });
 
+  // Función para compartir por WhatsApp
+  const shareOnWhatsApp = () => {
+    const weddingEmojis = ["💍", "💒", "👰", "🤵", "🎉", "🥂", "💐", "✨"];
+    const randomEmoji = weddingEmojis[Math.floor(Math.random() * weddingEmojis.length)];
+    
+    const message = `¡Faltan solo *${timeLeft.days} días* para la Boda de Ale y Fabi!
+
+${timeLeft.days > 30 ? 
+  ` Solo ${timeLeft.months} meses!!` : 
+
+  ` ¡Ya falta menos!`}
+
+ *Fecha:* Domingo 23 de Noviembre 2025
+ *Hora:* 19:00 hs
+ *Lugar:* Casa del Mar (Villa García Uriburu)
+`;
+
+    // Si quieres incluir una imagen (asegúrate de tener los derechos)
+    // const imageUrl = "https://tusitio.com/img/whatsapp-share.jpg";
+    // const url = `https://wa.me/?text=${encodeURIComponent(message)}&image=${encodeURIComponent(imageUrl)}`;
+    
+    const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  };
+
   // Efecto de partículas blancas
   useEffect(() => {
     const createParticle = () => {
@@ -20,7 +46,7 @@ function PPublicoContadorDias() {
       const xPos = Math.random() * 100;
       const delay = Math.random() * 3;
       const duration = 2 + Math.random() * 5;
-      const size = 5 + Math.random() * 10; // Burbujas más grandes
+      const size = 5 + Math.random() * 10;
       const opacity = 0.3 + Math.random() * 0.5;
       
       particle.style.left = `${xPos}%`;
@@ -37,7 +63,7 @@ function PPublicoContadorDias() {
       }, duration * 1000);
     };
     
-    const particleInterval = setInterval(createParticle, 200); // Más burbujas
+    const particleInterval = setInterval(createParticle, 200);
     return () => clearInterval(particleInterval);
   }, []);
 
@@ -71,6 +97,7 @@ function PPublicoContadorDias() {
 
   return (
     <section className="baroque-clock-container">
+      <div className="background-image"></div>
       <div className="gold-frame"></div>
       
       <div className="clock-content">
@@ -104,9 +131,6 @@ function PPublicoContadorDias() {
           </div>
         </div>
         
-        {/* <h2 className="animated-subtitle">para la boda  </h2>
-        <span className="animated-names">de Fabi y Ale</span> */}
-        
         <div className="compact-info">
           <div className="additional-time">
             <span className="additional-value">{timeLeft.months}</span>
@@ -122,6 +146,12 @@ function PPublicoContadorDias() {
             <span>23 / 11 / 2025 - 19:00 hs</span>
           </div>
         </div>
+
+        {/* Botón de WhatsApp */}
+        <button className="whatsapp-share-button" onClick={shareOnWhatsApp}>
+          <FaWhatsapp className="whatsapp-icon" />
+          Compartir cuenta regresiva
+        </button>
       </div>
       
       <div className="baroque-decoration top-left"></div>

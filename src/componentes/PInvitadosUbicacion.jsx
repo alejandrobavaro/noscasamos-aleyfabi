@@ -4,19 +4,19 @@ import "../assets/scss/_03-Componentes/_PInvitadosUbicacion.scss";
 
 function PInvitadosUbicacion() {
   const locationImages = [
-    "/img/05-img-costados-larga/1a.jpg",
-    "/img/05-img-costados-larga/2a.jpg",
-    "/img/05-img-costados-larga/3a.jpg",
-    "/img/05-img-costados-larga/4a.jpg",
-    "/img/05-img-costados-larga/5a.jpg",
+    "/img/05-img-galeria2/1a.jpg",
+    "/img/05-img-galeria2/2a.jpg",
+    "/img/05-img-galeria2/3a.jpg",
+    "/img/05-img-galeria2/4a.jpg",
+    "/img/05-img-galeria2/5a.jpg",
   ];
 
   const coupleImages = [
-    "/img/05-img-costados-larga/1a.jpg",
-    "/img/05-img-costados-larga/2a.jpg",
-    "/img/05-img-costados-larga/3a.jpg",
-    "/img/05-img-costados-larga/4a.jpg",
-    "/img/05-img-costados-larga/5a.jpg",
+    "/img/05-img-galeria2/1a.jpg",
+    "/img/05-img-galeria2/2a.jpg",
+    "/img/05-img-galeria2/3a.jpg",
+    "/img/05-img-galeria2/4a.jpg",
+    "/img/05-img-galeria2/5a.jpg",
   ];
 
   const sliderSettings = {
@@ -90,7 +90,7 @@ function PInvitadosUbicacion() {
               <p>La propiedad fue construida en 1930 y perteneció a la familia García Uriburu. En aquellos tiempos, la zona era poco habitada, con playas amplias y acantilados imponentes.</p>
             </div>
             <div className="historia-imagen">
-              <img src="/img/09-imagenes-salon/2025-04-05 043.jpg" alt="Historia de Casa del Mar" />
+              <img src="/img/07-img-galeria4-salon/2025-04-05 043.jpg" alt="Historia de Casa del Mar" />
             </div>
           </div>
         </section>

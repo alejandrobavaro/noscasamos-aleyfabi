@@ -1,73 +1,103 @@
 .baroque-clock-container {
-    position: relative;
-    padding: 2.5rem 1.5rem;
-    margin: 3rem auto;
-    max-width: 800px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.685) 0%, rgba(160, 57, 57, 0.603) 100%);
-    border-radius: 8px;
-
-    overflow: hidden;
-    z-index: 1;
-    text-align: center;
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  padding: 10rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 1;
+  text-align: center;
+  
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background-image: url('../../../../public/img/13-gif/gif8.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+    opacity: 0.8;
     
-    &::before {
+    &::after {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('/img/decoraciones/baroque-pattern.png');
-      opacity: 0.04;
-      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(160, 57, 57, 0.3) 100%);
     }
   }
-  
-  .gold-frame {
+
+  &::before {
+    content: '';
     position: absolute;
-    top: 8px;
-    left: 8px;
-    right: 8px;
-    bottom: 8px;
-    border: 1.5px solid transparent;
-    border-image: url('/img/decoraciones/gold-border.png') 15 round;
-    pointer-events: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/img/decoraciones/baroque-pattern.png');
+    opacity: 0.08;
     z-index: -1;
   }
+}
+
+.gold-frame {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border: 1.5px solid transparent;
+  border-image: url('/img/decoraciones/gold-border.png') 15 round;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.white-particle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: floatParticle linear infinite;
+  filter: blur(1px);
   
-  .white-particle {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-    animation: floatParticle linear infinite;
-    filter: blur(1px);
-    
-    @keyframes floatParticle {
-      0% { 
-        transform: translateY(0) translateX(0) scale(0.8); 
-        opacity: 0; 
-      }
-      10% { 
-        opacity: 0.8; 
-        transform: translateY(-10px) translateX(5px) scale(1);
-      }
-      90% { 
-        opacity: 0.8; 
-      }
-      100% { 
-        transform: translateY(-80vh) translateX(15px) scale(1.2); 
-        opacity: 0; 
-      }
+  @keyframes floatParticle {
+    0% { 
+      transform: translateY(0) translateX(0) scale(0.8); 
+      opacity: 0; 
+    }
+    10% { 
+      opacity: 0.8; 
+      transform: translateY(-10px) translateX(5px) scale(1);
+    }
+    90% { 
+      opacity: 0.8; 
+    }
+    100% { 
+      transform: translateY(-80vh) translateX(15px) scale(1.2); 
+      opacity: 0; 
     }
   }
-  
-  .clock-content {
-    position: relative;
-    z-index: 2;
-  }
-  
+}
+
+.clock-content {
+  position: relative;
+  z-index: 2;
+  max-width: auto;
+  width: 100%;
+  padding: 3rem;
+  background: transparent;
+  // border-radius: 50%;
+  // box-shadow: 0 10px 30px rgba(255, 174, 174, 0.199);
+}
+
   /* Estilos para títulos animados */
   .animated-title {
     font-family: 'Cinzel Decorative', serif;
@@ -267,13 +297,13 @@
     &.top-left {
       top: 10px;
       left: 10px;
-      background-image: url('/img/decoraciones/baroque-corner.png');
+      // background-image: url('/img/decoraciones/baroque-corner.png');
     }
     
     &.top-right {
       top: 10px;
       right: 10px;
-      background-image: url('/img/decoraciones/baroque-corner.png');
+      // background-image: url('/img/decoraciones/baroque-corner.png');
       transform: scaleX(-1);
     }
   }
@@ -368,3 +398,62 @@
       height: 40px;
     }
   }
+
+
+  /* Estilos para el botón de WhatsApp */
+.whatsapp-share-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 0px;
+  padding: 2px 15px;
+  background: transparent;
+  color: rgb(121, 43, 43);
+  border: none;
+  border-radius: 30px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.329);
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  &:hover {
+    background: #a7535328;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(211, 37, 37, 0.4);
+  }
+  
+  .whatsapp-icon {
+    font-size: 20px;
+  }
+}
+
+/* Responsive para el botón de WhatsApp */
+@media (max-width: 768px) {
+  .whatsapp-share-button {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    
+    .whatsapp-icon {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .whatsapp-share-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+    
+    .whatsapp-icon {
+      font-size: 1.1rem;
+    }
+  }
+}

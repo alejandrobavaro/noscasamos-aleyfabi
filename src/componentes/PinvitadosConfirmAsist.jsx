@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import invitadosData from '../json/invitados.json';
 import '../assets/scss/_03-Componentes/_PinvitadosConfirmAsist.scss';
 
 const PinvitadosConfirmAsist = () => {
   const { invitadoId } = useParams();
   const [invitado, setInvitado] = useState(null);
+  const [invitadosData, setInvitadosData] = useState(null);
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [formData, setFormData] = useState({
@@ -18,9 +18,25 @@ const PinvitadosConfirmAsist = () => {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
-  // Busca el invitado al cargar el componente
+  // Cargar datos del JSON
   useEffect(() => {
-    if (!invitadoId) {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/invitados.json');
+        if (!response.ok) throw new Error('Error al cargar datos de invitados');
+        const data = await response.json();
+        setInvitadosData(data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // Busca el invitado al cargar el componente y cuando se cargan los datos
+  useEffect(() => {
+    if (!invitadoId || !invitadosData) {
       setIsLoading(false);
       return;
     }
@@ -68,7 +84,7 @@ const PinvitadosConfirmAsist = () => {
     }
 
     setIsLoading(false);
-  }, [invitadoId]);
+  }, [invitadoId, invitadosData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -117,7 +133,7 @@ const PinvitadosConfirmAsist = () => {
   };
 
   // Vista de carga
-  if (isLoading) {
+  if (isLoading || !invitadosData) {
     return (
       <div className="loading-container">
         <motion.i 

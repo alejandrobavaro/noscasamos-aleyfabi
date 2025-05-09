@@ -20,7 +20,7 @@ function PPublicoNovedades() {
           <p>"Fue un día mágico donde pudimos relajarnos y ser nosotros mismos frente a cámara", comentó Fabiola emocionada.</p>
         </>
       ),
-      images: ["/img/03-img-cuadradas/1000063530.jpg", "/img/03-img-cuadradas/1000063530.jpg"],
+      images: ["/img/04-img-galeria1/1000063530.jpg", "/img/04-img-galeria1/1000063530.jpg"],
       category: "Preparativos"
     },
     {
@@ -32,13 +32,13 @@ function PPublicoNovedades() {
         <>
           <p>Después de meses de diseño, los novios mostraron los souvenirs que preparan para sus invitados. Cada pieza fue hecha a mano con materiales nobles.</p>
           <div className="news-gallery">
-            <img src="/img/03-img-cuadradas/1000063530.jpg" alt="Souvenirs" />
-            <img src="/img/03-img-cuadradas/1000063530.jpg" alt="Souvenirs" />
+            <img src="/img/04-img-galeria1/1000063530.jpg" alt="Souvenirs" />
+            <img src="/img/04-img-galeria1/1000063530.jpg" alt="Souvenirs" />
           </div>
           <p>"Queríamos algo que realmente representara nuestro amor y que nuestros invitados conserven con cariño", explicó Alejandro.</p>
         </>
       ),
-      images: ["/img/03-img-cuadradas/20230805_152855.jpg", "/img/03-img-cuadradas/1000063530.jpg"],
+      images: ["/img/04-img-galeria1/20230805_152855.jpg", "/img/04-img-galeria1/1000063530.jpg"],
       category: "Detalles"
     },
     {
@@ -50,12 +50,12 @@ function PPublicoNovedades() {
         <>
           <p>La emocionante prueba de vestuario reveló los elegantes trajes que lucirán en el gran día. Fabiola optó por un diseño clásico con detalles modernos.</p>
           <div className="news-gallery">
-            <img src="/img/03-img-cuadradas/1000063530.jpg" alt="Prueba de vestuario" />
+            <img src="/img/04-img-galeria1/1000063530.jpg" alt="Prueba de vestuario" />
           </div>
           <p>"Queremos mantenerlo en secreto, pero estamos muy contentos con las elecciones", confesó Alejandro.</p>
         </>
       ),
-      images: ["/img/03-img-cuadradas/20230723_122529.jpg"],
+      images: ["/img/04-img-galeria1/20230723_122529.jpg"],
       category: "Preparativos"
     }
   ];

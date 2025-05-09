@@ -1,14 +1,63 @@
-import React, { useState } from 'react';
-import POrgCateringData from '/src/json/POrgCatering.json';
+import React, { useState, useEffect } from 'react';
 import "../assets/scss/_03-Componentes/_POrgCatering.scss";
 
 function POrgCatering() {
-  const [menu, setMenu] = useState(POrgCateringData.menuOptions);
-  const [restrictions] = useState(POrgCateringData.dietaryRestrictions);
+  const [POrgCateringData, setPOrgCateringData] = useState({
+    menuOptions: [],
+    dietaryRestrictions: []
+  });
+  const [menu, setMenu] = useState([]);
+  const [restrictions, setRestrictions] = useState([]);
   const [activeTab, setActiveTab] = useState('menu');
   const [notes, setNotes] = useState({
     POrgCatering: ''
   });
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Cargar datos del JSON
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const response = await fetch('/POrgCatering.json');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setPOrgCateringData(data);
+        setMenu(data.menuOptions || []);
+        setRestrictions(data.dietaryRestrictions || []);
+      } catch (error) {
+        console.error("Error al cargar datos de catering:", error);
+        // Datos de prueba en caso de error
+        setPOrgCateringData({
+          menuOptions: [
+            {
+              id: 1,
+              name: "Entradas",
+              items: [
+                { id: 1, name: "Bruschettas", selected: false, restrictions: [] },
+                { id: 2, name: "Canapés variados", selected: false, restrictions: [] }
+              ]
+            }
+          ],
+          dietaryRestrictions: [
+            { id: 1, name: "Vegetarianos", count: 12 },
+            { id: 2, name: "Veganos", count: 5 }
+          ]
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  // Actualizar menu y restrictions cuando cambian los datos
+  useEffect(() => {
+    setMenu(POrgCateringData.menuOptions || []);
+    setRestrictions(POrgCateringData.dietaryRestrictions || []);
+  }, [POrgCateringData]);
 
   const toggleMenuItem = (categoryId, itemId) => {
     setMenu(menu.map(category => 
@@ -32,7 +81,17 @@ function POrgCatering() {
 
   const saveNotes = () => {
     console.log('Notas de POrgCatering guardadas:', notes.POrgCatering);
+    // Aquí podrías agregar lógica para guardar en localStorage o API
   };
+
+  if (isLoading) {
+    return (
+      <div className="POrgCatering-container loading">
+        <div className="spinner"></div>
+        <p>Cargando opciones de menú...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="POrgCatering-container">
@@ -91,7 +150,7 @@ function POrgCatering() {
                         </div>
                         <div className="item-content">
                           <span className="item-name">{item.name}</span>
-                          {item.restrictions.length > 0 && (
+                          {item.restrictions?.length > 0 && (
                             <div className="restrictions">
                               {item.restrictions.map(r => (
                                 <span key={r} className={`restriction-tag ${r}`}>
@@ -122,7 +181,7 @@ function POrgCatering() {
                         {selectedItems.map(item => (
                           <li key={item.id}>
                             {item.name}
-                            {item.restrictions.length > 0 && (
+                            {item.restrictions?.length > 0 && (
                               <span className="restrictions">
                                 ({item.restrictions.join(', ')})
                               </span>

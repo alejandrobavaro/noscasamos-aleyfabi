@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "../assets/scss/_03-Componentes/_PPublicoNuestraHistoria.scss";
 
 function PPublicoNuestraHistoria() {
-  // Configuración del slider
+  // Configuración del slider (se mantiene igual)
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -24,7 +24,7 @@ function PPublicoNuestraHistoria() {
   const chapters = [
     {
       // title: "Febrero 2023: El Destino nos Unió",
-      image: "/img/04-img-banners/banner6.png",
+      image: "/img/03-img-banners/banner6.png",
       content: (
         <>
           <p>
@@ -50,7 +50,7 @@ function PPublicoNuestraHistoria() {
     },
     {
       // title: "Marzo 2023: Nuestra Primera Cita",
-      image: "/img/04-img-banners/banner2.png",
+      image: "/img/03-img-banners/banner2.png",
       content: (
         <>
           <p>
@@ -75,7 +75,7 @@ function PPublicoNuestraHistoria() {
     },
     {
       // title: "Julio 2023: El Viaje que lo Cambió Todo",
-      image: "/img/04-img-banners/banner3.png",
+      image: "/img/03-img-banners/banner3.png",
       content: (
         <>
           <p>
@@ -100,7 +100,7 @@ function PPublicoNuestraHistoria() {
     },
     {
       // title: "Diciembre 2023: La Primera Navidad Juntos",
-      image: "/img/04-img-banners/banner5.png",
+      image: "/img/03-img-banners/banner5.png",
       content: (
         <>
           <p>
@@ -124,7 +124,7 @@ function PPublicoNuestraHistoria() {
     },
     {
       // title: "Junio 2024: La Propuesta",
-      image: "/img/04-img-banners/banner4.png",
+      image: "/img/03-img-banners/banner4.png",
       content: (
         <>
           <p>
@@ -162,13 +162,15 @@ function PPublicoNuestraHistoria() {
             <div key={index} className="featured-slide">
               <img src={chapter.image} alt={chapter.title} />
               <div className="slide-caption">
-                <h2>{chapter.title}</h2>
-                <button 
-                  className="read-more"
-                  onClick={() => setShowFullStory(true)}
-                >
-                  Aqui podras leer Nuestra historia de amor... 
-                </button>
+                <div className="caption-content">
+                  <h2>{chapter.title}</h2>
+                  <button 
+                    className="read-more"
+                    onClick={() => setShowFullStory(true)}
+                  >
+                    Nuestra historia... 
+                  </button>
+                </div>
               </div>
             </div>
           ))}

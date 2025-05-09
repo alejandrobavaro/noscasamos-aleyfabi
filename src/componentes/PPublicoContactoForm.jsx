@@ -22,11 +22,11 @@ const PPublicoContactoForm1 = () => {
 
   // Fotos de los novios (reemplaza con tus imágenes)
   const couplePhotos = [
-    "/img/04-img-banners/banner1.png",
-    "/img/04-img-banners/banner2.png",
-    "/img/04-img-banners/banner3.png",
-    "/img/04-img-banners/banner4.png",
-    "/img/04-img-banners/banner5.png"
+    "/img/03-img-banners/banner1.png",
+    "/img/03-img-banners/banner2.png",
+    "/img/03-img-banners/banner3.png",
+    "/img/03-img-banners/banner4.png",
+    "/img/03-img-banners/banner5.png"
   ];
 
   return (

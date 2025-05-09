@@ -4,7 +4,7 @@ import "../assets/scss/_03-Componentes/_POrganizacion.scss";
 
 // Componentes de las pestañas
 import POrgPresupuesto from './POrgPresupuesto';
-import POrgChecklistBoda from './POrgChecklistBoda'; // Cambiado de POrgTareasBoda
+import POrgTareasBoda from './POrgTareasBoda'; // Cambiado de POrgTareasBoda
 import POrgRegalos from './POrgRegalos';
 import POrgCatering from './POrgCatering';
 import POrgInvitaciones from './POrgInvitaciones';
@@ -65,7 +65,7 @@ function POrganizacion() {
   const renderTabContent = () => {
     switch(activeTab) {
       case 'presupuesto': return <POrgPresupuesto />;
-      case 'checklist': return <POrgChecklistBoda />; 
+      case 'checklist': return <POrgTareasBoda />; 
       case 'POrgRegalos': return <POrgRegalos />;
       case 'catering': return <POrgCatering />;
       case 'invitaciones': return <POrgInvitaciones />;
