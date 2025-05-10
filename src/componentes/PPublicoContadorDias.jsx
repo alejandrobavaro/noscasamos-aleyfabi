@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../assets/scss/_03-Componentes/_PPublicoContadorDias.scss";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp, FaSyncAlt, FaPause, FaPlay, FaCog } from "react-icons/fa";
 
 function PPublicoContadorDias() {
   const [timeLeft, setTimeLeft] = useState({
@@ -12,32 +12,72 @@ function PPublicoContadorDias() {
     weeks: 0
   });
 
-  // Función para compartir por WhatsApp
-  const shareOnWhatsApp = () => {
-    const weddingEmojis = ["💍", "💒", "👰", "🤵", "🎉", "🥂", "💐", "✨"];
-    const randomEmoji = weddingEmojis[Math.floor(Math.random() * weddingEmojis.length)];
-    
-    const message = `¡Faltan solo *${timeLeft.days} días* para la Boda de Ale y Fabi!
+  const [isAutoSending, setIsAutoSending] = useState(false);
+  const [lastSentWeek, setLastSentWeek] = useState(null);
+  const [showWhatsappPanel, setShowWhatsappPanel] = useState(false);
+  const [phoneNumbers] = useState([
+    "5492235208386", // Primer número
+    "5492235455451"  // Segundo número
+  ]);
+
+  const generateMessage = () => {
+    return ` *¡Faltan solo ${timeLeft.days} días para la Boda!* 
 
 ${timeLeft.days > 30 ? 
-  ` Solo ${timeLeft.months} meses!!` : 
-
-  ` ¡Ya falta menos!`}
+  ` ¡Solo ${timeLeft.months} meses! ` : 
+  ` ¡Ya falta  menos!`}
 
  *Fecha:* Domingo 23 de Noviembre 2025
- *Hora:* 19:00 hs
+ *Hora:* 19:00 hs 
  *Lugar:* Casa del Mar (Villa García Uriburu)
-`;
 
-    // Si quieres incluir una imagen (asegúrate de tener los derechos)
-    // const imageUrl = "https://tusitio.com/img/whatsapp-share.jpg";
-    // const url = `https://wa.me/?text=${encodeURIComponent(message)}&image=${encodeURIComponent(imageUrl)}`;
-    
-    const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
+  *Con amor, Ale y Fabi`;
+  };
+
+  const shareOnWhatsApp = (number = null) => {
+    const message = generateMessage();
+    const url = number 
+      ? `https://wa.me/${number}?text=${encodeURIComponent(message)}`
+      : `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
 
-  // Efecto de partículas blancas
+  const sendToAllNumbers = () => {
+    if (phoneNumbers.length === 0) {
+      alert("No hay números configurados para enviar mensajes");
+      return;
+    }
+
+    phoneNumbers.forEach((number, index) => {
+      setTimeout(() => {
+        shareOnWhatsApp(number);
+      }, index * 2000);
+    });
+  };
+
+  useEffect(() => {
+    let interval;
+    
+    if (isAutoSending) {
+      const currentWeek = Math.floor(timeLeft.days / 7);
+      
+      if (lastSentWeek !== currentWeek) {
+        sendToAllNumbers();
+        setLastSentWeek(currentWeek);
+      }
+      
+      interval = setInterval(() => {
+        const newWeek = Math.floor(timeLeft.days / 7);
+        if (lastSentWeek !== newWeek) {
+          sendToAllNumbers();
+          setLastSentWeek(newWeek);
+        }
+      }, 3600000);
+    }
+    
+    return () => clearInterval(interval);
+  }, [isAutoSending, timeLeft.days, lastSentWeek]);
+
   useEffect(() => {
     const createParticle = () => {
       const particle = document.createElement('div');
@@ -100,6 +140,45 @@ ${timeLeft.days > 30 ?
       <div className="background-image"></div>
       <div className="gold-frame"></div>
       
+      <button 
+        className="whatsapp-panel-toggle"
+        onClick={() => setShowWhatsappPanel(!showWhatsappPanel)}
+      >
+        <FaWhatsapp />
+        <FaCog />
+      </button>
+      
+      <div className={`whatsapp-controls-panel ${showWhatsappPanel ? 'visible' : ''}`}>
+        <h3>Compartir cuenta regresiva</h3>
+        
+        <button 
+          className="whatsapp-share-button" 
+          onClick={() => shareOnWhatsApp()}
+        >
+          <FaWhatsapp /> Compartir
+        </button>
+{/*         
+        <button 
+          className={`auto-send-button ${isAutoSending ? 'active' : ''}`}
+          onClick={() => setIsAutoSending(!isAutoSending)}
+        >
+          {isAutoSending ? <FaPause /> : <FaPlay />}
+          {isAutoSending ? ' Pausar envío' : ' Envío semanal'}
+        </button> */}
+{/*         
+        <button 
+          className="send-now-button"
+          onClick={sendToAllNumbers}
+        >
+          <FaSyncAlt /> Enviar ahora a todos
+        </button> */}
+{/*         
+        <div className="whatsapp-info">
+          <p>Último envío: {lastSentWeek !== null ? `Semana ${lastSentWeek}` : 'Aún no enviado'}</p>
+          <p>Números configurados: {phoneNumbers.length}</p>
+        </div> */}
+      </div>
+      
       <div className="clock-content">
         <h1 className="animated-title">Faltan</h1>
         
@@ -146,12 +225,6 @@ ${timeLeft.days > 30 ?
             <span>23 / 11 / 2025 - 19:00 hs</span>
           </div>
         </div>
-
-        {/* Botón de WhatsApp */}
-        <button className="whatsapp-share-button" onClick={shareOnWhatsApp}>
-          <FaWhatsapp className="whatsapp-icon" />
-          Compartir cuenta regresiva
-        </button>
       </div>
       
       <div className="baroque-decoration top-left"></div>
