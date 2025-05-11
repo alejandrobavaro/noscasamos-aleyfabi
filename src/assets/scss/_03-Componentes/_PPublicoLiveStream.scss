@@ -1,167 +1,388 @@
 .live-stream-section {
-    margin: 5rem 0;
-    padding: 0 1rem;
+  margin: 0 0;
+  padding: 0 2rem;
+  background: url('/img/00-fondos/fondo1.jpeg') center/cover;
+  position: relative;
   
-    .section-title {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-top: 3rem;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 3px;
+      background: linear-gradient(to right, #a67c52, #d4a373, #000000);
+      border-radius: 3px;
+    }
+  }
+
+  .stream-container {
+    max-width: auto;
+    margin: 0 auto;
+    background: #00000063;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    border: 2px solid #e8d5cc;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+
+  .stream-info {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: rgba(22, 0, 0, 0.384);
+    border-bottom: 1px solid #e8d5cc;
+
+    h3 {
       font-family: 'Cinzel', serif;
-      color: #5a2d2d;
-      font-size: 2.2rem;
-      text-align: center;
-      margin-bottom: 2rem;
-      position: relative;
-  
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100px;
-        height: 2px;
-        background: #a67c52;
-      }
+      color: #ffffff;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.5px;
     }
-  
-    .stream-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      background: #fff;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      border: 1px solid #e0d6c9;
-    }
-  
-    .stream-info {
-      padding: 2rem;
-      text-align: center;
-      background: linear-gradient(rgba(252, 232, 220, 0.8), rgba(252, 232, 220, 0.8));
-  
-      h3 {
-        font-family: 'Cinzel', serif;
-        color: #5a2d2d;
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-      }
-  
-      p {
-        max-width: 700px;
-        margin: 0 auto 1.5rem;
-        font-size: 1.1rem;
-      }
-    }
-  
-    .stream-details {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin: 2rem 0;
-      flex-wrap: wrap;
-  
-      .detail-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 1.1rem;
-        background: rgba(255, 255, 255, 0.7);
-        padding: 0.7rem 1.2rem;
-        border-radius: 30px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  
-        .detail-icon {
-          font-size: 1.3rem;
-        }
-      }
-    }
-  
-    .PPublicoContadorDias-stream {
-      margin-top: 2rem;
+
+    p {
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
       font-size: 1.2rem;
-  
-      span {
-        color: #7a4f50;
-        font-weight: bold;
-        font-size: 1.3rem;
-      }
+      color: #ffffff;
+      line-height: 1.6;
     }
-  
-    .stream-placeholder {
-      height: 400px;
-      background: #2a2621;
+  }
+
+  .stream-details {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin: 2.5rem 0;
+    flex-wrap: wrap;
+
+    .detail-item {
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 0.8rem;
+      font-size: 1.2rem;
+      background: rgba(255, 194, 194, 0.527);
+      padding: 0.9rem 1.5rem;
+      border-radius: 50px;
+      box-shadow: 0 3px 10px rgba(255, 123, 0, 0.541);
+      color: #ffffff;
+      font-weight: bold;
+      border: 1px solid #f0e7db;
+      transition: all 0.3s;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(173, 159, 159, 0.5);
+      }
+
+      .detail-icon {
+        font-size: 1.5rem;
+        transition: transform 0.3s;
+      }
+
+      &:hover .detail-icon {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  .PPublicoContadorDias-stream {
+    margin-top: 2.5rem;
+    font-size: 1.3rem;
+    color: #ffffff;
+
+    span {
+      color: #00d9ff;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .live-now {
+      color: #ffe8e6;
+      font-weight: bold;
+      font-size: 1.5rem;
+      animation: pulse 1.5s infinite;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+
+  .stream-placeholder {
+    height: 500px;
+    background: #000000af;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-bottom: 1px solid #ffffff;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('../../../../img/00-fondos/fondo4a.jpg') center/cover;
+      opacity: 0.6;
+    }
+
+    .placeholder-content {
       position: relative;
-  
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url('/img/00-fondos/fondo-textura-oscura.jpg') center/cover;
-        opacity: 0.7;
-      }
-  
-      .placeholder-content {
-        position: relative;
-        z-index: 2;
-        color: #fff;
-        text-align: center;
-        padding: 2rem;
-  
-        .camera-icon {
-          font-size: 3rem;
-          margin-bottom: 1rem;
-          animation: pulse 2s infinite;
-        }
-  
-        p {
-          margin: 0.5rem 0;
-          font-size: 1.2rem;
-        }
-      }
-    }
-  
-    .stream-reminder {
-      padding: 1.5rem;
+      z-index: 2;
+      color: #fff;
       text-align: center;
-      background: #fce8dc;
-      color: #5a2d2d;
-      font-size: 1.1rem;
-      border-top: 1px solid #e8d5cc;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .live-stream-section {
-      .stream-details {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center;
+      padding: 2rem;
+      max-width: auto;
+
+      .camera-icon {
+        font-size: 10rem;
+        margin-bottom: 1.5rem;
+        animation: pulse 2s infinite;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.781);
       }
-  
-      .stream-placeholder {
-        height: 300px;
+
+      p {
+        margin: 0.8rem 0;
+        font-size: 1.3rem;
+        line-height: 1.6;
+        color: #f0e7db;
       }
     }
-  }
-  
-  @media (max-width: 576px) {
-    .live-stream-section {
-      .section-title {
-        font-size: 1.8rem;
+
+    .live-stream-embed {
+      width: 100%;
+      height: 100%;
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        
       }
-  
-      .stream-placeholder {
-        height: 250px;
-  
-        .placeholder-content {
-          p {
-            font-size: 1rem;
+    }
+  }
+
+  .stream-reminder {
+    padding: 2rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.158);
+    color: #fff;
+    font-size: 1.2rem;
+    border-top: 1px solid #e8d5cc;
+
+    .reminder-form {
+      max-width: 500px;
+      margin: 1.5rem auto 0;
+      text-align: left;
+      
+      
+      .form-group {
+        margin-bottom: 1.2rem;
+        
+        
+        label {
+          display: block;
+          margin-bottom: 0.5rem;
+          color: #f0e7db;
+          font-size: 1rem;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"] {
+          width: 100%;
+          padding: 0.8rem;
+          border: 1px solid #a67c52;
+          border-radius: 5px;
+          background: rgba(255, 255, 255, 0.9);
+          font-size: 1rem;
+          
+          &:focus {
+            outline: none;
+            border-color: #7a4f50;
+            box-shadow: 0 0 0 2px rgba(122, 79, 80, 0.3);
           }
         }
       }
+      
+      .radio-group {
+        margin: 1.5rem 0;
+        
+        p {
+          margin-bottom: 0.5rem;
+          color: #f0e7db;
+        }
+        
+        label {
+          display: inline-flex;
+          align-items: center;
+          margin-right: 1.5rem;
+          cursor: pointer;
+          
+          input {
+            margin-right: 0.5rem;
+          }
+        }
+      }
+      
+      .submit-btn {
+        width: 100%;
+        padding: 1rem;
+        background: #7a4f50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background 0.3s;
+        
+        &:hover {
+          background: #6a4748;
+        }
+      }
+    }
+    
+    .form-success {
+      color: #4caf50;
+      font-weight: bold;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 5px;
+    }
+    
+    .live-notice {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: rgba(255, 0, 0, 0.7);
+      border-radius: 5px;
+      font-weight: bold;
     }
   }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 992px) {
+  .live-stream-section {
+    .stream-placeholder {
+      height: 400px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .live-stream-section {
+    margin: 3rem 0;
+
+    .section-title {
+      font-size: 2.2rem;
+    }
+
+    .stream-details {
+      flex-direction: column;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .stream-placeholder {
+      height: 350px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .live-stream-section {
+    margin: 2rem 0;
+    padding: 0 0.5rem;
+
+    .section-title {
+      font-size: 2rem;
+      &::after {
+        width: 120px;
+      }
+    }
+
+    .stream-info {
+      padding: 2rem 1rem;
+
+      h3 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+      }
+    }
+
+    .stream-details .detail-item {
+      font-size: 1.1rem;
+      padding: 0.7rem 1.2rem;
+    }
+
+    .stream-placeholder {
+      height: 250px;
+
+      .placeholder-content {
+        padding: 1.5rem;
+
+        .camera-icon {
+          font-size: 3rem;
+        }
+
+        p {
+          font-size: 1.1rem;
+        }
+      }
+    }
+
+    .stream-reminder {
+      padding: 1.5rem;
+      font-size: 1.1rem;
+    }
+  }
+}

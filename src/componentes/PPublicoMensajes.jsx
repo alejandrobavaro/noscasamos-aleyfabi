@@ -8,6 +8,12 @@ function PPublicoMensajes() {
   const [isSending, setIsSending] = useState(false);
   const [showForm, setShowForm] = useState(true);
 
+  // Función para generar colores aleatorios pastel
+  const getRandomColor = () => {
+    const hue = Math.floor(Math.random() * 360);
+    return `hsl(${hue}, 70%, 85%)`;
+  };
+
   // Cargar mensajes del localStorage al inicio
   useEffect(() => {
     const savedMessages = localStorage.getItem("weddingMessages");
@@ -35,13 +41,13 @@ function PPublicoMensajes() {
         id: Date.now(),
         text: newMessage,
         author: author,
-        date: new Date().toLocaleDateString(),
+        date: new Date().toLocaleDateString("es-AR"),
         position: {
-          x: Math.random() * 70 + 15, // Entre 15% y 85%
-          y: Math.random() * 70 + 15,
-          rotation: Math.random() * 60 - 30 // Entre -30 y 30 grados
+          x: Math.random() * 60 + 20, // Entre 20% y 80%
+          y: Math.random() * 60 + 20,
+          rotation: Math.random() * 30 - 15 // Rotación más sutil
         },
-        color: `hsl(${Math.random() * 60 + 330}, 70%, 60%)` // Tonos rojos/rosados
+        color: getRandomColor() // Color aleatorio
       };
 
       setMessages([...messages, newMsg]);
@@ -49,7 +55,7 @@ function PPublicoMensajes() {
       setAuthor("");
       setIsSending(false);
       setShowForm(false);
-    }, 1000);
+    }, 800);
   };
 
   const removeMessage = (id) => {
@@ -61,12 +67,10 @@ function PPublicoMensajes() {
       <div className="board-container">
         <div className="board-header">
           <h3>Muro de Mensajes de Amor</h3>
-          <p>Deja tu mensaje para los novios en nuestro muro virtual</p>
+          <h6>Deja tu mensaje para los novios</h6>
         </div>
-
+        
         <div className="board-background">
-          <div className="couple-overlay"></div>
-          
           {messages.map((message) => (
             <div 
               key={message.id}
@@ -103,6 +107,7 @@ function PPublicoMensajes() {
                 onChange={(e) => setAuthor(e.target.value)}
                 required
                 maxLength={30}
+                placeholder="Ej: María"
               />
             </div>
             <div className="form-group">
@@ -114,11 +119,12 @@ function PPublicoMensajes() {
                 required
                 maxLength={120}
                 rows={3}
+                placeholder="Escribe tu mensaje de amor..."
               />
-              <small>Máx. 120 caracteres</small>
+              <small>Máximo 120 caracteres</small>
             </div>
             <button type="submit" disabled={isSending}>
-              {isSending ? "Enviando..." : "Pegar en el Muro"}
+              {isSending ? "Enviando..." : "Pegar en la Pizarra"}
             </button>
           </form>
         ) : (

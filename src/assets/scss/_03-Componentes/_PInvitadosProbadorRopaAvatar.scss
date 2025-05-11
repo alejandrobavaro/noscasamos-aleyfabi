@@ -63,7 +63,7 @@
     cursor: pointer;
     
     &:hover {
-      background: darken(#7A4F50, 10%);
+      background: #6a4748;
     }
   }
 }
@@ -201,7 +201,7 @@
   min-width: 160px;
 
   &:hover {
-    background-color: darken(#7A4F50, 10%);
+    background-color: #6a4748;
   }
 
   &:disabled {

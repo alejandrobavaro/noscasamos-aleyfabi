@@ -2,11 +2,10 @@
 .public-container {
   width: 100%;
   max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 1rem 2rem 1rem; /* Eliminado padding-top */
-  background: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
+  margin: 0 ;
+  padding: 0; 
+  background: transparent;
+ }
 
 /* Estilo general revista elegante */
 .wedding-journal {
@@ -42,7 +41,7 @@
     font-size: 1.3rem;
     color: #8c5e3d;
     font-style: italic;
-    margin-top: 0.5rem; /* Ajuste fino */
+    margin-top: 0; /* Ajuste fino */
   }
 }
 
@@ -51,16 +50,8 @@
   width: 100%;
 }
 
-/* Muro de mensajes compacto */
-.compact-messages {
-  h2 {
-    font-family: 'Cinzel', serif;
-    font-size: 1.8rem;
-    color: #5a2d2d;
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
-}
+
+
 
 /* Media Queries */
 @media (max-width: 1200px) {

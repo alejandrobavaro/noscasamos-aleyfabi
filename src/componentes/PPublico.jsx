@@ -18,15 +18,16 @@ function PPublico() {
         <div className="journal-content">
         
 
+        <section className="compact-messages">
+       
+            <PPublicoMensajes compact={true} />
+          </section>
+
           <PPublicoGaleriaFotosHome />
           <PPublicoNuestraHistoria />
           <PPublicoNovedades />
           <PPublicoLiveStream />
 
-          <section className="compact-messages">
-            <h2>Deja tu mensaje para los novios</h2>
-            <PPublicoMensajes compact={true} />
-          </section>
         </div>
       </main>
     </div>
