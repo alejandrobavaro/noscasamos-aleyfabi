@@ -3,8 +3,9 @@
   padding: 0;
   width: 100%;
   position: relative;
+  border-radius: 20px;
   font-family: 'Cormorant Garamond', serif;
-  background: transparent; // Fondo de respaldo
+  background: #945e4e93; // Fondo de respaldo
 
   .board-container {
     width: 100%;
@@ -125,12 +126,12 @@
   }
 
   .message-form {
-    max-width: 500px;
+    max-width:auto;
     margin: 2rem auto;
     padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.781);
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(245, 166, 166, 0.411);
     border: 1px solid #e8d5cc;
 
     .form-group {

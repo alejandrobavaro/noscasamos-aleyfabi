@@ -6,15 +6,17 @@ import { BsInstagram, BsYoutube, BsFacebook, BsEnvelope } from "react-icons/bs";
 function Footer() {
   return (
     <footer className="footer">
-      <div> <Link to="/contacto" className="contact-btn">
-                       CONTACTO
-          </Link></div>
+      <div className="contact-btn-container">
+        <Link to="/contacto" className="contact-btn">
+          CONTACTO
+        </Link>
+      </div>
      
       <div className="footer-content">
         {/* Logos laterales */}
         <div className="footer-logo-container">
           <img 
-         src="/img/02-logos/logofooter1a.png"
+            src="/img/02-logos/logofooter1a.png"
             alt="Logo decorativo" 
             className="footer-logo"
           />
@@ -27,7 +29,7 @@ function Footer() {
               <BsInstagram className="social-icon" />
               <span>Instagram</span>
             </a>
-            <a href="#"  target="_blank" rel="noopener noreferrer">
+            <a href="#" target="_blank" rel="noopener noreferrer">
               <BsYoutube className="social-icon" />
               <span>YouTube</span>
             </a>
@@ -35,17 +37,13 @@ function Footer() {
               <BsFacebook className="social-icon" />
               <span>Facebook</span>
             </a>
-        
           </div>
-        
         </div>
-
-        
         
         {/* Logo derecho */}
         <div className="footer-logo-container">
           <img 
-      src="/img/02-logos/logofooter1a.png"
+            src="/img/02-logos/logofooter1a.png"
             alt="Logo decorativo" 
             className="footer-logo"
           />

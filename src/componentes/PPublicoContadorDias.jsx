@@ -24,15 +24,16 @@ function PPublicoContadorDias() {
     return ` *¡Faltan solo ${timeLeft.days} días para la Boda!* 
 
 ${timeLeft.days > 30 ? 
-  ` ¡Solo ${timeLeft.months} meses! ` : 
-  ` ¡Ya falta  menos!`}
-
- *Fecha:* Domingo 23 de Noviembre 2025
- *Hora:* 19:00 hs 
- *Lugar:* Casa del Mar (Villa García Uriburu)
-
-  *Con amor, Ale y Fabi`;
+  ` ¡${timeLeft.months} meses! ` : 
+  ``}
+ `;
   };
+
+  // *Fecha:* Domingo 23 de Noviembre 2025
+  // *Hora:* 19:00 hs 
+  // *Lugar:* Casa del Mar (Villa García Uriburu)
+ 
+  //  *Con amor, Ale y Fabi
 
   const shareOnWhatsApp = (number = null) => {
     const message = generateMessage();
@@ -157,26 +158,7 @@ ${timeLeft.days > 30 ?
         >
           <FaWhatsapp /> Compartir
         </button>
-{/*         
-        <button 
-          className={`auto-send-button ${isAutoSending ? 'active' : ''}`}
-          onClick={() => setIsAutoSending(!isAutoSending)}
-        >
-          {isAutoSending ? <FaPause /> : <FaPlay />}
-          {isAutoSending ? ' Pausar envío' : ' Envío semanal'}
-        </button> */}
-{/*         
-        <button 
-          className="send-now-button"
-          onClick={sendToAllNumbers}
-        >
-          <FaSyncAlt /> Enviar ahora a todos
-        </button> */}
-{/*         
-        <div className="whatsapp-info">
-          <p>Último envío: {lastSentWeek !== null ? `Semana ${lastSentWeek}` : 'Aún no enviado'}</p>
-          <p>Números configurados: {phoneNumbers.length}</p>
-        </div> */}
+
       </div>
       
       <div className="clock-content">

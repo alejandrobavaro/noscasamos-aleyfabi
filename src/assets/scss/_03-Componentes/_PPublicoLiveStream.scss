@@ -1,8 +1,9 @@
 .live-stream-section {
   margin: 0 0;
   padding: 0 2rem;
-  background: url('/img/00-fondos/fondo1.jpeg') center/cover;
+  background: url('../..//img/06-img-galeria3/id8-c8.png') center/cover;
   position: relative;
+  border-radius: 20px;
   
   &::before {
     content: '';
@@ -38,7 +39,7 @@
       transform: translateX(-50%);
       width: 800px;
       height: 3px;
-      background: linear-gradient(to right, #a67c52, #d4a373, #000000);
+      background: linear-gradient(to right, #a67c52, #d4a373, #ffffff);
       border-radius: 3px;
     }
   }
@@ -46,7 +47,7 @@
   .stream-container {
     max-width: auto;
     margin: 0 auto;
-    background: #00000063;
+    // background: #00000063;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
@@ -61,7 +62,7 @@
   .stream-info {
     padding: 3rem 2rem;
     text-align: center;
-    background: rgba(22, 0, 0, 0.384);
+    background: rgba(134, 20, 20, 0.356);
     border-bottom: 1px solid #e8d5cc;
 
     h3 {
@@ -93,7 +94,7 @@
       align-items: center;
       gap: 0.8rem;
       font-size: 1.2rem;
-      background: rgba(255, 194, 194, 0.527);
+      background: rgba(233, 23, 23, 0.123);
       padding: 0.9rem 1.5rem;
       border-radius: 50px;
       box-shadow: 0 3px 10px rgba(255, 123, 0, 0.541);
@@ -140,8 +141,8 @@
   }
 
   .stream-placeholder {
-    height: 500px;
-    background: #000000af;
+    height: auto;
+    background: #ff000041;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -155,7 +156,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('../../../../img/00-fondos/fondo4a.jpg') center/cover;
+   
       opacity: 0.6;
     }
 

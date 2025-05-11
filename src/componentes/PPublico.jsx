@@ -4,7 +4,7 @@ import PPublicoMensajes from "./PPublicoMensajes";
 import PPublicoLiveStream from "./PPublicoLiveStream";
 import PPublicoContadorDias from "./PPublicoContadorDias";
 import PPublicoNuestraHistoria from "./PPublicoNuestraHistoria";
-import PPublicoNovedades from "./PPublicoNovedades";
+import PPublicoNovedades from "./PPublicoNovedades"; // Cambiado para coincidir con la exportación
 import PPublicoGaleriaFotosHome from "./PPublicoGaleriaFotosHome";
 
 function PPublico() {
@@ -12,22 +12,21 @@ function PPublico() {
     <div className="public-container">
       <main className="wedding-journal">
         <header className="journal-header">
-        <PPublicoContadorDias />
+          <PPublicoContadorDias />
         </header>
 
         <div className="journal-content">
         
 
-        <section className="compact-messages">
-       
+        
+     
+          <PPublicoNovedades />
+          <section className="compact-messages">
             <PPublicoMensajes compact={true} />
           </section>
-
           <PPublicoGaleriaFotosHome />
           <PPublicoNuestraHistoria />
-          <PPublicoNovedades />
           <PPublicoLiveStream />
-
         </div>
       </main>
     </div>

@@ -66,8 +66,8 @@ function PPublicoMensajes() {
     <section className="interactive-board">
       <div className="board-container">
         <div className="board-header">
-          <h3>Muro de Mensajes de Amor</h3>
-          <h6>Deja tu mensaje para los novios</h6>
+          <h3>Muro para los Novios</h3>
+          <h6>Dejanos tu mensaje</h6>
         </div>
         
         <div className="board-background">
