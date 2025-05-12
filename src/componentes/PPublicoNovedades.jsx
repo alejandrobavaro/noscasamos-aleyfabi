@@ -234,7 +234,7 @@ function PPublicoNovedades() {
       category: "Preparativos"
     }
   ];
-
+ 
   return (
     <div className="novedades-container">
       {/* Sección de Revista */}
@@ -256,10 +256,15 @@ function PPublicoNovedades() {
               {magazinePages[currentPage].content}
               
               {magazinePages[currentPage].gallery && (
-                <div className="page-gallery">
-                  {magazinePages[currentPage].gallery.map((img, i) => (
-                    <img key={i} src={img} alt="" className="gallery-thumbnail" />
-                  ))}
+                <div className="page-gallery-container">
+                  <h4 className="gallery-title">Galería de Imágenes</h4>
+                  <div className="page-gallery">
+                    {magazinePages[currentPage].gallery.map((img, i) => (
+                      <div key={i} className="gallery-item">
+                        <img src={img} alt={`Imagen ${i + 1} de la galería`} className="gallery-thumbnail" />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -307,6 +312,7 @@ function PPublicoNovedades() {
             <article 
               key={news.id} 
               className={`news-card ${expandedNews === news.id ? 'expanded' : ''}`}
+              onClick={() => expandedNews === news.id && setExpandedNews(null)}
             >
               <div className="news-card-content">
                 <span className="news-category">{news.category}</span>
@@ -319,7 +325,10 @@ function PPublicoNovedades() {
                     {news.content}
                     <button 
                       className="collapse-news"
-                      onClick={() => setExpandedNews(null)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setExpandedNews(null);
+                      }}
                     >
                       &uarr; Ver menos
                     </button>
@@ -327,7 +336,10 @@ function PPublicoNovedades() {
                 ) : (
                   <button 
                     className="expand-news"
-                    onClick={() => setExpandedNews(news.id)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setExpandedNews(news.id);
+                    }}
                   >
                     &darr; Leer más
                   </button>

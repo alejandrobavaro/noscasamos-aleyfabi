@@ -4,7 +4,7 @@ import PPublicoMensajes from "./PPublicoMensajes";
 import PPublicoLiveStream from "./PPublicoLiveStream";
 import PPublicoContadorDias from "./PPublicoContadorDias";
 import PPublicoNuestraHistoria from "./PPublicoNuestraHistoria";
-import PPublicoNovedades from "./PPublicoNovedades"; // Cambiado para coincidir con la exportación
+import PPublicoNovedades from "./PPublicoNovedades";
 import PPublicoGaleriaFotosHome from "./PPublicoGaleriaFotosHome";
 
 function PPublico() {
@@ -16,10 +16,6 @@ function PPublico() {
         </header>
 
         <div className="journal-content">
-        
-
-        
-     
           <PPublicoNovedades />
           <section className="compact-messages">
             <PPublicoMensajes compact={true} />

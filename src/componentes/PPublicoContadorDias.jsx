@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../assets/scss/_03-Componentes/_PPublicoContadorDias.scss";
-import { FaWhatsapp, FaSyncAlt, FaPause, FaPlay, FaCog } from "react-icons/fa";
+import { FaWhatsapp, FaCog } from "react-icons/fa";
 
 function PPublicoContadorDias() {
   const [timeLeft, setTimeLeft] = useState({
@@ -12,28 +12,17 @@ function PPublicoContadorDias() {
     weeks: 0
   });
 
-  const [isAutoSending, setIsAutoSending] = useState(false);
-  const [lastSentWeek, setLastSentWeek] = useState(null);
   const [showWhatsappPanel, setShowWhatsappPanel] = useState(false);
   const [phoneNumbers] = useState([
-    "5492235208386", // Primer número
-    "5492235455451"  // Segundo número
+    "5492235208386",
+    "5492235455451"
   ]);
 
   const generateMessage = () => {
     return ` *¡Faltan solo ${timeLeft.days} días para la Boda!* 
 
-${timeLeft.days > 30 ? 
-  ` ¡${timeLeft.months} meses! ` : 
-  ``}
- `;
+${timeLeft.days > 30 ? ` ¡${timeLeft.months} meses! ` : ``}`;
   };
-
-  // *Fecha:* Domingo 23 de Noviembre 2025
-  // *Hora:* 19:00 hs 
-  // *Lugar:* Casa del Mar (Villa García Uriburu)
- 
-  //  *Con amor, Ale y Fabi
 
   const shareOnWhatsApp = (number = null) => {
     const message = generateMessage();
@@ -42,42 +31,6 @@ ${timeLeft.days > 30 ?
       : `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
-
-  const sendToAllNumbers = () => {
-    if (phoneNumbers.length === 0) {
-      alert("No hay números configurados para enviar mensajes");
-      return;
-    }
-
-    phoneNumbers.forEach((number, index) => {
-      setTimeout(() => {
-        shareOnWhatsApp(number);
-      }, index * 2000);
-    });
-  };
-
-  useEffect(() => {
-    let interval;
-    
-    if (isAutoSending) {
-      const currentWeek = Math.floor(timeLeft.days / 7);
-      
-      if (lastSentWeek !== currentWeek) {
-        sendToAllNumbers();
-        setLastSentWeek(currentWeek);
-      }
-      
-      interval = setInterval(() => {
-        const newWeek = Math.floor(timeLeft.days / 7);
-        if (lastSentWeek !== newWeek) {
-          sendToAllNumbers();
-          setLastSentWeek(newWeek);
-        }
-      }, 3600000);
-    }
-    
-    return () => clearInterval(interval);
-  }, [isAutoSending, timeLeft.days, lastSentWeek]);
 
   useEffect(() => {
     const createParticle = () => {
@@ -141,55 +94,24 @@ ${timeLeft.days > 30 ?
       <div className="background-image"></div>
       <div className="gold-frame"></div>
       
-      <button 
-        className="whatsapp-panel-toggle"
-        onClick={() => setShowWhatsappPanel(!showWhatsappPanel)}
-      >
-        <FaWhatsapp />
-        <FaCog />
-      </button>
-      
-      <div className={`whatsapp-controls-panel ${showWhatsappPanel ? 'visible' : ''}`}>
-        <h3>Compartir cuenta regresiva</h3>
-        
-        <button 
-          className="whatsapp-share-button" 
-          onClick={() => shareOnWhatsApp()}
-        >
-          <FaWhatsapp /> Compartir
-        </button>
-
-      </div>
-      
       <div className="clock-content">
         <h1 className="animated-title">Faltan</h1>
         
         <div className="main-counter">
-          <div className="time-block">
-            <div className="time-value ornate-number">{timeLeft.days}</div>
-            <div className="time-label">Días</div>
-          </div>
-          
-          <div className="time-separator">:</div>
-          
-          <div className="time-block">
-            <div className="time-value ornate-number">{timeLeft.hours.toString().padStart(2, '0')}</div>
-            <div className="time-label">Horas</div>
-          </div>
-          
-          <div className="time-separator">:</div>
-          
-          <div className="time-block">
-            <div className="time-value ornate-number">{timeLeft.minutes.toString().padStart(2, '0')}</div>
-            <div className="time-label">Minutos</div>
-          </div>
-          
-          <div className="time-separator">:</div>
-          
-          <div className="time-block">
-            <div className="time-value ornate-number">{timeLeft.seconds.toString().padStart(2, '0')}</div>
-            <div className="time-label">Segundos</div>
-          </div>
+          {Object.entries({
+            days: timeLeft.days,
+            hours: timeLeft.hours.toString().padStart(2, '0'),
+            minutes: timeLeft.minutes.toString().padStart(2, '0'),
+            seconds: timeLeft.seconds.toString().padStart(2, '0')
+          }).map(([key, value]) => (
+            <React.Fragment key={key}>
+              <div className="time-block">
+                <div className="time-value ornate-number">{value}</div>
+                <div className="time-label">{key.charAt(0).toUpperCase() + key.slice(1)}</div>
+              </div>
+              {key !== 'seconds' && <div className="time-separator">:</div>}
+            </React.Fragment>
+          ))}
         </div>
         
         <div className="compact-info">
@@ -205,6 +127,16 @@ ${timeLeft.days > 30 ?
           
           <div className="wedding-date">
             <span>23 / 11 / 2025 - 19:00 hs</span>
+          </div>
+
+          {/* Botón de WhatsApp integrado debajo de la fecha */}
+          <div className="whatsapp-integrated-container">
+            <button 
+              className="whatsapp-integrated-button" 
+              onClick={() => shareOnWhatsApp()}
+            >
+              Compartir cuenta regresiva<FaWhatsapp />
+            </button>
           </div>
         </div>
       </div>

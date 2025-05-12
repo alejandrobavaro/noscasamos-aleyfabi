@@ -1,5 +1,4 @@
 /*--------------Estilos Globales Mejorados--------------*/
-
 * {
   margin: 0;
   padding: 0;
@@ -8,24 +7,30 @@
 
 html, body {
   height: 100%;
+  scroll-behavior: smooth;
 }
 
 html {
   font-size: 100%;
+  @media (max-width: 768px) {
+    font-size: 95%;
+  }
+  @media (max-width: 576px) {
+    font-size: 90%;
+  }
 }
 
 /*--------------Estilos Body--------------*/
-
 body {
   font-family: 'Cormorant Garamond', serif;
   text-align: center;
   color: #3A2E29;
   line-height: 1.6;
-  // background-color: #f8f5f2; 
+  background-color: #f8f5f2;
+  overflow-x: hidden;
 }
 
 /*--------------Contenedor Principal--------------*/
-
 .app-container {
   display: flex;
   flex-direction: column;
@@ -33,15 +38,28 @@ body {
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
-  background: #fff; // Fondo blanco para el contenedor
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); // Sombra sutil
+  background: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  
+  @media (max-width: 1400px) {
+    max-width: 100%;
+    box-shadow: none;
+  }
 }
 
 /*--------------Estilos para el Contenido Principal--------------*/
-
 .main-content {
   flex: 1;
   padding: 2rem 1rem;
+  @media (max-width: 992px) {
+    padding: 1.5rem 0.75rem;
+  }
+  @media (max-width: 768px) {
+    padding: 1.25rem 0.5rem;
+  }
+  @media (max-width: 576px) {
+    padding: 1rem 0.25rem;
+  }
 }
 
 .content-wrapper {
@@ -49,15 +67,29 @@ body {
   width: 100%;
   margin: 0 auto;
   padding: 0 1rem;
+  @media (max-width: 768px) {
+    padding: 0 0.75rem;
+  }
+  @media (max-width: 576px) {
+    padding: 0 0.5rem;
+  }
 }
 
 /*--------------Estilos para Textos y Encabezados--------------*/
-
 p {
   font-size: 1.1rem;
   padding: 1rem;
   color: #5a4a42;
   line-height: 1.8;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+  @media (max-width: 576px) {
+    font-size: 0.95rem;
+    padding: 0.5rem;
+    line-height: 1.7;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -67,7 +99,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: x-large;
+  font-size: 2.5rem;
   color: #8B4513;
   position: relative;
   
@@ -81,48 +113,57 @@ h1 {
     height: 2px;
     background: #D4AF37;
   }
-}
-
-/*--------------Estilos para el Footer--------------*/
-
-footer {
-  margin-top: auto; // Mantiene el footer abajo
-}
-
-/*--------------Media Queries--------------*/
-
-@media (max-width: 1200px) {
-  .app-container {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 900px) {
-  .main-content {
-    padding: 1.5rem 0.5rem;
-  }
   
-  h1 {
-    font-size: x-large;
+  @media (max-width: 992px) {
+    font-size: 2.2rem;
   }
-}
-
-@media (max-width: 600px) {
-  .main-content {
-    padding: 1rem 0.25rem;
-  }
-  
-  h1 {
-    font-size: 1.5rem;
-    
+  @media (max-width: 768px) {
+    font-size: 2rem;
     &::after {
       width: 80px;
       bottom: -8px;
     }
   }
+  @media (max-width: 576px) {
+    font-size: 1.8rem;
+    &::after {
+      width: 70px;
+      bottom: -6px;
+    }
+  }
 }
 
-/* Scrollbars delgadas */
+/*--------------Contenedor de Contacto--------------*/
+.contacto-container {
+  display: flex;
+  gap: 2rem;
+  @media (max-width: 992px) {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+/*--------------Divisor--------------*/
+.divider {
+  border: 0;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 1rem 0;
+  @media (max-width: 768px) {
+    margin: 0.75rem 0;
+  }
+}
+
+/*--------------Estilos para el Footer--------------*/
+footer {
+  margin-top: auto;
+  padding: 1.5rem 0;
+  @media (max-width: 768px) {
+    padding: 1rem 0;
+  }
+}
+
+/*--------------Scrollbars--------------*/
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -131,4 +172,30 @@ footer {
 ::-webkit-scrollbar-thumb {
   background: #bdbdbd;
   border-radius: 3px;
+}
+
+/*--------------Transiciones Globales--------------*/
+a, button {
+  transition: all 0.3s ease;
+}
+
+/*--------------Media Queries Específicas--------------*/
+@media (max-width: 768px) {
+  body {
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  .app-container {
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 576px) {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .main-content {
+    padding-top: 0.5rem;
+  }
 }

@@ -2,10 +2,10 @@
 .public-container {
   width: 100%;
   max-width: 1200px;
-  margin: 0 ;
+  margin: 0;
   padding: 0; 
   background: transparent;
- }
+}
 
 /* Estilo general revista elegante */
 .wedding-journal {
@@ -49,9 +49,6 @@
 .journal-content > * {
   width: 100%;
 }
-
-
-
 
 /* Media Queries */
 @media (max-width: 1200px) {
