@@ -1,13 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../assets/scss/_03-Componentes/_Footer.scss";
-import { BsInstagram, BsYoutube, BsFacebook, BsEnvelope } from "react-icons/bs";
+import { BsInstagram, BsYoutube, BsFacebook } from "react-icons/bs";
 
 function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
   return (
     <footer className="footer">
       <div className="contact-btn-container">
-        <Link to="/contacto" className="contact-btn">
+        <Link 
+          to="/contacto" 
+          className="contact-btn"
+          onClick={scrollToTop}
+        >
           CONTACTO
         </Link>
       </div>

@@ -7,14 +7,40 @@ function PPublicoMensajes() {
   const [author, setAuthor] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [showForm, setShowForm] = useState(true);
+  const [glows, setGlows] = useState([]);
 
-  // Función para generar colores aleatorios pastel
-  const getRandomColor = () => {
-    const hue = Math.floor(Math.random() * 360);
-    return `hsl(${hue}, 70%, 85%)`;
+  // Paleta de colores pastel para los cartelitos
+  const noteColors = [
+    '#FFD3B6', '#FFAAA5', '#FF8B94', '#D4A5A5', '#CCD7C5',
+    '#E2F0CB', '#B5EAD7', '#C7CEEA', '#F8B195', '#F67280',
+    '#C06C84', '#6C5B7B', '#355C7D', '#A8E6CE', '#DCEDC2',
+    '#FFD3B6', '#FFAAA5', '#FF8B94'
+  ];
+
+  // Crear efectos de brillo al cargar el componente
+  useEffect(() => {
+    const newGlows = Array.from({ length: 15 }, (_, i) => ({
+      id: i,
+      size: Math.random() * 200 + 100, // Tamaños entre 100px y 300px
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      opacity: Math.random() * 0.5 + 0.3,
+      delay: Math.random() * 5,
+      duration: Math.random() * 15 + 10,
+      blur: Math.random() * 30 + 10
+    }));
+    setGlows(newGlows);
+  }, []);
+
+  // Función para truncar texto si es muy largo
+  const truncateText = (text, maxWords = 15) => {
+    const words = text.split(' ');
+    if (words.length > maxWords) {
+      return words.slice(0, maxWords).join(' ') + '...';
+    }
+    return text;
   };
 
-  // Cargar mensajes del localStorage al inicio
   useEffect(() => {
     const savedMessages = localStorage.getItem("weddingMessages");
     if (savedMessages) {
@@ -22,7 +48,6 @@ function PPublicoMensajes() {
     }
   }, []);
 
-  // Guardar mensajes en localStorage cuando cambian
   useEffect(() => {
     if (messages.length > 0) {
       localStorage.setItem("weddingMessages", JSON.stringify(messages));
@@ -35,19 +60,20 @@ function PPublicoMensajes() {
 
     setIsSending(true);
     
-    // Simular envío con delay
     setTimeout(() => {
+      const randomColor = noteColors[Math.floor(Math.random() * noteColors.length)];
+      
       const newMsg = {
         id: Date.now(),
-        text: newMessage,
+        text: truncateText(newMessage),
         author: author,
         date: new Date().toLocaleDateString("es-AR"),
         position: {
-          x: Math.random() * 60 + 20, // Entre 20% y 80%
+          x: Math.random() * 60 + 20,
           y: Math.random() * 60 + 20,
-          rotation: Math.random() * 30 - 15 // Rotación más sutil
+          rotation: Math.random() * 30 - 15
         },
-        color: getRandomColor() // Color aleatorio
+        color: randomColor
       };
 
       setMessages([...messages, newMsg]);
@@ -64,10 +90,29 @@ function PPublicoMensajes() {
 
   return (
     <section className="interactive-board">
+      {/* Efecto de brillos mágicos mejorado */}
+      <div className="magic-glows">
+        {glows.map(glow => (
+          <div 
+            key={glow.id}
+            className="glow"
+            style={{
+              width: `${glow.size}px`,
+              height: `${glow.size}px`,
+              left: `${glow.left}%`,
+              top: `${glow.top}%`,
+              opacity: glow.opacity,
+              animationDelay: `${glow.delay}s`,
+              filter: `blur(${glow.blur}px)`
+            }}
+          />
+        ))}
+      </div>
+      
       <div className="board-container">
         <div className="board-header">
-          <h3>Muro para los Novios</h3>
-          <h6>Dejanos tu mensaje</h6>
+          <h3>Muro de Mensajes</h3>
+          <h6>para los novios</h6>
         </div>
         
         <div className="board-background">
@@ -80,7 +125,7 @@ function PPublicoMensajes() {
                 top: `${message.position.y}%`,
                 transform: `rotate(${message.position.rotation}deg)`,
                 backgroundColor: message.color,
-                zIndex: Math.floor(message.position.y)
+                zIndex: Math.floor(message.position.y) + 10
               }}
               onClick={() => removeMessage(message.id)}
             >
@@ -119,9 +164,9 @@ function PPublicoMensajes() {
                 required
                 maxLength={120}
                 rows={3}
-                placeholder="Escribe tu mensaje de amor..."
+                placeholder="Escribe tu mensaje de amor (máx. 15 palabras)..."
               />
-              <small>Máximo 120 caracteres</small>
+              <small>Máximo 15 palabras</small>
             </div>
             <button type="submit" disabled={isSending}>
               {isSending ? "Enviando..." : "Pegar en la Pizarra"}

@@ -5,35 +5,144 @@
   position: relative;
   border-radius: 20px;
   font-family: 'Cormorant Garamond', serif;
-  background: #945e4e93; // Fondo de respaldo
+  background: 
+    linear-gradient(rgba(30, 30, 30, 0.438), rgba(30, 30, 30, 0.219)),
+    url('../../../../img/06-img-galeria3/id20-c20.png') center/cover no-repeat;
+  box-shadow: 0 10px 30px rgba(138, 45, 45, 0.5);
+  overflow: hidden;
+  border: 15px solid #3a3631;
+  position: relative;
+  min-height: 500px;
+  /* Efecto de brillos mágicos mejorado */
+.magic-glows {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+
+  .glow {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.356) 10%, transparent 70%);
+    border-radius: 105px;
+    transform: translate(-50%, -50%);
+    animation: floatGlow 1s infinite ease-in-out;
+    mix-blend-mode: screen;
+    will-change: transform, opacity;
+
+    @keyframes floatGlow {
+      0% {
+        transform: translate(-50%, -50%) scale(10) translate(0, 0);
+        opacity: 0.7;
+      }
+      25% {
+        transform: translate(-50%, -50%) scale(5.1) translate(20px, 10px);
+        opacity: 0.9;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(5.9) translate(-15px, 20px);
+        opacity: 0.6;
+      }
+      75% {
+        transform: translate(-50%, -50%) scale(6.2) translate(10px, -15px);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(10) translate(0, 0);
+        opacity: 0.7;
+      }
+    }
+
+    /* Variaciones para algunos brillos */
+    &:nth-child(odd) {
+      background: radial-gradient(circle, rgba(245, 140, 140, 0.137) 0%, transparent 70%);
+      animation-duration: 7s;
+      animation-delay: 7s;
+    }
+
+    &:nth-child(3n) {
+      background: radial-gradient(circle, rgba(255, 0, 0, 0.274) 0%, transparent 70%);
+      animation-name: floatGlowAlt;
+      animation-duration: 7s;
+    }
+
+    &:nth-child(5n) {
+      background: radial-gradient(circle, rgba(0, 153, 255, 0.301) 0%, transparent 70%);
+      animation-name: floatGlowFast;
+      animation-duration: 7s;
+    }
+  }
+
+  /* Animaciones alternativas */
+  @keyframes floatGlowAlt {
+    0% {
+      transform: translate(-50%, -50%) scale(2.8) translate(-30px, -20px);
+      opacity: 0.9;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(3.3) translate(30px, 20px);
+      opacity: 0.9;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(3.8) translate(-30px, -20px);
+      opacity: 0.9;
+    }
+  }
+
+  @keyframes floatGlowFast {
+    0% {
+      transform: translate(-50%, -50%) scale(10) translate(0, 0);
+      opacity: 0.9;
+    }
+    25% {
+      transform: translate(-50%, -50%) scale(10.2) translate(40px, 0);
+      opacity: 0.9;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.8) translate(0, 40px);
+      opacity: 0.9;
+    }
+    75% {
+      transform: translate(-50%, -50%) scale(5.3) translate(-40px, 0);
+      opacity: 0.9;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(10) translate(0, 0);
+      opacity: 0.9;
+    }
+  }
+}
 
   .board-container {
     width: 100%;
     margin: 0 auto;
     padding: 0;
-    background: transparent;
-    box-shadow: none;
+    position: relative;
+    z-index: 3;
   }
 
   .board-header {
     text-align: center;
     padding: 2rem 0 1rem;
-    background: transparent;
     position: relative;
     z-index: 10;
 
     h3 {
       font-family: 'Cinzel', serif;
       font-size: 2.5rem;
-      color: #7a4f50;
+      color: #f8f1e5;
       margin-bottom: 0.5rem;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
 
     h6 {
       font-size: 1.2rem;
-      color: #6B635B;
+      color: #c2b8a8;
       font-weight: normal;
+      letter-spacing: 1px;
     }
   }
 
@@ -41,45 +150,48 @@
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 100%;   // Para cuadrado
-    background: url('/img/00-fondos/Pizarronboda1b.jpeg') center/cover no-repeat;
+    padding-bottom: 100%;
     margin: 0 auto;
-    border-radius: 50px;
     overflow: hidden;
-
-    // Contenedor para los mensajes (se ajusta al área de la pizarra)
-    .messages-container {
-      position: absolute;
-      top: 10%;
-      left: 10%;
-      width: 80%;
-      height: 80%;
-    }
   }
+
   .message-note {
     position: absolute;
     width: 160px;
-    padding: 1.2rem 1rem;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
     border-radius: 2px;
     cursor: pointer;
     transition: all 0.3s ease;
     transform-origin: center;
-    border: 1px solid rgba(0,0,0,0.1);
+    border: none;
+    word-wrap: break-word;
+    overflow: hidden;
 
     &:hover {
       transform: scale(1.05) rotate(0deg) !important;
       z-index: 1000 !important;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     }
 
     .message-content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      
       p {
         margin: 0 0 0.8rem 0;
         font-size: 0.9rem;
         line-height: 1.4;
         font-family: 'Dancing Script', cursive;
-        color: #333;
+        color: #5a2d2d;
+        text-shadow: 1px 1px 1px rgba(255,255,255,0.7);
+        flex-grow: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
       }
 
       .message-footer {
@@ -88,6 +200,7 @@
         align-items: center;
         font-size: 0.75rem;
         color: #555;
+        margin-top: auto;
 
         span {
           font-weight: bold;
@@ -126,13 +239,15 @@
   }
 
   .message-form {
-    max-width:auto;
+    max-width: 500px;
     margin: 2rem auto;
     padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.781);
+    background: rgba(255, 255, 255, 0.85);
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(245, 166, 166, 0.411);
     border: 1px solid #e8d5cc;
+    position: relative;
+    z-index: 5;
 
     .form-group {
       margin-bottom: 1.5rem;
@@ -209,6 +324,8 @@
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     border: 1px solid #e8d5cc;
+    position: relative;
+    z-index: 5;
 
     p {
       margin-bottom: 1.5rem;
@@ -238,6 +355,7 @@
 @media (max-width: 768px) {
   .interactive-board {
     margin: 2rem 0;
+    border-width: 10px;
 
     .board-header {
       h3 {
@@ -251,13 +369,19 @@
 
     .message-note {
       width: 140px;
-      padding: 1rem;
+      padding: 0.8rem;
+      
+      .message-content p {
+        font-size: 0.8rem;
+        -webkit-line-clamp: 4;
+      }
     }
 
     .message-form,
     .form-success {
       margin: 1.5rem auto;
       padding: 1.25rem;
+      max-width: 90%;
     }
   }
 }
@@ -265,6 +389,7 @@
 @media (max-width: 576px) {
   .interactive-board {
     margin: 1rem 0;
+    border-width: 8px;
 
     .board-header {
       padding: 1rem;
@@ -280,10 +405,11 @@
 
     .message-note {
       width: 120px;
-      padding: 0.8rem;
+      padding: 0.6rem;
       
       .message-content p {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
+        -webkit-line-clamp: 3;
       }
     }
 
