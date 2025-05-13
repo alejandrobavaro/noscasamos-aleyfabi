@@ -11,110 +11,33 @@
   box-shadow: 0 10px 30px rgba(138, 45, 45, 0.5);
   overflow: hidden;
   border: 15px solid #3a3631;
-  position: relative;
   min-height: 500px;
-  /* Efecto de brillos mágicos mejorado */
-.magic-glows {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
 
-  .glow {
+  .magic-glows {
     position: absolute;
-    background: radial-gradient(circle, rgba(255, 0, 0, 0.356) 10%, transparent 70%);
-    border-radius: 105px;
-    transform: translate(-50%, -50%);
-    animation: floatGlow 1s infinite ease-in-out;
-    mix-blend-mode: screen;
-    will-change: transform, opacity;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
 
-    @keyframes floatGlow {
-      0% {
-        transform: translate(-50%, -50%) scale(10) translate(0, 0);
-        opacity: 0.7;
-      }
-      25% {
-        transform: translate(-50%, -50%) scale(5.1) translate(20px, 10px);
-        opacity: 0.9;
-      }
-      50% {
-        transform: translate(-50%, -50%) scale(5.9) translate(-15px, 20px);
-        opacity: 0.6;
-      }
-      75% {
-        transform: translate(-50%, -50%) scale(6.2) translate(10px, -15px);
-        opacity: 0.8;
-      }
-      100% {
-        transform: translate(-50%, -50%) scale(10) translate(0, 0);
-        opacity: 0.7;
-      }
-    }
+    .glow {
+      position: absolute;
+      background: radial-gradient(circle, rgba(255, 0, 0, 0.356) 10%, transparent 70%);
+      border-radius: 105px;
+      transform: translate(-50%, -50%);
+      animation: floatGlow 15s infinite ease-in-out;
+      mix-blend-mode: screen;
+      will-change: transform, opacity;
 
-    /* Variaciones para algunos brillos */
-    &:nth-child(odd) {
-      background: radial-gradient(circle, rgba(245, 140, 140, 0.137) 0%, transparent 70%);
-      animation-duration: 7s;
-      animation-delay: 7s;
-    }
-
-    &:nth-child(3n) {
-      background: radial-gradient(circle, rgba(255, 0, 0, 0.274) 0%, transparent 70%);
-      animation-name: floatGlowAlt;
-      animation-duration: 7s;
-    }
-
-    &:nth-child(5n) {
-      background: radial-gradient(circle, rgba(0, 153, 255, 0.301) 0%, transparent 70%);
-      animation-name: floatGlowFast;
-      animation-duration: 7s;
+      @keyframes floatGlow {
+        0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+        50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.5; }
+      }
     }
   }
-
-  /* Animaciones alternativas */
-  @keyframes floatGlowAlt {
-    0% {
-      transform: translate(-50%, -50%) scale(2.8) translate(-30px, -20px);
-      opacity: 0.9;
-    }
-    50% {
-      transform: translate(-50%, -50%) scale(3.3) translate(30px, 20px);
-      opacity: 0.9;
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(3.8) translate(-30px, -20px);
-      opacity: 0.9;
-    }
-  }
-
-  @keyframes floatGlowFast {
-    0% {
-      transform: translate(-50%, -50%) scale(10) translate(0, 0);
-      opacity: 0.9;
-    }
-    25% {
-      transform: translate(-50%, -50%) scale(10.2) translate(40px, 0);
-      opacity: 0.9;
-    }
-    50% {
-      transform: translate(-50%, -50%) scale(1.8) translate(0, 40px);
-      opacity: 0.9;
-    }
-    75% {
-      transform: translate(-50%, -50%) scale(5.3) translate(-40px, 0);
-      opacity: 0.9;
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(10) translate(0, 0);
-      opacity: 0.9;
-    }
-  }
-}
 
   .board-container {
     width: 100%;
@@ -138,7 +61,7 @@
       text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
 
-    h6 {
+    .board-subtitle {
       font-size: 1.2rem;
       color: #c2b8a8;
       font-weight: normal;
@@ -179,7 +102,7 @@
       display: flex;
       flex-direction: column;
       
-      p {
+      .message-text {
         margin: 0 0 0.8rem 0;
         font-size: 0.9rem;
         line-height: 1.4;
@@ -202,13 +125,13 @@
         color: #555;
         margin-top: auto;
 
-        span {
+        .message-author {
           font-weight: bold;
           font-style: italic;
           font-family: 'Cormorant Garamond', serif;
         }
 
-        small {
+        .message-date {
           opacity: 0.7;
         }
       }
@@ -281,7 +204,7 @@
         resize: vertical;
       }
 
-      small {
+      .char-limit {
         display: block;
         margin-top: 0.25rem;
         font-size: 0.75rem;
@@ -352,71 +275,144 @@
   }
 }
 
+/* Tablet (768px) */
 @media (max-width: 768px) {
   .interactive-board {
     margin: 2rem 0;
-    border-width: 10px;
+    border-width: 12px;
+    min-height: auto;
 
-    .board-header {
-      h3 {
-        font-size: 1.8rem;
-      }
-      
-      h6 {
-        font-size: 1rem;
-      }
+    .board-container {
+      display: flex;
+      flex-direction: column;
     }
 
-    .message-note {
-      width: 140px;
-      padding: 0.8rem;
+    .board-header {
+      padding: 1.5rem 0;
+      order: 1;
       
-      .message-content p {
-        font-size: 0.8rem;
-        -webkit-line-clamp: 4;
+      h3 {
+        font-size: 2rem;
+      }
+      
+      .board-subtitle {
+        font-size: 1.1rem;
       }
     }
 
     .message-form,
     .form-success {
-      margin: 1.5rem auto;
-      padding: 1.25rem;
-      max-width: 90%;
+      order: 2;
+      margin: 1rem auto;
+      padding: 1.5rem;
+      width: 80%;
+      max-width: 500px;
+    }
+
+    .board-background {
+      order: 3;
+      height: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      max-height: 60vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .message-note {
+      position: relative;
+      width: 80%;
+      max-width: 400px;
+      min-height: 120px;
+      margin: 0;
+      left: auto !important;
+      top: auto !important;
+      transform: rotate(-2deg) !important;
+      z-index: auto !important;
+      padding: 1.2rem;
+      
+      .message-content {
+        .message-text {
+          font-size: 1rem;
+          line-height: 1.5;
+          -webkit-line-clamp: unset;
+          margin-bottom: 1rem;
+        }
+        
+        .message-footer {
+          font-size: 0.85rem;
+        }
+      }
+      
+      &:nth-child(even) {
+        transform: rotate(2deg) !important;
+      }
     }
   }
 }
 
-@media (max-width: 576px) {
+/* Mobile (412px) */
+@media (max-width: 412px) {
   .interactive-board {
     margin: 1rem 0;
-    border-width: 8px;
+    border-width: 10px;
 
     .board-header {
-      padding: 1rem;
+      padding: 1.5rem 0 1rem;
       
       h3 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
       }
-    }
-
-    .board-background {
-      min-height: 250px;
-    }
-
-    .message-note {
-      width: 120px;
-      padding: 0.6rem;
       
-      .message-content p {
-        font-size: 0.7rem;
-        -webkit-line-clamp: 3;
+      .board-subtitle {
+        font-size: 1rem;
       }
     }
 
     .message-form,
     .form-success {
-      margin: 1rem auto;
+      margin: 0 auto 1.5rem;
+      padding: 1.3rem;
+      width: 85%;
+    }
+
+    .board-background {
+      max-height: 50vh;
+      padding: 1rem 0.5rem;
+      gap: 1.2rem;
+    }
+
+    .message-note {
+      width: 85%;
+      padding: 1.1rem;
+      min-height: 110px;
+      
+      .message-content {
+        .message-text {
+          font-size: 0.95rem;
+        }
+        
+        .message-footer {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+/* Mobile pequeño (menos de 380px) */
+@media (max-width: 380px) {
+  .interactive-board {
+    .message-note {
+      width: 90%;
       padding: 1rem;
+      
+      .message-content .message-text {
+        font-size: 0.9rem;
+      }
     }
   }
 }

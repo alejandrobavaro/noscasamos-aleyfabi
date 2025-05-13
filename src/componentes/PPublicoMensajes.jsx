@@ -166,7 +166,7 @@ function PPublicoMensajes() {
                 rows={3}
                 placeholder="Escribe tu mensaje de amor (máx. 15 palabras)..."
               />
-              <small>Máximo 15 palabras</small>
+              <small>Máximo 20 caracteres</small>
             </div>
             <button type="submit" disabled={isSending}>
               {isSending ? "Enviando..." : "Pegar en la Pizarra"}

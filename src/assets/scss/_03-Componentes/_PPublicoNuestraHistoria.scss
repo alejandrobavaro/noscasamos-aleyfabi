@@ -1,22 +1,37 @@
-/* Portada principal */
-/* Portada principal */
+/* Variables reutilizables */
+$color-primary: #5a2d2d;
+$color-secondary: #a67c52;
+$color-light: #f9f5f0;
+$color-text: #555;
+$color-quote: #7a4f50;
+$shadow-light: 0 5px 20px rgba(0, 0, 0, 0.1);
+$transition-base: all 0.3s ease;
+
+/* Portada principal - Mobile First */
 .featured-story {
-  margin: 0 0 3rem 0;
+  margin: 0 0 2rem 0;
   position: relative;
-  border-radius: 20px;
+  border-radius: 15px;
+  overflow: hidden;
+  will-change: transform; /* Optimización para animaciones */
 
   .featured-slide {
     position: relative;
-    height: 500px;
+    height: 350px;
     overflow: hidden;
     border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: $shadow-light;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.8s ease;
+      will-change: transform;
+    }
+
+    &:hover img {
+      transform: scale(1.02);
     }
 
     .slide-caption {
@@ -24,299 +39,501 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-      padding: 2rem;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+      padding: 1.5rem 1rem;
+      text-align: center;
+      backdrop-filter: blur(2px);
 
       .caption-content {
         display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        max-width: 1200px;
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
         margin: 0 auto;
       }
 
       h2 {
         font-family: 'Cinzel', serif;
-        font-size: 2.2rem;
-        margin-bottom: 1rem;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
         color: #fff;
-        flex: 1;
+        width: 100%;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .read-more {
-        background: transparent;
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(5px);
         color: #fff;
-        border: 1px solid #fff;
-        padding: 0.5rem 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 0.7rem 1.8rem;
         font-family: 'Cormorant Garamond', serif;
-        font-size: 1.1rem;
+        font-size: 1rem;
         border-radius: 30px;
         cursor: pointer;
-        transition: all 0.3s ease;
-        margin-left: 2rem;
+        transition: $transition-base;
+        margin-top: 0.5rem;
         white-space: nowrap;
-        align-self: center;
+        width: auto;
+        min-width: 180px;
+        will-change: transform;
 
-        &:hover {
-          background: rgba(255, 255, 255, 0.1);
+        &:hover, &:focus {
+          background: rgba(255, 255, 255, 0.35);
+          transform: translateY(-2px);
+          outline: none;
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  /* Estilos para los puntos del slider */
+  .slick-dots {
+    bottom: 15px;
+
+    li {
+      margin: 0 3px;
+
+      button {
+        &::before {
+          color: rgba(255, 255, 255, 0.6);
+          font-size: 10px;
+          opacity: 1;
+        }
+      }
+
+      &.slick-active button::before {
+        color: white;
+      }
+    }
+  }
+}
+
+/* Modal de historia completa */
+.story-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  animation: fadeIn 0.3s ease-out;
+
+  .modal-content {
+    max-width: 1200px;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s ease-out;
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: $color-primary;
+      transition: $transition-base;
+      line-height: 1;
+      padding: 0.5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+
+      &:hover, &:focus {
+        background: rgba(0, 0, 0, 0.05);
+        transform: rotate(90deg);
+        outline: none;
+      }
+    }
+
+    .love-story-content {
+      .story-intro {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba($color-secondary, 0.3);
+
+        h2 {
+          font-family: 'Cinzel', serif;
+          color: $color-primary;
+          font-size: 2.2rem;
+          margin-bottom: 1rem;
+        }
+
+        .intro-text {
+          font-size: 1.1rem;
+          line-height: 1.8;
+          color: $color-text;
+          max-width: 800px;
+          margin: 0 auto;
         }
       }
     }
   }
 }
-  
-  /* Modal de historia completa */
-  .story-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    overflow-y: auto;
-  
-    .modal-content {
-      background: #fff;
-      max-width: 1000px;
+
+/* Bloques de historia dentro del modal */
+.story-chapter {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  padding: 0.5rem;
+
+  .chapter-image {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: $shadow-light;
+    
+    img {
       width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      border-radius: 8px;
-      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      will-change: transform;
+
+      &:hover {
+        transform: scale(1.03);
+      }
+    }
+  }
+
+  .chapter-text {
+    width: 100%;
+    
+    h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      color: $color-primary;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid $color-secondary;
+      line-height: 1.3;
+    }
+
+    p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: $color-text;
+    }
+
+    .love-quote {
+      font-style: italic;
+      color: $color-quote;
+      padding: 1rem;
+      border-left: 3px solid $color-secondary;
+      background: $color-light;
+      margin: 1.5rem 0;
+      font-size: 1rem;
+      line-height: 1.6;
+      border-radius: 0 8px 8px 0;
       position: relative;
-      padding: 2rem;
-  
-      .close-modal {
+
+      &::before {
+        content: '"';
+        font-size: 3rem;
         position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: none;
-        border: none;
-        font-size: 2rem;
-        color: #8c5e3d;
-        cursor: pointer;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        left: 0.5rem;
+        top: 0.5rem;
+        color: rgba($color-secondary, 0.2);
+        font-family: serif;
+        line-height: 1;
+      }
+    }
+
+    .animated-hearts {
+      margin: 1.5rem 0;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+
+      .heart {
+        animation: float 2s infinite ease-in-out;
+        font-size: 1.5rem;
+        opacity: 0.8;
+        will-change: transform;
+      }
+    }
+
+    .sparkle-animation {
+      position: relative;
+      height: 50px;
+      margin: 1.5rem 0;
+
+      .sparkle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: gold;
         border-radius: 50%;
-        transition: all 0.3s ease;
-  
-        &:hover {
-          background: #f5e9dd;
-        }
+        animation: sparkle 1.5s infinite ease-out;
+        will-change: transform, opacity;
       }
-  
-      .love-story-content {
-        padding: 1rem;
-  
-        .story-intro {
-          text-align: center;
-          margin-bottom: 3rem;
-  
-          h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            color: #5a2d2d;
-            margin-bottom: 1rem;
-          }
-  
-          .intro-text {
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.2rem;
-          }
-        }
-  
-        .story-chapter {
-          display: flex;
-          align-items: center;
-          gap: 3rem;
-          margin-bottom: 4rem;
-  
-          &.reverse-layout {
-            flex-direction: row-reverse;
-          }
-  
-          .chapter-image {
-            flex: 1;
-            min-width: 0;
-  
-            img {
-              width: 100%;
-              height: 200px;
-              object-fit: cover;
-              border-radius: 8px;
-              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            }
-          }
-  
-          .chapter-text {
-            flex: 1;
-            min-width: 0;
-  
-            h3 {
-              font-family: 'Cinzel', serif;
-              font-size: 1.8rem;
-              color: #5a2d2d;
-              margin-bottom: 1.5rem;
-              position: relative;
-              padding-bottom: 1rem;
-  
-              &::after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 80px;
-                height: 3px;
-                background: #a67c52;
-              }
-            }
-  
-            p {
-              margin-bottom: 1.5rem;
-              font-size: 1.1rem;
-              line-height: 1.8;
-            }
-  
-            .love-quote {
-              font-style: italic;
-              color: #8c5e3d;
-              padding: 1.5rem;
-              border-left: 3px solid #a67c52;
-              background: #f9f5f0;
-              margin: 2rem 0;
-              font-size: 1.2rem;
-              position: relative;
-  
-              &::before {
-                content: '"';
-                position: absolute;
-                top: 0.5rem;
-                left: 0.5rem;
-                font-size: 2rem;
-                color: #a67c52;
-                opacity: 0.3;
-              }
-            }
-  
-            .animated-hearts {
-              display: flex;
-              justify-content: center;
-              gap: 1rem;
-              margin: 2rem 0;
-  
-              .heart {
-                font-size: 1.5rem;
-                color: #7a4f50;
-                animation: float 3s ease-in-out infinite;
-                opacity: 0.8;
-              }
-            }
-  
-            .sparkle-animation {
-              position: relative;
-              height: 100px;
-              margin: 2rem 0;
-  
-              .sparkle {
-                position: absolute;
-                width: 8px;
-                height: 8px;
-                background: #c2a78d;
-                border-radius: 50%;
-                filter: blur(1px);
-                animation: sparkle 2s infinite;
-                opacity: 0;
-              }
-            }
-          }
+    }
+  }
+
+  /* Tablet (768px+) */
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 2.5rem;
+    padding: 0;
+
+    &.reverse-layout {
+      flex-direction: row-reverse;
+    }
+
+    .chapter-image {
+      flex: 1;
+      min-width: 0;
+      
+      img {
+        height: 280px;
+      }
+    }
+
+    .chapter-text {
+      flex: 1;
+      min-width: 0;
+      padding: 0.5rem 0;
+
+      h3 {
+        font-size: 1.6rem;
+      }
+
+      p {
+        font-size: 1.05rem;
+      }
+
+      .love-quote {
+        font-size: 1.1rem;
+        padding: 1.2rem 1.2rem 1.2rem 2.5rem;
+
+        &::before {
+          left: 0.8rem;
+          top: 0.8rem;
         }
       }
     }
   }
-  
-  /* Animaciones */
-  @keyframes float {
-    0% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(5deg); }
-    100% { transform: translateY(0) rotate(0deg); }
-  }
-  
-  @keyframes sparkle {
-    0% { transform: scale(0); opacity: 0; }
-    50% { transform: scale(1.5); opacity: 1; }
-    100% { transform: scale(0); opacity: 0; }
-  }
-  
-  /* Responsive */
-  @media (max-width: 992px) {
-    .featured-story .featured-slide {
-      height: 400px;
+
+  /* Desktop (1024px+) */
+  @media (min-width: 1024px) {
+    gap: 3rem;
+    margin-bottom: 3.5rem;
+
+    .chapter-image img {
+      height: 320px;
     }
-  
-    .story-modal {
-      .modal-content {
-        .love-story-content {
-          .story-chapter {
-            flex-direction: column;
-            gap: 2rem;
-  
-            &.reverse-layout {
-              flex-direction: column;
-            }
-  
-            .chapter-image img {
-              height: 300px;
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .featured-story .featured-slide {
-      height: 350px;
-  
-      .slide-caption h2 {
+
+    .chapter-text {
+      h3 {
         font-size: 1.8rem;
       }
+
+      p {
+        font-size: 1.1rem;
+      }
     }
   }
-  
-  @media (max-width: 576px) {
-    .featured-story .featured-slide {
-      height: 300px;
-    }
-  
-    .story-modal {
-      padding: 1rem;
-  
-      .modal-content {
-        padding: 1rem;
-  
-        .love-story-content {
-          .story-chapter {
-            .chapter-image img {
-              height: 250px;
-            }
-            
-            .chapter-text {
-              h3 {
-                font-size: 1.5rem;
-              }
-            }
-          }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes sparkle {
+  0% { 
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% { 
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% { 
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* ------------------------- */
+/* RESPONSIVE: TABLET (768px) */
+/* ------------------------- */
+@media (min-width: 768px) {
+  .featured-story {
+    margin-bottom: 3rem;
+
+    .featured-slide {
+      height: 450px;
+
+      .slide-caption {
+        padding: 2rem;
+        text-align: left;
+
+        .caption-content {
+          flex-direction: row;
+          align-items: flex-end;
+          justify-content: space-between;
+          max-width: 1200px;
+        }
+
+        h2 {
+          font-size: 1.8rem;
+          -webkit-line-clamp: 1;
+          flex: 1;
+          margin-bottom: 0;
+          margin-right: 2rem;
+        }
+
+        .read-more {
+          margin-top: 0;
+          align-self: flex-end;
         }
       }
     }
   }
+}
+
+/* ---------------------------- */
+/* RESPONSIVE: DESKTOP (1024px) */
+/* ---------------------------- */
+@media (min-width: 1024px) {
+  .featured-story .featured-slide {
+    height: 500px;
+
+    .slide-caption {
+      h2 {
+        font-size: 2.2rem;
+      }
+
+      .read-more {
+        font-size: 1.1rem;
+        padding: 0.8rem 2rem;
+      }
+    }
+  }
+}
+
+/* ------------------------------------ */
+/* AJUSTES ESPECÍFICOS PARA 412px (S20) */
+/* ------------------------------------ */
+@media (max-width: 412px) and (max-height: 915px) {
+  .featured-story .featured-slide {
+    height: 320px;
+
+    .slide-caption {
+      padding: 1.2rem 1rem;
+
+      h2 {
+        font-size: 1.4rem;
+        -webkit-line-clamp: 2;
+        margin-bottom: 0.5rem;
+      }
+
+      .read-more {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.95rem;
+        min-width: 160px;
+      }
+    }
+  }
+
+  .story-modal .modal-content {
+    margin: 1rem auto;
+    padding: 1.5rem;
+    
+    .story-chapter {
+      .chapter-image img {
+        height: 200px;
+      }
+
+      .chapter-text {
+        h3 {
+          font-size: 1.3rem;
+        }
+
+        p {
+          font-size: 0.92rem;
+          line-height: 1.65;
+        }
+
+        .love-quote {
+          padding: 0.8rem;
+          font-size: 0.95rem;
+        }
+      }
+    }
+  }
+}
+
+/* Mejoras de accesibilidad para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .story-modal .modal-content {
+    background: #ffffff;
+    
+    .love-story-content {
+      .story-intro h2,
+      .chapter-text h3 {
+        color: #941d1d;
+      }
+
+      .chapter-text p {
+        color: #000000;
+      }
+
+      .love-quote {
+        background: #adadad3b;
+        color: #500404;
+        border-left-color: #e0a87e;
+      }
+    }
+  }
+
+  .close-modal {
+    color: #e0a87e !important;
+  }
+}

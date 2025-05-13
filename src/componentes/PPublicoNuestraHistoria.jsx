@@ -1,30 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Slider from "react-slick";
 import "../assets/scss/_03-Componentes/_PPublicoNuestraHistoria.scss";
 
 function PPublicoNuestraHistoria() {
-  // Configuración del slider (se mantiene igual)
+  const [showFullStory, setShowFullStory] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  // Memoizamos la configuración del slider
   const sliderSettings = {
     dots: true,
     infinite: true,
-    speed: 1000,
+    speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 5000,
     fade: true,
     cssEase: "linear",
-    arrows: false,
+    arrows: !isMobile,
     pauseOnHover: true,
+    adaptiveHeight: true
   };
 
-  const [showFullStory, setShowFullStory] = useState(false);
-
-  // Capítulos de la historia (completa)
+  // Capítulos de la historia con imágenes optimizadas
   const chapters = [
     {
-      // title: "Febrero 2023: El Destino nos Unió",
-      image: "/img/03-img-banners/banner6.png",
+      title: "Febrero 2023: El Destino nos Unió",
+      image: "/img/03-img-banners/banner6.webp",
+      fallbackImage: "/img/03-img-banners/banner6.png",
       content: (
         <>
           <p>
@@ -49,8 +52,9 @@ function PPublicoNuestraHistoria() {
       reverse: false,
     },
     {
-      // title: "Marzo 2023: Nuestra Primera Cita",
-      image: "/img/03-img-banners/banner2.png",
+      title: "Marzo 2023: Nuestra Primera Cita",
+      image: "/img/03-img-banners/banner2.webp",
+      fallbackImage: "/img/03-img-banners/banner2.png",
       content: (
         <>
           <p>
@@ -74,8 +78,9 @@ function PPublicoNuestraHistoria() {
       reverse: true,
     },
     {
-      // title: "Julio 2023: El Viaje que lo Cambió Todo",
-      image: "/img/03-img-banners/banner3.png",
+      title: "Julio 2023: El Viaje que lo Cambió Todo",
+      image: "/img/03-img-banners/banner3.webp",
+      fallbackImage: "/img/03-img-banners/banner3.png",
       content: (
         <>
           <p>
@@ -99,8 +104,9 @@ function PPublicoNuestraHistoria() {
       reverse: false,
     },
     {
-      // title: "Diciembre 2023: La Primera Navidad Juntos",
-      image: "/img/03-img-banners/banner5.png",
+      title: "Diciembre 2023: La Primera Navidad Juntos",
+      image: "/img/03-img-banners/banner5.webp",
+      fallbackImage: "/img/03-img-banners/banner5.png",
       content: (
         <>
           <p>
@@ -123,8 +129,9 @@ function PPublicoNuestraHistoria() {
       reverse: true,
     },
     {
-      // title: "Junio 2024: La Propuesta",
-      image: "/img/03-img-banners/banner4.png",
+      title: "Junio 2024: La Propuesta",
+      image: "/img/03-img-banners/banner4.webp",
+      fallbackImage: "/img/03-img-banners/banner4.png",
       content: (
         <>
           <p>
@@ -153,20 +160,58 @@ function PPublicoNuestraHistoria() {
     },
   ];
 
+  // Manejo del resize optimizado
+  const handleResize = useCallback(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [handleResize]);
+
+  // Componente de imagen optimizada
+  const OptimizedImage = ({ src, fallback, alt, className }) => {
+    const [imageSrc, setImageSrc] = useState(src);
+    
+    const handleError = () => {
+      if (fallback) {
+        setImageSrc(fallback);
+      } else {
+        setImageSrc('/img/placeholder-historia.webp');
+      }
+    };
+
+    return (
+      <img 
+        src={imageSrc} 
+        alt={alt} 
+        className={className}
+        loading="lazy"
+        onError={handleError}
+      />
+    );
+  };
+
   return (
     <>
-      {/* Portada principal */}
-      <section className="featured-story">
+      {/* Portada principal con slider */}
+      <section className="featured-story" aria-label="Nuestra historia de amor">
         <Slider {...sliderSettings}>
           {chapters.slice(0, 3).map((chapter, index) => (
             <div key={index} className="featured-slide">
-              <img src={chapter.image} alt={chapter.title} />
+              <OptimizedImage 
+                src={chapter.image} 
+                fallback={chapter.fallbackImage}
+                alt={chapter.title}
+              />
               <div className="slide-caption">
                 <div className="caption-content">
                   <h2>{chapter.title}</h2>
                   <button 
                     className="read-more"
                     onClick={() => setShowFullStory(true)}
+                    aria-label={`Leer más sobre: ${chapter.title}`}
                   >
                     Nuestra historia... 
                   </button>
@@ -177,20 +222,21 @@ function PPublicoNuestraHistoria() {
         </Slider>
       </section>
 
-      {/* Historia completa (modal) */}
+      {/* Modal de historia completa */}
       {showFullStory && (
-        <div className="story-modal">
+        <div className="story-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
           <div className="modal-content">
             <button 
               className="close-modal"
               onClick={() => setShowFullStory(false)}
+              aria-label="Cerrar historia"
             >
               &times;
             </button>
             
             <div className="love-story-content">
               <section className="story-intro">
-                <h2>Nuestra Historia de Amor</h2>
+                <h2 id="modal-title">Nuestra Historia de Amor</h2>
                 <p className="intro-text">
                   Esta es la historia de cómo dos almas destinadas a estar juntas se
                   encontraron, se enamoraron y decidieron pasar el resto de sus vidas
@@ -202,12 +248,17 @@ function PPublicoNuestraHistoria() {
                 <section 
                   key={index}
                   className={`story-chapter ${chapter.reverse ? 'reverse-layout' : ''}`}
+                  aria-labelledby={`chapter-${index}-title`}
                 >
                   <div className="chapter-image">
-                    <img src={chapter.image} alt={chapter.title} />
+                    <OptimizedImage 
+                      src={chapter.image} 
+                      fallback={chapter.fallbackImage}
+                      alt={chapter.title}
+                    />
                   </div>
                   <div className="chapter-text">
-                    <h3>{chapter.title}</h3>
+                    <h3 id={`chapter-${index}-title`}>{chapter.title}</h3>
                     {chapter.content}
                   </div>
                 </section>
