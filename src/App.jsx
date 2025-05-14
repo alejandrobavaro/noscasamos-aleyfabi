@@ -8,6 +8,7 @@ import "./assets/scss/_01-General/_BodyIndexApp.scss";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css"; 
 import "./assets/scss/_01-General/_Toastify.scss"; 
+import 'react-toastify/dist/ReactToastify.css';
 
 //------------COMPONENTES--------------//
 import Header from "./componentes/Header";
