@@ -238,11 +238,11 @@ function PPublicoNovedades() {
   return (
     <div className="novedades-container">
       {/* Sección de Revista */}
-      <section className="wedding-magazine">
-        <h2>Nuestra Boda</h2>
-        <p className="magazine-subtitle">Un recorrido por nuestra historia y los preparativos</p>
+      {/* <section className="wedding-magazine">
+        <h2>Novedades y Preparativos para la Boda</h2>
+        <p className="magazine-subtitle">Una aventura a pulmón paso a paso</p>
         
-        <div className="magazine-container">
+         <div className="magazine-container">
           <div className="magazine-page">
             <div className="page-image" style={{ backgroundImage: `url(${magazinePages[currentPage].image})` }}>
               <div className="page-header">
@@ -300,13 +300,15 @@ function PPublicoNovedades() {
               Siguiente &rarr;
             </button>
           </div>
-        </div>
-      </section>
+        </div> 
+      </section> */}
 
       {/* Sección de Noticias */}
       <section className="news-feed">
-        <h2 className="section-title">Últimas Noticias</h2>
-        <p className="section-subtitle">Mantente al día con los últimos preparativos</p>
+        <h2 className="section-title">Novedades y Preparativos para la Boda</h2>
+        <p className="section-subtitle">Una aventura a pulmón paso a paso</p>
+        
+ 
         <div className="news-grid">
           {newsItems.map(news => (
             <article 

@@ -27,21 +27,15 @@ function PPublicoQrSocialPost() {
   // URL para el QR
   const qrUrl = `${window.location.origin}/subir-foto`;
 
-  // Persistir posts en localStorage con manejo de errores
+  // Persistir posts en localStorage
   useEffect(() => {
-    const saveToLocalStorage = () => {
-      try {
-        // Limitar el número de posts guardados para evitar exceder la cuota
-        const postsToSave = posts.slice(0, 50); // Guardar solo los últimos 50 posts
-        localStorage.setItem('weddingSocialPosts', JSON.stringify(postsToSave));
-      } catch (error) {
-        console.error("Error al guardar en localStorage:", error);
-        // Opcional: Mostrar un mensaje al usuario
-        toast.error("No se pudo guardar la publicación localmente. Espacio de almacenamiento lleno.");
-      }
-    };
-
-    saveToLocalStorage();
+    try {
+      const postsToSave = posts.slice(0, 50);
+      localStorage.setItem('weddingSocialPosts', JSON.stringify(postsToSave));
+    } catch (error) {
+      console.error("Error al guardar en localStorage:", error);
+      toast.error("No se pudo guardar la publicación localmente.");
+    }
   }, [posts]);
 
   // Manejar cambios en el formulario de autor
@@ -94,7 +88,7 @@ function PPublicoQrSocialPost() {
     
     let processedCount = 0;
     
-    currentMedia.forEach((file, index) => {
+    currentMedia.forEach((file) => {
       const reader = new FileReader();
       reader.onload = (e) => {
         newPost.media.push({
@@ -105,7 +99,7 @@ function PPublicoQrSocialPost() {
         processedCount++;
         
         if (processedCount === currentMedia.length) {
-          setPosts(prev => [newPost, ...prev.slice(0, 49)]); // Mantener solo 50 posts
+          setPosts(prev => [newPost, ...prev.slice(0, 49)]);
           setIsLoading(false);
           setShowForm(false);
           setCurrentMedia([]);
@@ -126,12 +120,14 @@ function PPublicoQrSocialPost() {
   // Dar like a una publicación
   const handleLike = (postId) => {
     setPosts(prev => prev.map(post => 
-      post.id === postId ? { ...post, likes: post.likes + 1 } : post
+      post.id === postId ? { ...post, likes: (post.likes || 0) + 1 } : post
     ));
   };
 
   // Abrir modal de publicación
   const openPostModal = (post) => {
+    if (!post?.media?.length) return;
+    
     setSelectedPost(post);
     setCurrentImageIndex(0);
   };
@@ -139,6 +135,8 @@ function PPublicoQrSocialPost() {
   // Navegar entre imágenes en el modal
   const navigateImage = (direction) => {
     setCurrentImageIndex(prev => {
+      if (!selectedPost?.media) return 0;
+      
       if (direction === 'prev') {
         return prev === 0 ? selectedPost.media.length - 1 : prev - 1;
       } else {
@@ -147,10 +145,104 @@ function PPublicoQrSocialPost() {
     });
   };
 
+  // Renderizar publicaciones de la galería
+  const renderGalleryPosts = () => {
+    if (!posts || posts.length === 0) {
+      return (
+        <div className="empty-state">
+          <i className="bi bi-images"></i>
+          <div>No hay publicaciones aún</div>
+          <div>Sé el primero en compartir tus momentos</div>
+        </div>
+      );
+    }
+
+    return posts.map(post => {
+      if (!post?.media?.[0]?.url) return null;
+      
+      return (
+        <div key={post.id || Date.now()} className="gallery-post" onClick={() => openPostModal(post)}>
+          {post.media[0].type === 'video' ? (
+            <div className="media-container">
+              <video className="post-thumbnail">
+                <source src={post.media[0].url} type="video/mp4" />
+              </video>
+              <div className="play-icon">
+                <i className="bi bi-play-fill"></i>
+              </div>
+            </div>
+          ) : (
+            <img 
+              src={post.media[0].url} 
+              alt="Post" 
+              className="post-thumbnail" 
+              onError={(e) => e.target.src = 'placeholder-image.jpg'}
+            />
+          )}
+          
+          {post.media.length > 1 && (
+            <div className="multi-media-indicator">
+              <i className="bi bi-collection"></i>
+              <span>{post.media.length}</span>
+            </div>
+          )}
+          
+          <div className="post-overlay">
+            <div className="like-count">
+              <Heart size={16} />
+              <span>{post.likes || 0}</span>
+            </div>
+          </div>
+        </div>
+      );
+    });
+  };
+
+  // Renderizar contenido del modal
+  const renderModalContent = () => {
+    if (!selectedPost?.media?.[currentImageIndex]?.url) return null;
+
+    return (
+      <>
+        {selectedPost.media[currentImageIndex].type === 'video' ? (
+          <video controls autoPlay className="modal-media">
+            <source src={selectedPost.media[currentImageIndex].url} type="video/mp4" />
+          </video>
+        ) : (
+          <img 
+            src={selectedPost.media[currentImageIndex].url} 
+            alt="Post" 
+            className="modal-media" 
+          />
+        )}
+        
+        {selectedPost.media.length > 1 && (
+          <>
+            <button 
+              className="nav-button prev"
+              onClick={() => navigateImage('prev')}
+            >
+              <ChevronLeft size={32} />
+            </button>
+            <button 
+              className="nav-button next"
+              onClick={() => navigateImage('next')}
+            >
+              <ChevronRight size={32} />
+            </button>
+            <div className="media-counter">
+              {currentImageIndex + 1} / {selectedPost.media.length}
+            </div>
+          </>
+        )}
+      </>
+    );
+  };
+
   return (
     <section className="qr-social-gallery">
       <h2 className="section-title">Momentos de la Boda</h2>
-      <div className="section-subtitle">Comparte tus fotos y videos de Ale & Fabi</div>
+      <div className="section-subtitle">Comparte tus fotos y videos</div>
       
       <div className="qr-upload-container">
         <div className="qr-section">
@@ -174,14 +266,7 @@ function PPublicoQrSocialPost() {
             onClick={() => fileInputRef.current.click()}
             disabled={isLoading}
           >
-            {isLoading ? (
-              <span>Subiendo...</span>
-            ) : (
-              <>
-                <i className="bi bi-cloud-arrow-up"></i>
-                <span>Seleccionar archivos</span>
-              </>
-            )}
+            {isLoading ? 'Subiendo...' : 'Seleccionar archivos'}
           </button>
           <input
             type="file"
@@ -252,44 +337,7 @@ function PPublicoQrSocialPost() {
       
       {/* Galería compacta de publicaciones */}
       <div className="compact-gallery">
-        {posts.length === 0 ? (
-          <div className="empty-state">
-            <i className="bi bi-images"></i>
-            <div>No hay publicaciones aún</div>
-            <div>Sé el primero en compartir tus momentos</div>
-          </div>
-        ) : (
-          posts.map(post => (
-            <div key={post.id} className="gallery-post" onClick={() => openPostModal(post)}>
-              {post.media[0].type === 'video' ? (
-                <div className="media-container">
-                  <video className="post-thumbnail">
-                    <source src={post.media[0].url} type="video/mp4" />
-                  </video>
-                  <div className="play-icon">
-                    <i className="bi bi-play-fill"></i>
-                  </div>
-                </div>
-              ) : (
-                <img src={post.media[0].url} alt="Post" className="post-thumbnail" />
-              )}
-              
-              {post.media.length > 1 && (
-                <div className="multi-media-indicator">
-                  <i className="bi bi-collection"></i>
-                  <span>{post.media.length}</span>
-                </div>
-              )}
-              
-              <div className="post-overlay">
-                <div className="like-count">
-                  <Heart size={16} />
-                  <span>{post.likes}</span>
-                </div>
-              </div>
-            </div>
-          ))
-        )}
+        {renderGalleryPosts()}
       </div>
       
       {/* Modal de publicación expandida */}
@@ -301,46 +349,16 @@ function PPublicoQrSocialPost() {
             </button>
             
             <div className="modal-media-container">
-              {selectedPost.media[currentImageIndex].type === 'video' ? (
-                <video controls autoPlay className="modal-media">
-                  <source src={selectedPost.media[currentImageIndex].url} type="video/mp4" />
-                </video>
-              ) : (
-                <img 
-                  src={selectedPost.media[currentImageIndex].url} 
-                  alt="Post" 
-                  className="modal-media" 
-                />
-              )}
-              
-              {selectedPost.media.length > 1 && (
-                <>
-                  <button 
-                    className="nav-button prev"
-                    onClick={() => navigateImage('prev')}
-                  >
-                    <ChevronLeft size={32} />
-                  </button>
-                  <button 
-                    className="nav-button next"
-                    onClick={() => navigateImage('next')}
-                  >
-                    <ChevronRight size={32} />
-                  </button>
-                  <div className="media-counter">
-                    {currentImageIndex + 1} / {selectedPost.media.length}
-                  </div>
-                </>
-              )}
+              {renderModalContent()}
             </div>
             
             <div className="modal-post-info">
               <div className="author-info">
                 <div className="author-avatar">
-                  {selectedPost.author.charAt(0).toUpperCase()}
+                  {selectedPost.author?.charAt(0)?.toUpperCase() || 'I'}
                 </div>
                 <div>
-                  <div className="author-name">{selectedPost.author}</div>
+                  <div className="author-name">{selectedPost.author || 'Invitado'}</div>
                   <div className="post-time">
                     {new Date(selectedPost.timestamp).toLocaleString()}
                   </div>
@@ -360,12 +378,12 @@ function PPublicoQrSocialPost() {
                     handleLike(selectedPost.id);
                     setSelectedPost(prev => ({
                       ...prev,
-                      likes: prev.likes + 1
+                      likes: (prev.likes || 0) + 1
                     }));
                   }}
                 >
                   <Heart size={20} fill={selectedPost.likes > 0 ? 'currentColor' : 'none'} />
-                  <span>{selectedPost.likes}</span>
+                  <span>{selectedPost.likes || 0}</span>
                 </button>
               </div>
             </div>

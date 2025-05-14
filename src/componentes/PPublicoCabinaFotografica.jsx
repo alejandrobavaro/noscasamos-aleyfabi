@@ -20,8 +20,9 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
   // Obtener lista de cámaras disponibles
   const getAvailableCameras = async () => {
     try {
-      // Primero necesitamos permisos para enumerar dispositivos
-      await navigator.mediaDevices.getUserMedia({ video: true });
+      // Solución mejorada para permisos
+      const tempStream = await navigator.mediaDevices.getUserMedia({ video: true });
+      tempStream.getTracks().forEach(track => track.stop());
       
       const devices = await navigator.mediaDevices.enumerateDevices();
       const videoDevices = devices.filter(device => device.kind === 'videoinput');
@@ -32,8 +33,6 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
       }
 
       setAvailableCameras(videoDevices);
-      
-      // Seleccionar la primera cámara por defecto
       if (videoDevices.length > 0 && !selectedCameraId) {
         setSelectedCameraId(videoDevices[0].deviceId);
       }
@@ -43,36 +42,50 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
     }
   };
 
-  // Iniciar la cámara seleccionada
+  // Iniciar la cámara seleccionada - VERSIÓN DEFINITIVA
   const startCamera = async () => {
     try {
       setCameraError(null);
       
-      // Detener cámara actual si está activa
+      // Limpieza completa de la cámara anterior
       if (streamRef.current) {
         stopCamera();
       }
 
-      // Configuración de la cámara
+      // Esperar un breve momento para asegurar la limpieza
+      await new Promise(resolve => setTimeout(resolve, 100));
+
       const constraints = {
         video: { 
           deviceId: selectedCameraId ? { exact: selectedCameraId } : undefined,
           width: { ideal: 1280 },
           height: { ideal: 720 },
-          facingMode: 'user' // Simplificado para enfocarnos en el problema
+          facingMode: 'user'
         },
         audio: false 
       };
 
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
+      streamRef.current = stream;
 
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
-        streamRef.current = stream;
-        setIsCameraActive(true);
         
-        // Escuchar cambios en los dispositivos
-        navigator.mediaDevices.addEventListener('devicechange', getAvailableCameras);
+        // Solución definitiva para vista previa
+        const playPromise = videoRef.current.play();
+        
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              setIsCameraActive(true);
+              console.log("Vista previa activada correctamente");
+            })
+            .catch(err => {
+              console.error("Error al reproducir video:", err);
+              setCameraError("Error al mostrar la vista previa");
+              stopCamera();
+            });
+        }
       }
     } catch (err) {
       console.error("Error al acceder a la cámara:", err);
@@ -80,6 +93,7 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
       setIsCameraActive(false);
     }
   };
+
 
   // Mensajes de error amigables
   const getFriendlyErrorMessage = (error) => {
@@ -99,17 +113,22 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
     }
   };
 
-  // Detener la cámara
+  // Detener la cámara - VERSIÓN MEJORADA
   const stopCamera = () => {
     if (streamRef.current) {
-      streamRef.current.getTracks().forEach(track => track.stop());
+      streamRef.current.getTracks().forEach(track => {
+        track.stop();
+        track.enabled = false;
+      });
       streamRef.current = null;
     }
-    setIsCameraActive(false);
     
     if (videoRef.current) {
       videoRef.current.srcObject = null;
+      videoRef.current.onloadedmetadata = null;
     }
+    
+    setIsCameraActive(false);
   };
 
   // Cambiar cámara seleccionada
@@ -140,19 +159,20 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
     }, 4000);
   };
 
-  // Capturar foto individual
+  // Capturar foto individual - VERSIÓN MEJORADA
   const capturePhoto = () => {
-    if (!videoRef.current) return;
+    if (!videoRef.current || !streamRef.current) return;
 
+    const video = videoRef.current;
     const canvas = document.createElement('canvas');
-    canvas.width = videoRef.current.videoWidth;
-    canvas.height = videoRef.current.videoHeight;
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
     const ctx = canvas.getContext('2d');
     
     // Aplicar efecto espejo para la cámara frontal
     ctx.translate(canvas.width, 0);
     ctx.scale(-1, 1);
-    ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
     const photoUrl = canvas.toDataURL('image/jpeg');
     setCapturedPhotos(prev => [...prev, photoUrl]);
@@ -174,7 +194,6 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
       startCamera();
     }
   }, [selectedCameraId]);
-
 
   // Tutorial steps
   const tutorialSteps = [
@@ -255,13 +274,20 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
       <div className="camera-container">
         {isCameraActive ? (
           <div className="camera-preview">
-            <video 
-              ref={videoRef} 
-              autoPlay 
-              playsInline 
-              muted
-              className="camera-feed"
-            />
+       <video 
+        ref={videoRef} 
+        autoPlay 
+        playsInline 
+        muted
+        className="camera-feed"
+        style={{ 
+          transform: 'scaleX(-1)',
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          display: isCameraActive ? 'block' : 'none'
+        }}
+      />
             
             <div className="camera-controls">
               <div className="camera-actions">
