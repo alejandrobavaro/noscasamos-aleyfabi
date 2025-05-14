@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import "../assets/scss/_03-Componentes/_PPublicoCabinaFotografica.scss";
-import { Camera, CameraOff, Circle, Check, ChevronRight, X } from 'react-feather';
+import { Camera, CameraOff, Circle, ChevronRight, X } from 'react-feather';
 import { Loader } from 'react-feather';
 
 function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
@@ -8,25 +8,42 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
   const [isTakingPhotos, setIsTakingPhotos] = useState(false);
   const [photosTaken, setPhotosTaken] = useState(0);
   const [showTutorial, setShowTutorial] = useState(true);
+  const [showCameraSelector, setShowCameraSelector] = useState(false);
   const [capturedPhotos, setCapturedPhotos] = useState([]);
   const [cameraError, setCameraError] = useState(null);
-  const [facingMode, setFacingMode] = useState('user'); // 'user' (frontal) o 'environment' (trasera)
+  const [availableCameras, setAvailableCameras] = useState([]);
+  const [selectedCameraId, setSelectedCameraId] = useState('');
   const videoRef = useRef(null);
   const streamRef = useRef(null);
   const countdownRef = useRef(null);
 
-  // Obtener lista de dispositivos de cámara disponibles
-  const getCameraDevices = async () => {
+  // Obtener lista de cámaras disponibles
+  const getAvailableCameras = async () => {
     try {
+      // Primero necesitamos permisos para enumerar dispositivos
+      await navigator.mediaDevices.getUserMedia({ video: true });
+      
       const devices = await navigator.mediaDevices.enumerateDevices();
-      return devices.filter(device => device.kind === 'videoinput');
+      const videoDevices = devices.filter(device => device.kind === 'videoinput');
+      
+      if (videoDevices.length === 0) {
+        setCameraError('No se encontraron cámaras disponibles');
+        return;
+      }
+
+      setAvailableCameras(videoDevices);
+      
+      // Seleccionar la primera cámara por defecto
+      if (videoDevices.length > 0 && !selectedCameraId) {
+        setSelectedCameraId(videoDevices[0].deviceId);
+      }
     } catch (err) {
       console.error("Error al enumerar dispositivos:", err);
-      return [];
+      setCameraError(getFriendlyErrorMessage(err));
     }
   };
 
-  // Iniciar la cámara con el dispositivo seleccionado
+  // Iniciar la cámara seleccionada
   const startCamera = async () => {
     try {
       setCameraError(null);
@@ -36,34 +53,31 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
         stopCamera();
       }
 
+      // Configuración de la cámara
       const constraints = {
         video: { 
-          facingMode: facingMode,
+          deviceId: selectedCameraId ? { exact: selectedCameraId } : undefined,
           width: { ideal: 1280 },
-          height: { ideal: 720 }
+          height: { ideal: 720 },
+          facingMode: 'user' // Simplificado para enfocarnos en el problema
         },
         audio: false 
       };
 
-      // Intentar con la configuración ideal primero
-      let stream;
-      try {
-        stream = await navigator.mediaDevices.getUserMedia(constraints);
-      } catch (err) {
-        console.warn("Intento inicial fallido, probando con configuraciones más flexibles...");
-        // Si falla, intentar con configuraciones más flexibles
-        constraints.video = true; // Configuración más genérica
-        stream = await navigator.mediaDevices.getUserMedia(constraints);
-      }
+      const stream = await navigator.mediaDevices.getUserMedia(constraints);
 
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
         streamRef.current = stream;
         setIsCameraActive(true);
+        
+        // Escuchar cambios en los dispositivos
+        navigator.mediaDevices.addEventListener('devicechange', getAvailableCameras);
       }
     } catch (err) {
       console.error("Error al acceder a la cámara:", err);
       setCameraError(getFriendlyErrorMessage(err));
+      setIsCameraActive(false);
     }
   };
 
@@ -89,14 +103,19 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
   const stopCamera = () => {
     if (streamRef.current) {
       streamRef.current.getTracks().forEach(track => track.stop());
-      setIsCameraActive(false);
+      streamRef.current = null;
+    }
+    setIsCameraActive(false);
+    
+    if (videoRef.current) {
+      videoRef.current.srcObject = null;
     }
   };
 
-  // Cambiar entre cámaras frontal/trasera en móviles
-  const toggleCamera = async () => {
-    setFacingMode(prev => prev === 'user' ? 'environment' : 'user');
-    await startCamera();
+  // Cambiar cámara seleccionada
+  const handleCameraChange = (deviceId) => {
+    setSelectedCameraId(deviceId);
+    setShowCameraSelector(false);
   };
 
   // Tomar foto
@@ -129,6 +148,10 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
     canvas.width = videoRef.current.videoWidth;
     canvas.height = videoRef.current.videoHeight;
     const ctx = canvas.getContext('2d');
+    
+    // Aplicar efecto espejo para la cámara frontal
+    ctx.translate(canvas.width, 0);
+    ctx.scale(-1, 1);
     ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
 
     const photoUrl = canvas.toDataURL('image/jpeg');
@@ -137,11 +160,21 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
 
   // Efecto para limpiar al desmontar
   useEffect(() => {
+    getAvailableCameras();
+    
     return () => {
       if (countdownRef.current) clearInterval(countdownRef.current);
       stopCamera();
     };
   }, []);
+
+  // Efecto para reiniciar cámara cuando cambia la selección
+  useEffect(() => {
+    if (selectedCameraId && availableCameras.length > 0) {
+      startCamera();
+    }
+  }, [selectedCameraId]);
+
 
   // Tutorial steps
   const tutorialSteps = [
@@ -151,7 +184,7 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
     },
     {
       title: "Paso 2",
-      description: "Colócate frente a la cámara en un lugar bien iluminado"
+      description: "Selecciona la cámara que deseas usar"
     },
     {
       title: "Paso 3",
@@ -232,18 +265,36 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
             
             <div className="camera-controls">
               <div className="camera-actions">
-                {/* Botón para cambiar entre cámaras frontal/trasera en móviles */}
-                <button 
-                  className="switch-camera"
-                  onClick={toggleCamera}
-                  title="Cambiar cámara"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 20h7a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7M5 16H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1"></path>
-                    <polyline points="16 16 12 12 16 8"></polyline>
-                    <polyline points="8 8 12 12 8 16"></polyline>
-                  </svg>
-                </button>
+                {/* Selector de cámaras */}
+                {availableCameras.length > 1 && (
+                  <div className="camera-selector-container">
+                    <button 
+                      className="switch-camera"
+                      onClick={() => setShowCameraSelector(!showCameraSelector)}
+                      title="Cambiar cámara"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M12 20h7a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7M5 16H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1"></path>
+                        <polyline points="16 16 12 12 16 8"></polyline>
+                        <polyline points="8 8 12 12 8 16"></polyline>
+                      </svg>
+                    </button>
+                    
+                    {showCameraSelector && (
+                      <div className="camera-selector-dropdown">
+                        {availableCameras.map((camera) => (
+                          <button
+                            key={camera.deviceId}
+                            className={`camera-option ${selectedCameraId === camera.deviceId ? 'selected' : ''}`}
+                            onClick={() => handleCameraChange(camera.deviceId)}
+                          >
+                            {camera.label || `Cámara ${availableCameras.indexOf(camera) + 1}`}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
 
               <div className="photo-counter">
@@ -276,6 +327,14 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
           <div className="camera-placeholder">
             <CameraOff size={48} />
             <p>Cámara no activada</p>
+            {availableCameras.length > 0 && (
+              <button 
+                className="activate-camera-button"
+                onClick={startCamera}
+              >
+                Activar Cámara
+              </button>
+            )}
           </div>
         )}
       </div>
