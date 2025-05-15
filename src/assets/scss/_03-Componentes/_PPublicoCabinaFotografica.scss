@@ -1,430 +1,500 @@
 /* Estilos para la cabina fotográfica */
 .cabina-fotografica-container {
-    width: 100%;
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    position: relative;
-  
-    &.fullscreen {
-      max-width: none;
-      margin: 0;
-      border-radius: 0;
-      min-height: 100vh;
-      padding: 2rem 1rem;
-      display: flex;
-      flex-direction: column;
-    }
-  }
-  
-  .close-fullscreen {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    color: #5a2d2d;
-    cursor: pointer;
-    z-index: 100;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .section-title {
-    font-family: 'Cinzel', serif;
-    font-size: 2.2rem;
-    color: #5a2d2d;
-    text-align: center;
-    margin-bottom: 0.5rem;
-    position: relative;
-    
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 1px;
-      background: #D4AF37;
-    }
-  }
-  
-  .section-subtitle {
-    text-align: center;
-    font-size: 1.1rem;
-    color: #8c5e3d;
-    margin-bottom: 2rem;
-    font-style: italic;
-  }
-  
-  .camera-error {
-    background-color: #ffeeee;
-    border: 1px solid #ffcccc;
-    border-radius: 8px;
-    padding: 1rem;
-    margin: 1rem 0;
-    text-align: center;
-    color: #d32f2f;
-    
-    p {
-      margin-bottom: 1rem;
-    }
-  }
-  
-  .retry-button {
-    padding: 0.5rem 1rem;
-    background-color: #5a2d2d;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    
-    &:hover {
-      background-color: #3a1d1d;
-    }
-  }
-  
-  /* Tutorial */
-  .tutorial-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    padding: 1rem;
-  }
-  
-  .tutorial-container {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 12px;
-    max-width: 600px;
-    width: 100%;
-    
-    h3 {
-      font-family: 'Cinzel', serif;
-      color: #5a2d2d;
-      text-align: center;
-      margin-bottom: 2rem;
-      font-size: 1.5rem;
-    }
-  }
-  
-  .tutorial-steps {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  position: relative;
+
+  &.fullscreen {
+    max-width: none;
+    margin: 0;
+    border-radius: 0;
+    min-height: 100vh;
+    padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+  }
+}
+
+.close-fullscreen {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #5a2d2d;
+  cursor: pointer;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  color: #5a2d2d;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 1px;
+    background: #D4AF37;
+  }
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #8c5e3d;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.camera-error {
+  background-color: #ffeeee;
+  border: 1px solid #ffcccc;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  text-align: center;
+  color: #d32f2f;
+  
+  p {
+    margin-bottom: 1rem;
+  }
+}
+
+.retry-button {
+  padding: 0.5rem 1rem;
+  background-color: #5a2d2d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  
+  &:hover {
+    background-color: #3a1d1d;
+  }
+}
+
+/* Tutorial */
+.tutorial-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.tutorial-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  
+  h3 {
+    font-family: 'Cinzel', serif;
+    color: #5a2d2d;
+    text-align: center;
     margin-bottom: 2rem;
+    font-size: 1.5rem;
   }
+}
+
+.tutorial-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.tutorial-step {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   
-  .tutorial-step {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    
-    .step-number {
-      width: 32px;
-      height: 32px;
-      background-color: #5a2d2d;
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      flex-shrink: 0;
-    }
-    
-    .step-content {
-      flex: 1;
-      
-      h4 {
-        font-family: 'Cinzel', serif;
-        color: #5a2d2d;
-        margin-bottom: 0.3rem;
-        font-size: 1.1rem;
-      }
-      
-      p {
-        color: #5a4a42;
-        margin: 0;
-        font-size: 0.95rem;
-      }
-    }
-    
-    .step-arrow {
-      color: #8c5e3d;
-    }
-  }
-  
-  .start-button {
-    display: block;
-    width: 100%;
-    padding: 1rem;
+  .step-number {
+    width: 32px;
+    height: 32px;
     background-color: #5a2d2d;
     color: white;
-    border: none;
-    border-radius: 50px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+  
+  .step-content {
+    flex: 1;
     
-    &:hover {
-      background-color: #3a1d1d;
-      transform: translateY(-2px);
+    h4 {
+      font-family: 'Cinzel', serif;
+      color: #5a2d2d;
+      margin-bottom: 0.3rem;
+      font-size: 1.1rem;
+    }
+    
+    p {
+      color: #5a4a42;
+      margin: 0;
+      font-size: 0.95rem;
     }
   }
   
-  /* Contenedor de cámara */
-  .camera-container {
-    width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: #f8f5f2;
-    margin-bottom: 2rem;
+  .step-arrow {
+    color: #8c5e3d;
+  }
+}
+
+.start-button {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background-color: #5a2d2d;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  
+  &:hover {
+    background-color: #3a1d1d;
+    transform: translateY(-2px);
+  }
+}
+
+/* Contenedor de cámara */
+.camera-container {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f8f5f2;
+  margin-bottom: 2rem;
+  position: relative;
+  min-height: 480px;
+}
+
+.camera-preview {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.camera-feed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #000;
+}
+
+.camera-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #8c5e3d;
+  
+  p {
+    margin-top: 1rem;
+    font-style: italic;
+  }
+}
+
+/* Controles de cámara */
+.camera-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.camera-actions {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 5;
+}
+
+.switch-camera {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: white;
   }
   
-  .camera-preview {
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%; // 16:9 aspect ratio
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.camera-selector-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  padding: 0.5rem;
+  min-width: 200px;
+}
+
+.camera-option {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: #f5f5f5;
   }
   
-  .camera-feed {
+  &.selected {
+    background-color: #5a2d2d;
+    color: white;
+  }
+}
+
+.photo-counter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  
+  .countdown-circle {
+    animation: pulse 1s infinite;
+    
+    &.complete {
+      color: #4CAF50;
+      animation: none;
+    }
+  }
+}
+
+.capture-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  
+  &:hover:not(:disabled) {
+    transform: scale(1.05);
+  }
+  
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  &.active {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+}
+
+.activate-camera-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #5a2d2d;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 1rem;
+  
+  &:hover {
+    background-color: #3a1d1d;
+    transform: translateY(-2px);
+  }
+}
+
+.capture-instruction {
+  color: white;
+  margin: 0;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Galería de fotos */
+.photo-gallery {
+  margin-top: 2rem;
+  
+  h3 {
+    font-family: 'Cinzel', serif;
+    color: #5a2d2d;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+}
+
+.photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.photo-item {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  
+  img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    background-color: #000; // Fondo negro para verificar visibilidad
   }
   
-  .camera-placeholder {
+  .photo-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 3rem;
-    color: #8c5e3d;
-    
-    p {
-      margin-top: 1rem;
-      font-style: italic;
-    }
+    font-size: 0.8rem;
   }
-  
-  /* Controles de cámara */
-  .camera-controls {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+}
+
+/* Animaciones */
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cabina-fotografica-container {
     padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
   }
   
-  .camera-actions {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    display: flex;
-    gap: 0.5rem;
-    z-index: 5;
-  }
-  
-  .switch-camera {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  .tutorial-step {
+    gap: 0.8rem;
     
-    &:hover {
-      background-color: white;
-    }
-    
-    svg {
-      width: 20px;
-      height: 20px;
-    }
-  }
-  
-  .photo-counter {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: white;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-    
-    .countdown-circle {
-      animation: pulse 1s infinite;
-      
-      &.complete {
-        color: #4CAF50;
-        animation: none;
-      }
-    }
-  }
-  
-  .capture-button {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: white;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    
-    &:hover:not(:disabled) {
-      transform: scale(1.05);
-    }
-    
-    &:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-    }
-    
-    &.active {
-      background-color: #f44336;
-      color: white;
-    }
-    
-    .spinner {
-      animation: spin 1s linear infinite;
-    }
-  }
-  
-  .capture-instruction {
-    color: white;
-    margin: 0;
-    font-size: 1rem;
-    text-align: center;
-  }
-  
-  /* Galería de fotos */
-  .photo-gallery {
-    margin-top: 2rem;
-    
-    h3 {
-      font-family: 'Cinzel', serif;
-      color: #5a2d2d;
-      text-align: center;
-      margin-bottom: 1rem;
+    .step-arrow {
+      display: none;
     }
   }
   
   .photos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
+    grid-template-columns: repeat(3, 1fr);
   }
   
-  .photo-item {
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    aspect-ratio: 3/4;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    
-    .photo-badge {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      background-color: rgba(0, 0, 0, 0.7);
-      color: white;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-    }
+  .camera-container {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cabina-fotografica-container {
+    padding: 1rem;
   }
   
-  /* Animaciones */
-  @keyframes pulse {
-    0% { opacity: 0.7; }
-    50% { opacity: 1; }
-    100% { opacity: 0.7; }
+  .section-title {
+    font-size: 1.8rem;
   }
   
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+  .tutorial-container {
+    padding: 1.5rem;
   }
   
-  /* Responsive */
-  @media (max-width: 768px) {
-    .cabina-fotografica-container {
-      padding: 1.5rem;
-    }
-    
-    .tutorial-step {
-      gap: 0.8rem;
-      
-      .step-arrow {
-        display: none;
-      }
-    }
-    
-    .photos-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+  .photos-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
   
-  @media (max-width: 480px) {
-    .cabina-fotografica-container {
-      padding: 1rem;
-    }
-    
-    .section-title {
-      font-size: 1.8rem;
-    }
-    
-    .tutorial-container {
-      padding: 1.5rem;
-    }
-    
-    .photos-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  .camera-controls {
+    padding: 1rem;
   }
+  
+  .capture-button {
+    width: 50px;
+    height: 50px;
+  }
+}

@@ -17,11 +17,15 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
   const streamRef = useRef(null);
   const countdownRef = useRef(null);
 
-  // Obtener lista de cámaras disponibles
+  // Obtener lista de cámaras disponibles (optimizado para móviles y notebooks)
   const getAvailableCameras = async () => {
     try {
-      // Solución mejorada para permisos
-      const tempStream = await navigator.mediaDevices.getUserMedia({ video: true });
+      // Primero solicitamos permisos con configuración básica
+      const tempStream = await navigator.mediaDevices.getUserMedia({ 
+        video: { facingMode: 'environment' } // Priorizar cámara trasera en móviles
+      });
+      
+      // Detener stream temporal inmediatamente
       tempStream.getTracks().forEach(track => track.stop());
       
       const devices = await navigator.mediaDevices.enumerateDevices();
@@ -33,67 +37,89 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
       }
 
       setAvailableCameras(videoDevices);
-      if (videoDevices.length > 0 && !selectedCameraId) {
-        setSelectedCameraId(videoDevices[0].deviceId);
-      }
+      
+      // Seleccionar cámara trasera por defecto en móviles
+      const rearCamera = videoDevices.find(device => 
+        device.label.toLowerCase().includes('back') || 
+        device.label.toLowerCase().includes('rear')
+      );
+      
+      setSelectedCameraId(rearCamera?.deviceId || videoDevices[0].deviceId);
     } catch (err) {
       console.error("Error al enumerar dispositivos:", err);
       setCameraError(getFriendlyErrorMessage(err));
     }
   };
 
-  // Iniciar la cámara seleccionada - VERSIÓN DEFINITIVA
+  // Iniciar la cámara (versión optimizada para todos los dispositivos)
   const startCamera = async () => {
     try {
       setCameraError(null);
+      setIsCameraActive(false);
       
-      // Limpieza completa de la cámara anterior
+      // Detener cámara actual si está activa
       if (streamRef.current) {
         stopCamera();
+        await new Promise(resolve => setTimeout(resolve, 300)); // Pequeña pausa
       }
 
-      // Esperar un breve momento para asegurar la limpieza
-      await new Promise(resolve => setTimeout(resolve, 100));
-
+      // Configuración adaptable para diferentes dispositivos
       const constraints = {
-        video: { 
+        video: {
           deviceId: selectedCameraId ? { exact: selectedCameraId } : undefined,
-          width: { ideal: 1280 },
-          height: { ideal: 720 },
-          facingMode: 'user'
+          width: { ideal: 1280, min: 640 },
+          height: { ideal: 720, min: 480 },
+          facingMode: window.innerWidth <= 768 ? 'environment' : 'user',
+          frameRate: { ideal: 30, min: 15 }
         },
-        audio: false 
+        audio: false
       };
 
+      console.log("Intentando iniciar cámara con constraints:", constraints);
+      
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
       streamRef.current = stream;
 
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
         
-        // Solución definitiva para vista previa
-        const playPromise = videoRef.current.play();
-        
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              setIsCameraActive(true);
-              console.log("Vista previa activada correctamente");
-            })
-            .catch(err => {
-              console.error("Error al reproducir video:", err);
-              setCameraError("Error al mostrar la vista previa");
-              stopCamera();
-            });
+        // Esperar a que el video tenga metadata
+        await new Promise((resolve) => {
+          const onLoaded = () => {
+            videoRef.current.removeEventListener('loadedmetadata', onLoaded);
+            console.log("Metadata de video cargada");
+            resolve();
+          };
+          videoRef.current.addEventListener('loadedmetadata', onLoaded);
+        });
+
+        // Intentar reproducir el video
+        try {
+          await videoRef.current.play();
+          console.log("Video reproducido con éxito");
+          setIsCameraActive(true);
+        } catch (playError) {
+          console.error("Error al reproducir video:", playError);
+          // Segundo intento con enfoque alternativo
+          videoRef.current.muted = true;
+          videoRef.current.playsInline = true;
+          try {
+            await videoRef.current.play();
+            setIsCameraActive(true);
+          } catch (secondError) {
+            console.error("Segundo error al reproducir:", secondError);
+            setCameraError("No se puede mostrar la vista previa");
+            stopCamera();
+          }
         }
       }
     } catch (err) {
       console.error("Error al acceder a la cámara:", err);
       setCameraError(getFriendlyErrorMessage(err));
       setIsCameraActive(false);
+      stopCamera();
     }
   };
-
 
   // Mensajes de error amigables
   const getFriendlyErrorMessage = (error) => {
@@ -113,7 +139,7 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
     }
   };
 
-  // Detener la cámara - VERSIÓN MEJORADA
+  // Detener la cámara completamente
   const stopCamera = () => {
     if (streamRef.current) {
       streamRef.current.getTracks().forEach(track => {
@@ -137,31 +163,9 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
     setShowCameraSelector(false);
   };
 
-  // Tomar foto
-  const takePhoto = () => {
-    if (!isCameraActive || isTakingPhotos) return;
-
-    setIsTakingPhotos(true);
-    setPhotosTaken(0);
-    setCapturedPhotos([]);
-
-    // Temporizador para 3 fotos con 4 segundos de intervalo
-    let count = 3;
-    countdownRef.current = setInterval(() => {
-      if (count > 0) {
-        capturePhoto();
-        setPhotosTaken(prev => prev + 1);
-        count--;
-      } else {
-        clearInterval(countdownRef.current);
-        setIsTakingPhotos(false);
-      }
-    }, 4000);
-  };
-
-  // Capturar foto individual - VERSIÓN MEJORADA
+  // Capturar foto (optimizado para móviles)
   const capturePhoto = () => {
-    if (!videoRef.current || !streamRef.current) return;
+    if (!videoRef.current || !isCameraActive) return;
 
     const video = videoRef.current;
     const canvas = document.createElement('canvas');
@@ -169,26 +173,49 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
     canvas.height = video.videoHeight;
     const ctx = canvas.getContext('2d');
     
-    // Aplicar efecto espejo para la cámara frontal
-    ctx.translate(canvas.width, 0);
-    ctx.scale(-1, 1);
+    // Aplicar efecto espejo solo para cámara frontal
+    if (window.innerWidth > 768) { // Dispositivos no móviles
+      ctx.translate(canvas.width, 0);
+      ctx.scale(-1, 1);
+    }
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-    const photoUrl = canvas.toDataURL('image/jpeg');
+    const photoUrl = canvas.toDataURL('image/jpeg', 0.9); // Calidad reducida para móviles
     setCapturedPhotos(prev => [...prev, photoUrl]);
   };
 
-  // Efecto para limpiar al desmontar
+  // Tomar 3 fotos automáticas
+  const takePhoto = () => {
+    if (!isCameraActive || isTakingPhotos) return;
+
+    setIsTakingPhotos(true);
+    setPhotosTaken(0);
+    setCapturedPhotos([]);
+
+    let count = 0;
+    const takePhotoSequence = () => {
+      if (count < 3) {
+        capturePhoto();
+        setPhotosTaken(count + 1);
+        count++;
+        setTimeout(takePhotoSequence, 4000);
+      } else {
+        setIsTakingPhotos(false);
+      }
+    };
+
+    takePhotoSequence();
+  };
+
+  // Efectos para manejar ciclo de vida
   useEffect(() => {
     getAvailableCameras();
-    
     return () => {
       if (countdownRef.current) clearInterval(countdownRef.current);
       stopCamera();
     };
   }, []);
 
-  // Efecto para reiniciar cámara cuando cambia la selección
   useEffect(() => {
     if (selectedCameraId && availableCameras.length > 0) {
       startCamera();
@@ -274,24 +301,23 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
       <div className="camera-container">
         {isCameraActive ? (
           <div className="camera-preview">
-       <video 
-        ref={videoRef} 
-        autoPlay 
-        playsInline 
-        muted
-        className="camera-feed"
-        style={{ 
-          transform: 'scaleX(-1)',
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          display: isCameraActive ? 'block' : 'none'
-        }}
-      />
+            <video 
+              ref={videoRef} 
+              autoPlay 
+              playsInline 
+              muted
+              className="camera-feed"
+              style={{
+                transform: window.innerWidth > 768 ? 'scaleX(-1)' : 'none',
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                display: 'block'
+              }}
+            />
             
             <div className="camera-controls">
               <div className="camera-actions">
-                {/* Selector de cámaras */}
                 {availableCameras.length > 1 && (
                   <div className="camera-selector-container">
                     <button 
@@ -352,7 +378,7 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
         ) : (
           <div className="camera-placeholder">
             <CameraOff size={48} />
-            <p>Cámara no activada</p>
+            <p>{cameraError || 'Cámara no activada'}</p>
             {availableCameras.length > 0 && (
               <button 
                 className="activate-camera-button"
