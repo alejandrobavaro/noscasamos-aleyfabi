@@ -16,145 +16,144 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
   const videoRef = useRef(null);
   const streamRef = useRef(null);
   const countdownRef = useRef(null);
+  const retryCountRef = useRef(0);
 
-  // Obtener lista de cámaras disponibles (optimizado para móviles y notebooks)
+  // Obtener lista de cámaras disponibles
   const getAvailableCameras = async () => {
     try {
-      // Primero solicitamos permisos con configuración básica
-      const tempStream = await navigator.mediaDevices.getUserMedia({ 
-        video: { facingMode: 'environment' } // Priorizar cámara trasera en móviles
-      });
-      
-      // Detener stream temporal inmediatamente
-      tempStream.getTracks().forEach(track => track.stop());
-      
-      const devices = await navigator.mediaDevices.enumerateDevices();
-      const videoDevices = devices.filter(device => device.kind === 'videoinput');
-      
-      if (videoDevices.length === 0) {
-        setCameraError('No se encontraron cámaras disponibles');
-        return;
-      }
+      // Primero verificamos si hay otra aplicación usando la cámara
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        const tempStream = await navigator.mediaDevices.getUserMedia({ video: true })
+          .catch(err => {
+            console.error("Error al verificar cámara:", err);
+            throw err;
+          });
+        
+        // Liberamos el stream temporal inmediatamente
+        tempStream.getTracks().forEach(track => track.stop());
+        
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const videoDevices = devices.filter(device => device.kind === 'videoinput');
+        
+        if (videoDevices.length === 0) {
+          setCameraError('No se encontraron cámaras disponibles');
+          return;
+        }
 
-      setAvailableCameras(videoDevices);
-      
-      // Seleccionar cámara trasera por defecto en móviles
-      const rearCamera = videoDevices.find(device => 
-        device.label.toLowerCase().includes('back') || 
-        device.label.toLowerCase().includes('rear')
-      );
-      
-      setSelectedCameraId(rearCamera?.deviceId || videoDevices[0].deviceId);
+        setAvailableCameras(videoDevices);
+        if (videoDevices.length > 0 && !selectedCameraId) {
+          setSelectedCameraId(videoDevices[0].deviceId);
+        }
+      }
     } catch (err) {
       console.error("Error al enumerar dispositivos:", err);
-      setCameraError(getFriendlyErrorMessage(err));
+      if (err.name === 'NotAllowedError') {
+        setCameraError('Permiso de cámara denegado. Por favor habilita el acceso.');
+      } else if (err.message.includes('CameraReservedByAnotherApp')) {
+        setCameraError('La cámara está siendo usada por otra aplicación. Cierra otras apps que usen la cámara.');
+      } else {
+        setCameraError('No se pudo acceder a la cámara. Error: ' + err.message);
+      }
     }
   };
 
-  // Iniciar la cámara (versión optimizada para todos los dispositivos)
+  // Iniciar la cámara con manejo de errores mejorado
   const startCamera = async () => {
     try {
       setCameraError(null);
-      setIsCameraActive(false);
+      retryCountRef.current = 0;
       
-      // Detener cámara actual si está activa
-      if (streamRef.current) {
-        stopCamera();
-        await new Promise(resolve => setTimeout(resolve, 300)); // Pequeña pausa
-      }
+      // Liberar recursos primero
+      await stopCamera();
+      await new Promise(resolve => setTimeout(resolve, 500)); // Pausa crítica
 
-      // Configuración adaptable para diferentes dispositivos
       const constraints = {
         video: {
           deviceId: selectedCameraId ? { exact: selectedCameraId } : undefined,
-          width: { ideal: 1280, min: 640 },
-          height: { ideal: 720, min: 480 },
-          facingMode: window.innerWidth <= 768 ? 'environment' : 'user',
-          frameRate: { ideal: 30, min: 15 }
+          width: { ideal: 1280 },
+          height: { ideal: 720 },
+          facingMode: 'user'
         },
         audio: false
       };
 
-      console.log("Intentando iniciar cámara con constraints:", constraints);
+      console.log("Intentando acceder a la cámara con constraints:", constraints);
       
-      const stream = await navigator.mediaDevices.getUserMedia(constraints);
+      const stream = await navigator.mediaDevices.getUserMedia(constraints)
+        .catch(async err => {
+          if (retryCountRef.current < 2) {
+            retryCountRef.current++;
+            console.log(`Reintentando (${retryCountRef.current}/2)...`);
+            await new Promise(resolve => setTimeout(resolve, 300));
+            return startCamera();
+          }
+          throw err;
+        });
+
       streamRef.current = stream;
 
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
         
-        // Esperar a que el video tenga metadata
-        await new Promise((resolve) => {
-          const onLoaded = () => {
-            videoRef.current.removeEventListener('loadedmetadata', onLoaded);
-            console.log("Metadata de video cargada");
-            resolve();
-          };
-          videoRef.current.addEventListener('loadedmetadata', onLoaded);
-        });
-
-        // Intentar reproducir el video
-        try {
-          await videoRef.current.play();
-          console.log("Video reproducido con éxito");
+        // Solución definitiva para la vista previa
+        const handleSuccess = () => {
+          console.log("Stream de cámara activo");
           setIsCameraActive(true);
-        } catch (playError) {
-          console.error("Error al reproducir video:", playError);
-          // Segundo intento con enfoque alternativo
-          videoRef.current.muted = true;
-          videoRef.current.playsInline = true;
-          try {
-            await videoRef.current.play();
-            setIsCameraActive(true);
-          } catch (secondError) {
-            console.error("Segundo error al reproducir:", secondError);
-            setCameraError("No se puede mostrar la vista previa");
-            stopCamera();
+        };
+
+        const handleError = (err) => {
+          console.error("Error en el stream de video:", err);
+          setCameraError('Error al mostrar la vista previa');
+          stopCamera();
+        };
+
+        videoRef.current.onloadedmetadata = () => {
+          videoRef.current.play()
+            .then(handleSuccess)
+            .catch(handleError);
+        };
+
+        // Timeout de seguridad
+        setTimeout(() => {
+          if (!isCameraActive) {
+            console.warn("Timeout de activación de cámara");
+            handleError(new Error('Timeout de activación'));
           }
-        }
+        }, 3000);
       }
     } catch (err) {
-      console.error("Error al acceder a la cámara:", err);
-      setCameraError(getFriendlyErrorMessage(err));
+      console.error("Error crítico al acceder a la cámara:", err);
+      if (err.message.includes('CameraReservedByAnotherApp') || 
+          err.message.includes('0xA00F4243') || 
+          err.message.includes('0xC00D3704')) {
+        setCameraError('La cámara está siendo usada por otra aplicación. Cierra otras apps que usen la cámara.');
+      } else {
+        setCameraError(getFriendlyErrorMessage(err));
+      }
       setIsCameraActive(false);
-      stopCamera();
-    }
-  };
-
-  // Mensajes de error amigables
-  const getFriendlyErrorMessage = (error) => {
-    switch(error.name) {
-      case 'NotAllowedError':
-        return 'Permiso de cámara denegado. Por favor habilita el acceso a la cámara en la configuración de tu navegador.';
-      case 'NotFoundError':
-        return 'No se encontró ninguna cámara disponible.';
-      case 'NotReadableError':
-        return 'La cámara no puede ser accedida porque está siendo usada por otra aplicación.';
-      case 'OverconstrainedError':
-        return 'La configuración solicitada no es compatible con tu dispositivo.';
-      case 'SecurityError':
-        return 'El acceso a la cámara está deshabilitado por razones de seguridad.';
-      default:
-        return 'No se pudo acceder a la cámara. Por favor intenta nuevamente.';
+      await stopCamera();
     }
   };
 
   // Detener la cámara completamente
-  const stopCamera = () => {
-    if (streamRef.current) {
-      streamRef.current.getTracks().forEach(track => {
-        track.stop();
-        track.enabled = false;
-      });
-      streamRef.current = null;
-    }
-    
-    if (videoRef.current) {
-      videoRef.current.srcObject = null;
-      videoRef.current.onloadedmetadata = null;
-    }
-    
-    setIsCameraActive(false);
+  const stopCamera = async () => {
+    return new Promise(resolve => {
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach(track => {
+          track.stop();
+          track.enabled = false;
+        });
+        streamRef.current = null;
+      }
+      
+      if (videoRef.current) {
+        videoRef.current.srcObject = null;
+        videoRef.current.onloadedmetadata = null;
+      }
+      
+      setIsCameraActive(false);
+      resolve();
+    });
   };
 
   // Cambiar cámara seleccionada
@@ -298,7 +297,7 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
         </div>
       )}
 
-      <div className="camera-container">
+<div className="camera-container">
         {isCameraActive ? (
           <div className="camera-preview">
             <video 
@@ -307,12 +306,12 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
               playsInline 
               muted
               className="camera-feed"
-              style={{
-                transform: window.innerWidth > 768 ? 'scaleX(-1)' : 'none',
+              style={{ 
+                transform: 'scaleX(-1)',
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                display: 'block'
+                backgroundColor: '#000'
               }}
             />
             
@@ -375,21 +374,20 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
               </p>
             </div>
           </div>
-        ) : (
-          <div className="camera-placeholder">
-            <CameraOff size={48} />
-            <p>{cameraError || 'Cámara no activada'}</p>
-            {availableCameras.length > 0 && (
-              <button 
-                className="activate-camera-button"
-                onClick={startCamera}
-              >
-                Activar Cámara
-              </button>
-            )}
-          </div>
-        )}
-      </div>
+      ) : (
+        <div className="camera-placeholder">
+          <CameraOff size={48} />
+          <p>{cameraError || 'Cámara no activada'}</p>
+          <button 
+            className="activate-camera-button"
+            onClick={startCamera}
+            disabled={!!cameraError?.includes('otra aplicación')}
+          >
+            {cameraError?.includes('otra aplicación') ? 'Cierra otras apps primero' : 'Activar Cámara'}
+          </button>
+        </div>
+      )}
+    </div>
 
       {capturedPhotos.length > 0 && (
         <div className="photo-gallery">
