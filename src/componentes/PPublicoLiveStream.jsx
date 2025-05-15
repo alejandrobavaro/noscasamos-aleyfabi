@@ -57,7 +57,7 @@ function PPublicoLiveStream() {
 
           <p>Para aquellos que no puedan acompañarnos presencialmente,
             
-           <span><h6>podrán seguir la boda a través de nuestra transmisión en vivo. </h6></span> </p>
+           <span>podrán seguir la boda a través de nuestra transmisión en vivo. </span> </p>
           
           <div className="stream-details">
             <div className="detail-item">
