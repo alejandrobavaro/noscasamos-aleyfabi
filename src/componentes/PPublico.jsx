@@ -35,13 +35,15 @@ function PPublico() {
             <PPublicoQrSocialPost />
             <PPublicoLiveStream />
 
+            <br className="lineaSeparador" />
+
             <div className="cabina-button-container">
               <button 
                 className="cabina-button"
                 onClick={() => setShowCabinaFullscreen(true)}
+                aria-label="Abrir cabina fotográfica"
               >
                 <i className="bi bi-camera-fill"></i>
-                <span>Cabina Fotográfica</span>
               </button>
             </div>
           </div>

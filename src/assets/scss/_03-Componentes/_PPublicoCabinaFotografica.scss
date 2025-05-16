@@ -1,452 +1,190 @@
-/* Estilos finales para la cabina fotográfica */
-$primary-color: #5a2d2d;
-$secondary-color: #D4AF37;
-$accent-color: #8c5e3d;
-$error-color: #d32f2f;
-$background-light: #fff9f0;
-$shadow-color: rgba(0, 0, 0, 0.15);
+// Variables
+$primary: #5a2d2d;
+$gold: #D4AF37;
+$accent: #8c5e3d;
+$light-bg: #fff9f0;
+$error: #d32f2f;
+$shadow: rgba(0, 0, 0, 0.15);
 
+// Estilos base mobile-first
 .cabina-fotografica-container {
   width: 100%;
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 2.5rem;
-  background-color: $background-light;
-  border-radius: 16px;
-  box-shadow: 0 12px 40px $shadow-color;
+  padding: 1rem;
+  background: $light-bg;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px $shadow;
+  font-family: 'Cormorant Garamond', serif;
   position: relative;
   overflow: hidden;
-  font-family: 'Cormorant Garamond', serif;
-  border: 1px solid rgba($primary-color, 0.1);
+  margin: 0 auto;
 
-  &::before {
-    content: '';
-    position: absolute;
+  &.fullscreen {
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 8px;
-    background: linear-gradient(90deg, $primary-color, $secondary-color, $accent-color);
-  }
-
-  &.fullscreen {
-    max-width: none;
-    margin: 0;
+    bottom: 0;
     border-radius: 0;
-    min-height: 100vh;
-    padding: 3rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding: 1rem;
+    z-index: 1000;
+    overflow-y: auto;
   }
 }
 
 .close-fullscreen {
   position: absolute;
-  top: 25px;
-  right: 25px;
-  background: rgba($primary-color, 0.9);
+  top: 1rem;
+  right: 1rem;
+  background: rgba($primary, 0.9);
   border: none;
   border-radius: 50%;
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 10px $shadow-color;
+  z-index: 10;
+}
 
-  &:hover {
-    transform: scale(1.1);
-    background: $primary-color;
-  }
+.cabina-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding: 0 0.5rem;
 }
 
 .section-title {
   font-family: 'Cinzel', serif;
-  font-size: 2.5rem;
-  color: $primary-color;
-  text-align: center;
-  margin-bottom: 0.5rem;
+  color: $primary;
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
   position: relative;
-  letter-spacing: 1px;
-  font-weight: 600;
 
   &::after {
     content: '';
-    position: absolute;
-    bottom: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
+    display: block;
+    width: 80px;
     height: 2px;
-    background: linear-gradient(90deg, transparent, $secondary-color, transparent);
+    background: linear-gradient(90deg, transparent, $gold, transparent);
+    margin: 0.5rem auto 0;
   }
 }
 
 .section-subtitle {
-  text-align: center;
-  font-size: 1.3rem;
-  color: $accent-color;
-  margin-bottom: 2.5rem;
+  color: $accent;
+  font-size: 1rem;
   font-style: italic;
-  letter-spacing: 0.5px;
 }
 
-.photo-booth-layout {
-  display: flex;
-  gap: 2rem;
-  width: 100%;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-}
-
-.camera-preview-container {
-  flex: 1;
-  min-width: 0;
+.photo-booth-content {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.camera-container {
+// Sección de cámara
+.camera-section {
+  width: 100%;
+}
+
+.camera-wrapper {
   position: relative;
   width: 100%;
   aspect-ratio: 4/5;
   background: #000;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 8px 25px $shadow-color;
-  border: 8px solid white;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 2px solid rgba($secondary-color, 0.3);
-    pointer-events: none;
-    z-index: 2;
-  }
+  margin-bottom: 1rem;
+  border: 4px solid white;
 }
 
-.camera-video {
+.camera-view {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background: #000;
   transform: scaleX(-1);
-  transition: all 0.3s ease;
-
-  &.hidden {
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  &.visible {
-    opacity: 1;
-    visibility: visible;
+  
+  &.inactive {
+    opacity: 0.5;
   }
 }
 
-.camera-inactive-message {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 1.2rem;
-  text-align: center;
-  width: 80%;
-}
-
-.countdown-overlay {
+.countdown-display {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 10;
   color: white;
   text-align: center;
-  padding: 2rem;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
+  padding: 1rem;
 
-  &.visible {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .countdown-title {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: $secondary-color;
-    font-weight: bold;
-  }
-
-  .countdown-subtitle {
+  .photo-counter {
     font-size: 1.2rem;
-    margin-bottom: 2rem;
-  }
-
-  .countdown-number {
-    font-size: 5rem;
-    font-weight: bold;
-    color: white;
-    margin: 1rem 0;
-    text-shadow: 0 0 20px rgba($secondary-color, 0.7);
-    animation: pulse 1s infinite;
+    color: $gold;
+    margin-bottom: 0.5rem;
   }
 
   .countdown-message {
-    font-size: 1.5rem;
-    font-style: italic;
-    margin-top: 1rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .countdown-timer {
+    font-size: 3rem;
+    font-weight: bold;
+    animation: pulse 0.6s infinite;
   }
 }
 
-.flash-effect {
+.flash {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: white;
+  background: white;
   opacity: 0;
-  z-index: 15;
   pointer-events: none;
 
   &.active {
-    animation: flash 0.5s ease-out;
+    animation: flash 0.3s ease-out;
   }
 }
 
-@keyframes flash {
-  0% { opacity: 0; }
-  20% { opacity: 0.9; }
-  100% { opacity: 0; }
-}
+// Galería de fotos
+.gallery-preview {
+  margin-top: 1rem;
 
-.controls-panel {
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-}
-
-.take-photo-button {
-  padding: 1.2rem;
-  border-radius: 12px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.7rem;
-  font-weight: 500;
-  border: none;
-  background: linear-gradient(135deg, $primary-color, darken($primary-color, 10%));
-  color: white;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  box-shadow: 0 4px 15px $shadow-color;
-
-  &:hover:not(:disabled) {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba($shadow-color, 0.3);
-    background: linear-gradient(135deg, darken($primary-color, 5%), darken($primary-color, 15%));
-  }
-
-  &:active:not(:disabled) {
-    transform: translateY(1px);
-  }
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-
-  svg {
-    width: 24px;
-    height: 24px;
-  }
-}
-
-.toggle-camera-selector {
-  padding: 0.7rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-weight: 500;
-  border: none;
-  background-color: rgba($primary-color, 0.1);
-  color: $primary-color;
-
-  &:hover:not(:disabled) {
-    background-color: rgba($primary-color, 0.2);
-  }
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-
-  svg {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-.camera-selector-popup {
-  position: absolute;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px $shadow-color;
-  z-index: 20;
-  padding: 1.5rem;
-  width: 90%;
-  max-width: 400px;
-  animation: fadeInUp 0.3s ease;
-
-  h4 {
+  h3 {
     font-family: 'Cinzel', serif;
-    color: $primary-color;
-    margin-bottom: 1.2rem;
-    text-align: center;
-    font-size: 1.3rem;
-  }
-
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    max-height: 300px;
-    overflow-y: auto;
-  }
-
-  li {
-    padding: 0.8rem 1.2rem;
-    border: none;
-    background: none;
-    text-align: left;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.2s ease;
-    border-radius: 6px;
-    margin-bottom: 0.3rem;
-
-    &:hover {
-      background-color: rgba($primary-color, 0.1);
-    }
-
-    &.selected {
-      background-color: rgba($primary-color, 0.2);
-      font-weight: 500;
-      color: $primary-color;
-    }
+    color: $primary;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 }
 
-.close-selector {
-  display: block;
-  margin: 1.2rem auto 0;
-  padding: 0.6rem 1.5rem;
-  background-color: $primary-color;
-  color: white;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s;
-
-  &:hover {
-    background-color: darken($primary-color, 10%);
-  }
-}
-
-.filters-section {
-  background: white;
-  border-radius: 12px;
-  padding: 1.2rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-}
-
-.filters-title {
-  font-family: 'Cinzel', serif;
-  color: $primary-color;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  svg {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-.filters-container {
-  display: flex;
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 0.8rem;
-  overflow-x: auto;
-  padding: 0.5rem 0;
-  margin: 0.5rem 0;
-  scrollbar-width: thin;
-
-  &::-webkit-scrollbar {
-    height: 6px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba($primary-color, 0.3);
-    border-radius: 3px;
-  }
 }
 
-.filter-option {
-  flex: 0 0 70px;
-  height: 70px;
-  border-radius: 8px;
-  overflow: hidden;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
+.photo-thumbnail {
   position: relative;
-  box-shadow: 0 3px 10px $shadow-color;
-
-  &:hover {
-    transform: translateY(-3px);
-  }
-
-  &.active {
-    border-color: $secondary-color;
-    box-shadow: 0 0 0 3px rgba($secondary-color, 0.3);
-  }
+  aspect-ratio: 4/5;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px $shadow;
 
   img {
     width: 100%;
@@ -454,156 +192,202 @@ $shadow-color: rgba(0, 0, 0, 0.15);
     object-fit: cover;
   }
 
-  .filter-name {
+  .photo-badge {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(black, 0.6);
+    top: 5px;
+    left: 5px;
+    background: rgba($primary, 0.8);
     color: white;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 0.7rem;
-    padding: 0.3rem;
-    text-align: center;
+    font-weight: bold;
   }
 }
 
-.recent-photos-gallery {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba($primary-color, 0.1);
+// Controles
+.controls-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
 
-  h4 {
+.capture-button {
+  padding: 1rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, $primary, darken($primary, 10%));
+  color: white;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 3px 12px $shadow;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px $shadow;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  &.processing {
+    animation: pulse 1s infinite;
+    background: linear-gradient(135deg, darken($primary, 10%), $primary);
+  }
+}
+
+.filters-container, .masks-container {
+  h3 {
     font-family: 'Cinzel', serif;
-    color: $primary-color;
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
+    color: $primary;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
+
+  &.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
 }
 
-.recent-photos-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: 0.5rem;
+.filters-scroller, .masks-scroller {
+  display: flex;
+  gap: 0.8rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: thin;
 
-  .recent-photo {
-    width: 100%;
-    aspect-ratio: 4/5;
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba($primary, 0.3);
+    border-radius: 2px;
+  }
+}
+
+.filter-btn, .mask-btn {
+  flex: 0 0 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  .filter-preview {
+    width: 60px;
+    height: 60px;
     border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 3px 10px $shadow-color;
-    position: relative;
-    border: 2px solid white;
+    background: linear-gradient(135deg, $primary, $accent);
+    transition: all 0.2s;
+  }
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+  img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #f0f0f0;
+  }
 
-    .photo-number {
-      position: absolute;
-      top: 5px;
-      left: 5px;
-      background: rgba($primary-color, 0.7);
-      color: white;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      font-weight: bold;
+  span {
+    font-size: 0.8rem;
+    color: $primary;
+  }
+
+  &.active {
+    .filter-preview, img {
+      box-shadow: 0 0 0 3px $gold;
     }
   }
-}
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate(-50%, 20px);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, 0);
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
   }
 }
 
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.8;
-  }
-}
+// Selector de cámara
+.camera-selector {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 12px 12px 0 0;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 -5px 20px $shadow;
+  z-index: 100;
+  max-height: 70vh;
+  overflow-y: auto;
 
-@media (max-width: 768px) {
-  .cabina-fotografica-container {
-    padding: 1.5rem;
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .section-subtitle {
-    font-size: 1.1rem;
-  }
-
-  .photo-booth-layout {
-    flex-direction: column;
-  }
-
-  .controls-panel {
-    width: 100%;
-  }
-
-  .camera-container {
-    aspect-ratio: 4/5;
-  }
-
-  .recent-photos-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .tutorial-container {
-    padding: 1.5rem;
-  }
-
-  .tutorial-step {
-    flex-direction: column;
+  h4 {
+    font-family: 'Cinzel', serif;
+    color: $primary;
     text-align: center;
-
-    .step-arrow {
-      display: none;
-    }
-  }
-
-  .recent-photos-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem;
+    margin-bottom: 1.2rem;
   }
 }
 
+.camera-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.2rem;
 
+  li {
+    padding: 0.8rem;
+    border-bottom: 1px solid rgba($primary, 0.1);
+    cursor: pointer;
 
-/* Tutorial mejorado */
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &.selected {
+      background: rgba($primary, 0.1);
+      color: $primary;
+      font-weight: 500;
+    }
+  }
+}
+
+.close-btn {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  background: $primary;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
 .tutorial-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.95);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -614,89 +398,165 @@ $shadow-color: rgba(0, 0, 0, 0.15);
 
 .tutorial-container {
   background-color: white;
-  padding: 2.5rem;
-  border-radius: 16px;
-  max-width: 700px;
-  width: 100%;
-  position: relative;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba($primary-color, 0.1);
-
-  h3 {
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  
+  h2 {
     font-family: 'Cinzel', serif;
-    color: $primary-color;
-    text-align: center;
-    font-size: 1.8rem;
-    margin-bottom: 2.5rem;
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, $secondary-color, transparent);
-    }
+    color: #5a2d2d;
+    margin-bottom: 1.5rem;
   }
 }
 
 .tutorial-steps {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  margin-bottom: 2.5rem;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
 
-  .tutorial-step {
+.tutorial-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  text-align: left;
+  
+  .step-number {
+    background-color: #5a2d2d;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    position: relative;
-
-    .step-number {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, $primary-color, $accent-color);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      flex-shrink: 0;
-      font-size: 1.2rem;
-      box-shadow: 0 4px 10px rgba($primary-color, 0.2);
+    justify-content: center;
+    flex-shrink: 0;
+    font-weight: bold;
+  }
+  
+  .step-content {
+    h3 {
+      font-size: 1.1rem;
+      color: #5a2d2d;
+      margin-bottom: 0.3rem;
     }
-
-    .step-content {
-      flex: 1;
-
-      h4 {
-        font-family: 'Cinzel', serif;
-        color: $primary-color;
-        font-size: 1.3rem;
-        margin-bottom: 0.5rem;
-      }
-
-      p {
-        color: $accent-color;
-        font-size: 1.05rem;
-        margin: 0;
-        line-height: 1.5;
-      }
+    
+    p {
+      font-size: 0.9rem;
+      color: #5a4a42;
     }
+  }
+}
 
-    .step-arrow {
-      color: rgba($primary-color, 0.5);
-      position: absolute;
-      bottom: -25px;
-      left: 20px;
+.start-button {
+  background-color: #5a2d2d;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 1rem;
+  
+  &:hover {
+    background-color: darken(#5a2d2d, 10%);
+    transform: translateY(-2px);
+  }
+}
+
+/* Estilos para la vista previa de máscaras */
+.mask-preview {
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: 5;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 25%;
+  transition: opacity 0.3s ease;
+}
+
+.toggle-camera-selector {
+  &.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// Animaciones
+@keyframes flash {
+  0% { opacity: 0; }
+  50% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); opacity: 0.9; }
+}
+
+// Media queries para tablet
+@media (min-width: 600px) {
+  .photo-booth-content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .camera-section {
+    width: 60%;
+  }
+
+  .controls-section {
+    width: 40%;
+    padding-left: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+  }
+
+  /* Ajustes para máscaras en tablet */
+  .mask-preview {
+    width: 55%;
+    height: 55%;
+  }
+
+  .mask-btn img {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+// Media queries para desktop
+@media (min-width: 900px) {
+  .cabina-fotografica-container {
+    max-width: 1000px;
+    padding: 2rem;
+
+    &.fullscreen {
+      padding: 2rem;
     }
+  }
 
-    &:last-child .step-arrow {
-      display: none;
+  .filter-btn, .mask-btn {
+    flex: 0 0 100px;
+
+    .filter-preview, img {
+      width: 80px;
+      height: 80px;
     }
   }
 }

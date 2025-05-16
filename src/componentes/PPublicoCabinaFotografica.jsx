@@ -1,12 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import "../assets/scss/_03-Componentes/_PPublicoCabinaFotografica.scss";
-import { Camera, CameraOff, Circle, ChevronRight, X, Download, Share2, Smile, Zap, Image } from 'react-feather';
+import { Camera, X, Zap, Smile, Image } from 'react-feather';
 
-// Lista de filtros/máscaras
 const FILTERS = [
   { id: 'none', name: 'Normal', css: 'none' },
   { id: 'vintage', name: 'Vintage', css: 'sepia(0.5) contrast(1.2)' },
-  { id: 'blackwhite', name: 'Blanco y Negro', css: 'grayscale(100%)' }
+  { id: 'blackwhite', name: 'B/N', css: 'grayscale(100%)' }
 ];
 
 const MASKS = [
@@ -20,11 +19,30 @@ const MASKS = [
 
 const LOCAL_STORAGE_KEY = 'cabinaFotograficaFotos';
 
+const TUTORIAL_STEPS = [
+  {
+    title: "Permite el acceso a la cámara",
+    description: "Cuando se te solicite, permite que la aplicación use tu cámara."
+  },
+  {
+    title: "Selecciona un filtro divertido",
+    description: "Elige entre filtros y máscaras para tus fotos."
+  },
+  {
+    title: "Presiona el botón para fotos",
+    description: "Se tomarán 3 fotos automáticamente."
+  },
+  {
+    title: "¡Sonríe y diviértete!",
+    description: "Las fotos se guardarán automáticamente."
+  }
+];
+
 function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
+  const [showTutorial, setShowTutorial] = useState(true);
   const [isCameraActive, setIsCameraActive] = useState(false);
   const [isTakingPhotos, setIsTakingPhotos] = useState(false);
   const [photosTaken, setPhotosTaken] = useState(0);
-  const [showTutorial, setShowTutorial] = useState(true);
   const [showCameraSelector, setShowCameraSelector] = useState(false);
   const [cameraError, setCameraError] = useState(null);
   const [availableCameras, setAvailableCameras] = useState([]);
@@ -113,10 +131,14 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
 
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
-
-        const onLoadedMetadata = () => {
+        
+        // Esperar a que el video esté listo para reproducir
+        const onCanPlay = () => {
           videoRef.current.play()
-            .then(() => setIsCameraActive(true))
+            .then(() => {
+              setIsCameraActive(true);
+              videoRef.current.removeEventListener('canplay', onCanPlay);
+            })
             .catch(err => {
               console.error("Error al reproducir video:", err);
               setCameraError('Error al reproducir la cámara');
@@ -124,8 +146,7 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
             });
         };
 
-        videoRef.current.addEventListener('loadedmetadata', onLoadedMetadata);
-        return () => videoRef.current?.removeEventListener('loadedmetadata', onLoadedMetadata);
+        videoRef.current.addEventListener('canplay', onCanPlay);
       }
     } catch (err) {
       console.error("Error al acceder a la cámara:", err);
@@ -152,6 +173,7 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
   const handleCameraChange = (deviceId) => {
     setSelectedCameraId(deviceId);
     setShowCameraSelector(false);
+    startCamera(); // Reiniciar la cámara con el nuevo dispositivo
   };
 
   const showCountdownMessage = async (photoNumber) => {
@@ -163,16 +185,16 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
     
     setCountdownMessage(messages[photoNumber - 1]);
     setShowCountdown(true);
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 800));
     
     for (let i = 3; i > 0; i--) {
       setCountdown(i);
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 600));
     }
     
     setCountdown(0);
     setCountdownMessage("¡Di whisky!");
-    await new Promise(resolve => setTimeout(resolve, 500));
+    await new Promise(resolve => setTimeout(resolve, 200));
   };
 
   const triggerFlash = () => {
@@ -180,50 +202,66 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
     setTimeout(() => setFlashActive(false), 300);
   };
 
-  const capturePhoto = async () => {
-    if (!videoRef.current || !isCameraActive) return;
-
-    triggerFlash();
-    const video = videoRef.current;
-    const canvas = document.createElement('canvas');
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    const ctx = canvas.getContext('2d');
-
-    ctx.translate(canvas.width, 0);
-    ctx.scale(-1, 1);
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    
-    if (activeFilter !== 'none') {
-      const filter = FILTERS.find(f => f.id === activeFilter);
-      if (filter?.css) {
-        ctx.filter = filter.css;
-        ctx.drawImage(canvas, 0, 0, canvas.width, canvas.height);
-        ctx.filter = 'none';
+  const capturePhoto = () => {
+    return new Promise((resolve, reject) => {
+      if (!videoRef.current || !isCameraActive) {
+        reject(new Error("Cámara no disponible"));
+        return;
       }
-    }
 
-    if (activeMask) {
-      const mask = MASKS.find(m => m.id === activeMask);
-      if (mask) {
-        const img = new Image();
-        img.src = mask.url;
-        await new Promise((resolve) => {
-          img.onload = () => {
-            const faceWidth = canvas.width * 0.4;
-            const faceHeight = faceWidth;
-            const faceX = canvas.width / 2 - faceWidth / 2;
-            const faceY = canvas.height * 0.2;
-            ctx.drawImage(img, faceX, faceY, faceWidth, faceHeight);
-            resolve();
-          };
-          img.onerror = resolve;
-        });
+      try {
+        triggerFlash();
+        const video = videoRef.current;
+        const canvas = document.createElement('canvas');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        const ctx = canvas.getContext('2d');
+
+        // Espejo horizontal para efecto espejo
+        ctx.translate(canvas.width, 0);
+        ctx.scale(-1, 1);
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        
+        // Aplicar filtro si existe
+        if (activeFilter !== 'none') {
+          const filter = FILTERS.find(f => f.id === activeFilter);
+          if (filter?.css) {
+            ctx.filter = filter.css;
+            ctx.drawImage(canvas, 0, 0, canvas.width, canvas.height);
+            ctx.filter = 'none';
+          }
+        }
+
+        // Aplicar máscara si existe
+        if (activeMask) {
+          const mask = MASKS.find(m => m.id === activeMask);
+          if (mask) {
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.onload = () => {
+              const faceWidth = canvas.width * 0.6;
+              const faceHeight = faceWidth * (img.height / img.width);
+              const faceX = canvas.width / 2 - faceWidth / 2;
+              const faceY = canvas.height * 0.25;
+              ctx.drawImage(img, faceX, faceY, faceWidth, faceHeight);
+              const photoUrl = canvas.toDataURL('image/jpeg', 0.9);
+              resolve(photoUrl);
+            };
+            img.onerror = () => {
+              const photoUrl = canvas.toDataURL('image/jpeg', 0.9);
+              resolve(photoUrl);
+            };
+            img.src = mask.url;
+            return;
+          }
+        }
+
+        const photoUrl = canvas.toDataURL('image/jpeg', 0.9);
+        resolve(photoUrl);
+      } catch (error) {
+        reject(error);
       }
-    }
-
-    const photoUrl = canvas.toDataURL('image/jpeg', 0.9);
-    return photoUrl;
+    });
   };
 
   const takePhotoSequence = async () => {
@@ -232,29 +270,49 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
     setIsTakingPhotos(true);
     const newPhotos = [];
 
-    for (let i = 0; i < 3; i++) {
-      setPhotosTaken(i + 1);
-      await showCountdownMessage(i + 1);
-      const photoUrl = await capturePhoto();
-      newPhotos.push(photoUrl);
-      setShowCountdown(false);
-      
-      if (i < 2) {
-        await new Promise(resolve => setTimeout(resolve, 4000));
+    try {
+      for (let i = 0; i < 3; i++) {
+        setPhotosTaken(i + 1);
+        
+        await showCountdownMessage(i + 1);
+        
+        let photoUrl;
+        try {
+          photoUrl = await capturePhoto();
+          newPhotos.push(photoUrl);
+        } catch (error) {
+          console.error("Error al capturar foto:", error);
+          // Intentar una vez más
+          try {
+            photoUrl = await capturePhoto();
+            newPhotos.push(photoUrl);
+          } catch (error) {
+            console.error("Error al capturar foto (segundo intento):", error);
+            // Continuar con la siguiente foto
+            continue;
+          }
+        }
+        
+        setShowCountdown(false);
+        
+        if (i < 2) {
+          await new Promise(resolve => setTimeout(resolve, 1500));
+        }
       }
+
+      setRecentPhotos(prev => [
+        ...newPhotos.map((photo, idx) => ({ 
+          url: photo, 
+          number: prev.length + idx + 1 
+        })),
+        ...prev
+      ].slice(0, 3));
+    } catch (error) {
+      console.error("Error en la secuencia de fotos:", error);
+    } finally {
+      setIsTakingPhotos(false);
+      setPhotosTaken(0);
     }
-
-    // Actualizar fotos recientes (mantener solo las últimas 3)
-    setRecentPhotos(prev => [
-      ...newPhotos.map((photo, idx) => ({ 
-        url: photo, 
-        number: prev.length + idx + 1 
-      })),
-      ...prev
-    ].slice(0, 3));
-
-    setIsTakingPhotos(false);
-    setPhotosTaken(0);
   };
 
   const downloadPhoto = (photoUrl, index) => {
@@ -291,7 +349,9 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
 
   useEffect(() => {
     getAvailableCameras();
-    return () => stopCamera();
+    return () => {
+      stopCamera();
+    };
   }, []);
 
   useEffect(() => {
@@ -300,35 +360,46 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
     }
   }, [videoReady, selectedCameraId, availableCameras]);
 
-  const tutorialSteps = [
-    {
-      title: "Permite el acceso a la cámara",
-      description: "Cuando se te solicite, permite que la aplicación use tu cámara para poder tomar fotos."
-    },
-    {
-      title: "Selecciona un filtro divertido",
-      description: "Elige entre varios filtros y máscaras para hacer tus fotos más originales."
-    },
-    {
-      title: "Presiona el botón para tomar fotos",
-      description: "Se tomarán 3 fotos automáticamente con un intervalo de 4 segundos entre ellas."
-    },
-    {
-      title: "¡Sonríe y diviértete!",
-      description: "Las fotos se guardarán automáticamente y podrás verlas en la galería."
-    }
-  ];
+  if (showTutorial) {
+    return (
+      <div className="tutorial-overlay">
+        <div className="tutorial-container">
+          <h2>¿Cómo usar la cabina fotográfica?</h2>
+          <div className="tutorial-steps">
+            {TUTORIAL_STEPS.map((step, index) => (
+              <div key={index} className="tutorial-step">
+                <div className="step-number">{index + 1}</div>
+                <div className="step-content">
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <button 
+            className="start-button"
+            onClick={() => {
+              setShowTutorial(false);
+              getAvailableCameras();
+            }}
+          >
+            Comenzar
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <section className={`cabina-fotografica-container ${fullscreenMode ? 'fullscreen' : ''}`}>
-      {fullscreenMode && (
-        <button className="close-fullscreen" onClick={onClose}>
-          <X size={24} />
-        </button>
-      )}
+      <button className="close-fullscreen" onClick={onClose} aria-label="Cerrar cabina fotográfica">
+        <X size={24} />
+      </button>
 
-      <h2 className="section-title">Cabina Fotográfica</h2>
-      <p className="section-subtitle">¡Captura momentos divertidos de la boda!</p>
+      <div className="cabina-header">
+        <h1 className="section-title">Cabina Fotográfica</h1>
+        <p className="section-subtitle">¡Captura momentos divertidos!</p>
+      </div>
 
       {cameraError && (
         <div className="camera-error">
@@ -339,65 +410,52 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
         </div>
       )}
 
-      {showTutorial && (
-        <div className="tutorial-overlay">
-          <div className="tutorial-container">
-            <h3>¿Cómo usar la cabina fotográfica?</h3>
-            <div className="tutorial-steps">
-              {tutorialSteps.map((step, index) => (
-                <div key={index} className="tutorial-step">
-                  <div className="step-number">{index + 1}</div>
-                  <div className="step-content">
-                    <h4>{step.title}</h4>
-                    <p>{step.description}</p>
-                  </div>
-                  {index < tutorialSteps.length - 1 && <ChevronRight className="step-arrow" />}
-                </div>
-              ))}
-            </div>
-            <button className="start-button" onClick={() => setShowTutorial(false)}>
-              Comenzar
-            </button>
-          </div>
-        </div>
-      )}
-
-      <div className="photo-booth-layout">
-        <div className="camera-preview-container">
-          <div className="camera-container">
+      <div className="photo-booth-content">
+        <div className="camera-section">
+          <div className="camera-wrapper">
             <video
               ref={videoRef}
-              className={`camera-video ${isCameraActive ? 'visible' : 'hidden'}`}
+              className={`camera-view ${isCameraActive ? 'active' : 'inactive'}`}
               autoPlay
               playsInline
               muted
               style={{ filter: activeFilter !== 'none' ? FILTERS.find(f => f.id === activeFilter)?.css : 'none' }}
+              aria-label="Vista previa de la cámara"
             />
             
-            <div className={`countdown-overlay ${showCountdown ? 'visible' : ''}`}>
-              <div className="countdown-title">Foto {photosTaken} de 3</div>
-              <div className="countdown-subtitle">{countdownMessage}</div>
-              {countdown > 0 && <div className="countdown-number">{countdown}</div>}
-              {countdown === 0 && countdownMessage && (
-                <div className="countdown-message">{countdownMessage}</div>
-              )}
-            </div>
-            
-            <div className={`flash-effect ${flashActive ? 'active' : ''}`}></div>
-
-            {!isCameraActive && !cameraError && !showTutorial && (
-              <p className="camera-inactive-message">Cámara no activada</p>
+            {activeMask && isCameraActive && (
+              <div 
+                className="mask-preview"
+                style={{
+                  backgroundImage: `url(${MASKS.find(m => m.id === activeMask)?.url})`,
+                  left: '50%',
+                  top: '25%',
+                  transform: 'translate(-50%, -50%)',
+                  width: '60%',
+                  height: '60%'
+                }}
+              />
             )}
+
+            {showCountdown && (
+              <div className="countdown-display">
+                <div className="photo-counter">Foto {photosTaken} de 3</div>
+                <div className="countdown-message">{countdownMessage}</div>
+                {countdown > 0 && <div className="countdown-timer">{countdown}</div>}
+              </div>
+            )}
+
+            <div className={`flash ${flashActive ? 'active' : ''}`}></div>
           </div>
 
           {recentPhotos.length > 0 && (
-            <div className="recent-photos-gallery">
-              <h4><Image size={18} /> Tus últimas fotos</h4>
-              <div className="recent-photos-grid">
+            <div className="gallery-preview">
+              <h3><Image size={16} /> Tus fotos</h3>
+              <div className="photo-grid">
                 {recentPhotos.map((photo, index) => (
-                  <div key={index} className="recent-photo">
-                    <img src={photo.url} alt={`Foto ${photo.number}`} />
-                    <div className="photo-number">{photo.number}</div>
+                  <div key={index} className="photo-thumbnail">
+                    <img src={photo.url} alt={`Foto ${index + 1}`} loading="lazy" />
+                    <span className="photo-badge">{index + 1}</span>
                   </div>
                 ))}
               </div>
@@ -405,56 +463,57 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
           )}
         </div>
 
-        <div className="controls-panel">
+        <div className="controls-section">
           <button
-            className="take-photo-button"
+            className={`capture-button ${isTakingPhotos ? 'processing' : ''}`}
             onClick={takePhotoSequence}
             disabled={!isCameraActive || isTakingPhotos}
+            aria-busy={isTakingPhotos}
           >
-            <Zap size={24} /> {isTakingPhotos ? `Tomando foto ${photosTaken}/3` : 'Tomar 3 fotos'}
+            <Zap size={20} />
+            {isTakingPhotos ? `Foto ${photosTaken}/3` : 'Tomar fotos'}
           </button>
 
-          <div className="filters-section">
-            <h3 className="filters-title"><Smile size={18} /> Filtros</h3>
-            <div className="filters-container">
+          <div className={`filters-container ${isTakingPhotos ? 'disabled' : ''}`}>
+            <h3><Smile size={16} /> Filtros</h3>
+            <div className="filters-scroller">
               {FILTERS.map(filter => (
                 <button 
                   key={filter.id}
-                  className={`filter-option ${activeFilter === filter.id ? 'active' : ''}`}
-                  onClick={() => setActiveFilter(filter.id)}
+                  className={`filter-btn ${activeFilter === filter.id ? 'active' : ''}`}
+                  onClick={() => !isTakingPhotos && setActiveFilter(filter.id)}
+                  disabled={isTakingPhotos}
+                  aria-label={`Filtro ${filter.name}`}
                 >
-                  <div className="filter-preview" style={{ 
-                    filter: filter.css,
-                    background: 'linear-gradient(135deg, #5a2d2d, #D4AF37)',
-                    width: '100%',
-                    height: '100%'
-                  }} />
-                  <span className="filter-name">{filter.name}</span>
+                  <div className="filter-preview" style={{ filter: filter.css }} />
+                  <span>{filter.name}</span>
                 </button>
               ))}
             </div>
           </div>
 
-          <div className="filters-section">
-            <h3 className="filters-title"><Smile size={18} /> Máscaras</h3>
-            <div className="filters-container">
+          <div className={`masks-container ${isTakingPhotos ? 'disabled' : ''}`}>
+            <h3><Smile size={16} /> Máscaras</h3>
+            <div className="masks-scroller">
               {MASKS.map(mask => (
                 <button 
                   key={mask.id}
-                  className={`filter-option ${activeMask === mask.id ? 'active' : ''}`}
-                  onClick={() => setActiveMask(mask.id === activeMask ? null : mask.id)}
+                  className={`mask-btn ${activeMask === mask.id ? 'active' : ''}`}
+                  onClick={() => !isTakingPhotos && setActiveMask(mask.id === activeMask ? null : mask.id)}
+                  disabled={isTakingPhotos}
+                  aria-label={`Máscara ${mask.name}`}
                 >
-                  <img src={mask.url} alt={mask.name} />
-                  <span className="filter-name">{mask.name}</span>
+                  <img src={mask.url} alt="" loading="lazy" />
+                  <span>{mask.name}</span>
                 </button>
               ))}
             </div>
           </div>
 
           <button
-            className="toggle-camera-selector"
-            onClick={() => setShowCameraSelector(!showCameraSelector)}
-            disabled={availableCameras.length <= 1}
+            className={`toggle-camera-selector ${isTakingPhotos ? 'disabled' : ''}`}
+            onClick={() => !isTakingPhotos && setShowCameraSelector(!showCameraSelector)}
+            disabled={availableCameras.length <= 1 || isTakingPhotos}
           >
             <Camera size={18} /> Cambiar cámara
           </button>
@@ -462,9 +521,9 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
       </div>
 
       {showCameraSelector && (
-        <div className="camera-selector-popup">
-          <h4>Selecciona la cámara</h4>
-          <ul>
+        <div className="camera-selector">
+          <h4>Seleccionar cámara</h4>
+          <ul className="camera-list">
             {availableCameras.map((camera) => (
               <li
                 key={camera.deviceId}
@@ -475,7 +534,7 @@ function PPublicoCabinaFotografica({ onClose, fullscreenMode }) {
               </li>
             ))}
           </ul>
-          <button className="close-selector" onClick={() => setShowCameraSelector(false)}>
+          <button className="close-btn" onClick={() => setShowCameraSelector(false)}>
             Cerrar
           </button>
         </div>
