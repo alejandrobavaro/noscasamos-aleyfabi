@@ -5,6 +5,7 @@ $accent: #8c5e3d;
 $light-bg: #fff9f0;
 $error: #d32f2f;
 $shadow: rgba(0, 0, 0, 0.15);
+$success: #4caf50;
 
 // Estilos base mobile-first
 .cabina-fotografica-container {
@@ -19,7 +20,7 @@ $shadow: rgba(0, 0, 0, 0.15);
   margin: 0 auto;
 
   &.fullscreen {
-    position: fixed;
+    // position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -46,12 +47,24 @@ $shadow: rgba(0, 0, 0, 0.15);
   justify-content: center;
   cursor: pointer;
   z-index: 10;
+  transition: all 0.3s;
+
+  &:hover {
+    background: $primary;
+    transform: scale(1.1);
+  }
 }
 
 .cabina-header {
   text-align: center;
   margin-bottom: 1.5rem;
   padding: 0 0.5rem;
+
+  .guest-welcome {
+    color: $accent;
+    font-style: italic;
+    margin-top: 0.5rem;
+  }
 }
 
 .section-title {
@@ -97,6 +110,7 @@ $shadow: rgba(0, 0, 0, 0.15);
   overflow: hidden;
   margin-bottom: 1rem;
   border: 4px solid white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .camera-view {
@@ -124,22 +138,27 @@ $shadow: rgba(0, 0, 0, 0.15);
   color: white;
   text-align: center;
   padding: 1rem;
+  z-index: 10;
 
   .photo-counter {
     font-size: 1.2rem;
     color: $gold;
     margin-bottom: 0.5rem;
+    font-weight: 500;
   }
 
   .countdown-message {
     font-size: 1rem;
     margin-bottom: 1rem;
+    max-width: 80%;
   }
 
   .countdown-timer {
     font-size: 3rem;
     font-weight: bold;
     animation: pulse 0.6s infinite;
+    margin: 0.5rem 0;
+    color: $gold;
   }
 }
 
@@ -152,24 +171,131 @@ $shadow: rgba(0, 0, 0, 0.15);
   background: white;
   opacity: 0;
   pointer-events: none;
+  z-index: 5;
 
   &.active {
     animation: flash 0.3s ease-out;
   }
 }
 
+// Efectos visuales
+.confetti-effect, .petals-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 6;
+  overflow: hidden;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #f00;
+  bottom: 100%;
+  animation: fall linear forwards;
+  border-radius: 50%;
+}
+
+.petal {
+  position: absolute;
+  animation: fall linear forwards;
+  user-select: none;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
 // Galería de fotos
 .gallery-preview {
   margin-top: 1rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  .gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
 
   h3 {
     font-family: 'Cinzel', serif;
     color: $primary;
     font-size: 1.2rem;
-    margin-bottom: 0.8rem;
+    margin: 0;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+  }
+}
+
+.gallery-actions {
+  display: flex;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.action-button {
+  background: rgba($primary, 0.1);
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: $primary;
+
+  &:hover:not(.disabled) {
+    background: rgba($primary, 0.2);
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.share-options {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  z-index: 20;
+  min-width: 120px;
+
+  button {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+
+    &:hover {
+      background: rgba($primary, 0.1);
+    }
   }
 }
 
@@ -185,11 +311,14 @@ $shadow: rgba(0, 0, 0, 0.15);
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 2px 8px $shadow;
+  cursor: pointer;
+  transition: all 0.3s;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s;
   }
 
   .photo-badge {
@@ -206,6 +335,63 @@ $shadow: rgba(0, 0, 0, 0.15);
     justify-content: center;
     font-size: 0.7rem;
     font-weight: bold;
+    z-index: 2;
+  }
+
+  .photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s;
+    z-index: 1;
+
+    .download-icon {
+      background: rgba(white, 0.8);
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: $primary;
+      transition: all 0.3s;
+
+      &:hover {
+        background: white;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+    img {
+      transform: scale(1.05);
+    }
+
+    .photo-overlay {
+      opacity: 1;
+    }
+  }
+
+  &.selected {
+    box-shadow: 0 0 0 3px $gold;
+
+    .photo-badge {
+      background: $gold;
+      color: $primary;
+    }
   }
 }
 
@@ -217,6 +403,7 @@ $shadow: rgba(0, 0, 0, 0.15);
 }
 
 .capture-button {
+  position: relative;
   padding: 1rem;
   border-radius: 10px;
   background: linear-gradient(135deg, $primary, darken($primary, 10%));
@@ -231,6 +418,7 @@ $shadow: rgba(0, 0, 0, 0.15);
   cursor: pointer;
   transition: all 0.2s;
   box-shadow: 0 3px 12px $shadow;
+  overflow: hidden;
 
   &:hover:not(:disabled) {
     transform: translateY(-2px);
@@ -243,8 +431,28 @@ $shadow: rgba(0, 0, 0, 0.15);
   }
 
   &.processing {
-    animation: pulse 1s infinite;
     background: linear-gradient(135deg, darken($primary, 10%), $primary);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: $gold;
+    animation: progressBar calc(var(--photo-delay) * 1ms) linear;
+    width: 0;
+  }
+
+  .capture-loader {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(white, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 0.5rem;
   }
 }
 
@@ -291,6 +499,7 @@ $shadow: rgba(0, 0, 0, 0.15);
   background: none;
   border: none;
   cursor: pointer;
+  transition: all 0.2s;
 
   .filter-preview {
     width: 60px;
@@ -306,22 +515,51 @@ $shadow: rgba(0, 0, 0, 0.15);
     object-fit: contain;
     border-radius: 8px;
     background: #f0f0f0;
+    transition: all 0.2s;
   }
 
   span {
     font-size: 0.8rem;
     color: $primary;
+    text-align: center;
   }
 
   &.active {
     .filter-preview, img {
       box-shadow: 0 0 0 3px $gold;
+      transform: scale(1.05);
+    }
+  }
+
+  &:hover:not(:disabled) {
+    transform: translateY(-3px);
+
+    .filter-preview, img {
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     }
   }
 
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+}
+
+.edit-guest-data {
+  background: none;
+  border: none;
+  color: $primary;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+
+  &:hover {
+    background: rgba($primary, 0.1);
   }
 }
 
@@ -356,9 +594,14 @@ $shadow: rgba(0, 0, 0, 0.15);
     padding: 0.8rem;
     border-bottom: 1px solid rgba($primary, 0.1);
     cursor: pointer;
+    transition: all 0.2s;
 
     &:last-child {
       border-bottom: none;
+    }
+
+    &:hover {
+      background: rgba($primary, 0.05);
     }
 
     &.selected {
@@ -379,8 +622,103 @@ $shadow: rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    background: darken($primary, 10%);
+  }
 }
 
+// Formulario de invitado
+.guest-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+  backdrop-filter: blur(5px);
+}
+
+.guest-form-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  
+  h2 {
+    font-family: 'Cinzel', serif;
+    color: $primary;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    color: $accent;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+  
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: $primary;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid rgba($primary, 0.3);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    
+    &:focus {
+      outline: none;
+      border-color: $primary;
+      box-shadow: 0 0 0 2px rgba($primary, 0.2);
+    }
+  }
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.submit-button {
+  background-color: $primary;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  
+  &:hover {
+    background-color: darken($primary, 10%);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+// Tutorial
 .tutorial-overlay {
   position: fixed;
   top: 0;
@@ -406,7 +744,7 @@ $shadow: rgba(0, 0, 0, 0.15);
   
   h2 {
     font-family: 'Cinzel', serif;
-    color: #5a2d2d;
+    color: $primary;
     margin-bottom: 1.5rem;
   }
 }
@@ -425,7 +763,7 @@ $shadow: rgba(0, 0, 0, 0.15);
   text-align: left;
   
   .step-number {
-    background-color: #5a2d2d;
+    background-color: $primary;
     color: white;
     width: 30px;
     height: 30px;
@@ -440,19 +778,19 @@ $shadow: rgba(0, 0, 0, 0.15);
   .step-content {
     h3 {
       font-size: 1.1rem;
-      color: #5a2d2d;
+      color: $primary;
       margin-bottom: 0.3rem;
     }
     
     p {
       font-size: 0.9rem;
-      color: #5a4a42;
+      color: $accent;
     }
   }
 }
 
 .start-button {
-  background-color: #5a2d2d;
+  background-color: $primary;
   color: white;
   border: none;
   padding: 0.8rem 2rem;
@@ -463,33 +801,15 @@ $shadow: rgba(0, 0, 0, 0.15);
   margin-top: 1rem;
   
   &:hover {
-    background-color: darken(#5a2d2d, 10%);
+    background-color: darken($primary, 10%);
     transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
   }
 }
 
-/* Estilos para la vista previa de máscaras */
-.mask-preview {
-  position: absolute;
-  width: 60%;
-  height: 60%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  pointer-events: none;
-  z-index: 5;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 25%;
-  transition: opacity 0.3s ease;
-}
-
-.toggle-camera-selector {
-  &.disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
+// Contenido para imprimir (oculto)
+.print-content {
+  display: none;
 }
 
 // Animaciones
@@ -502,6 +822,15 @@ $shadow: rgba(0, 0, 0, 0.15);
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.1); opacity: 0.9; }
+}
+
+@keyframes progressBar {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 // Media queries para tablet
@@ -528,15 +857,17 @@ $shadow: rgba(0, 0, 0, 0.15);
     font-size: 1.1rem;
   }
 
-  /* Ajustes para máscaras en tablet */
-  .mask-preview {
-    width: 55%;
-    height: 55%;
+  .filter-btn, .mask-btn {
+    flex: 0 0 100px;
+
+    .filter-preview, img {
+      width: 80px;
+      height: 80px;
+    }
   }
 
-  .mask-btn img {
-    width: 70px;
-    height: 70px;
+  .photo-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -552,11 +883,15 @@ $shadow: rgba(0, 0, 0, 0.15);
   }
 
   .filter-btn, .mask-btn {
-    flex: 0 0 100px;
+    flex: 0 0 120px;
 
     .filter-preview, img {
-      width: 80px;
-      height: 80px;
+      width: 100px;
+      height: 100px;
     }
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
