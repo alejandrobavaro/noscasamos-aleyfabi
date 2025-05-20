@@ -1,0 +1,265 @@
+.controls-container {
+    width: 100%;
+    max-width: 412px;
+    margin: 0 auto;
+    padding: 12px;
+    background-color: white;
+    border-radius: 8px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .controls-capture-button {
+    background-color: #5a2d2d;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    
+    &:hover:not(:disabled) {
+      background-color: #4a2525;
+    }
+  
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  
+    &.processing {
+      background-color: #4a2525;
+    }
+  }
+  
+  .capture-loader {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 6px;
+  }
+  
+  .controls-section-title {
+    color: #5a2d2d;
+    font-size: 14px;
+    margin: 0 0 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .controls-filters,
+  .controls-masks {
+    &.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+  
+  .filters-scroller,
+  .masks-scroller {
+    display: flex;
+    gap: 8px;
+    padding: 4px 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  
+  .filter-button,
+  .mask-button {
+    flex: 0 0 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  
+  .filter-preview {
+    width: 56px;
+    height: 56px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #5a2d2d, #8c5e3d);
+  }
+  
+  .mask-image {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    border-radius: 6px;
+    background-color: #f5f5f5;
+  }
+  
+  .filter-name,
+  .mask-name {
+    font-size: 12px;
+    color: #5a2d2d;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+  
+  .filter-button.active .filter-preview,
+  .mask-button.active .mask-image {
+    box-shadow: 0 0 0 2px #D4AF37;
+  }
+  
+  .controls-secondary-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  
+  .camera-selector-button,
+  .guest-data-button {
+    background: none;
+    border: 1px solid #5a2d2d;
+    color: #5a2d2d;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  
+    &:hover:not(:disabled) {
+      background-color: rgba(90, 45, 45, 0.08);
+    }
+  
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+  
+  .guest-data-button {
+    border: none;
+  }
+  
+  .camera-selector-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: flex-end;
+    z-index: 1000;
+  }
+  
+  .camera-selector-content {
+    width: 100%;
+    max-width: 412px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 12px 12px 0 0;
+    padding: 16px;
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+  
+  .camera-selector-title {
+    color: #5a2d2d;
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+  
+  .camera-selector-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+  }
+  
+  .camera-selector-item {
+    padding: 12px;
+    border-bottom: 1px solid rgba(90, 45, 45, 0.1);
+    font-size: 14px;
+  
+    &:last-child {
+      border-bottom: none;
+    }
+  
+    &.selected {
+      background-color: rgba(90, 45, 45, 0.08);
+      color: #5a2d2d;
+      font-weight: 500;
+    }
+  }
+  
+  .camera-selector-close {
+    background-color: #5a2d2d;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  @media (min-width: 413px) {
+    .controls-container {
+      padding: 16px;
+      border-radius: 10px;
+    }
+  
+    .controls-capture-button {
+      font-size: 17px;
+    }
+  
+    .controls-section-title {
+      font-size: 15px;
+    }
+  
+    .filter-name,
+    .mask-name {
+      font-size: 13px;
+    }
+  
+    .camera-selector-content {
+      border-radius: 12px;
+      max-height: 60vh;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .controls-container {
+      max-width: 450px;
+    }
+  
+    .filter-preview,
+    .mask-image {
+      width: 60px;
+      height: 60px;
+    }
+  }

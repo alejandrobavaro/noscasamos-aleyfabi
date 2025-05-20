@@ -1,47 +1,48 @@
-/* Contenedor principal */
+/* Contenedor principal optimizado para 412px */
 .public-container {
   width: 100%;
-  max-width: 1200px;
-  margin: 0;
-  padding: 0; 
+  max-width: 412px;
+  margin: 0 auto;
+  padding: 0;
   background: transparent;
+  overflow-x: hidden;
 }
 
-/* Estilo general revista elegante */
+/* Estilo revista móvil first */
 .wedding-journal {
   font-family: 'Cormorant Garamond', serif;
   color: #333;
-  line-height: 1.6;
+  line-height: 1.5;
   width: 100%;
+  padding: 0 0.5rem;
 }
 
-/* Contenedor de contenido */
+/* Contenedor de contenido ajustado */
 .journal-content {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 1.5rem;
   margin-top: 0;
 }
 
-/* Encabezado estilo revista */
+/* Encabezado optimizado */
 .journal-header {
   text-align: center;
-  padding: 0;
-  margin: 0;
+  padding: 0.5rem 0;
 
   h1 {
     font-family: 'Cinzel', serif;
-    font-size: 3rem;
+    font-size: 1.8rem;
     color: #5a2d2d;
-    margin: 0;
-    letter-spacing: 1px;
+    margin: 0.5rem 0;
+    letter-spacing: 0.5px;
   }
 
   .subtitle {
-    font-size: 1.3rem;
+    font-size: 1rem;
     color: #8c5e3d;
     font-style: italic;
-    margin-top: 0;
+    margin: 0;
   }
 }
 
@@ -50,84 +51,136 @@
   width: 100%;
 }
 
-/* Botón de cabina fotográfica */
-.cabina-button-container {
-  text-align: center;
-  margin: 2rem 0;
-}
-
+/* Separador visual */
 .lineaSeparador {
-  border: #812525 1px solid;
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #812525, transparent);
+  margin: 1rem 0;
 }
 
-.cabina-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
-  padding: 3px 15px;
-  // background-color: #000000;
-  color: rgb(2, 0, 0);
-  border: none;
-  border-radius: 50px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: small;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.822);
+/* Contenedor botón cabina */
+.cabina-button-container {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 50;
+}
 
+/* Botón flotante optimizado */
+.cabina-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: #5a2d2d;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  
   &:hover {
-    background-color: #5c070754;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background-color: #4a2525;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   }
 
   i {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 }
 
-/* Media Queries */
-@media (max-width: 1200px) {
+/* Media Queries progresivas */
+@media (min-width: 413px) {
   .public-container {
-    padding: 0 2rem 2rem 2rem;
+    max-width: none;
+    padding: 0 1rem;
   }
-}
 
-@media (max-width: 768px) {
-  .public-container {
-    padding: 0 1.5rem 1.5rem 1.5rem;
+  .journal-header {
+    h1 {
+      font-size: 2rem;
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+    }
   }
-  
-  .journal-header h1 {
-    font-size: 2.5rem;
-  }
-  
+
   .journal-content {
     gap: 2rem;
   }
 
   .cabina-button {
-    padding: 0.8rem 1.5rem;
-    font-size: 1.1rem;
+    width: 55px;
+    height: 55px;
+    
+    i {
+      font-size: 1.3rem;
+    }
   }
 }
 
-@media (max-width: 576px) {
+@media (min-width: 600px) {
   .public-container {
-    padding: 0 1rem 1rem 1rem;
+    padding: 0 1.5rem;
   }
-  
-  .journal-header h1 {
-    font-size: 2rem;
+
+  .journal-header {
+    h1 {
+      font-size: 2.2rem;
+    }
   }
-  
-  .compact-messages h2 {
-    font-size: 1.5rem;
+
+  .cabina-button-container {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin: 1.5rem 0;
+    text-align: center;
   }
 
   .cabina-button {
-    padding: 0.7rem 1.2rem;
-    font-size: 1rem;
+    position: relative;
+    width: auto;
+    height: auto;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
     gap: 0.5rem;
+    
+    i {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .public-container {
+    max-width: 1000px;
+  }
+
+  .journal-header {
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+
+  .journal-content {
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .journal-header {
+    h1 {
+      font-size: 3rem;
+    }
+    
+    .subtitle {
+      font-size: 1.3rem;
+    }
   }
 }

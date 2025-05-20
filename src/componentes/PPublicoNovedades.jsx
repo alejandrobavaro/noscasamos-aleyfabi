@@ -238,121 +238,102 @@ function PPublicoNovedades() {
   return (
     <div className="novedades-container">
       {/* Sección de Revista */}
-      {/* <section className="wedding-magazine">
-        <h2>Novedades y Preparativos para la Boda</h2>
-        <p className="magazine-subtitle">Una aventura a pulmón paso a paso</p>
+      <section className="wedding-magazine">
+        <h2>Nuestra Revista</h2>
+        <p className="magazine-subtitle">La historia de nuestra boda</p>
         
-         <div className="magazine-container">
-          <div className="magazine-page">
-            <div className="page-image" style={{ backgroundImage: `url(${magazinePages[currentPage].image})` }}>
+        <div className="magazine-page">
+          <div className="page-image-container">
+            <div 
+              className="page-image" 
+              style={{ backgroundImage: `url(${magazinePages[currentPage].image})` }}
+            >
               <div className="page-header">
                 <h3>{magazinePages[currentPage].title}</h3>
                 <span className="page-date">{magazinePages[currentPage].date}</span>
-                <span className="page-category">{magazinePages[currentPage].category}</span>
               </div>
-            </div>
-            
-            <div className="page-content">
-              {magazinePages[currentPage].content}
-              
-              {magazinePages[currentPage].gallery && (
-                <div className="page-gallery-container">
-                  <h4 className="gallery-title">Galería de Imágenes</h4>
-                  <div className="page-gallery">
-                    {magazinePages[currentPage].gallery.map((img, i) => (
-                      <div key={i} className="gallery-item">
-                        <img src={img} alt={`Imagen ${i + 1} de la galería`} className="gallery-thumbnail" />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
           </div>
           
-          <div className="magazine-controls">
-            <button 
-              disabled={currentPage === 0}
-              onClick={() => setCurrentPage(p => p - 1)}
-              className="magazine-button"
-            >
-              &larr; Anterior
-            </button>
+          <div className="page-content">
+            {magazinePages[currentPage].content}
             
-            <div className="page-indicator">
-              <span>Página {currentPage + 1} de {magazinePages.length}</span>
-              <div className="page-dots">
-                {magazinePages.map((_, index) => (
-                  <span 
-                    key={index} 
-                    className={`dot ${currentPage === index ? 'active' : ''}`}
-                    onClick={() => setCurrentPage(index)}
-                  />
-                ))}
+            {magazinePages[currentPage].gallery && (
+              <div className="page-gallery">
+                <h4>Galería</h4>
+                <div className="gallery-grid">
+                  {magazinePages[currentPage].gallery.map((img, i) => (
+                    <div key={i} className="gallery-item">
+                      <img src={img} alt={`Galería ${i + 1}`} />
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-            
-            <button 
-              disabled={currentPage === magazinePages.length - 1}
-              onClick={() => setCurrentPage(p => p + 1)}
-              className="magazine-button"
-            >
-              Siguiente &rarr;
-            </button>
+            )}
           </div>
-        </div> 
-      </section> */}
+          
+          <div className="page-controls">
+            <div className="page-indicator">
+              Página {currentPage + 1} de {magazinePages.length}
+            </div>
+            <div className="navigation-buttons">
+              <button 
+                onClick={() => setCurrentPage(p => Math.max(0, p - 1))}
+                disabled={currentPage === 0}
+              >
+                Anterior
+              </button>
+              <button 
+                onClick={() => setCurrentPage(p => Math.min(magazinePages.length - 1, p + 1))}
+                disabled={currentPage === magazinePages.length - 1}
+              >
+                Siguiente
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Sección de Noticias */}
-      <section className="news-feed">
-        <h2 className="section-title">Novedades y Preparativos para la Boda</h2>
-        <p className="section-subtitle">Una aventura a pulmón paso a paso</p>
+      <section className="news-section">
+        <h2>Últimas Novedades</h2>
+        <p className="news-subtitle">Preparativos y actualizaciones</p>
         
- 
-        <div className="news-grid">
+        <div className="news-list">
           {newsItems.map(news => (
-            <article 
+            <div 
               key={news.id} 
               className={`news-card ${expandedNews === news.id ? 'expanded' : ''}`}
-              onClick={() => expandedNews === news.id && setExpandedNews(null)}
             >
-              <div className="news-card-content">
+              <div className="news-image">
+                <img src={news.images[0]} alt={news.title} />
+              </div>
+              <div className="news-content">
                 <span className="news-category">{news.category}</span>
                 <h3>{news.title}</h3>
                 <time>{news.date}</time>
-                <p className="excerpt">{news.excerpt}</p>
+                <p className="news-excerpt">{news.excerpt}</p>
                 
                 {expandedNews === news.id ? (
-                  <div className="full-content">
+                  <div className="news-full-content">
                     {news.content}
                     <button 
-                      className="collapse-news"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setExpandedNews(null);
-                      }}
+                      className="news-toggle"
+                      onClick={() => setExpandedNews(null)}
                     >
-                      &uarr; Ver menos
+                      Ver menos
                     </button>
                   </div>
                 ) : (
                   <button 
-                    className="expand-news"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setExpandedNews(news.id);
-                    }}
+                    className="news-toggle"
+                    onClick={() => setExpandedNews(news.id)}
                   >
-                    &darr; Leer más
+                    Leer más
                   </button>
                 )}
               </div>
-              {news.images.length > 0 && (
-                <div className="news-thumbnail">
-                  <img src={news.images[0]} alt={news.title} />
-                </div>
-              )}
-            </article>
+            </div>
           ))}
         </div>
       </section>

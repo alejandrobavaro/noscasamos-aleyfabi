@@ -1,192 +1,230 @@
-// Estilos unificados para la sección de logo y redes
-.contact-logo-section {
-  background: rgba(255, 249, 245, 0.9);
-  padding: 2rem 0;
-  margin: 1rem auto;
-  max-width: 1000px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.1);
-  border: 1px solid rgba(139, 69, 19, 0.1);
+/* ==========================================================================
+   COMPONENTE CONTACTO PÚBLICO - Mobile First
+   ========================================================================== */
 
-  .unified-contact-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 0 1.5rem;
-
-    .unified-logo-social {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 2rem;
-
-      .unified-logo {
-        flex: 1;
-        min-width: 250px;
-        text-align: center;
-
-        .unified-logo-img {
-          max-width: 200px;
-          height: auto;
-          transition: transform 0.4s ease, filter 0.4s ease;
-          filter: drop-shadow(0 2px 4px rgba(122, 79, 80, 0.3));
-
-          &:hover {
-            transform: scale(1.05) rotate(-2deg);
-            filter: drop-shadow(0 4px 8px rgba(122, 79, 80, 0.4));
-          }
-        }
-      }
-
-      .unified-social {
-        flex: 1;
-        min-width: 250px;
-
-        .unified-social-title {
-          font-family: 'Cinzel', serif;
-          color: #8B4513;
-          text-align: center;
-          margin-bottom: 1.5rem;
-          font-size: 1.5rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-
-          i {
-            color: #A0522D;
-            font-size: 1.2rem;
-          }
-        }
-
-        .unified-social-icons {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 1rem;
-
-          .unified-social-link {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            padding: 0.8rem 0.5rem;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(194, 167, 141, 0.3);
-            transition: all 0.3s ease;
-            color: #5A2D2D;
-
-            i {
-              font-size: 1.8rem;
-              margin-bottom: 0.3rem;
-              color: #7A4F50;
-              transition: all 0.3s ease;
-            }
-
-            span {
-              font-family: 'Cormorant Garamond', serif;
-              font-size: 0.95rem;
-              font-weight: 600;
-            }
-
-            &:hover {
-              background: rgba(122, 79, 80, 0.1);
-              transform: translateY(-3px);
-              box-shadow: 0 3px 10px rgba(122, 79, 80, 0.1);
-
-              i {
-                color: #A0522D;
-                transform: scale(1.1);
-              }
-            }
-          }
-        }
-      }
-    }
-
-    .unified-contact-banner {
-      margin-top: 1rem;
-      text-align: center;
-
-      .unified-banner-img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(139, 69, 19, 0.2);
-        transition: transform 0.4s ease;
-
-        &:hover {
-          transform: scale(1.01);
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .contact-logo-section {
-    margin: 1rem;
-    padding: 1.5rem 0;
-
-    .unified-contact-container {
-      padding: 0 1rem;
-      gap: 1.5rem;
-
-      .unified-logo-social {
-        gap: 1.5rem;
-
-        .unified-logo {
-          .unified-logo-img {
-            max-width: 180px;
-          }
-        }
-
-        .unified-social {
-          .unified-social-title {
-            font-size: 1.3rem;
-          }
-
-          .unified-social-icons {
-            grid-template-columns: 1fr;
-            gap: 0.8rem;
-
-            .unified-social-link {
-              padding: 0.7rem;
-              flex-direction: row;
-              justify-content: center;
-              gap: 0.8rem;
-
-              i {
-                margin-bottom: 0;
-                font-size: 1.5rem;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .contact-logo-section {
+   .contact-logo-section {
+    background: rgba(255, 249, 245, 0.95);
     padding: 1rem 0;
-
+    margin: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+    border: 1px solid rgba(194, 167, 141, 0.3);
+    max-width: 412px;
+    box-sizing: border-box;
+    overflow: hidden;
+  
     .unified-contact-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 0 1rem;
+  
       .unified-logo-social {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+  
         .unified-logo {
-          min-width: 100%;
-          
+          text-align: center;
+          padding: 0.5rem 0;
+  
           .unified-logo-img {
             max-width: 160px;
+            height: auto;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 2px 4px rgba(122, 79, 80, 0.2));
+  
+            &:hover {
+              transform: scale(1.05);
+              filter: drop-shadow(0 3px 6px rgba(122, 79, 80, 0.3));
+            }
           }
         }
-
+  
         .unified-social {
-          min-width: 100%;
+          .unified-social-title {
+            font-family: 'Cinzel', serif;
+            color: #8B4513;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+  
+            i {
+              color: #A0522D;
+              font-size: 1rem;
+            }
+          }
+  
+          .unified-social-icons {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+  
+            .unified-social-link {
+              display: flex;
+              align-items: center;
+              gap: 0.8rem;
+              text-decoration: none;
+              padding: 0.7rem;
+              border-radius: 6px;
+              background: rgba(255, 255, 255, 0.8);
+              border: 1px solid rgba(194, 167, 141, 0.3);
+              transition: all 0.3s ease;
+              color: #5A2D2D;
+  
+              i {
+                font-size: 1.4rem;
+                color: #7A4F50;
+                transition: all 0.3s ease;
+              }
+  
+              span {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 0.9rem;
+                font-weight: 600;
+              }
+  
+              &:hover {
+                background: rgba(122, 79, 80, 0.1);
+                transform: translateY(-2px);
+                box-shadow: 0 2px 6px rgba(122, 79, 80, 0.1);
+  
+                i {
+                  color: #A0522D;
+                  transform: scale(1.1);
+                }
+              }
+            }
+          }
+        }
+      }
+  
+      .unified-contact-banner {
+        margin-top: 0.5rem;
+        text-align: center;
+  
+        .unified-banner-img {
+          width: 100%;
+          height: auto;
+          border-radius: 6px;
+          box-shadow: 0 2px 8px rgba(139, 69, 19, 0.15);
+          transition: transform 0.3s ease;
+  
+          &:hover {
+            transform: scale(1.01);
+          }
         }
       }
     }
   }
-}
+  
+  /* Tablet (600px+)
+     ========================================================================== */
+  @media (min-width: 600px) {
+    .contact-logo-section {
+      margin: 1rem auto;
+      max-width: 550px;
+      padding: 1.5rem 0;
+  
+      .unified-contact-container {
+        padding: 0 1.5rem;
+        gap: 1.5rem;
+  
+        .unified-logo-social {
+          flex-direction: row;
+          align-items: center;
+          gap: 1.5rem;
+  
+          .unified-logo {
+            .unified-logo-img {
+              max-width: 180px;
+            }
+          }
+  
+          .unified-social {
+            .unified-social-icons {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  /* Tablet grande (768px+)
+     ========================================================================== */
+  @media (min-width: 768px) {
+    .contact-logo-section {
+      max-width: 700px;
+      padding: 2rem 0;
+  
+      .unified-contact-container {
+        .unified-logo-social {
+          .unified-logo {
+            .unified-logo-img {
+              max-width: 200px;
+            }
+          }
+  
+          .unified-social {
+            .unified-social-title {
+              font-size: 1.4rem;
+              
+              i {
+                font-size: 1.2rem;
+              }
+            }
+  
+            .unified-social-icons {
+              .unified-social-link {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 1rem 0.5rem;
+  
+                i {
+                  font-size: 1.6rem;
+                  margin-bottom: 0.3rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  /* Desktop (992px+)
+     ========================================================================== */
+  @media (min-width: 992px) {
+    .contact-logo-section {
+      max-width: 850px;
+  
+      .unified-contact-container {
+        .unified-logo-social {
+          gap: 2rem;
+  
+          .unified-social {
+            .unified-social-title {
+              font-size: 1.5rem;
+            }
+  
+            .unified-social-icons {
+              gap: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  /* Desktop grande (1200px+)
+     ========================================================================== */
+  @media (min-width: 1200px) {
+    .contact-logo-section {
+      max-width: 1000px;
+    }
+  }

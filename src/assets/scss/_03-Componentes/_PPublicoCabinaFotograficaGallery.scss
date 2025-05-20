@@ -1,0 +1,235 @@
+.gallery-container {
+    width: 100%;
+    max-width: 412px;
+    margin: 12px auto 0;
+    background-color: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+  }
+  
+  .gallery-title {
+    color: #5a2d2d;
+    font-size: 18px;
+    text-align: center;
+    margin: 0 0 16px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .gallery-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .actions-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  .action-button {
+    background-color: rgba(90, 45, 45, 0.1);
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: #5a2d2d;
+    
+    &:hover {
+      background-color: rgba(90, 45, 45, 0.2);
+    }
+  }
+  
+  .social-share-options {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    right: 0;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 20;
+    min-width: 120px;
+  }
+  
+  .social-button {
+    background: none;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+    
+    &:hover {
+      background-color: rgba(90, 45, 45, 0.1);
+    }
+  }
+  
+  .back-button {
+    background-color: #5a2d2d;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 20px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 16px;
+    
+    &:hover {
+      background-color: #4a2525;
+    }
+  }
+  
+  .gallery-header {
+    margin-bottom: 16px;
+  }
+  
+  .photos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  
+  .photo-item {
+    position: relative;
+    aspect-ratio: 4/5;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .photo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+  
+  .photo-index {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    background-color: rgba(90, 45, 45, 0.8);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 2;
+  }
+  
+  .photo-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s;
+    z-index: 1;
+  }
+  
+  .download-button {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #5a2d2d;
+    transition: all 0.3s;
+    
+    &:hover {
+      background-color: white;
+      transform: scale(1.1);
+    }
+  }
+  
+  .photo-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    
+    .photo-image {
+      transform: scale(1.05);
+    }
+    
+    .photo-hover {
+      opacity: 1;
+    }
+  }
+  
+  .photo-item.selected {
+    box-shadow: 0 0 0 2px #D4AF37;
+    
+    .photo-index {
+      background-color: #D4AF37;
+      color: #5a2d2d;
+    }
+  }
+  
+  @media (min-width: 413px) {
+    .gallery-container {
+      padding: 20px;
+      border-radius: 10px;
+    }
+    
+    .gallery-title {
+      font-size: 20px;
+    }
+    
+    .action-button {
+      font-size: 15px;
+      padding: 12px;
+    }
+    
+    .photos-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .gallery-container {
+      max-width: 450px;
+    }
+    
+    .photos-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .actions-buttons {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }

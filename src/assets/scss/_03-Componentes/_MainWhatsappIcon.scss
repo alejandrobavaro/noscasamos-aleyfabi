@@ -1,23 +1,45 @@
-// Estilos para íconos de WhatsApp
+/* ==========================================================================
+   COMPONENTE WHATSAPP ICON - Mobile First
+   ========================================================================== */
 
-.telefonoWhatsappPPublico {
+   .telefonoWhatsappPPublico {
     position: fixed;
-    bottom: 1px; 
-    right: 1px;
-    z-index: 1000; 
-  }
-  
-  .logoWhatsappPPublico {
-    width: 80px;   
-    height: auto;  
-    transition: transform 0.3s ease;
-  
-    &:hover {
-      transform: scale(1.1);
-    }
-  
-    @media (max-width: 768px) {
+    bottom: 10px;
+    right: 10px;
+    z-index: 1000;
+    
+    .logoWhatsappPPublico {
       width: 60px;
+      height: auto;
+      transition: transform 0.3s ease;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  
+      &:hover {
+        transform: scale(1.1);
+        filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
+      }
     }
   }
   
+  /* Tablet (768px+)
+     ========================================================================== */
+  @media (min-width: 768px) {
+    .telefonoWhatsappPPublico {
+      bottom: 15px;
+      right: 15px;
+      
+      .logoWhatsappPPublico {
+        width: 70px;
+      }
+    }
+  }
+  
+  /* Desktop (992px+)
+     ========================================================================== */
+  @media (min-width: 992px) {
+    .telefonoWhatsappPPublico {
+      .logoWhatsappPPublico {
+        width: 80px;
+      }
+    }
+  }

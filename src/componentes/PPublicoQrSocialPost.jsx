@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../assets/scss/_03-Componentes/_PPublicoQrSocialPost.scss";
-import { toast } from "react-toastify";
-import QRCode from "react-qr-code";
-import { X, Heart, ChevronLeft, ChevronRight } from "react-feather";
+import { Heart, ChevronLeft, ChevronRight, X } from "react-feather";
 
 function PPublicoQrSocialPost() {
   // Estados principales
@@ -34,7 +32,6 @@ function PPublicoQrSocialPost() {
       localStorage.setItem('weddingSocialPosts', JSON.stringify(postsToSave));
     } catch (error) {
       console.error("Error al guardar en localStorage:", error);
-      toast.error("No se pudo guardar la publicación localmente.");
     }
   }, [posts]);
 
@@ -50,17 +47,17 @@ function PPublicoQrSocialPost() {
     if (files.length === 0) return;
 
     if (files.length > 5) {
-      toast.error('Máximo 5 archivos a la vez');
+      alert('Máximo 5 archivos a la vez');
       return;
     }
 
     const validFiles = files.filter(file => {
       if (!file.type.match('image.*|video.*')) {
-        toast.error('Solo se permiten imágenes y videos');
+        alert('Solo se permiten imágenes y videos');
         return false;
       }
       if (file.size > 10 * 1024 * 1024) {
-        toast.error('Los archivos deben ser menores a 10MB');
+        alert('Los archivos deben ser menores a 10MB');
         return false;
       }
       return true;
@@ -104,12 +101,11 @@ function PPublicoQrSocialPost() {
           setShowForm(false);
           setCurrentMedia([]);
           setAuthorInfo({ name: '', message: '' });
-          toast.success('¡Publicación compartida con éxito!');
         }
       };
       
       reader.onerror = () => {
-        toast.error('Error al procesar el archivo');
+        alert('Error al procesar el archivo');
         setIsLoading(false);
       };
       
@@ -149,10 +145,9 @@ function PPublicoQrSocialPost() {
   const renderGalleryPosts = () => {
     if (!posts || posts.length === 0) {
       return (
-        <div className="empty-state">
-          <i className="bi bi-images"></i>
-          <div>No hay publicaciones aún</div>
-          <div>Sé el primero en compartir tus momentos</div>
+        <div className="empty-gallery">
+          <p>No hay publicaciones aún</p>
+          <p>Sé el primero en compartir</p>
         </div>
       );
     }
@@ -161,15 +156,13 @@ function PPublicoQrSocialPost() {
       if (!post?.media?.[0]?.url) return null;
       
       return (
-        <div key={post.id || Date.now()} className="gallery-post" onClick={() => openPostModal(post)}>
+        <div key={post.id} className="gallery-item" onClick={() => openPostModal(post)}>
           {post.media[0].type === 'video' ? (
             <div className="media-container">
               <video className="post-thumbnail">
                 <source src={post.media[0].url} type="video/mp4" />
               </video>
-              <div className="play-icon">
-                <i className="bi bi-play-fill"></i>
-              </div>
+              <div className="play-icon">▶</div>
             </div>
           ) : (
             <img 
@@ -182,14 +175,13 @@ function PPublicoQrSocialPost() {
           
           {post.media.length > 1 && (
             <div className="multi-media-indicator">
-              <i className="bi bi-collection"></i>
-              <span>{post.media.length}</span>
+              +{post.media.length}
             </div>
           )}
           
           <div className="post-overlay">
             <div className="like-count">
-              <Heart size={16} />
+              <Heart size={16} fill={post.likes > 0 ? 'currentColor' : 'none'} />
               <span>{post.likes || 0}</span>
             </div>
           </div>
@@ -222,13 +214,13 @@ function PPublicoQrSocialPost() {
               className="nav-button prev"
               onClick={() => navigateImage('prev')}
             >
-              <ChevronLeft size={32} />
+              <ChevronLeft size={24} />
             </button>
             <button 
               className="nav-button next"
               onClick={() => navigateImage('next')}
             >
-              <ChevronRight size={32} />
+              <ChevronRight size={24} />
             </button>
             <div className="media-counter">
               {currentImageIndex + 1} / {selectedPost.media.length}
@@ -240,29 +232,28 @@ function PPublicoQrSocialPost() {
   };
 
   return (
-    <section className="qr-social-gallery">
+    <div className="qr-social-container">
       <h2 className="section-title">Momentos de la Boda</h2>
-      <div className="section-subtitle">Comparte tus fotos y videos</div>
+      <p className="section-subtitle">Comparte tus fotos y videos</p>
       
-      <div className="qr-upload-container">
-        <div className="qr-section">
+      <div className="qr-upload-section">
+        <div className="qr-box">
           <h3>Escanea para compartir</h3>
-          <div className="qr-code-wrapper">
-            <QRCode 
-              value={qrUrl} 
-              size={180}
-              bgColor="#f8f5f2"
-              fgColor="#5a2d2d"
-              level="H"
+          <div className="qr-code">
+            <img 
+              src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(qrUrl)}`} 
+              alt="QR Code"
+              width="150"
+              height="150"
             />
-            <div className="qr-instructions">Usa tu cámara para escanear este código</div>
+            <p>Usa tu cámara para escanear</p>
           </div>
         </div>
         
-        <div className="upload-section">
+        <div className="upload-box">
           <h3>O sube directamente</h3>
           <button 
-            className="upload-button"
+            className="upload-btn"
             onClick={() => fileInputRef.current.click()}
             disabled={isLoading}
           >
@@ -276,7 +267,7 @@ function PPublicoQrSocialPost() {
             multiple
             style={{ display: 'none' }}
           />
-          <div className="upload-hint">Máximo 5 archivos (fotos o videos)</div>
+          <p className="upload-note">Máximo 5 archivos</p>
         </div>
       </div>
       
@@ -336,7 +327,7 @@ function PPublicoQrSocialPost() {
       )}
       
       {/* Galería compacta de publicaciones */}
-      <div className="compact-gallery">
+      <div className="gallery-grid">
         {renderGalleryPosts()}
       </div>
       
@@ -390,7 +381,7 @@ function PPublicoQrSocialPost() {
           </div>
         </div>
       )}
-    </section>
+    </div>
   );
 }
 

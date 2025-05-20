@@ -1,0 +1,137 @@
+.tutorial-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  z-index: 1000;
+}
+
+.tutorial-card {
+  background-color: white;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 412px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.tutorial-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  color: #5a2d2d;
+  margin-bottom: 20px;
+}
+
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+}
+
+.step-badge {
+  background-color: #5a2d2d;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+  font-size: 0.95rem;
+}
+
+.step-info {
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    color: #5a2d2d;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: #8c5e3d;
+    line-height: 1.4;
+    margin: 0;
+  }
+}
+
+.start-btn {
+  background-color: #5a2d2d;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+@media (min-width: 768px) {
+  .tutorial-card {
+    padding: 30px;
+    max-width: 500px;
+  }
+
+  .tutorial-title {
+    font-size: 1.7rem;
+  }
+
+  .steps-container {
+    gap: 20px;
+    margin: 30px 0;
+  }
+
+  .step-badge {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .step-info {
+    h3 {
+      font-size: 1.15rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+    }
+  }
+
+  .start-btn {
+    font-size: 1.1rem;
+    padding: 14px 35px;
+  }
+}
+
+@media (min-width: 992px) {
+  .tutorial-card {
+    max-width: 550px;
+  }
+}

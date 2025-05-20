@@ -4,8 +4,8 @@ import "../assets/scss/_03-Componentes/_PAcceso.scss";
 
 function PAcceso() {
   return (
-    <div className="pantalla-acceso">
-      <div>
+    <div className="access-screen">
+      <div className="access-content">
         <PPublico />
       </div>
     </div>

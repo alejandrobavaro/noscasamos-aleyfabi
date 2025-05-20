@@ -1,348 +1,232 @@
-/* Estilos base */
-.pantalla-invitados {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
+.guest-screen {
+  width: 100%;
+  max-width: 412px;
+  margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
   background-size: cover;
+}
 
-  .contenedor-invitados {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    padding: 2.5rem;
-    width: 100%;
-    max-width: 1200px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+.guest-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
 
-    /* Encabezado */
-    .encabezado-boda {
-      margin-bottom: 2.5rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(122, 79, 80, 0.2);
-      
-      h1 {
-        font-family: 'Cinzel', serif;
-        color: #7A4F50;
-        font-size: 2.5rem;
-        letter-spacing: 1px;
-        margin-bottom: 0.5rem;
-      }
-      
-      h2 {
-        font-family: 'Cormorant Garamond', serif;
-        color: #8C5E3D;
-        font-weight: 500;
-        font-size: 1.8rem;
-        margin-bottom: 0.5rem;
-      }
-    }
+/* Header Styles */
+.guest-header {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(122, 79, 80, 0.2);
+  
+  h1 {
+    font-family: 'Cinzel', serif;
+    color: #7A4F50;
+    font-size: 24px;
+    margin: 0;
+  }
+}
 
-    /* Sección de Detalles del Evento - Estilos transferidos */
-    .info-detallada {
-      margin-bottom: 3rem;
+/* Event Details Styles */
+.event-details {
+  margin-bottom: 24px;
+  
+  .details-card {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(122, 79, 80, 0.1);
+    
+    h2 {
+      font-family: 'Cinzel', serif;
+      color: #5A2D2D;
+      font-size: 20px;
+      margin: 0 0 16px 0;
+      position: relative;
       
-      .info-card {
-        background: rgba(255, 255, 255, 0.7);
-        padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 5px 15px rgba(122, 79, 80, 0.1);
-        border: 1px solid rgba(122, 79, 80, 0.15);
-        
-        h2 {
-          font-family: 'Cinzel', serif;
-          color: #5A2D2D;
-          font-size: 1.8rem;
-          margin-bottom: 1.5rem;
-          position: relative;
-          
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 2px;
-            background: #7A4F50;
-          }
-        }
-        
-        .info-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 1.5rem;
-          
-          .info-item {
-            background: rgba(255, 249, 245, 0.7);
-            padding: 1.5rem 1rem;
-            border-radius: 8px;
-            border: 1px solid rgba(122, 79, 80, 0.1);
-            transition: all 0.3s ease;
-            text-align: center;
-            
-            &:hover {
-              transform: translateY(-5px);
-              box-shadow: 0 8px 20px rgba(122, 79, 80, 0.1);
-            }
-            
-            i {
-              font-size: 2rem;
-              margin-bottom: 1rem;
-              display: block;
-            }
-            
-            h3 {
-              font-family: 'Cinzel', serif;
-              color: #5A2D2D;
-              font-size: 1.2rem;
-              margin-bottom: 0.5rem;
-            }
-            
-            p {
-              font-family: 'Cormorant Garamond', serif;
-              color: #7A4F50;
-              font-size: 1.1rem;
-              margin: 0;
-            }
-            
-            &.opcion-confirmar {
-              i { color: #7A4F50; }
-            }
-            &.opcion-ubicacion {
-              i { color: #8C5E3D; }
-            }
-            &.opcion-itinerario {
-              i { color: #5A2D2D; }
-            }
-            &.opcion-dresscode {
-              i { color: #7A4F50; }
-            }
-          }
-        }
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 2px;
+        background: #7A4F50;
       }
     }
-
-    /* Opciones para invitados */
-    .opciones-invitados {
+    
+    .details-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-
-      .opcion {
-        background: rgba(255, 255, 255, 0.7);
-        padding: 1rem 1.5rem;
-        border-radius: 12px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        border: 1px solid rgba(122, 79, 80, 0.15);
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      
+      .detail-item {
+        background: rgba(255, 249, 245, 0.8);
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid rgba(122, 79, 80, 0.1);
+        text-align: center;
         
-        .icono-container {
-          font-size: 2.5rem;
-          transition: all 0.3s ease;
+        i {
+          font-size: 24px;
+          margin-bottom: 8px;
+          display: block;
         }
         
         h3 {
           font-family: 'Cinzel', serif;
-          margin-bottom: 1rem;
           color: #5A2D2D;
-          font-size: large;
-          position: relative;
-          
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 2px;
-            background: #7A4F50;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-          }
+          font-size: 16px;
+          margin: 0 0 4px 0;
         }
         
         p {
-          font-size: 1rem;
+          font-family: 'Cormorant Garamond', serif;
           color: #7A4F50;
-          line-height: 1.5;
+          font-size: 14px;
+          margin: 0;
+          line-height: 1.4;
         }
         
-        .decoracion-opcion {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          height: 4px;
-          background: linear-gradient(90deg, #C2A78D, #7A4F50);
-          transform: scaleX(0);
-          transform-origin: left;
-          transition: transform 0.4s ease;
-        }
-        
-        &:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 15px 25px rgba(122, 79, 80, 0.15);
-          
-          .icono-container {
-            transform: scale(1.15);
-          }
-          
-          h3::after {
-            opacity: 1;
-          }
-          
-          .decoracion-opcion {
-            transform: scaleX(1);
-          }
-        }
-      }
-
-      .opcion-confirmar {
-        .icono-container {
-          color: #7A4F50;
-        }
-      }
-      
-      .opcion-ubicacion {
-        .icono-container {
-          color: #8C5E3D;
-        }
-      }
-      
-      .opcion-PInvitadosCodigoVestimenta {
-        .icono-container {
-          color: #5A2D2D;
-        }
-      }
-      
-      .opcion-itinerario {
-        .icono-container {
-          color: #7A4F50;
-        }
-      }
-    }
-
-    /* Sección de hashtag */
-    .seccion-hashtag {
-      padding: 2rem;
-      background: rgba(255, 249, 245, 0.7);
-      border-radius: 12px;
-      border: 1px solid rgba(122, 79, 80, 0.15);
-      
-      p {
-        font-family: 'Cormorant Garamond', serif;
-        color: #7A4F50;
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
-      }
-      
-      h3 {
-        font-family: 'Cinzel', serif;
-        color: #5A2D2D;
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-      }
-      
-      .corazon-animado {
-        font-size: 1.8rem;
-        animation: float 3s ease-in-out infinite;
-        display: inline-block;
-        color: #d9534f;
+        &.confirm-option i { color: #7A4F50; }
+        &.location-option i { color: #8C5E3D; }
+        &.itinerary-option i { color: #5A2D2D; }
+        &.dresscode-option i { color: #7A4F50; }
       }
     }
   }
 }
 
-/* Animaciones */
+/* Guest Options Styles */
+.guest-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+
+  .guest-option {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(122, 79, 80, 0.1);
+    
+    .option-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+      transition: transform 0.3s ease;
+    }
+    
+    h3 {
+      font-family: 'Cinzel', serif;
+      margin: 0 0 8px 0;
+      color: #5A2D2D;
+      font-size: 16px;
+      position: relative;
+    }
+    
+    p {
+      font-size: 14px;
+      color: #7A4F50;
+      margin: 0;
+      line-height: 1.4;
+    }
+    
+    .option-decoration {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #C2A78D, #7A4F50);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    
+    &:hover {
+      .option-icon {
+        transform: scale(1.1);
+      }
+      
+      .option-decoration {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+/* Hashtag Section Styles */
+.hashtag-section {
+  padding: 16px;
+  background: rgba(255, 249, 245, 0.8);
+  border-radius: 10px;
+  border: 1px solid rgba(122, 79, 80, 0.1);
+  
+  p {
+    font-family: 'Cormorant Garamond', serif;
+    color: #7A4F50;
+    font-size: 15px;
+    margin: 0 0 8px 0;
+  }
+  
+  h3 {
+    font-family: 'Cinzel', serif;
+    color: #5A2D2D;
+    font-size: 20px;
+    margin: 0 0 12px 0;
+  }
+  
+  .animated-heart {
+    font-size: 24px;
+    animation: float 3s ease-in-out infinite;
+    color: #d9534f;
+  }
+}
+
+/* Animations */
 @keyframes float {
-  0% {
-    transform: translateY(0px);
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Responsive Adjustments */
+@media (min-width: 413px) {
+  .guest-container {
+    padding: 24px;
+    border-radius: 14px;
   }
-  50% {
-    transform: translateY(-10px);
+  
+  .guest-header h1 {
+    font-size: 26px;
   }
-  100% {
-    transform: translateY(0px);
+  
+  .event-details .details-card h2 {
+    font-size: 22px;
+  }
+  
+  .hashtag-section h3 {
+    font-size: 22px;
   }
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .pantalla-invitados {
-    padding: 1.5rem;
-    
-    .contenedor-invitados {
-      padding: 2rem;
-      
-      .encabezado-boda {
-        h1 {
-          font-size: 2.2rem;
-        }
-        
-        h2 {
-          font-size: 1.5rem;
-        }
-      }
-
-      .info-detallada {
-        .info-card {
-          padding: 1.5rem;
-          
-          .info-grid {
-            gap: 1rem;
-          }
-        }
-      }
-    }
+@media (min-width: 768px) {
+  .guest-screen {
+    max-width: 450px;
   }
-}
-
-@media (max-width: 600px) {
-  .pantalla-invitados {
-    padding: 1rem;
-    
-    .contenedor-invitados {
-      padding: 1.5rem;
-      
-      .encabezado-boda {
-        h1 {
-          font-size: 1.8rem;
-        }
-        
-        h2 {
-          font-size: 1.3rem;
-        }
-      }
-
-      .info-detallada {
-        .info-card {
-          padding: 1rem;
-          
-          .info-grid {
-            grid-template-columns: 1fr;
-          }
-        }
-      }
-      
-      .opciones-invitados {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      
-      .seccion-hashtag {
-        h3 {
-          font-size: 1.5rem;
-        }
-      }
-    }
+  
+  .details-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .guest-options {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

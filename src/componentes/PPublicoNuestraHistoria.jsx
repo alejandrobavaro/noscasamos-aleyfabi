@@ -6,7 +6,6 @@ function PPublicoNuestraHistoria() {
   const [showFullStory, setShowFullStory] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  // Memoizamos la configuración del slider
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -21,6 +20,7 @@ function PPublicoNuestraHistoria() {
     pauseOnHover: true,
     adaptiveHeight: true
   };
+
 
   // Capítulos de la historia con imágenes optimizadas
   const chapters = [
@@ -161,6 +161,7 @@ function PPublicoNuestraHistoria() {
   ];
 
   // Manejo del resize optimizado
+ 
   const handleResize = useCallback(() => {
     setIsMobile(window.innerWidth < 768);
   }, []);
@@ -170,7 +171,6 @@ function PPublicoNuestraHistoria() {
     return () => window.removeEventListener('resize', handleResize);
   }, [handleResize]);
 
-  // Componente de imagen optimizada
   const OptimizedImage = ({ src, fallback, alt, className }) => {
     const [imageSrc, setImageSrc] = useState(src);
     
@@ -194,8 +194,7 @@ function PPublicoNuestraHistoria() {
   };
 
   return (
-    <>
-      {/* Portada principal con slider */}
+    <div className="nuestra-historia-container">
       <section className="featured-story" aria-label="Nuestra historia de amor">
         <Slider {...sliderSettings}>
           {chapters.slice(0, 3).map((chapter, index) => (
@@ -222,7 +221,6 @@ function PPublicoNuestraHistoria() {
         </Slider>
       </section>
 
-      {/* Modal de historia completa */}
       {showFullStory && (
         <div className="story-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
           <div className="modal-content">
@@ -267,7 +265,7 @@ function PPublicoNuestraHistoria() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

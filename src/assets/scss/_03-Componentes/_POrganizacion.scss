@@ -1,260 +1,224 @@
-.pantalla-organizacion {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.organization-screen {
+  width: 100%;
+  max-width: 412px;
+  margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
+}
 
-  background-size: cover;
-  padding: 0;
+.organization-container {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
 
-  .contenedor-organizacion {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    padding: 2rem;
-
-    width: 100%;
-    position: relative;
+/* Header Styles */
+.organization-header {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(122, 79, 80, 0.2);
+  text-align: center;
+  
+  .organization-title {
+    font-family: 'Cinzel', serif;
+    color: #7A4F50;
+    font-size: 24px;
+    margin: 0 0 8px 0;
+  }
+  
+  .wedding-countdown {
+    font-family: 'Cormorant Garamond', serif;
+    color: #7A4F50;
+    font-size: 16px;
+    margin: 0 0 12px 0;
+  }
+  
+  .progress-bar {
+    height: 8px;
+    background-color: rgba(122, 79, 80, 0.1);
+    border-radius: 4px;
     overflow: hidden;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-
-    .encabezado-boda {
-      margin-bottom: 0.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(122, 79, 80, 0.2);
-      text-align: center;
-      
-      h1 {
-        font-family: 'Cinzel', serif;
-        color: #7A4F50;
-        font-size: xx-large;
-        margin-bottom: 0.5rem;
-        letter-spacing: 1px;
-      }
-      
-      h2 {
-        font-family: 'Cormorant Garamond', serif;
-        color: #8C5E3D;
-        font-weight: 500;
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
-      }
-      
-      .mensaje-bienvenida {
-        font-family: 'Cormorant Garamond', serif;
-        color: #7A4F50;
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-      }
-      
-      .barra-progreso {
-        height: 20px;
-        background: rgba(122, 79, 80, 0.1);
-        border-radius: 50px;
-        overflow: hidden;
-        margin-top: 0rem;
-        
-        .progreso {
-          height: 100%;
-          background: linear-gradient(90deg, #C2A78D, #7A4F50);
-          transition: width 1s ease;
-        }
-      }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #C2A78D, #7A4F50);
+      transition: width 0.5s ease;
     }
+  }
+}
 
-    .pestanas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-      justify-content: center;
+/* Tabs Styles */
+.organization-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+  justify-content: center;
+  
+  .tab-button {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(122, 79, 80, 0.15);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: #5A2D2D;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    
+    i {
+      font-size: 14px;
+    }
+    
+    &:hover {
+      background-color: rgba(122, 79, 80, 0.1);
+    }
+    
+    &.active {
+      background-color: #7A4F50;
+      color: white;
+      font-weight: 500;
+    }
+  }
+}
+
+/* Content Styles */
+.tab-content {
+  min-height: 300px;
+}
+
+/* Summary Styles */
+.summary-container {
+  .summary-title {
+    font-family: 'Cinzel', serif;
+    color: #5A2D2D;
+    font-size: 20px;
+    margin: 0 0 20px 0;
+    text-align: center;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 2px;
+      background-color: #7A4F50;
+    }
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    
+    .stat-card {
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(122, 79, 80, 0.15);
+      border-radius: 10px;
+      padding: 16px;
+      transition: all 0.3s ease;
       
-      .pestana {
-        background: rgba(255, 255, 255, 0.7);
-        border: 1px solid rgba(122, 79, 80, 0.15);
-        padding: 0.8rem 1.5rem;
-        border-radius: 30px;
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1rem;
-        color: #5A2D2D;
-        cursor: pointer;
-        transition: all 0.3s ease;
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 12px rgba(122, 79, 80, 0.1);
+      }
+      
+      .stat-header {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 10px;
+        margin-bottom: 12px;
         
         i {
-          font-size: 1.1rem;
+          font-size: 20px;
         }
         
-        &:hover {
-          background: rgba(122, 79, 80, 0.1);
-        }
-        
-        &.activa {
-          background: #7A4F50;
-          color: white;
-          font-weight: 500;
+        .stat-title {
+          font-family: 'Cormorant Garamond', serif;
+          color: #5A2D2D;
+          font-size: 16px;
+          margin: 0;
         }
       }
-    }
-
-    .contenido-pestana {
-      min-height: 400px;
-    }
-
-    .resumen-general {
-      h3 {
+      
+      .stat-value {
         font-family: 'Cinzel', serif;
-        color: #5A2D2D;
-        font-size: 1.8rem;
-        margin-bottom: 2rem;
+        font-size: 18px;
+        margin: 8px 0 12px 0;
         text-align: center;
-        position: relative;
-        
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: -10px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 100px;
-          height: 2px;
-          background: #7A4F50;
-        }
       }
       
-      .estadisticas {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 1.5rem;
+      .stat-progress {
+        height: 4px;
+        background-color: rgba(122, 79, 80, 0.1);
+        border-radius: 2px;
+        overflow: hidden;
         
-        .tarjeta-estadistica {
-          background: rgba(255, 255, 255, 0.7);
-          border: 1px solid rgba(122, 79, 80, 0.15);
-          border-radius: 12px;
-          padding: 1.5rem;
-          transition: all 0.3s ease;
-          
-          &:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(122, 79, 80, 0.1);
-          }
-          
-          .icono-titulo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            
-            i {
-              font-size: 1.8rem;
-            }
-            
-            h4 {
-              font-family: 'Cormorant Garamond', serif;
-              color: #5A2D2D;
-              font-size: 1.2rem;
-              margin: 0;
-            }
-          }
-          
-          .valor {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            margin: 1rem 0;
-            text-align: center;
-          }
-          
-          .barra-progreso {
-            height: 6px;
-            background: rgba(122, 79, 80, 0.1);
-            border-radius: 3px;
-            overflow: hidden;
-            
-            .progreso {
-              height: 100%;
-              transition: width 1s ease;
-            }
-          }
+        .progress-fill {
+          height: 100%;
+          transition: width 0.5s ease;
         }
       }
     }
   }
 }
 
-@media (max-width: 992px) {
-  .pantalla-organizacion {
-    .contenedor-organizacion {
-      padding: 2rem 1.5rem;
-      
-      .encabezado-boda {
-        h1 {
-          font-size: 2.2rem;
-        }
-        
-        h2 {
-          font-size: 1.5rem;
-        }
-      }
-      
-      .pestanas {
-        .pestana {
-          padding: 0.7rem 1.2rem;
-          font-size: 0.9rem;
-        }
-      }
-    }
+/* Responsive Adjustments */
+@media (min-width: 413px) {
+  .organization-container {
+    padding: 24px;
+    border-radius: 14px;
   }
-}
-
-@media (max-width: 768px) {
-  .pantalla-organizacion {
-    padding: 1rem;
+  
+  .organization-title {
+    font-size: 26px !important;
+  }
+  
+  .wedding-countdown {
+    font-size: 18px !important;
+  }
+  
+  .tab-button {
+    padding: 10px 18px !important;
+    font-size: 15px !important;
     
-    .contenedor-organizacion {
-      padding: 1.5rem 1rem;
-      
-      .encabezado-boda {
-        h1 {
-          font-size: 1.8rem;
-        }
-        
-        h2 {
-          font-size: 1.3rem;
-        }
-      }
-      
-      .resumen-general {
-        .estadisticas {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
+    i {
+      font-size: 15px !important;
+    }
+  }
+  
+  .summary-title {
+    font-size: 22px !important;
+  }
+  
+  .stats-grid {
+    gap: 16px !important;
+    
+    .stat-card {
+      padding: 20px !important;
     }
   }
 }
 
-@media (max-width: 480px) {
-  .pantalla-organizacion {
-    .contenedor-organizacion {
-      .resumen-general {
-        .estadisticas {
-          grid-template-columns: 1fr;
-        }
-      }
-      
-      .pestanas {
-        gap: 0.3rem;
-        
-        .pestana {
-          padding: 0.5rem 0.8rem;
-          font-size: 0.8rem;
-          
-          i {
-            display: none;
-          }
-        }
-      }
-    }
+@media (min-width: 768px) {
+  .organization-screen {
+    max-width: 450px;
+  }
+  
+  .organization-tabs {
+    gap: 10px;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 }

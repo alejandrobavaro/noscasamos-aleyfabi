@@ -1,57 +1,59 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../assets/scss/_03-Componentes/_PPublicoMensajes.scss";
+import { Heart, ChevronLeft, ChevronRight, X, Edit3, Trash2 } from "react-feather";
 
 function PPublicoMensajes() {
+  // Estados principales
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [author, setAuthor] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [showForm, setShowForm] = useState(true);
-  const [glows, setGlows] = useState([]);
+  const [editMode, setEditMode] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [autoPlay, setAutoPlay] = useState(true);
+  const messagesPerPage = 8;
+  const autoPlayInterval = useRef(null);
 
-  // Paleta de colores pastel para los cartelitos
+  // Colores pastel mejorados
   const noteColors = [
-    '#FFD3B6', '#FFAAA5', '#FF8B94', '#D4A5A5', '#CCD7C5',
-    '#E2F0CB', '#B5EAD7', '#C7CEEA', '#F8B195', '#F67280',
-    '#C06C84', '#6C5B7B', '#355C7D', '#A8E6CE', '#DCEDC2',
-    '#FFD3B6', '#FFAAA5', '#FF8B94'
+    '#FFF5F5', '#FFF0F5', '#FDF2F8', '#FAF5FF', '#F5F3FF',
+    '#EFF6FF', '#ECFDF5', '#F0FDF4', '#F7FEE7', '#FFFBEB'
   ];
 
-  // Crear efectos de brillo al cargar el componente
+  // Efecto para el auto-play
   useEffect(() => {
-    const newGlows = Array.from({ length: 15 }, (_, i) => ({
-      id: i,
-      size: Math.random() * 200 + 100, // Tamaños entre 100px y 300px
-      left: Math.random() * 100,
-      top: Math.random() * 100,
-      opacity: Math.random() * 0.5 + 0.3,
-      delay: Math.random() * 5,
-      duration: Math.random() * 15 + 10,
-      blur: Math.random() * 30 + 10
-    }));
-    setGlows(newGlows);
-  }, []);
-
-  // Función para truncar texto si es muy largo
-  const truncateText = (text, maxWords = 15) => {
-    const words = text.split(' ');
-    if (words.length > maxWords) {
-      return words.slice(0, maxWords).join(' ') + '...';
+    if (autoPlay && messages.length > messagesPerPage) {
+      autoPlayInterval.current = setInterval(() => {
+        setCurrentPage(prev => (prev + 1) % Math.ceil(messages.length / messagesPerPage));
+      }, 5000);
     }
-    return text;
-  };
+    return () => clearInterval(autoPlayInterval.current);
+  }, [autoPlay, messages.length]);
 
+  // Cargar mensajes iniciales
   useEffect(() => {
     const savedMessages = localStorage.getItem("weddingMessages");
     if (savedMessages) {
-      setMessages(JSON.parse(savedMessages));
+      try {
+        const parsedMessages = JSON.parse(savedMessages);
+        if (Array.isArray(parsedMessages)) {
+          setMessages(parsedMessages);
+        }
+      } catch (error) {
+        console.error("Error parsing messages:", error);
+      }
     }
   }, []);
 
+  // Guardar mensajes
   useEffect(() => {
-    if (messages.length > 0) {
-      localStorage.setItem("weddingMessages", JSON.stringify(messages));
-    }
+    const timer = setTimeout(() => {
+      if (messages.length > 0) {
+        localStorage.setItem("weddingMessages", JSON.stringify(messages));
+      }
+    }, 300);
+    return () => clearTimeout(timer);
   }, [messages]);
 
   const handleSubmit = (e) => {
@@ -65,121 +67,212 @@ function PPublicoMensajes() {
       
       const newMsg = {
         id: Date.now(),
-        text: truncateText(newMessage),
+        text: newMessage,
         author: author,
-        date: new Date().toLocaleDateString("es-AR"),
-        position: {
-          x: Math.random() * 60 + 20,
-          y: Math.random() * 60 + 20,
-          rotation: Math.random() * 30 - 15
-        },
-        color: randomColor
+        date: new Date().toLocaleDateString("es-AR", {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        }),
+        color: randomColor,
+        createdAt: new Date().getTime()
       };
 
-      setMessages([...messages, newMsg]);
+      setMessages(prev => [newMsg, ...prev].slice(0, 50));
       setNewMessage("");
       setAuthor("");
       setIsSending(false);
       setShowForm(false);
-    }, 800);
+      setCurrentPage(0); // Ir a la primera página con el nuevo mensaje
+    }, 500);
   };
 
-  const removeMessage = (id) => {
+  const handleDelete = (id) => {
     setMessages(messages.filter(msg => msg.id !== id));
+    // Ajustar la página actual si es necesario
+    if (currentPage >= Math.ceil((messages.length - 1) / messagesPerPage)) {
+      setCurrentPage(Math.max(0, currentPage - 1));
+    }
   };
+
+  const handleEdit = (message) => {
+    setNewMessage(message.text);
+    setAuthor(message.author);
+    setEditMode(true);
+    setShowForm(true);
+    handleDelete(message.id);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const paginatedMessages = () => {
+    const startIndex = currentPage * messagesPerPage;
+    return messages.slice(startIndex, startIndex + messagesPerPage);
+  };
+
+  const totalPages = Math.ceil(messages.length / messagesPerPage);
 
   return (
-    <section className="interactive-board">
-      {/* Efecto de brillos mágicos mejorado */}
-      <div className="magic-glows">
-        {glows.map(glow => (
-          <div 
-            key={glow.id}
-            className="glow"
-            style={{
-              width: `${glow.size}px`,
-              height: `${glow.size}px`,
-              left: `${glow.left}%`,
-              top: `${glow.top}%`,
-              opacity: glow.opacity,
-              animationDelay: `${glow.delay}s`,
-              filter: `blur(${glow.blur}px)`
-            }}
-          />
-        ))}
+    <div className="messages-album">
+      <div className="album-background"></div>
+      
+      <div className="album-header">
+        <h2>Álbum de Mensajes</h2>
+        <p>Los mejores deseos para los novios</p>
       </div>
       
-      <div className="board-container">
-        <div className="board-header">
-          <h3>Muro de Mensajes</h3>
-          <h6>para los novios</h6>
+      {showForm ? (
+        <form className="message-form" onSubmit={handleSubmit}>
+          <div className="form-header">
+            <h3>{editMode ? 'Editar Mensaje' : 'Nuevo Mensaje'}</h3>
+            <button 
+              type="button" 
+              className="close-form"
+              onClick={() => {
+                setShowForm(false);
+                setEditMode(false);
+              }}
+            >
+              <X size={20} />
+            </button>
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="author">Tu Nombre*</label>
+            <input
+              type="text"
+              id="author"
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
+              required
+              maxLength={30}
+              placeholder="Ej: María y Juan"
+            />
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="message">Tu Mensaje*</label>
+            <textarea
+              id="message"
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+              required
+              maxLength={200}
+              rows={4}
+              placeholder="Escribe tu mensaje de amor, consejo o buenos deseos..."
+            />
+            <div className="char-counter">{newMessage.length}/200</div>
+          </div>
+          
+          <button 
+            type="submit" 
+            className="submit-btn"
+            disabled={isSending}
+          >
+            {isSending ? (
+              <span className="loading">Enviando...</span>
+            ) : (
+              <>{editMode ? 'Actualizar' : 'Publicar Mensaje'}</>
+            )}
+          </button>
+        </form>
+      ) : (
+        <div className="add-message-container">
+          <button 
+            className="add-message-btn"
+            onClick={() => {
+              setShowForm(true);
+              setEditMode(false);
+            }}
+          >
+            Escribir un Mensaje
+          </button>
+        </div>
+      )}
+      
+      <div className="album-controls">
+        <button 
+          className={`control-btn ${currentPage === 0 ? 'disabled' : ''}`}
+          onClick={() => {
+            setCurrentPage(prev => Math.max(0, prev - 1));
+            setAutoPlay(false);
+          }}
+          disabled={currentPage === 0}
+        >
+          <ChevronLeft size={24} />
+        </button>
+        
+        <div className="page-indicator">
+          Página {currentPage + 1} de {totalPages || 1}
         </div>
         
-        <div className="board-background">
-          {messages.map((message) => (
-            <div 
-              key={message.id}
-              className="message-note"
-              style={{
-                left: `${message.position.x}%`,
-                top: `${message.position.y}%`,
-                transform: `rotate(${message.position.rotation}deg)`,
-                backgroundColor: message.color,
-                zIndex: Math.floor(message.position.y) + 10
-              }}
-              onClick={() => removeMessage(message.id)}
-            >
-              <div className="message-content">
-                <p>{message.text}</p>
-                <div className="message-footer">
-                  <span>- {message.author}</span>
-                  <small>{message.date}</small>
+        <button 
+          className={`control-btn ${currentPage >= totalPages - 1 ? 'disabled' : ''}`}
+          onClick={() => {
+            setCurrentPage(prev => Math.min(totalPages - 1, prev + 1));
+            setAutoPlay(false);
+          }}
+          disabled={currentPage >= totalPages - 1}
+        >
+          <ChevronRight size={24} />
+        </button>
+      </div>
+      
+      <div className="album-pages">
+        {messages.length === 0 ? (
+          <div className="empty-state">
+            <Heart size={48} className="empty-icon" />
+            <p>No hay mensajes aún</p>
+            <p>Sé el primero en enviar buenos deseos</p>
+          </div>
+        ) : (
+          <div className="album-page">
+            {paginatedMessages().map((message) => (
+              <div 
+                key={message.id}
+                className="message-note"
+                style={{ backgroundColor: message.color }}
+              >
+                <div className="note-content">
+                  <p className="note-text">{message.text}</p>
+                  <div className="note-footer">
+                    <span className="note-author">- {message.author}</span>
+                    <span className="note-date">{message.date}</span>
+                  </div>
+                </div>
+                
+                <div className="note-pin"></div>
+                
+                <div className="note-actions">
+                  <button 
+                    className="edit-btn"
+                    onClick={() => handleEdit(message)}
+                  >
+                    <Edit3 size={16} />
+                  </button>
+                  <button 
+                    className="delete-btn"
+                    onClick={() => handleDelete(message.id)}
+                  >
+                    <Trash2 size={16} />
+                  </button>
                 </div>
               </div>
-              <div className="note-pin"></div>
-            </div>
-          ))}
-        </div>
-
-        {showForm ? (
-          <form className="message-form" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="author">Tu nombre:</label>
-              <input
-                type="text"
-                id="author"
-                value={author}
-                onChange={(e) => setAuthor(e.target.value)}
-                required
-                maxLength={30}
-                placeholder="Ej: María"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="message">Tu mensaje:</label>
-              <textarea
-                id="message"
-                value={newMessage}
-                onChange={(e) => setNewMessage(e.target.value)}
-                required
-                maxLength={120}
-                rows={3}
-                placeholder="Escribe tu mensaje de amor (máx. 15 palabras)..."
-              />
-              <small>Máximo 20 caracteres</small>
-            </div>
-            <button type="submit" disabled={isSending}>
-              {isSending ? "Enviando..." : "Pegar en la Pizarra"}
-            </button>
-          </form>
-        ) : (
-          <div className="form-success">
-            <p>¡Gracias por tu mensaje! ❤</p>
-            <button onClick={() => setShowForm(true)}>Dejar otro mensaje</button>
+            ))}
           </div>
         )}
       </div>
-    </section>
+      
+      <div className="album-footer">
+        <label className="auto-play-toggle">
+          <input 
+            type="checkbox" 
+            checked={autoPlay} 
+            onChange={(e) => setAutoPlay(e.target.checked)} 
+          />
+          <span>Auto-play</span>
+        </label>
+      </div>
+    </div>
   );
 }
 

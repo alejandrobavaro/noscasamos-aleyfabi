@@ -10,19 +10,19 @@ function PInvitados() {
   ];
 
   return (
-    <div className="pantalla-invitados">
-      <div className="contenedor-invitados">
-        {/* Encabezado */}
-        <div className="encabezado-boda">
+    <div className="guest-screen">
+      <div className="guest-container">
+        {/* Header */}
+        <div className="guest-header">
           <h1>Panel de Invitados</h1>
         </div>
 
-        {/* Sección de Detalles del Evento */}
-        <div className="info-detallada">
-          <div className="info-card">
+        {/* Event Details Section */}
+        <div className="event-details">
+          <div className="details-card">
             <h2>Detalles del Evento</h2>
-            <div className="info-grid">
-              <div className="info-item opcion-confirmar">
+            <div className="details-grid">
+              <div className="detail-item confirm-option">
                 <i className="bi bi-cup-hot-fill"></i>
                 <div>
                   <h3>Recepción Invitados</h3>
@@ -30,7 +30,7 @@ function PInvitados() {
                 </div>
               </div>
 
-              <div className="info-item opcion-ubicacion">
+              <div className="detail-item location-option">
                 <i className="bi bi-suit-heart"></i>
                 <div>
                   <h3>La Ceremonia</h3>
@@ -39,7 +39,7 @@ function PInvitados() {
                 </div>
               </div>
 
-              <div className="info-item opcion-itinerario">
+              <div className="detail-item itinerary-option">
                 <i className="bi bi-moon-stars"></i>
                 <div>
                   <h3>Evento</h3>
@@ -48,7 +48,7 @@ function PInvitados() {
                 </div>
               </div>
 
-              <div className="info-item opcion-dresscode">
+              <div className="detail-item dresscode-option">
                 <i className="bi bi-people-fill"></i>
                 <div>
                   <h3>Edad Permitida</h3>
@@ -60,29 +60,29 @@ function PInvitados() {
           </div>
         </div>
 
-        {/* Opciones para invitados */}
-        <div className="opciones-invitados">
+        {/* Guest Options */}
+        <div className="guest-options">
           {guestOptions.map((option, index) => (
             <div
-              key={index}
-              className={`opcion ${option.className}`}
+              key={`option-${index}`}
+              className={`guest-option ${option.className}`}
               onClick={() => navigate(option.path)}
             >
-              <div className="icono-container">
+              <div className="option-icon">
                 <i className={`bi ${option.icon}`}></i>
               </div>
               <h3>{option.title}</h3>
               <p>{option.description}</p>
-              <div className="decoracion-opcion"></div>
+              <div className="option-decoration"></div>
             </div>
           ))}
         </div>
 
-        {/* Hashtag para redes sociales */}
-        <div className="seccion-hashtag">
+        {/* Social Hashtag Section */}
+        <div className="hashtag-section">
           <p>Compartí tus fotos usando nuestro hashtag</p>
           <h3>#BodaFabiyAle</h3>
-          <div className="corazon-animado">❤️</div>
+          <div className="animated-heart">❤️</div>
         </div>
       </div>
     </div>

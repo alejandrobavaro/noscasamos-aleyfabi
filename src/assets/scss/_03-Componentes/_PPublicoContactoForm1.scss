@@ -1,215 +1,223 @@
-// Estilo compacto y elegante para formulario de contacto
-.compact-contact-section {
-  background: rgba(255, 249, 245, 0.9);
-  padding: 1.5rem 0;
-  margin: 1rem auto;
-  max-width: 800px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.1);
-  border: 1px solid rgba(139, 69, 19, 0.1);
+/* ==========================================================================
+   COMPONENTE FORMULARIO DE CONTACTO - Mobile First
+   ========================================================================== */
 
-  .compact-form-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 0 1.5rem;
-
-    .compact-form-title {
-      font-family: 'Cinzel', serif;
-      color: #8B4513;
-      text-align: center;
-      margin: 0;
-      font-size: 1.5rem;
-      font-weight: 500;
-      
-      i {
-        color: #A0522D;
-        margin: 0 0.3rem;
-      }
-    }
-    
-    .compact-contact-form {
+   .compact-contact-section {
+    background: rgba(255, 249, 245, 0.95);
+    padding: 1rem 0;
+    margin: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+    border: 1px solid rgba(194, 167, 141, 0.3);
+    max-width: 412px;
+    box-sizing: border-box;
+    overflow: hidden;
+  
+    .compact-form-container {
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      
-      .compact-form-group {
-        display: flex;
-        flex-direction: column;
-        
-        .compact-input, .compact-textarea {
-          padding: 0.7rem 1rem;
-          border: 1px solid #C2A78D;
-          border-radius: 6px;
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 1rem;
-          color: #5A2D2D;
-          transition: all 0.3s ease;
-          background: rgba(255, 255, 255, 0.8);
-          
-          &:focus {
-            outline: none;
-            border-color: #7A4F50;
-            box-shadow: 0 0 0 2px rgba(122, 79, 80, 0.1);
-          }
-          
-          &::placeholder {
-            color: #A67C52;
-            opacity: 0.7;
-            font-style: italic;
-          }
-        }
-        
-        .compact-textarea {
-          resize: vertical;
-          min-height: 100px;
-        }
-      }
-      
-      .compact-submit-btn {
-        background: #7A4F50;
-        color: white;
-        border: none;
-        padding: 0.8rem 1.2rem;
-        border-radius: 6px;
+      padding: 0 1rem;
+  
+      .compact-form-title {
         font-family: 'Cinzel', serif;
-        font-size: 1rem;
-        cursor: pointer;
-        margin-top: 0.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        transition: all 0.3s ease;
-        width: 100%;
-        max-width: 200px;
-        margin: 0.5rem auto 0;
-        
-        &:hover {
-          background: #5A2D2D;
-          transform: translateY(-2px);
-        }
+        color: #8B4513;
+        text-align: center;
+        margin: 0;
+        font-size: 1.2rem;
         
         i {
-          font-size: 1rem;
+          color: #A0522D;
+          margin: 0 0.3rem;
+          font-size: 0.9rem;
         }
-      }
-    }
-
-    // Estilos para el slider de fotos de los novios
-    .couple-slider-container {
-      margin-top: 1.5rem;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(139, 69, 19, 0.15);
-      border: 1px solid rgba(139, 69, 19, 0.1);
-      position: relative;
-
-      .couple-slider {
-        .slider-item {
-          outline: none;
-          position: relative;
-          
-          .couple-photo {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-          }
-
-          .photo-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
-          }
-        }
-
-        // Estilos para los puntos de navegación
-        .slick-dots {
-          bottom: 15px;
-          z-index: 2;
-          
-          li {
-            margin: 0 3px;
-            
-            button {
-              &:before {
-                color: #C2A78D;
-                opacity: 0.8;
-                font-size: 10px;
-                transition: all 0.3s ease;
-              }
-            }
-            
-            &.slick-active {
-              button:before {
-                color: #FFF9F5;
-                opacity: 1;
-                transform: scale(1.3);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .compact-contact-section {
-    margin: 1rem;
-    padding: 1rem 0;
-    border-radius: 8px;
-    
-    .compact-form-container {
-      padding: 0 1rem;
-      
-      .compact-form-title {
-        font-size: 1.3rem;
       }
       
       .compact-contact-form {
-        .compact-submit-btn {
-          max-width: 100%;
-        }
-      }
-      
-      .couple-slider-container {
-        margin: 1.5rem -1rem 0;
-        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
         
-        .couple-slider {
-          .slider-item {
-            .couple-photo {
-              height: 220px;
+        .compact-form-group {
+          .compact-input, .compact-textarea {
+            padding: 0.6rem 0.8rem;
+            border: 1px solid #C2A78D;
+            border-radius: 4px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: #5A2D2D;
+            transition: all 0.2s ease;
+            background: rgba(255, 255, 255, 0.9);
+            width: 100%;
+            box-sizing: border-box;
+            
+            &:focus {
+              outline: none;
+              border-color: #7A4F50;
+              box-shadow: 0 0 0 2px rgba(122, 79, 80, 0.1);
             }
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .compact-contact-section {
-    .compact-form-container {
-      .couple-slider-container {
-        .couple-slider {
-          .slider-item {
-            .couple-photo {
-              height: 180px;
+            
+            &::placeholder {
+              color: #A67C52;
+              opacity: 0.7;
+              font-style: italic;
             }
           }
           
+          .compact-textarea {
+            resize: vertical;
+            min-height: 80px;
+          }
+        }
+        
+        .compact-submit-btn {
+          background: #7A4F50;
+          color: white;
+          border: none;
+          padding: 0.7rem;
+          border-radius: 4px;
+          font-family: 'Cinzel', serif;
+          font-size: 0.9rem;
+          cursor: pointer;
+          margin-top: 0.3rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          transition: all 0.2s ease;
+          width: 100%;
+          
+          &:hover {
+            background: #5A2D2D;
+            transform: translateY(-1px);
+          }
+          
+          i {
+            font-size: 0.9rem;
+          }
+        }
+      }
+  
+      .couple-slider-container {
+        margin-top: 1rem;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(139, 69, 19, 0.1);
+        border: 1px solid rgba(194, 167, 141, 0.3);
+  
+        .couple-slider {
+          .slider-item {
+            .couple-photo {
+              width: 100%;
+              height: 180px;
+              object-fit: cover;
+            }
+  
+            .photo-overlay {
+              background: linear-gradient(to top, rgba(0,0,0,0.2), rgba(0,0,0,0.05));
+            }
+          }
+  
           .slick-dots {
-            bottom: 10px;
+            bottom: 8px;
+            
+            li {
+              margin: 0 2px;
+              
+              button:before {
+                font-size: 8px;
+              }
+            }
           }
         }
       }
     }
   }
-}
+  
+  /* Tablet (600px+)
+     ========================================================================== */
+  @media (min-width: 600px) {
+    .compact-contact-section {
+      margin: 1rem auto;
+      max-width: 550px;
+      padding: 1.2rem 0;
+  
+      .compact-form-container {
+        padding: 0 1.2rem;
+        gap: 1.2rem;
+  
+        .compact-form-title {
+          font-size: 1.3rem;
+          
+          i {
+            font-size: 1rem;
+          }
+        }
+        
+        .compact-contact-form {
+          .compact-submit-btn {
+            max-width: 200px;
+            margin: 0.3rem auto 0;
+          }
+        }
+        
+        .couple-slider-container {
+          .couple-slider {
+            .slider-item {
+              .couple-photo {
+                height: 220px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  /* Tablet grande (768px+)
+     ========================================================================== */
+  @media (min-width: 768px) {
+    .compact-contact-section {
+      max-width: 700px;
+      padding: 1.5rem 0;
+  
+      .compact-form-container {
+        .compact-form-title {
+          font-size: 1.5rem;
+        }
+        
+        .compact-contact-form {
+          .compact-input, .compact-textarea {
+            padding: 0.7rem 1rem;
+            font-size: 1rem;
+          }
+          
+          .compact-textarea {
+            min-height: 100px;
+          }
+        }
+        
+        .couple-slider-container {
+          .couple-slider {
+            .slider-item {
+              .couple-photo {
+                height: 250px;
+              }
+            }
+            
+            .slick-dots {
+              bottom: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  /* Desktop (992px+)
+     ========================================================================== */
+  @media (min-width: 992px) {
+    .compact-contact-section {
+      max-width: 800px;
+    }
+  }

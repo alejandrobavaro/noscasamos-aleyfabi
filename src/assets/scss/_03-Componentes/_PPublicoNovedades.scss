@@ -1,630 +1,434 @@
-// Variables de breakpoint
-$mobile: 480px;
-$tablet: 768px;
-$desktop: 992px;
-$large-desktop: 1200px;
+/* ==========================================================================
+   COMPONENTE NOVEDADES - Mobile First
+   ========================================================================== */
 
-// Estilos base del componente
-.novedades-container {
-  padding: 1.5rem 0.8rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  border-radius: 15px;
-  background-color: rgba(136, 56, 32, 0.15);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  
-  h2, .section-title {
-    text-align: center;
-    font-size: 1.5rem;
-    color: #5a2d2d;
-    margin-bottom: 1rem;
-    font-family: 'Playfair Display', serif;
-    position: relative;
-    line-height: 1.3;
-    
-    &::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(to right, #e0a899, #c48f7d);
-      margin: 0.5rem auto;
-    }
-
-    @media (min-width: $tablet) {
-      font-size: 1.8rem;
-      margin-bottom: 1.2rem;
-    }
-
-    @media (min-width: $desktop) {
-      font-size: 2rem;
-    }
-  }
-
-  .magazine-subtitle, .section-subtitle {
-    text-align: center;
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 1.2rem;
+   .novedades-container {
+    width: 100%;
+    max-width: 412px;
+    margin: 0 auto;
+    padding: 1rem;
     font-family: 'Cormorant Garamond', serif;
-    line-height: 1.4;
-    padding: 0 0.5rem;
-
-    @media (min-width: $tablet) {
+    box-sizing: border-box;
+    overflow: hidden;
+    
+    h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: #5a2d2d;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      position: relative;
+      
+      &::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 2px;
+        background: #c2a78d;
+        margin: 0.5rem auto;
+      }
+    }
+    
+    .magazine-subtitle,
+    .news-subtitle {
+      text-align: center;
       font-size: 1rem;
+      color: #7a4f50;
       margin-bottom: 1.5rem;
     }
   }
-}
-
-// Estilos para la sección de revista
-.wedding-magazine {
-  margin-bottom: 2rem;
-
-  @media (min-width: $tablet) {
-    margin-bottom: 3rem;
-  }
   
-  .magazine-container {
-    background-color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
+  /* Estilos Revista */
+  .wedding-magazine {
+    margin-bottom: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
     padding: 1rem;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    
-    @media (min-width: $tablet) {
-      padding: 1.2rem;
-    }
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     
     .magazine-page {
       display: flex;
       flex-direction: column;
-
-      @media (min-width: $tablet) {
-        flex-direction: row;
-      }
     }
     
-    .page-image {
+    .page-image-container {
       width: 100%;
-      min-height: 180px;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      border-radius: 6px;
       margin-bottom: 1rem;
       
-      @media (min-width: $tablet) {
-        width: 45%;
-        min-height: 300px;
-        margin-right: 1.2rem;
-        margin-bottom: 0;
-      }
-      
-      @media (min-width: $desktop) {
-        min-height: 350px;
-      }
-
-      .page-header {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-        padding: 0.8rem;
-        color: white;
+      .page-image {
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 6px;
+        position: relative;
         
-        h3 {
-          font-size: 1.2rem;
-          margin: 0 0 0.2rem;
-          font-family: 'Playfair Display', serif;
-          line-height: 1.3;
-
-          @media (min-width: $tablet) {
-            font-size: 1.4rem;
+        .page-header {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+          padding: 1rem;
+          color: white;
+          
+          h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            margin: 0 0 0.2rem;
+            color: white;
+            
+            &::after {
+              display: none;
+            }
           }
-        }
-        
-        .page-date {
-          font-size: 0.7rem;
-          opacity: 0.9;
-          display: block;
-          margin-bottom: 0.2rem;
-        }
-
-        .page-category {
-          display: inline-block;
-          background-color: rgba(255, 255, 255, 0.2);
-          padding: 0.2rem 0.5rem;
-          border-radius: 12px;
-          font-size: 0.65rem;
-          margin-top: 0.2rem;
+          
+          .page-date {
+            font-size: 0.8rem;
+            opacity: 0.9;
+          }
         }
       }
     }
     
     .page-content {
-      flex: 1;
-      overflow: hidden;
-      
       p {
-        line-height: 1.5;
-        margin-bottom: 0.8rem;
-        font-family: 'Cormorant Garamond', serif;
         font-size: 0.95rem;
-        color: #444;
-        word-wrap: break-word;
-
-        @media (min-width: $tablet) {
-          font-size: 1rem;
-        }
+        line-height: 1.5;
+        color: #5a2d2d;
+        margin-bottom: 1rem;
       }
       
       blockquote {
         font-style: italic;
-        border-left: 2px solid #e0a899;
-        padding-left: 0.8rem;
+        border-left: 2px solid #c2a78d;
+        padding-left: 1rem;
         margin: 1rem 0;
-        color: #555;
-        font-size: 0.95rem;
-        line-height: 1.5;
+        color: #5a2d2d;
         
         cite {
           display: block;
           font-style: normal;
           font-weight: bold;
-          margin-top: 0.4rem;
-          color: #333;
-          font-size: 0.85rem;
+          margin-top: 0.5rem;
+          font-size: 0.9rem;
         }
       }
-
-      h4, h5 {
-        font-family: 'Playfair Display', serif;
+      
+      h4 {
+        font-family: 'Cinzel', serif;
+        font-size: 1.2rem;
         color: #5a2d2d;
-        margin: 1rem 0 0.4rem;
-        line-height: 1.3;
-        font-size: 1.1rem;
+        margin: 1.5rem 0 0.5rem;
       }
-
+      
       ul {
-        padding-left: 1rem;
-        margin-bottom: 0.8rem;
-
+        padding-left: 1.2rem;
+        margin-bottom: 1rem;
+        
         li {
-          margin-bottom: 0.4rem;
-          line-height: 1.4;
+          margin-bottom: 0.5rem;
           font-size: 0.95rem;
         }
       }
-
-      .planning-details, .ring-specs {
+      
+      .planning-details,
+      .ring-specs {
         display: grid;
         grid-template-columns: 1fr;
         gap: 0.8rem;
         margin: 1rem 0;
-
-        @media (min-width: $mobile) {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        @media (min-width: $tablet) {
-          grid-template-columns: repeat(3, 1fr);
-        }
-
-        .detail-item, div {
-          background-color: rgba(224, 168, 153, 0.1);
-          padding: 0.6rem;
-          border-radius: 6px;
-
-          h5 {
-            margin-top: 0;
-            color: #883820;
-            font-size: 1rem;
-          }
-          
-          p {
-            font-size: 0.9rem;
-            margin-bottom: 0;
-          }
-        }
-      }
-    }
-    
-    /* Estilos específicos para la galería */
-    .page-gallery-container {
-      margin-top: 1.2rem;
-      
-      .gallery-title {
-        font-family: 'Playfair Display', serif;
-        color: #5a2d2d;
-        margin-bottom: 0.6rem;
-        font-size: 1.1rem;
-        border-bottom: 1px solid #e0a899;
-        padding-bottom: 0.2rem;
-
-        @media (min-width: $tablet) {
-          font-size: 1.2rem;
-        }
-      }
-    }
-
-    .page-gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.5rem;
-      margin-top: 0.4rem;
-
-      @media (min-width: $mobile) {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.6rem;
-      }
-
-      @media (min-width: $tablet) {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        gap: 0.8rem;
-      }
-
-      .gallery-item {
-        position: relative;
-        overflow: hidden;
-        border-radius: 4px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease;
-        aspect-ratio: 1/1;
         
-        &:hover {
-          transform: scale(1.02);
-          box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+        .detail-item {
+          background: rgba(194, 167, 141, 0.1);
+          padding: 0.8rem;
+          border-radius: 6px;
+          
+          h5 {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            margin: 0 0 0.3rem;
+            color: #5a2d2d;
+          }
         }
-      }
-
-      .gallery-thumbnail {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
       }
     }
     
-    .magazine-controls {
+    .page-gallery {
+      margin-top: 1.5rem;
+      
+      h4 {
+        font-family: 'Cinzel', serif;
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+      }
+      
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        
+        .gallery-item {
+          img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+    
+    .page-controls {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 1.2rem;
-      padding-top: 1.2rem;
-      border-top: 1px solid #eee;
-      gap: 0.6rem;
-      
-      @media (min-width: $mobile) {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-      
-      button {
-        background-color: #e0a899;
-        color: white;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: all 0.3s;
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 0.9rem;
-        width: 100%;
-        max-width: 180px;
-        
-        &:hover:not(:disabled) {
-          background-color: #c48f7d;
-          transform: translateY(-2px);
-        }
-        
-        &:disabled {
-          background-color: #ddd;
-          cursor: not-allowed;
-          opacity: 0.7;
-        }
-
-        @media (min-width: $mobile) {
-          width: auto;
-        }
-      }
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e8d5cc;
       
       .page-indicator {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        order: -1;
-        
-        @media (min-width: $mobile) {
-          order: 0;
-        }
-        
-        span {
-          font-weight: bold;
-          color: #666;
-          font-size: 0.8rem;
-          margin-bottom: 0.4rem;
-        }
+        font-size: 0.9rem;
+        color: #7a4f50;
+        margin-bottom: 0.8rem;
       }
-
-      .page-dots {
+      
+      .navigation-buttons {
         display: flex;
-        gap: 0.4rem;
-        margin-top: 0.4rem;
+        gap: 1rem;
         
-        .dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background-color: #ddd;
+        button {
+          padding: 0.6rem 1.2rem;
+          background: #7a4f50;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 0.9rem;
           cursor: pointer;
-          transition: background-color 0.3s;
+          transition: background 0.2s;
           
-          &.active {
-            background-color: #c48f7d;
+          &:hover:not(:disabled) {
+            background: #5a2d2d;
+          }
+          
+          &:disabled {
+            background: #c2a78d;
+            cursor: not-allowed;
+            opacity: 0.7;
           }
         }
       }
     }
   }
-}
-
-// Estilos para la sección de noticias
-.news-feed {
-  margin-top: 2rem;
-
-  @media (min-width: $tablet) {
-    margin-top: 3rem;
-  }
   
-  .news-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-
-    @media (min-width: $tablet) {
-      grid-template-columns: repeat(2, 1fr);
+  /* Estilos Noticias */
+  .news-section {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    
+    .news-list {
+      display: flex;
+      flex-direction: column;
       gap: 1.2rem;
     }
-
-    @media (min-width: $desktop) {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  
-  .news-card {
-    background-color: #fff;
-    border-radius: 6px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    transition: all 0.3s;
-    display: flex;
-    flex-direction: column;
     
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    
-    &.expanded {
-      position: relative;
-      z-index: 10;
+    .news-card {
+      border-bottom: 1px solid #e8d5cc;
+      padding-bottom: 1rem;
       
-      @media (min-width: $tablet) {
-        grid-column: span 2;
-      }
-
-      @media (min-width: $desktop) {
-        grid-column: span 3;
+      &:last-child {
+        border-bottom: none;
       }
       
-      .news-card-content {
-        @media (min-width: $tablet) {
-          flex-direction: row;
+      &.expanded {
+        .news-full-content {
+          display: block;
         }
         
-        .full-content {
+        .news-excerpt {
+          display: none;
+        }
+      }
+      
+      .news-image {
+        width: 100%;
+        height: 180px;
+        margin-bottom: 0.8rem;
+        
+        img {
           width: 100%;
-
-          @media (min-width: $tablet) {
-            width: 60%;
-            padding-right: 1.2rem;
-          }
+          height: 100%;
+          object-fit: cover;
+          border-radius: 6px;
+        }
+      }
+      
+      .news-content {
+        .news-category {
+          display: inline-block;
+          background: rgba(122, 79, 80, 0.1);
+          color: #5a2d2d;
+          padding: 0.2rem 0.8rem;
+          border-radius: 20px;
+          font-size: 0.7rem;
+          margin-bottom: 0.5rem;
+        }
+        
+        h3 {
+          font-family: 'Cinzel', serif;
+          font-size: 1.2rem;
+          color: #5a2d2d;
+          margin: 0.3rem 0;
+        }
+        
+        time {
+          display: block;
+          font-size: 0.8rem;
+          color: #8c5e3d;
+          margin-bottom: 0.5rem;
+        }
+        
+        .news-excerpt {
+          font-size: 0.95rem;
+          line-height: 1.5;
+          color: #5a2d2d;
+          margin-bottom: 0.8rem;
+        }
+        
+        .news-full-content {
+          display: none;
+          font-size: 0.95rem;
+          line-height: 1.5;
+          color: #5a2d2d;
           
           p {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: #444;
+            margin-bottom: 0.8rem;
           }
           
           .news-gallery {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 0.6rem;
-            margin: 0.8rem 0;
-            
-            @media (min-width: $mobile) {
-              grid-template-columns: repeat(3, 1fr);
-            }
+            gap: 0.5rem;
+            margin: 1rem 0;
             
             img {
               width: 100%;
               height: 80px;
               object-fit: cover;
               border-radius: 4px;
-
-              @media (min-width: $mobile) {
-                height: 90px;
-              }
-
-              @media (min-width: $tablet) {
-                height: 100px;
-              }
             }
           }
         }
       }
-    }
-    
-    .news-card-content {
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
       
-      .news-category {
-        display: inline-block;
-        background-color: #f3e9e5;
-        color: #c48f7d;
-        padding: 0.2rem 0.6rem;
-        border-radius: 20px;
-        font-size: 0.65rem;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-        align-self: flex-start;
-      }
-      
-      h3 {
-        font-size: 1.1rem;
-        margin: 0 0 0.3rem;
-        color: #333;
-        font-family: 'Playfair Display', serif;
-        line-height: 1.3;
-
-        @media (min-width: $tablet) {
-          font-size: 1.2rem;
-        }
-      }
-      
-      time {
-        display: block;
-        font-size: 0.75rem;
-        color: #888;
-        margin-bottom: 0.6rem;
-      }
-      
-      .excerpt {
-        font-size: 0.85rem;
-        line-height: 1.5;
-        color: #555;
-        margin-bottom: 0.8rem;
-        font-family: 'Cormorant Garamond', serif;
-      }
-    }
-    
-    .news-thumbnail {
-      order: -1;
-      
-      @media (min-width: $tablet) {
-        order: 0;
-      }
-      
-      img {
-        width: 100%;
-        height: 140px;
-        object-fit: cover;
-
-        @media (min-width: $mobile) {
-          height: 160px;
-        }
-
-        @media (min-width: $tablet) {
-          height: 180px;
-        }
-      }
-    }
-    
-    button {
-      &.expand-news, &.collapse-news {
+      .news-toggle {
         background: none;
         border: none;
-        color: #c48f7d;
+        color: #7a4f50;
         font-weight: bold;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 0.9rem;
         cursor: pointer;
-        padding: 0.4rem 0;
-        margin-top: auto;
-        align-self: flex-start;
+        padding: 0.3rem 0;
         display: flex;
         align-items: center;
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 0.85rem;
-        transition: color 0.3s;
-        
-        &:hover {
-          color: #a67c65;
-        }
         
         &::after {
           content: '→';
-          margin-left: 0.4rem;
-          transition: transform 0.3s;
+          margin-left: 0.3rem;
+          transition: transform 0.2s;
         }
         
         &:hover::after {
           transform: translateX(2px);
         }
       }
+    }
+  }
+  
+  /* Tablet (768px+)
+     ========================================================================== */
+  @media (min-width: 768px) {
+    .novedades-container {
+      max-width: 700px;
+      padding: 1.5rem;
       
-      &.collapse-news::after {
-        content: '↑';
+      h2 {
+        font-size: 1.8rem;
+      }
+    }
+    
+    .wedding-magazine {
+      .magazine-page {
+        flex-direction: row;
+        gap: 1.5rem;
+      }
+      
+      .page-image-container {
+        width: 45%;
+        margin-bottom: 0;
+        
+        .page-image {
+          height: 300px;
+        }
+      }
+      
+      .page-content {
+        width: 55%;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        
+        .gallery-item img {
+          height: 120px !important;
+        }
+      }
+    }
+    
+    .news-section {
+      .news-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        
+        .news-card {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
       }
     }
   }
-}
-
-// Ajustes específicos para móviles muy pequeños
-@media (max-width: 380px) {
-  .page-gallery {
-    grid-template-columns: 1fr !important;
+  
+  /* Desktop (992px+)
+     ========================================================================== */
+  @media (min-width: 992px) {
+    .novedades-container {
+      max-width: 900px;
+      
+      h2 {
+        font-size: 2rem;
+      }
+    }
     
-    .gallery-item {
-      aspect-ratio: 16/9 !important;
+    .wedding-magazine {
+      .page-image {
+        height: 350px !important;
+      }
+      
+      .gallery-grid {
+        .gallery-item img {
+          height: 150px !important;
+        }
+      }
+    }
+    
+    .news-section {
+      .news-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
   }
-
-  .planning-details, .ring-specs {
-    grid-template-columns: 1fr !important;
-  }
-
-  .magazine-controls button {
-    padding: 0.4rem 0.8rem !important;
-    font-size: 0.85rem !important;
-  }
-}
-
-// Ajustes para tablets en modo retrato
-@media (min-width: $tablet) and (max-width: $desktop) and (orientation: portrait) {
-  .magazine-page {
-    flex-direction: column !important;
-    
-    .page-image {
-      width: 100% !important;
-      margin-right: 0 !important;
-      margin-bottom: 1.2rem !important;
-    }
-  }
-
-  .news-card.expanded .news-card-content {
-    flex-direction: column !important;
-    
-    .full-content {
-      width: 100% !important;
-      padding-right: 0 !important;
-    }
-  }
-}
-
-// Mejoras de accesibilidad
-button, .dot {
-  &:focus {
-    outline: 2px solid #c48f7d;
-    outline-offset: 2px;
-  }
-}
-
-// Transiciones suaves
-.magazine-page, .news-card, .gallery-item {
-  transition: all 0.3s ease;
-}

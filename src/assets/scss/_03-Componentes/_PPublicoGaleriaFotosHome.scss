@@ -1,186 +1,48 @@
-.galeria-fotos {
-  padding: 3rem 0;
-  background: linear-gradient(rgba(255, 245, 235, 0.9), rgba(255, 245, 235, 0.9)), 
-              url('/img/00-fondos/fondo-textura-papel-antiguo.jpg');
-  margin: 2rem 0;
-  position: relative;
-  border-radius: 15px;
-  overflow: hidden;
+/* ==========================================================================
+   COMPONENTE GALERÍA DE FOTOS - Mobile First
+   ========================================================================== */
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(to right, #a67c52, #5a2d2d, #a67c52);
-  }
-}
-
-.galeria-header {
-  text-align: center;
-  margin-bottom: 2rem;
-  padding: 0 1rem;
+   .galeria-fotos {
+    padding: 1.5rem 0;
+    background: rgba(255, 245, 235, 0.95);
+    margin: 1rem 0.5rem;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 412px;
+    box-sizing: border-box;
   
-  h2 {
-    font-family: 'Cinzel', serif;
-    font-size: 2.2rem;
-    color: #5a2d2d;
-    margin-bottom: 0.5rem;
-    letter-spacing: 1px;
-  }
-  
-  p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    color: #8c5e3d;
-    font-style: italic;
-  }
-}
-
-.galeria-slider {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  
-  .slick-slide {
-    padding: 0 10px;
-  }
-  
-  .slick-dots {
-    bottom: -30px;
-    
-    li button:before {
-      color: #a67c52;
-      font-size: 10px;
-      opacity: 0.5;
-    }
-    
-    li.slick-active button:before {
-      color: #5a2d2d;
-      opacity: 1;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(to right, #a67c52, #5a2d2d, #a67c52);
     }
   }
-}
-
-.foto-container {
-  perspective: 1000px;
-  height: 280px;
-  margin: 0 5px;
-}
-
-.foto-item {
-  position: relative;
-  height: 100%;
-  transition: all 0.4s ease;
-  transform-style: preserve-3d;
   
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-  }
-}
-
-.foto-imagen {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 5px;
-  border: 4px solid #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.foto-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-  padding: 0.8rem;
-  border-radius: 0 0 5px 5px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  
-  .foto-item:hover & {
-    opacity: 1;
-  }
-}
-
-.foto-categoria {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.9rem;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  display: block;
-  text-align: center;
-}
-
-/* Responsive: Tablet */
-@media (max-width: 1024px) {
-  .galeria-fotos {
-    padding: 2.5rem 0;
-    margin: 1.5rem 0;
-  }
-
-  .foto-container {
-    height: 240px;
-  }
-
   .galeria-header {
-    h2 {
-      font-size: 2rem;
-    }
-    
-    p {
-      font-size: 1.1rem;
-    }
-  }
-}
-
-/* Responsive: Tablet Pequeña */
-@media (max-width: 768px) {
-  .galeria-slider {
-    .slick-slide {
-      padding: 0 8px;
-    }
-  }
-
-  .foto-container {
-    height: 220px;
-  }
-
-  .foto-imagen {
-    border-width: 3px;
-  }
-}
-
-/* Responsive: Móvil */
-@media (max-width: 480px) {
-  .galeria-fotos {
-    padding: 2rem 0;
-    margin: 1rem 0;
-    border-radius: 10px;
-  }
-
-  .galeria-header {
+    text-align: center;
     margin-bottom: 1.5rem;
+    padding: 0 1rem;
     
     h2 {
-      font-size: 1.8rem;
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: #5a2d2d;
+      margin-bottom: 0.5rem;
     }
     
     p {
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1rem;
+      color: #8c5e3d;
+      font-style: italic;
     }
   }
-
-  .foto-container {
-    height: 200px;
-  }
-
+  
   .galeria-slider {
     padding: 0 0.5rem;
     
@@ -189,22 +51,126 @@
     }
     
     .slick-dots {
-      bottom: -25px;
+      bottom: -20px;
+      
+      li button:before {
+        color: #a67c52;
+        font-size: 8px;
+        opacity: 0.5;
+      }
+      
+      li.slick-active button:before {
+        color: #5a2d2d;
+        opacity: 1;
+      }
     }
   }
-
+  
+  .foto-container {
+    height: 180px;
+    margin: 0 3px;
+  }
+  
+  .foto-item {
+    height: 100%;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  .foto-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
   .foto-overlay {
-    padding: 0.6rem;
+    padding: 0.5rem;
     
     .foto-categoria {
       font-size: 0.8rem;
     }
   }
-}
-
-/* Pequeños ajustes para móviles muy pequeños */
-@media (max-width: 360px) {
-  .foto-container {
-    height: 180px;
+  
+  /* Tablet (600px+)
+     ========================================================================== */
+  @media (min-width: 600px) {
+    .galeria-fotos {
+      max-width: 550px;
+      margin: 1.5rem auto;
+      padding: 2rem 0;
+  
+      .galeria-header {
+        h2 {
+          font-size: 1.8rem;
+        }
+        
+        p {
+          font-size: 1.1rem;
+        }
+      }
+  
+      .foto-container {
+        height: 220px;
+      }
+    }
   }
-}
+  
+  /* Tablet grande (768px+)
+     ========================================================================== */
+  @media (min-width: 768px) {
+    .galeria-fotos {
+      max-width: 700px;
+      
+      .galeria-slider {
+        .slick-slide {
+          padding: 0 8px;
+        }
+      }
+  
+      .foto-container {
+        height: 240px;
+      }
+  
+      .foto-imagen {
+        border-width: 3px;
+      }
+    }
+  }
+  
+  /* Desktop (992px+)
+     ========================================================================== */
+  @media (min-width: 992px) {
+    .galeria-fotos {
+      max-width: 900px;
+      padding: 2.5rem 0;
+  
+      .galeria-header {
+        h2 {
+          font-size: 2rem;
+        }
+      }
+  
+      .foto-container {
+        height: 260px;
+      }
+    }
+  }
+  
+  /* Desktop grande (1200px+)
+     ========================================================================== */
+  @media (min-width: 1200px) {
+    .galeria-fotos {
+      max-width: 1100px;
+  
+      .foto-container {
+        height: 280px;
+      }
+    }
+  }

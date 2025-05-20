@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import "../assets/scss/_03-Componentes/_POrganizacion.scss";
 
-// Componentes de las pestañas
+// Component imports
 import POrgPresupuesto from './POrgPresupuesto';
-import POrgTareasBoda from './POrgTareasBoda'; // Cambiado de POrgTareasBoda
+import POrgTareasBoda from './POrgTareasBoda';
 import POrgRegalos from './POrgRegalos';
 import POrgCatering from './POrgCatering';
 import POrgInvitaciones from './POrgInvitaciones';
@@ -65,51 +65,59 @@ function POrganizacion() {
   const renderTabContent = () => {
     switch(activeTab) {
       case 'presupuesto': return <POrgPresupuesto />;
-      case 'checklist': return <POrgTareasBoda />; 
-      case 'POrgRegalos': return <POrgRegalos />;
+      case 'checklist': return <POrgTareasBoda />;
+      case 'regalos': return <POrgRegalos />;
       case 'catering': return <POrgCatering />;
       case 'invitaciones': return <POrgInvitaciones />;
-      case 'POrgMesas': return <POrgMesas />;
+      case 'mesas': return <POrgMesas />;
       default: return <ResumenGeneral stats={weddingStats} />;
     }
   };
 
   const tabs = [
-  
- 
+    { id: 'resumen', label: 'Resumen', icon: 'bi-house-door' },
+    { id: 'presupuesto', label: 'Presupuesto', icon: 'bi-cash-stack' },
+    { id: 'checklist', label: 'Tareas', icon: 'bi-list-check' },
+    { id: 'invitaciones', label: 'Invitaciones', icon: 'bi-envelope' },
+    { id: 'regalos', label: 'Regalos', icon: 'bi-gift' },
+    { id: 'catering', label: 'Catering', icon: 'bi-egg-fried' },
+    { id: 'mesas', label: 'Mesas', icon: 'bi-table' }
   ];
 
   return (
-    <div className="pantalla-organizacion">
-      <div className="contenedor-organizacion">
-        {/* Encabezado */}
-        <div className="encabezado-boda">
-          <h1>Panel de Organización</h1>
-          <p className="mensaje-bienvenida">
+    <div className="organization-screen">
+      <div className="organization-container">
+        {/* Header */}
+        <div className="organization-header">
+          <h1 className="organization-title">Panel de Organización</h1>
+          <p className="wedding-countdown">
             {daysRemaining} días para el gran día
           </p>
           
-          <div className="barra-progreso">
-            <div className="progreso" style={{ width: `${progress}%` }}></div>
+          <div className="progress-bar">
+            <div 
+              className="progress-fill" 
+              style={{ width: `${progress}%` }}
+            ></div>
           </div>
         </div>
 
-        {/* Pestañas */}
-        <div className="pestanas">
+        {/* Tabs */}
+        <div className="organization-tabs">
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              className={`pestana ${activeTab === tab.id ? 'activa' : ''}`}
+              className={`tab-button ${activeTab === tab.id ? 'active' : ''}`}
               onClick={() => setActiveTab(tab.id)}
             >
               <i className={`bi ${tab.icon}`}></i>
-              {tab.label}
+              <span>{tab.label}</span>
             </button>
           ))}
         </div>
 
-        {/* Contenido */}
-        <div className="contenido-pestana">
+        {/* Content */}
+        <div className="tab-content">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -129,8 +137,29 @@ function POrganizacion() {
 
 function ResumenGeneral({ stats }) {
   return (
-    <div className="resumen-general">
-      {/* Contenido del resumen general si lo necesitas */}
+    <div className="summary-container">
+      <h3 className="summary-title">Resumen General</h3>
+      
+      <div className="stats-grid">
+        {stats.map((stat) => (
+          <div key={stat.id} className="stat-card">
+            <div className="stat-header">
+              <i className={`bi ${stat.icon}`} style={{ color: stat.color }}></i>
+              <h4 className="stat-title">{stat.title}</h4>
+            </div>
+            <div className="stat-value">{stat.value}</div>
+            <div className="stat-progress">
+              <div 
+                className="progress-fill" 
+                style={{ 
+                  width: `${stat.progress}%`,
+                  backgroundColor: stat.color
+                }}
+              ></div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
