@@ -214,3 +214,251 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* Estilos Mobile First para PInvitadosProbadorRopaAvatar */
+.probador-ropa {
+  width: 100%;
+  max-width: 412px;
+  margin: 0 auto;
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: #FFF9F5;
+  font-family: 'Cormorant Garamond', serif;
+
+  .probador-header {
+    text-align: center;
+    margin-bottom: 20px;
+
+    h1 {
+      color: #7A4F50;
+      font-size: 22px;
+      margin: 0 0 5px 0;
+      font-family: 'Cinzel', serif;
+    }
+
+    p {
+      color: #6B635B;
+      font-size: 14px;
+      margin: 0;
+    }
+  }
+
+  .probador-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .probador-preview-container {
+    order: 1;
+  }
+
+  .probador-preview {
+    width: 100%;
+    height: 300px;
+    background-color: white;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(122, 79, 80, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .probador-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .probador-selector {
+    order: 2;
+  }
+
+  .probador-category {
+    margin-bottom: 20px;
+
+    h2 {
+      color: #7A4F50;
+      font-size: 18px;
+      margin: 0 0 10px 0;
+      font-family: 'Cinzel', serif;
+    }
+  }
+
+  .probador-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .probador-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button {
+      width: 100%;
+      background: white;
+      border: 1px solid #F0E7DB;
+      border-radius: 6px;
+      padding: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        border-color: #C2A78D;
+      }
+
+      &.selected {
+        border-color: #7A4F50;
+        background-color: rgba(122, 79, 80, 0.1);
+      }
+
+      img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+      }
+    }
+
+    span {
+      margin-top: 5px;
+      font-size: 12px;
+      color: #5A2D2D;
+      text-align: center;
+      word-break: break-word;
+    }
+  }
+
+  .probador-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+
+    button, a {
+      background: #7A4F50;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover {
+        background: #6a4748;
+      }
+
+      &:disabled {
+        background: #CCCCCC;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  /* Estados de carga y error */
+  .probador-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+
+    .loading-spinner {
+      border: 3px solid #F3F3F3;
+      border-top: 3px solid #7A4F50;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #7A4F50;
+      font-size: 14px;
+    }
+  }
+
+  .probador-error {
+    text-align: center;
+    padding: 15px;
+    color: #D9534F;
+    font-size: 14px;
+
+    button {
+      margin-top: 10px;
+      padding: 8px 15px;
+      background: #7A4F50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Tablet (768px en adelante) */
+@media (min-width: 768px) {
+  .probador-ropa {
+    max-width: 768px;
+    padding: 20px;
+
+    .probador-content {
+      flex-direction: row;
+    }
+
+    .probador-preview-container {
+      flex: 1;
+      position: sticky;
+      top: 20px;
+      height: fit-content;
+    }
+
+    .probador-preview {
+      height: 400px;
+    }
+
+    .probador-selector {
+      flex: 1;
+    }
+
+    .probador-options {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .probador-actions {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+}
+
+/* Escritorio (1024px en adelante) */
+@media (min-width: 1024px) {
+  .probador-ropa {
+    max-width: 1000px;
+
+    .probador-preview {
+      height: 500px;
+    }
+
+    .probador-options {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}

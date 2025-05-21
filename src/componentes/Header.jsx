@@ -1,20 +1,10 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import {
-  BsBoxArrowRight,
-  BsList,
-  BsHouseDoor,
-  BsCheckCircleFill,
-  BsGeoAltFill,
-  BsGiftFill,
-  BsClockFill,
-  BsPeopleFill,
-  BsListCheck,
-  BsGift,
-  BsEggFried,
-  BsEnvelope,
-  BsCashStack
+import { 
+  BsBoxArrowRight, BsList, BsHouseDoor, BsCheckCircleFill,
+  BsGeoAltFill, BsGiftFill, BsClockFill, BsPeopleFill,
+  BsListCheck, BsGift, BsEggFried, BsEnvelope, BsCashStack
 } from "react-icons/bs";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import "../assets/scss/_03-Componentes/_Header.scss";
@@ -64,39 +54,39 @@ const Header = () => {
   const isOrganizacionSection = location.pathname.startsWith("/organizacion");
 
   return (
-    <header className="header">
-      <div className="baroque-line-top"></div>
+    <header className="app-header">
+      <div className="header-decoration-top"></div>
 
-      <Navbar expand="lg" className="navbar-custom">
+      <Navbar expand="lg" className="header-navbar">
         <Container className="header-container">
-          <Navbar.Brand as={Link} to="/" className="logo-brand">
+          <Navbar.Brand as={Link} to="/" className="header-logo">
             <img
               src="../../img/02-logos/logo-bodaaleyfabi1d.png"
               alt="Logo Boda Ale y Fabi"
-              className="logo-header"
+              className="logo-image"
             />
           </Navbar.Brand>
 
           {!nivelAcceso && (
-            <div className="header-access-buttons">
-              <div className="tarjetas-acceso">
+            <div className="access-buttons">
+              <div className="access-cards">
                 {[
                   {
                     tipo: "invitado",
                     icono: "bi-envelope",
                     titulo: "Invitados",
-                    clase: "invitado",
+                    clase: "guest",
                   },
                   {
                     tipo: "organizacion",
                     icono: "bi-lock",
                     titulo: "Organización",
-                    clase: "organizacion",
+                    clase: "organizer",
                   },
                 ].map((opcion) => (
                   <div
                     key={opcion.tipo}
-                    className={`tarjeta-acceso-mini tarjeta-${opcion.clase}`}
+                    className={`access-card ${opcion.clase}-card`}
                     onClick={() => handleAcceso(opcion.tipo)}
                   >
                     <i className={`bi ${opcion.icono}`}></i>
@@ -108,26 +98,25 @@ const Header = () => {
           )}
 
           {tipoAcceso && (
-            <div className="access-form-overlay">
-              <div className="access-form-container">
-                <div className="formulario-clave">
+            <div className="access-modal">
+              <div className="access-form">
+                <div className="form-content">
                   <div className="form-header">
-                    <button className="btn-volver" onClick={() => setTipoAcceso(null)}>
+                    <button className="back-button" onClick={() => setTipoAcceso(null)}>
                       <i className="bi bi-arrow-left"></i>
                     </button>
                     <h2>
-                      Acceso{" "}
-                      {tipoAcceso === "invitado" ? "Invitados" : "Organización"}
+                      Acceso {tipoAcceso === "invitado" ? "Invitados" : "Organización"}
                     </h2>
                   </div>
 
-                  <p className="instrucciones">
+                  <p className="form-instructions">
                     {tipoAcceso === "invitado"
                       ? "Ingresa la clave que recibiste en tu invitación"
                       : "Ingresa la clave de acceso privada"}
                   </p>
 
-                  <div className="input-group">
+                  <div className="input-container">
                     <input
                       type="password"
                       value={clave}
@@ -135,9 +124,9 @@ const Header = () => {
                       onKeyPress={handleKeyPress}
                       placeholder="Introduce la clave"
                       autoFocus
-                      className={error ? "input-error" : ""}
+                      className={error ? "error-input" : ""}
                     />
-                    <button onClick={verificarClave} className="btn-verificar">
+                    <button onClick={verificarClave} className="submit-button">
                       <i className="bi bi-arrow-right"></i>
                     </button>
                   </div>
@@ -151,171 +140,183 @@ const Header = () => {
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"
             onClick={handleToggleMobileMenu}
-            className="mobile-toggle"
+            className="menu-toggle"
           >
             <BsList className="menu-icon" />
           </Navbar.Toggle>
 
           <Navbar.Collapse
             id="basic-navbar-nav"
-            className={`navbar-collapse-custom ${
-              isMobileMenuOpen ? "show" : ""
-            }`}
+            className={`navbar-menu ${isMobileMenuOpen ? "open" : ""}`}
           >
             <Nav className="nav-links">
               <Nav.Link
                 as={Link}
                 to="/"
                 onClick={() => setIsMobileMenuOpen(false)}
+                className="nav-link"
               >
-                <BsHouseDoor className="menu-item-icon" />
+                <BsHouseDoor className="nav-icon" />
+                {/* <span>INICIO</span> */}
               </Nav.Link>
 
               {(nivelAcceso === "invitado" || isInvitadosSection) && (
                 <>
-                  <div className="baroque-divider"></div>
+                  {/* <div className="nav-divider"></div> */}
                   <Nav.Link
                     as={Link}
                     to="/invitados"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="nav-link"
                   >
-                    <i className="bi bi-people menu-item-icon"></i>
+                    {/* <i className="bi bi-people nav-icon"></i>
+                    <span>INVITADOS</span> */}
                   </Nav.Link>
 
-                  <div className="baroque-divider"></div>
+                  <div className="nav-divider"></div>
                   <Nav.Link
                     as={Link}
                     to="/invitados/confirmar" 
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="nav-link"
                   >
-                    <BsCheckCircleFill className="menu-item-icon" />
-                    CONFIRMAR ASISTENCIA
+                    {/* <BsCheckCircleFill className="nav-icon" /> */}
+                    <span>CONFIRMAR</span>
                   </Nav.Link>
 
-                  <div className="baroque-divider"></div>
+                  <div className="nav-divider"></div>
                   <Nav.Link
                     as={Link}
                     to="/invitados/ubicacion"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="nav-link"
                   >
-                    <BsGeoAltFill className="menu-item-icon" />
-                    UBICACIÓN
+                    {/* <BsGeoAltFill className="nav-icon" /> */}
+                    <span>UBICACIÓN</span>
                   </Nav.Link>
 
-                  <div className="baroque-divider"></div>
+                  <div className="nav-divider"></div>
                   <Nav.Link
                     as={Link}
                     to="/invitados/codigo-vestimenta"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="nav-link"
                   >
-                    <BsGiftFill className="menu-item-icon" />
-                    CÓDIGO VESTIMENTA
+                    {/* <BsGiftFill className="nav-icon" /> */}
+                    <span>VESTIMENTA</span>
                   </Nav.Link>
 
-                  <div className="baroque-divider"></div>
+                  <div className="nav-divider"></div>
                   <Nav.Link
                     as={Link}
                     to="/invitados/itinerario"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="nav-link"
                   >
-                    <BsClockFill className="menu-item-icon" />
-                    ITINERARIO
+                    {/* <BsClockFill className="nav-icon" /> */}
+                    <span>ITINERARIO</span>
                   </Nav.Link>
                 </>
               )}
 
               {(nivelAcceso === "organizacion" || isOrganizacionSection) && (
                 <>
-                  <div className="baroque-divider"></div>
+                  {/* <div className="nav-divider"></div> */}
                   <Nav.Link
                     as={Link}
                     to="/organizacion"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="nav-link"
                   >
-                    <i className="bi bi-clipboard-data menu-item-icon"></i>
+                    {/* <i className="bi bi-clipboard-data nav-icon"></i>
+                    <span>ORGANIZACIÓN</span> */}
                   </Nav.Link>
 
-                  <div className="baroque-divider"></div>
+                  {/* <div className="nav-divider"></div> */}
                   <Nav.Link
                     as={Link}
                     to="/organizacion/invitados"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="nav-link"
                   >
-                    <BsPeopleFill className="menu-item-icon" />
-                    LISTA INVITADOS
+                    {/* <BsPeopleFill className="nav-icon" /> */}
+                    <span>Lista de Invitados</span>
                   </Nav.Link>
 
-                  <div className="baroque-divider"></div>
+                  <div className="nav-divider"></div>
                   <Nav.Link
                     as={Link}
                     to="/organizacion/mesas"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="nav-link"
                   >
-                    <i className="bi bi-people menu-item-icon"></i>
-                    MESAS
+                    {/* <i className="bi bi-people nav-icon"></i> */}
+                    <span>Mesas</span>
                   </Nav.Link>
 
-                  <div className="baroque-divider"></div>
+                  <div className="nav-divider"></div>
                   <Nav.Link
                     as={Link}
                     to="/organizacion/checklist"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="nav-link"
                   >
-                    <BsListCheck className="menu-item-icon" />
-                    TAREAS
+                    {/* <BsListCheck className="nav-icon" /> */}
+                    <span>Tareas</span>
                   </Nav.Link>
 
-                  <div className="baroque-divider"></div>
+                  <div className="nav-divider"></div>
                   <Nav.Link
                     as={Link}
                     to="/organizacion/invitaciones"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="nav-link"
                   >
-                    <BsEnvelope className="menu-item-icon" />
-                    INVITACIONES
+                    {/* <BsEnvelope className="nav-icon" /> */}
+                    <span>Invitaciones</span>
                   </Nav.Link>
 
-                  <div className="baroque-divider"></div>
+                  <div className="nav-divider"></div>
                   <Nav.Link
                     as={Link}
                     to="/organizacion/regalos"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="nav-link"
                   >
-                    <BsGift className="menu-item-icon" />
-                    REGALOS
+                    {/* <BsGift className="nav-icon" /> */}
+                    <span>Regalos</span>
                   </Nav.Link>
 
-                  <div className="baroque-divider"></div>
+                  <div className="nav-divider"></div>
                   <Nav.Link
                     as={Link}
                     to="/organizacion/catering"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="nav-link"
                   >
-                    <BsEggFried className="menu-item-icon" />
-                    CATERING
+                    {/* <BsEggFried className="nav-icon" /> */}
+                    <span>Catering</span>
                   </Nav.Link>
 
-                  <div className="baroque-divider"></div>
+                  <div className="nav-divider"></div>
                   <Nav.Link
                     as={Link}
                     to="/organizacion/presupuesto"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="nav-link"
                   >
-                    <BsCashStack className="menu-item-icon" />
-                    PRESUPUESTO
+                    {/* <BsCashStack className="nav-icon" /> */}
+                    <span>Presupuesto</span>
                   </Nav.Link>
                 </>
               )}
             </Nav>
 
-            <div className="auth-section">
+            <div className="user-section">
               {nivelAcceso && (
-                <div className="auth-welcome">
+                <div className="user-info">
                   <span>
-                    Hola,{" "}
-                    {nivelAcceso === "organizacion"
-                      ? "Alejandro & Fabiola"
-                      : "Invitado"}
+                    Hola, {nivelAcceso === "organizacion" ? "Alejandro & Fabiola" : "Invitado"}
                   </span>
                   <Link
                     to="/"
@@ -323,7 +324,7 @@ const Header = () => {
                       logout();
                       setIsMobileMenuOpen(false);
                     }}
-                    className="logout-btn"
+                    className="logout-button"
                   >
                     <BsBoxArrowRight className="logout-icon" />
                   </Link>
@@ -334,7 +335,7 @@ const Header = () => {
         </Container>
       </Navbar>
 
-      <div className="baroque-line-bottom"></div>
+      <div className="header-decoration-bottom"></div>
     </header>
   );
 };

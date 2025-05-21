@@ -1,437 +1,411 @@
-/* PInvitadoItinerario.scss - Estilo Coherente */
-.pantalla-itinerario {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  background-size: cover;
+/* Estilos Mobile First para PInvitadoItinerario */
+.p-invitado-itinerario {
+  width: 100%;
+  max-width: 412px;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background-color: #FFF9F5;
+  overflow-x: hidden;
 
-  .contenedor-itinerario {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    padding: 2.5rem;
+  .itinerario-contenedor {
     width: 100%;
-    max-width: 1000px;
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(122, 79, 80, 0.1);
+  }
+
+  .itinerario-encabezado {
     text-align: center;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(122, 79, 80, 0.1);
 
-    .encabezado-boda {
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(122, 79, 80, 0.2);
+    h1 {
+      font-family: 'Cinzel', serif;
+      color: #7A4F50;
+      font-size: 22px;
+      margin: 0 0 5px 0;
       
-      h1 {
-        font-family: 'Cinzel', serif;
-        color: #7A4F50;
-        font-size: 2.5rem;
-        letter-spacing: 1px;
-        margin-bottom: 0.5rem;
-        
-        i {
-          color: #8C5E3D;
-          margin-left: 0.8rem;
-        }
-      }
-      
-      h2 {
-        font-family: 'Cormorant Garamond', serif;
+      i {
         color: #8C5E3D;
-        font-weight: 500;
-        font-size: 1.8rem;
-        margin-bottom: 0.5rem;
-      }
-      
-      .mensaje-bienvenida {
-        font-family: 'Cormorant Garamond', serif;
-        color: #7A4F50;
-        font-size: 1.2rem;
-        font-style: italic;
+        margin-left: 5px;
       }
     }
-
-    .timeline-controls {
-      overflow-x: auto;
-      padding: 10px 0;
-      margin-bottom: 2rem;
-
-      &::-webkit-scrollbar {
-        height: 6px;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background: #C2A78D;
-        border-radius: 10px;
-      }
+    
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      color: #8C5E3D;
+      font-weight: 500;
+      font-size: 20px;
+      margin: 0 0 5px 0;
     }
-
-    .timeline-scrollable {
-      display: flex;
-      justify-content: center;
-      gap: 0.8rem;
-      min-width: max-content;
-      padding: 0.5rem 0;
-    }
-
-    .timeline-marker {
-      padding: 0.8rem 1.5rem;
-      background: rgba(248, 241, 233, 0.7);
-      border-radius: 30px;
+    
+    p {
       font-family: 'Cormorant Garamond', serif;
       color: #7A4F50;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      white-space: nowrap;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-      border: 1px solid rgba(194, 167, 141, 0.3);
+      font-size: 14px;
+      font-style: italic;
+      margin: 0;
+    }
+  }
 
-      &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(122, 79, 80, 0.1);
+  .itinerario-marcadores {
+    width: 100%;
+    overflow-x: auto;
+    padding: 5px 0;
+    margin-bottom: 15px;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      height: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #C2A78D;
+      border-radius: 3px;
+    }
+  }
+
+  .marcadores-contenedor {
+    display: flex;
+    gap: 8px;
+    padding: 5px;
+  }
+
+  .marcador {
+    padding: 8px 15px;
+    background: rgba(248, 241, 233, 0.7);
+    border-radius: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    color: #7A4F50;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid rgba(194, 167, 141, 0.3);
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    margin: 0;
+    outline: none;
+
+    &.activo {
+      background: #7A4F50;
+      color: white;
+      border-color: #7A4F50;
+    }
+  }
+
+  .itinerario-contenido {
+    background: rgba(248, 241, 233, 0.3);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    padding: 15px;
+  }
+
+  .contenido-tiempo {
+    font-family: 'Cinzel', serif;
+    color: #7A4F50;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .contenido-detalle {
+    background: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+
+    h3 {
+      font-family: 'Cinzel', serif;
+      color: #5A2D2D;
+      font-size: 20px;
+      margin: 0 0 10px 0;
+      position: relative;
+      padding-bottom: 10px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 1px;
+        background: #C2A78D;
       }
+    }
 
-      &.active {
-        background: #7A4F50;
+    p {
+      font-family: 'Cormorant Garamond', serif;
+      color: #5A2D2D;
+      font-size: 16px;
+      line-height: 1.4;
+      margin: 0 0 15px 0;
+    }
+  }
+
+  .contenido-icono {
+    font-size: 30px;
+    opacity: 0.1;
+    margin: 10px 0;
+  }
+
+  .contenido-slider {
+    margin: 15px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(122, 79, 80, 0.1);
+
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .slick-dots {
+      bottom: 8px;
+
+      li button:before {
+        font-size: 8px;
         color: white;
-        border-color: #C2A78D;
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(122, 79, 80, 0.2);
+        opacity: 0.5;
+      }
+
+      li.slick-active button:before {
+        color: #C2A78D;
+        opacity: 1;
       }
     }
+  }
 
-    .timeline-content-container {
-      background: rgba(248, 241, 233, 0.5);
-      border-radius: 16px;
-      padding: 0;
-      box-shadow: 0 5px 20px rgba(122, 79, 80, 0.1);
-      margin-bottom: 2rem;
-      overflow: hidden;
-    }
+  .contenido-extras {
+    background: rgba(194, 167, 141, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    text-align: left;
 
-    .timeline-item {
-      .timeline-time {
-        font-family: 'Cinzel', serif;
-        color: #7A4F50;
-        font-size: 1.8rem;
-        font-weight: 700;
-        margin: 1.5rem 0;
-        text-align: center;
-      }
-    }
-
-    .timeline-content {
-      background: #FFF9F5;
-      padding: 2rem;
+    h4 {
+      font-family: 'Cinzel', serif;
+      color: #5A2D2D;
+      font-size: 18px;
+      margin: 0 0 10px 0;
       text-align: center;
+    }
 
-      h3 {
-        font-family: 'Cinzel', serif;
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        font-family: 'Cormorant Garamond', serif;
         color: #5A2D2D;
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
+        font-size: 14px;
         position: relative;
-        padding-bottom: 1rem;
+        padding-left: 20px;
+        margin-bottom: 8px;
 
-        &::after {
-          content: '';
+        &::before {
+          content: '•';
           position: absolute;
-          bottom: 0;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 100px;
-          height: 2px;
-          background: #C2A78D;
-        }
-      }
-
-      p {
-        font-family: 'Cormorant Garamond', serif;
-        color: #5A2D2D;
-        font-size: 1.2rem;
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-      }
-    }
-
-    .timeline-icon {
-      font-size: 3rem;
-      opacity: 0.1;
-      margin: 1rem 0;
-    }
-
-    .timeline-slider {
-      margin: 2rem 0;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(122, 79, 80, 0.1);
-
-      .slider-image {
-        height: 400px;
-        overflow: hidden;
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.5s ease;
-
-          &:hover {
-            transform: scale(1.05);
-          }
-        }
-      }
-
-      .slick-dots {
-        bottom: 20px;
-
-        li button:before {
-          color: white;
-          opacity: 0.5;
-        }
-
-        li.slick-active button:before {
+          left: 0;
           color: #C2A78D;
-          opacity: 1;
+          font-size: 16px;
         }
       }
     }
+  }
 
-    .timeline-extras {
-      background: rgba(194, 167, 141, 0.1);
-      padding: 1.5rem;
-      border-radius: 12px;
-      margin-top: 2rem;
-      text-align: left;
+  .itinerario-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
 
-      h4 {
-        font-family: 'Cinzel', serif;
-        color: #5A2D2D;
-        font-size: 1.3rem;
-        margin-bottom: 1rem;
-        text-align: center;
-      }
+  .info-seccion {
+    background: rgba(194, 167, 141, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 3px solid #7A4F50;
 
-      ul {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1rem;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-
-        li {
-          font-family: 'Cormorant Garamond', serif;
-          color: #5A2D2D;
-          font-size: 1.1rem;
-          position: relative;
-          padding-left: 1.5rem;
-
-          &::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: #C2A78D;
-            font-size: 1.2rem;
-          }
-        }
-      }
+    h3 {
+      font-family: 'Cinzel', serif;
+      color: #5A2D2D;
+      font-size: 18px;
+      margin: 0 0 10px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
-    .seccion-info {
-      background: rgba(194, 167, 141, 0.1);
-      padding: 1.5rem;
-      border-radius: 12px;
-      margin-bottom: 2rem;
-      border-left: 4px solid #7A4F50;
-
-      h3 {
-        font-family: 'Cinzel', serif;
-        color: #5A2D2D;
-        font-size: 1.5rem;
-        margin-top: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.8rem;
-      }
-
-      p {
-        font-family: 'Cormorant Garamond', serif;
-        color: #5A2D2D;
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
-      }
-
-      &.opcion-confirmar {
-        border-left-color: #7A4F50;
-      }
+    p {
+      font-family: 'Cormorant Garamond', serif;
+      color: #5A2D2D;
+      font-size: 14px;
+      margin: 0;
     }
 
-    .seccion-PPublicoContadorDiasDias {
-      background: rgba(122, 79, 80, 0.8);
-      padding: 2rem;
-      border-radius: 12px;
-      margin-bottom: 2rem;
+    &.contador {
+      background: rgba(122, 79, 80, 0.9);
       color: white;
 
       h3 {
-        font-family: 'Cinzel', serif;
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.8rem;
+        color: white;
       }
 
-      .PPublicoContadorDiasDias-timer {
+      .contador-tiempo {
         font-family: 'Cormorant Garamond', serif;
-        font-size: 1.8rem;
+        font-size: 18px;
         font-weight: 700;
-        margin-bottom: 1rem;
+        text-align: center;
 
         span {
           display: inline-block;
-          min-width: 50px;
-          padding: 0.5rem;
+          min-width: 30px;
+          padding: 3px;
           background: rgba(255,255,255,0.2);
-          border-radius: 5px;
-          margin: 0 0.3rem;
+          border-radius: 4px;
+          margin: 0 3px;
         }
-      }
-
-      p {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.1rem;
-        font-style: italic;
-        margin-bottom: 0;
-      }
-
-      &.opcion-ubicacion {
-        background: rgba(140, 94, 61, 0.8);
       }
     }
 
-    .seccion-hashtag {
-      padding: 2rem;
+    &.hashtag {
+      text-align: center;
       background: rgba(255, 249, 245, 0.7);
+      border: 1px solid rgba(122, 79, 80, 0.1);
+
+      h3 {
+        color: #5A2D2D;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+/* Tablet (768px en adelante) */
+@media (min-width: 768px) {
+  .p-invitado-itinerario {
+    max-width: 768px;
+    padding: 20px;
+
+    .itinerario-contenedor {
+      padding: 30px;
       border-radius: 12px;
-      border: 1px solid rgba(122, 79, 80, 0.15);
+    }
+
+    .itinerario-encabezado {
+      h1 {
+        font-size: 28px;
+      }
+      
+      h2 {
+        font-size: 24px;
+      }
       
       p {
-        font-family: 'Cormorant Garamond', serif;
-        color: #7A4F50;
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
+        font-size: 18px;
       }
-      
+    }
+
+    .marcador {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+    .contenido-slider img {
+      height: 300px;
+    }
+
+    .contenido-detalle {
       h3 {
-        font-family: 'Cinzel', serif;
-        color: #5A2D2D;
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
+        font-size: 24px;
       }
       
-      .corazon-animado {
-        font-size: 1.8rem;
-        animation: float 3s ease-in-out infinite;
-        display: inline-block;
-        color: #d9534f;
+      p {
+        font-size: 18px;
+      }
+    }
+
+    .contenido-extras ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .itinerario-info {
+      flex-direction: row;
+      flex-wrap: wrap;
+      
+      .info-seccion {
+        flex: 1 1 calc(50% - 8px);
+        min-width: 300px;
       }
     }
   }
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
+/* Escritorio (1024px en adelante) */
+@media (min-width: 1024px) {
+  .p-invitado-itinerario {
+    max-width: 1000px;
 
-@media (max-width: 900px) {
-  .pantalla-itinerario {
-    padding: 1.5rem;
-    
-    .contenedor-itinerario {
-      padding: 2rem;
+    .itinerario-marcadores .marcadores-contenedor {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .itinerario-contenido {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
       
-      .encabezado-boda {
-        h1 {
-          font-size: 2.2rem;
-        }
-        
-        h2 {
-          font-size: 1.5rem;
-        }
+      .contenido-tiempo {
+        flex: 0 0 120px;
+        position: sticky;
+        top: 20px;
+        font-size: 28px;
+        margin: 0;
+        text-align: right;
+        align-self: flex-start;
       }
       
-      .timeline-slider .slider-image {
-        height: 300px;
+      .contenido-detalle {
+        flex: 1;
+        text-align: left;
+        
+        h3::after {
+          left: 0;
+          transform: none;
+        }
       }
     }
-  }
-}
 
-@media (max-width: 600px) {
-  .pantalla-itinerario {
-    padding: 1rem;
-    
-    .contenedor-itinerario {
-      padding: 1.5rem;
+    .contenido-slider img {
+      height: 350px;
+    }
+
+    .contenido-extras ul {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .itinerario-info {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
       
-      .encabezado-boda {
-        h1 {
-          font-size: 1.8rem;
-        }
-        
-        h2 {
-          font-size: 1.3rem;
-        }
-        
-        .mensaje-bienvenida {
-          font-size: 1rem;
-        }
-      }
-      
-      .timeline-marker {
-        padding: 0.6rem 1rem;
-        font-size: 0.9rem;
-      }
-      
-      .timeline-content {
-        padding: 1.5rem;
-        
-        h3 {
-          font-size: 1.5rem;
-        }
-        
-        p {
-          font-size: 1rem;
-        }
-      }
-      
-      .timeline-slider .slider-image {
-        height: 250px;
-      }
-      
-      .timeline-extras ul {
-        grid-template-columns: 1fr;
-      }
-      
-      .seccion-hashtag {
-        h3 {
-          font-size: 1.5rem;
-        }
+      .info-seccion {
+        flex: none;
+        min-width: auto;
       }
     }
   }

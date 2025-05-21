@@ -5,7 +5,7 @@ import { FaFemale, FaMale, FaPalette, FaQuestionCircle, FaArrowLeft, FaArrowRigh
 import "../assets/scss/_03-Componentes/_PInvitadosCodigoVestimenta.scss";
 
 const PInvitadosCodigoVestimenta = () => {
-  const [activeTab, setActiveTab] = useState("PInvitadosCodigoVestimenta");
+  const [activeTab, setActiveTab] = useState("dresscode");
   const [showTips, setShowTips] = useState(false);
 
   const inspirationImages = [
@@ -39,7 +39,7 @@ const PInvitadosCodigoVestimenta = () => {
   function SampleNextArrow(props) {
     const { onClick } = props;
     return (
-      <button className="slick-arrow next" onClick={onClick}>
+      <button className="slick-arrow next" onClick={onClick} aria-label="Next">
         <FaArrowRight />
       </button>
     );
@@ -48,58 +48,58 @@ const PInvitadosCodigoVestimenta = () => {
   function SamplePrevArrow(props) {
     const { onClick } = props;
     return (
-      <button className="slick-arrow prev" onClick={onClick}>
+      <button className="slick-arrow prev" onClick={onClick} aria-label="Previous">
         <FaArrowLeft />
       </button>
     );
   }
 
   return (
-    <div className="pantalla-vestimenta">
-      <div className="contenedor-vestimenta">
-        <div className="encabezado-boda">
+    <div className="dresscode-container">
+      <div className="dresscode-content">
+        <header className="dresscode-header">
           <h1>Código de Vestimenta <i className="bi bi-gift-fill"></i></h1>
           <h2>Fabiola y Alejandro</h2>
-          <p className="mensaje-bienvenida">
-            Inspiración para tu look en nuestra boda
-          </p>
-        </div>
+          <p>Inspiración para tu look en nuestra boda</p>
+        </header>
 
-        <div className="tabs-vestimenta">
+        <div className="dresscode-tabs">
           <button 
-            className={activeTab === "PInvitadosCodigoVestimenta" ? "active" : ""}
-            onClick={() => setActiveTab("PInvitadosCodigoVestimenta")}
+            className={activeTab === "dresscode" ? "active" : ""}
+            onClick={() => setActiveTab("dresscode")}
+            aria-selected={activeTab === "dresscode"}
           >
             Código de Vestimenta
           </button>
           <button 
             className={activeTab === "virtual" ? "active" : ""}
             onClick={() => setActiveTab("virtual")}
+            aria-selected={activeTab === "virtual"}
           >
             Probador Virtual
           </button>
         </div>
 
-        {activeTab === "PInvitadosCodigoVestimenta" && (
-          <div className="contenido-vestimenta">
-            <div className="seccion-tema">
+        {activeTab === "dresscode" && (
+          <div className="dresscode-main">
+            <section className="dresscode-theme">
               <h2><FaPalette /> Elegante Soirée</h2>
               <p>Queremos crear una atmósfera sofisticada donde todos se sientan cómodos y elegantes.</p>
               
-              <div className="tarjetas-tema">
-                <div className="tarjeta-tema">
+              <div className="theme-cards">
+                <div className="theme-card">
                   <h3>Ambiente</h3>
                   <p>Celebración nocturna en jardín con iluminación cálida y decoración natural.</p>
                 </div>
-                <div className="tarjeta-tema">
+                <div className="theme-card">
                   <h3>Estilo</h3>
                   <p>Elegante pero no formal rígido. Sofisticado con toques modernos.</p>
                 </div>
               </div>
-            </div>
+            </section>
 
-            <div className="seccion-generos">
-              <div className="genero-card opcion-confirmar">
+            <div className="dresscode-genders">
+              <div className="gender-card">
                 <h3><FaFemale /> Damas</h3>
                 <ul>
                   <li>Vestido largo o de cóctel elegante (sin blanco)</li>
@@ -110,7 +110,7 @@ const PInvitadosCodigoVestimenta = () => {
                 </ul>
               </div>
 
-              <div className="genero-card opcion-ubicacion">
+              <div className="gender-card">
                 <h3><FaMale /> Caballeros</h3>
                 <ul>
                   <li>Traje oscuro (azul marino, gris oscuro o negro)</li>
@@ -122,23 +122,23 @@ const PInvitadosCodigoVestimenta = () => {
               </div>
             </div>
 
-            <div className="seccion-inspiracion">
+            <section className="dresscode-gallery">
               <h2><i className="bi bi-stars"></i> Galería de Inspiración</h2>
-              <div className="inspiration-slider">
+              <div className="gallery-slider">
                 <Slider {...sliderSettings}>
                   {inspirationImages.map((image, index) => (
                     <div key={index} className="slider-item">
-                      <div className="image-container">
-                        <img src={image.src} alt={image.alt} />
-                        <div className="image-caption">{image.caption}</div>
+                      <div className="slider-image">
+                        <img src={image.src} alt={image.alt} loading="lazy" />
+                        <p>{image.caption}</p>
                       </div>
                     </div>
                   ))}
                 </Slider>
               </div>
-            </div>
+            </section>
 
-            <div className="seccion-consejos opcion-itinerario">
+            <div className="dresscode-tip">
               <h3><i className="bi bi-cloud-sun"></i> Consejo para el clima</h3>
               <p>Noviembre en Mar del Plata puede ser fresco por la noche (18-22°C). Recomendamos traer un abrigo elegante o chal que complemente tu atuendo.</p>
             </div>
@@ -146,53 +146,52 @@ const PInvitadosCodigoVestimenta = () => {
         )}
 
         {activeTab === "virtual" && (
-          <div className="contenido-virtual">
+          <div className="virtual-dresser">
             <div className="virtual-header">
               <h2>Probador Virtual</h2>
               <button 
-                className="help-button"
+                className="virtual-help"
                 onClick={() => setShowTips(!showTips)}
+                aria-expanded={showTips}
               >
                 <FaQuestionCircle /> {showTips ? "Ocultar ayuda" : "Mostrar ayuda"}
               </button>
             </div>
             
             {showTips && (
-              <div className="virtual-tutorial">
+              <div className="virtual-guide">
                 <h3>Guía para usar el Probador Virtual</h3>
-                <div className="tutorial-steps">
-                  <div className="step">
-                    <div className="step-number">1</div>
+                <div className="guide-steps">
+                  <div className="guide-step">
+                    <span>1</span>
                     <p>Selecciona el género del avatar</p>
                   </div>
-                  <div className="step">
-                    <div className="step-number">2</div>
+                  <div className="guide-step">
+                    <span>2</span>
                     <p>Explora las diferentes categorías de prendas</p>
                   </div>
-                  <div className="step">
-                    <div className="step-number">3</div>
+                  <div className="guide-step">
+                    <span>3</span>
                     <p>Haz clic en las prendas para probarlas</p>
                   </div>
-                  <div className="step">
-                    <div className="step-number">4</div>
+                  <div className="guide-step">
+                    <span>4</span>
                     <p>Usa los selectores de color</p>
                   </div>
-                  <div className="step">
-                    <div className="step-number">5</div>
+                  <div className="guide-step">
+                    <span>5</span>
                     <p>Combina diferentes piezas</p>
                   </div>
                 </div>
-                <div className="tutorial-note">
-                  <p><strong>Nota:</strong> Este probador es solo una guía. Las prendas mostradas son representativas.</p>
-                </div>
+                <p className="guide-note"><strong>Nota:</strong> Este probador es solo una guía. Las prendas mostradas son representativas.</p>
               </div>
             )}
             
-            <div className="avatar-section">
+            <div className="virtual-avatar">
               <PInvitadosProbadorRopaAvatar />
             </div>
             
-            <div className="virtual-tips opcion-dresscode">
+            <div className="virtual-tips">
               <h3>Consejos para tu look perfecto</h3>
               <ul>
                 <li>Prueba combinaciones dentro de nuestra paleta de colores</li>
@@ -204,10 +203,10 @@ const PInvitadosCodigoVestimenta = () => {
           </div>
         )}
 
-        <div className="seccion-hashtag">
+        <div className="dresscode-hashtag">
           <p>Compartí tus fotos usando nuestro hashtag</p>
           <h3>#BodaAlejandroYFabiola</h3>
-          <div className="corazon-animado">❤️</div>
+          <div className="hashtag-heart">❤️</div>
         </div>
       </div>
     </div>

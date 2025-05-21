@@ -1,509 +1,475 @@
-/* PInvitadosCodigoVestimenta.scss - Estilo Coherente */
-.pantalla-vestimenta {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  background-size: cover;
+/* Estilos Mobile First para PInvitadosCodigoVestimenta */
+.dresscode-container {
+  width: 100%;
+  max-width: 412px;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background-color: #FFF9F5;
 
-  .contenedor-vestimenta {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    padding: 2.5rem;
+  .dresscode-content {
     width: 100%;
-    max-width: 1200px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(122, 79, 80, 0.1);
+  }
 
-    .encabezado-boda {
-      margin-bottom: 2.5rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(122, 79, 80, 0.2);
+  .dresscode-header {
+    text-align: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(122, 79, 80, 0.1);
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      color: #7A4F50;
+      font-size: 22px;
+      margin: 0 0 5px 0;
       
-      h1 {
+      i {
+        color: #8C5E3D;
+        margin-left: 5px;
+      }
+    }
+    
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      color: #8C5E3D;
+      font-weight: 500;
+      font-size: 20px;
+      margin: 0 0 5px 0;
+    }
+    
+    p {
+      font-family: 'Cormorant Garamond', serif;
+      color: #7A4F50;
+      font-size: 14px;
+      font-style: italic;
+      margin: 0;
+    }
+  }
+
+  .dresscode-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(194, 167, 141, 0.3);
+    
+    button {
+      background: none;
+      border: none;
+      padding: 8px 15px;
+      margin: 0 5px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      color: #6B635B;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: #7A4F50;
+      }
+
+      &.active {
+        color: #7A4F50;
+        font-weight: 600;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: #C2A78D;
+        }
+      }
+    }
+  }
+
+  .dresscode-main {
+    .dresscode-theme {
+      text-align: center;
+      margin-bottom: 20px;
+
+      h2 {
         font-family: 'Cinzel', serif;
         color: #7A4F50;
-        font-size: 2.5rem;
-        letter-spacing: 1px;
-        margin-bottom: 0.5rem;
-        
-        i {
-          color: #8C5E3D;
-          margin-left: 0.8rem;
-        }
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: 18px;
       }
-      
-      h2 {
+
+      p {
         font-family: 'Cormorant Garamond', serif;
-        color: #8C5E3D;
-        font-weight: 500;
-        font-size: 1.8rem;
-        margin-bottom: 0.5rem;
-      }
-      
-      .mensaje-bienvenida {
-        font-family: 'Cormorant Garamond', serif;
-        color: #7A4F50;
-        font-size: 1.2rem;
-        font-style: italic;
-      }
-    }
-
-    .tabs-vestimenta {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid rgba(194, 167, 141, 0.5);
-      
-      button {
-        background: none;
-        border: none;
-        padding: 0.8rem 1.5rem;
-        margin: 0 0.5rem;
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.1rem;
-        color: #6B635B;
-        cursor: pointer;
-        position: relative;
-        transition: all 0.3s ease;
-
-        &:hover {
-          color: #7A4F50;
-        }
-
-        &.active {
-          color: #7A4F50;
-          font-weight: 600;
-
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: #C2A78D;
-          }
-        }
-      }
-    }
-
-    .contenido-vestimenta {
-      .seccion-tema {
-        text-align: center;
-        margin-bottom: 3rem;
-
-        h2 {
-          font-family: 'Cinzel', serif;
-          color: #7A4F50;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.8rem;
-          font-size: 1.8rem;
-        }
-
-        p {
-          max-width: 700px;
-          margin: 1rem auto;
-          font-size: 1.1rem;
-          color: #5A2D2D;
-        }
-
-        .tarjetas-tema {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2rem;
-          margin-top: 2rem;
-
-          .tarjeta-tema {
-            background: rgba(255, 255, 255, 0.7);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(122, 79, 80, 0.1);
-            border: 1px solid rgba(122, 79, 80, 0.15);
-            transition: all 0.3s ease;
-
-            &:hover {
-              transform: translateY(-5px);
-            }
-
-            h3 {
-              color: #7A4F50;
-              margin-top: 0;
-              font-family: 'Cinzel', serif;
-            }
-
-            p {
-              color: #5A2D2D;
-              margin-bottom: 0;
-            }
-          }
-        }
+        color: #5A2D2D;
+        font-size: 14px;
+        margin: 10px 0;
       }
 
-      .seccion-generos {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-bottom: 3rem;
+      .theme-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 15px;
 
-        .genero-card {
-          background: rgba(255, 249, 245, 0.7);
-          padding: 1.5rem;
-          border-radius: 12px;
-          box-shadow: 0 5px 15px rgba(122, 79, 80, 0.1);
-          border: 1px solid rgba(122, 79, 80, 0.15);
-          transition: all 0.3s ease;
-          text-align: left;
-
-          &:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(122, 79, 80, 0.15);
-          }
+        .theme-card {
+          background: rgba(255, 255, 255, 0.9);
+          padding: 15px;
+          border-radius: 8px;
+          box-shadow: 0 2px 8px rgba(122, 79, 80, 0.1);
+          border: 1px solid rgba(122, 79, 80, 0.1);
 
           h3 {
-            font-family: 'Cinzel', serif;
-            color: #5A2D2D;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid rgba(194, 167, 141, 0.5);
-            padding-bottom: 0.5rem;
-          }
-
-          ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-
-            li {
-              padding: 0.5rem 0;
-              position: relative;
-              padding-left: 1.5rem;
-              color: #5A2D2D;
-
-              &::before {
-                content: '•';
-                color: #C2A78D;
-                position: absolute;
-                left: 0;
-                font-size: 1.2rem;
-              }
-            }
-          }
-
-          &.opcion-confirmar {
-            h3 i { color: #7A4F50; }
-          }
-          &.opcion-ubicacion {
-            h3 i { color: #8C5E3D; }
-          }
-        }
-      }
-
-      .seccion-inspiracion {
-        margin-bottom: 3rem;
-
-        h2 {
-          font-family: 'Cinzel', serif;
-          color: #5A2D2D;
-          font-size: 1.8rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.8rem;
-          margin-bottom: 1.5rem;
-        }
-
-        .inspiration-slider {
-          margin: 2rem auto;
-          max-width: 800px;
-          border-radius: 10px;
-          overflow: hidden;
-          box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-          position: relative;
-
-          .slider-item {
-            outline: none;
-            
-            .image-container {
-              position: relative;
-              
-              img {
-                width: 100%;
-                height: 500px;
-                object-fit: cover;
-                
-                @media (max-width: 768px) {
-                  height: 350px;
-                }
-              }
-              
-              .image-caption {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background: rgba(0,0,0,0.6);
-                color: white;
-                padding: 1rem;
-                text-align: center;
-                font-size: 1.1rem;
-                font-family: 'Cormorant Garamond', serif;
-              }
-            }
-          }
-
-          .slick-dots {
-            bottom: 20px;
-            
-            li button:before {
-              color: white;
-              opacity: 0.6;
-              font-size: 10px;
-            }
-            
-            li.slick-active button:before {
-              color: #C2A78D;
-              opacity: 1;
-            }
-          }
-
-          .slick-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1;
-            background: rgba(255,255,255,0.7);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
             color: #7A4F50;
-            
-            &:hover {
-              background: white;
-            }
-            
-            &.next {
-              right: 20px;
-            }
-            
-            &.prev {
-              left: 20px;
-            }
-            
-            svg {
-              font-size: 1.2rem;
-            }
+            margin: 0 0 5px 0;
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
           }
-        }
-      }
 
-      .seccion-consejos {
-        background: rgba(194, 167, 141, 0.1);
-        padding: 1.5rem;
-        border-radius: 12px;
-        max-width: 800px;
-        margin: 0 auto;
-        border-left: 4px solid #C2A78D;
-
-        h3 {
-          font-family: 'Cinzel', serif;
-          color: #5A2D2D;
-          display: flex;
-          align-items: center;
-          gap: 0.8rem;
-          margin-top: 0;
-          font-size: 1.3rem;
-        }
-
-        p {
-          color: #5A2D2D;
-          margin-bottom: 0;
-        }
-
-        &.opcion-itinerario {
-          border-left-color: #5A2D2D;
+          p {
+            color: #5A2D2D;
+            margin: 0;
+            font-size: 13px;
+          }
         }
       }
     }
 
-    .contenido-virtual {
-      .virtual-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1.5rem;
+    .dresscode-genders {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 20px;
 
-        h2 {
+      .gender-card {
+        background: rgba(255, 249, 245, 0.7);
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(122, 79, 80, 0.1);
+        border: 1px solid rgba(122, 79, 80, 0.1);
+        text-align: left;
+
+        h3 {
           font-family: 'Cinzel', serif;
           color: #5A2D2D;
-          margin: 0;
-        }
-
-        .help-button {
-          background: rgba(194, 167, 141, 0.2);
-          border: none;
-          padding: 0.5rem 1rem;
-          border-radius: 20px;
           display: flex;
           align-items: center;
-          gap: 0.5rem;
-          cursor: pointer;
-          transition: all 0.3s;
-          font-family: 'Cormorant Garamond', serif;
-          color: #7A4F50;
-
-          &:hover {
-            background: rgba(194, 167, 141, 0.3);
-          }
-        }
-      }
-
-      .virtual-tutorial {
-        background: rgba(255, 255, 255, 0.9);
-        padding: 1.5rem;
-        border-radius: 12px;
-        margin-bottom: 2rem;
-        box-shadow: 0 5px 15px rgba(122, 79, 80, 0.1);
-        border: 1px solid rgba(122, 79, 80, 0.15);
-
-        h3 {
-          font-family: 'Cinzel', serif;
-          color: #5A2D2D;
-          margin-top: 0;
-          text-align: center;
-        }
-
-        .tutorial-steps {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 1.5rem;
-          margin: 1.5rem 0;
-
-          .step {
-            display: flex;
-            gap: 1rem;
-
-            .step-number {
-              background: #C2A78D;
-              color: white;
-              width: 25px;
-              height: 25px;
-              border-radius: 50%;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              flex-shrink: 0;
-              font-weight: bold;
-              font-family: 'Cinzel', serif;
-            }
-
-            p {
-              color: #5A2D2D;
-              margin: 0;
-            }
-          }
-        }
-
-        .tutorial-note {
-          font-style: italic;
-          color: #6B635B;
-          text-align: center;
-          font-size: 0.9rem;
-          margin-top: 1rem;
-        }
-      }
-
-      .avatar-section {
-        background: rgba(255, 249, 245, 0.7);
-        padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 5px 15px rgba(122, 79, 80, 0.1);
-        border: 1px solid rgba(122, 79, 80, 0.15);
-      }
-
-      .virtual-tips {
-        background: rgba(194, 167, 141, 0.1);
-        padding: 1.5rem;
-        border-radius: 12px;
-        margin-top: 2rem;
-        border-left: 4px solid #5A2D2D;
-
-        h3 {
-          font-family: 'Cinzel', serif;
-          color: #5A2D2D;
-          margin-top: 0;
-          text-align: center;
+          gap: 8px;
+          font-size: 16px;
+          margin: 0 0 10px 0;
+          border-bottom: 1px solid rgba(194, 167, 141, 0.3);
+          padding-bottom: 5px;
         }
 
         ul {
           list-style: none;
           padding: 0;
-          margin: 1rem 0 0;
+          margin: 0;
 
           li {
-            padding: 0.5rem 0;
+            padding: 5px 0;
             position: relative;
-            padding-left: 1.8rem;
+            padding-left: 20px;
             color: #5A2D2D;
+            font-size: 13px;
 
             &::before {
               content: '•';
               color: #C2A78D;
               position: absolute;
               left: 0;
-              font-size: 1.2rem;
+              font-size: 16px;
             }
           }
-        }
-
-        &.opcion-dresscode {
-          border-left-color: #7A4F50;
         }
       }
     }
 
-    .seccion-hashtag {
-      padding: 2rem;
-      background: rgba(255, 249, 245, 0.7);
-      border-radius: 12px;
-      border: 1px solid rgba(122, 79, 80, 0.15);
-      margin-top: 2rem;
-      
-      p {
-        font-family: 'Cormorant Garamond', serif;
-        color: #7A4F50;
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
+    .dresscode-gallery {
+      margin-bottom: 20px;
+
+      h2 {
+        font-family: 'Cinzel', serif;
+        color: #5A2D2D;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin: 0 0 15px 0;
       }
-      
+
+      .gallery-slider {
+        margin: 15px 0;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+        .slider-item {
+          outline: none;
+          
+          .slider-image {
+            position: relative;
+            
+            img {
+              width: 100%;
+              height: 250px;
+              object-fit: cover;
+            }
+            
+            p {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              background: rgba(0,0,0,0.6);
+              color: white;
+              padding: 10px;
+              text-align: center;
+              font-size: 13px;
+              font-family: 'Cormorant Garamond', serif;
+              margin: 0;
+            }
+          }
+        }
+
+        .slick-dots {
+          bottom: 10px;
+          
+          li button:before {
+            color: white;
+            opacity: 0.6;
+            font-size: 8px;
+          }
+          
+          li.slick-active button:before {
+            color: #C2A78D;
+            opacity: 1;
+          }
+        }
+
+        .slick-arrow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 1;
+          background: rgba(255,255,255,0.7);
+          border: none;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          color: #7A4F50;
+          
+          &.next {
+            right: 10px;
+          }
+          
+          &.prev {
+            left: 10px;
+          }
+          
+          svg {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .dresscode-tip {
+      background: rgba(194, 167, 141, 0.1);
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 3px solid #C2A78D;
+      margin-top: 15px;
+
       h3 {
         font-family: 'Cinzel', serif;
         color: #5A2D2D;
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 10px 0;
+        font-size: 16px;
       }
-      
-      .corazon-animado {
-        font-size: 1.8rem;
-        animation: float 3s ease-in-out infinite;
-        display: inline-block;
-        color: #d9534f;
+
+      p {
+        color: #5A2D2D;
+        margin: 0;
+        font-size: 13px;
       }
+    }
+  }
+
+  .virtual-dresser {
+    .virtual-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+
+      h2 {
+        font-family: 'Cinzel', serif;
+        color: #5A2D2D;
+        margin: 0;
+        font-size: 18px;
+      }
+
+      .virtual-help {
+        background: rgba(194, 167, 141, 0.1);
+        border: none;
+        padding: 5px 10px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        font-family: 'Cormorant Garamond', serif;
+        color: #7A4F50;
+        font-size: 13px;
+      }
+    }
+
+    .virtual-guide {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 8px rgba(122, 79, 80, 0.1);
+
+      h3 {
+        font-family: 'Cinzel', serif;
+        color: #5A2D2D;
+        margin: 0 0 10px 0;
+        text-align: center;
+        font-size: 16px;
+      }
+
+      .guide-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 15px 0;
+
+        .guide-step {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+
+          span {
+            background: #C2A78D;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            flex-shrink: 0;
+          }
+
+          p {
+            color: #5A2D2D;
+            margin: 0;
+            font-size: 13px;
+          }
+        }
+      }
+
+      .guide-note {
+        font-style: italic;
+        color: #6B635B;
+        text-align: center;
+        font-size: 12px;
+        margin-top: 10px;
+      }
+    }
+
+    .virtual-avatar {
+      background: rgba(255, 249, 245, 0.7);
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(122, 79, 80, 0.1);
+    }
+
+    .virtual-tips {
+      background: rgba(194, 167, 141, 0.1);
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+      border-left: 3px solid #5A2D2D;
+
+      h3 {
+        font-family: 'Cinzel', serif;
+        color: #5A2D2D;
+        margin: 0 0 10px 0;
+        text-align: center;
+        font-size: 16px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          padding: 5px 0;
+          position: relative;
+          padding-left: 20px;
+          color: #5A2D2D;
+          font-size: 13px;
+
+          &::before {
+            content: '•';
+            color: #C2A78D;
+            position: absolute;
+            left: 0;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+
+  .dresscode-hashtag {
+    padding: 15px;
+    background: rgba(255, 249, 245, 0.7);
+    border-radius: 8px;
+    border: 1px solid rgba(122, 79, 80, 0.1);
+    margin-top: 15px;
+    text-align: center;
+    
+    p {
+      font-family: 'Cormorant Garamond', serif;
+      color: #7A4F50;
+      font-size: 13px;
+      margin: 0 0 5px 0;
+    }
+    
+    h3 {
+      font-family: 'Cinzel', serif;
+      color: #5A2D2D;
+      font-size: 18px;
+      margin: 0 0 10px 0;
+    }
+    
+    .hashtag-heart {
+      font-size: 20px;
+      animation: float 3s ease-in-out infinite;
+      display: inline-block;
+      color: #d9534f;
     }
   }
 }
@@ -513,69 +479,176 @@
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
   }
   100% {
     transform: translateY(0px);
   }
 }
 
-@media (max-width: 900px) {
-  .pantalla-vestimenta {
-    padding: 1.5rem;
-    
-    .contenedor-vestimenta {
-      padding: 2rem;
+/* Tablet (768px en adelante) */
+@media (min-width: 768px) {
+  .dresscode-container {
+    max-width: 768px;
+    padding: 20px;
+
+    .dresscode-content {
+      padding: 25px;
+      border-radius: 12px;
+    }
+
+    .dresscode-header {
+      h1 {
+        font-size: 28px;
+      }
       
-      .encabezado-boda {
-        h1 {
-          font-size: 2.2rem;
+      h2 {
+        font-size: 22px;
+      }
+      
+      p {
+        font-size: 16px;
+      }
+    }
+
+    .dresscode-tabs button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+    .dresscode-main {
+      .dresscode-theme {
+        h2 {
+          font-size: 22px;
         }
         
-        h2 {
-          font-size: 1.5rem;
+        p {
+          font-size: 16px;
         }
+
+        .theme-cards {
+          flex-direction: row;
+          gap: 20px;
+
+          .theme-card {
+            padding: 20px;
+            
+            h3 {
+              font-size: 18px;
+            }
+            
+            p {
+              font-size: 15px;
+            }
+          }
+        }
+      }
+
+      .dresscode-genders {
+        flex-direction: row;
+        gap: 20px;
+
+        .gender-card {
+          padding: 20px;
+          
+          h3 {
+            font-size: 18px;
+          }
+          
+          li {
+            font-size: 15px;
+          }
+        }
+      }
+
+      .dresscode-gallery {
+        h2 {
+          font-size: 22px;
+        }
+
+        .gallery-slider .slider-image img {
+          height: 350px;
+        }
+      }
+
+      .dresscode-tip {
+        padding: 20px;
+        
+        h3 {
+          font-size: 18px;
+        }
+        
+        p {
+          font-size: 15px;
+        }
+      }
+    }
+
+    .virtual-dresser {
+      .virtual-header h2 {
+        font-size: 22px;
+      }
+
+      .virtual-guide {
+        padding: 20px;
+        
+        h3 {
+          font-size: 18px;
+        }
+        
+        .guide-step p {
+          font-size: 15px;
+        }
+      }
+
+      .virtual-tips {
+        padding: 20px;
+        
+        h3 {
+          font-size: 18px;
+        }
+        
+        li {
+          font-size: 15px;
+        }
+      }
+    }
+
+    .dresscode-hashtag {
+      padding: 20px;
+      
+      p {
+        font-size: 16px;
+      }
+      
+      h3 {
+        font-size: 22px;
       }
     }
   }
 }
 
-@media (max-width: 600px) {
-  .pantalla-vestimenta {
-    padding: 1rem;
-    
-    .contenedor-vestimenta {
-      padding: 1.5rem;
-      
-      .encabezado-boda {
-        h1 {
-          font-size: 1.8rem;
-        }
-        
-        h2 {
-          font-size: 1.3rem;
-        }
-        
-        .mensaje-bienvenida {
-          font-size: 1rem;
-        }
+/* Escritorio (1024px en adelante) */
+@media (min-width: 1024px) {
+  .dresscode-container {
+    max-width: 1000px;
+
+    .dresscode-main {
+      .theme-cards {
+        grid-template-columns: repeat(2, 1fr);
       }
-      
-      .tabs-vestimenta {
-        flex-wrap: wrap;
-        
-        button {
-          padding: 0.5rem 1rem;
-          font-size: 1rem;
-          margin: 0.3rem;
-        }
+
+      .dresscode-genders {
+        grid-template-columns: repeat(2, 1fr);
       }
-      
-      .seccion-hashtag {
-        h3 {
-          font-size: 1.5rem;
-        }
+
+      .gallery-slider .slider-image img {
+        height: 400px;
       }
+    }
+
+    .virtual-guide .guide-steps {
+      grid-template-columns: repeat(5, 1fr);
     }
   }
 }

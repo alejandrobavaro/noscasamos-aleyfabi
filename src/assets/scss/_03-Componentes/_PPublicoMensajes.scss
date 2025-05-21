@@ -253,7 +253,7 @@ $border-radius: 10px;
     z-index: 1;
 
     &:hover:not(.disabled) {
-      background: darken($primary-color, 8%);
+         background: rgba(82, 37, 37, 0.747);
       transform: scale(1.1);
     }
 

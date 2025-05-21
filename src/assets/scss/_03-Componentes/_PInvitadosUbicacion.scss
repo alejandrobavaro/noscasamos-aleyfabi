@@ -1,330 +1,309 @@
-/* PInvitadosUbicacion.scss - Versión Limpia */
-.pantalla-ubicacion {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  background-size: cover;
+/* Estilos Mobile First para PInvitadosUbicacion */
+.ubicacion-container {
+  width: 100%;
+  max-width: 412px;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #FFF9F5;
 
-  .contenedor-ubicacion {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    padding: 2.5rem;
+  .ubicacion-content {
     width: 100%;
-    max-width: 1200px;
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(122, 79, 80, 0.1);
+  }
+
+  .ubicacion-header {
     text-align: center;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(122, 79, 80, 0.1);
 
-    .encabezado-boda {
-      margin-bottom: 2.5rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(122, 79, 80, 0.2);
+    h1 {
+      font-family: 'Cinzel', serif;
+      color: #7A4F50;
+      font-size: 22px;
+      margin: 0 0 5px 0;
       
-      h1 {
-        font-family: 'Cinzel', serif;
-        color: #7A4F50;
-        font-size: 2.5rem;
-        letter-spacing: 1px;
-        margin-bottom: 0.5rem;
-        
-        i {
-          color: #8C5E3D;
-          margin-left: 0.8rem;
-        }
-      }
-      
-      h2 {
-        font-family: 'Cormorant Garamond', serif;
+      i {
         color: #8C5E3D;
+        margin-left: 5px;
+      }
+    }
+    
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      color: #8C5E3D;
+      font-weight: 500;
+      font-size: 18px;
+      margin: 0 0 5px 0;
+    }
+    
+    p {
+      font-family: 'Cormorant Garamond', serif;
+      color: #7A4F50;
+      font-size: 14px;
+      font-style: italic;
+      margin: 0;
+      
+      span {
+        display: block;
+        font-size: 13px;
+      }
+    }
+  }
+
+  .ubicacion-mapa {
+    margin-bottom: 20px;
+    
+    .mapa-wrapper {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(122, 79, 80, 0.1);
+      
+      iframe {
+        width: 100%;
+        height: 250px;
+        border: none;
+      }
+      
+      .mapa-link {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 8px 12px;
+        border-radius: 20px;
+        text-decoration: none;
+        color: #7A4F50;
         font-weight: 500;
-        font-size: 1.8rem;
-        margin-bottom: 0.5rem;
-        
-        .location-subtitle {
-          font-style: italic;
-          color: #7A4F50;
-          font-size: 1.4rem;
-        }
-      }
-      
-      .mensaje-bienvenida {
+        box-shadow: 0 2px 4px rgba(122, 79, 80, 0.1);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(122, 79, 80, 0.1);
         font-family: 'Cormorant Garamond', serif;
+        font-size: 12px;
+        
+        &:hover {
+          background: #7A4F50;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .ubicacion-transporte {
+    margin-bottom: 20px;
+    
+    h2 {
+      font-family: 'Cinzel', serif;
+      color: #5A2D2D;
+      font-size: 18px;
+      margin: 0 0 15px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .transporte-opciones {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .transporte-opcion {
+      background: rgba(255, 255, 255, 0.7);
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(122, 79, 80, 0.1);
+      border: 1px solid rgba(122, 79, 80, 0.1);
+      
+      i {
+        font-size: 24px;
+        margin-bottom: 10px;
+        display: block;
         color: #7A4F50;
-        font-size: 1.2rem;
-        font-style: italic;
-      }
-    }
-
-    .mapa-principal {
-      margin-bottom: 3rem;
-      
-      .map-container {
-        position: relative;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 5px 15px rgba(122, 79, 80, 0.1);
-        border: 1px solid rgba(122, 79, 80, 0.15);
-        
-        iframe {
-          width: 100%;
-          height: 450px;
-          border: none;
-        }
-        
-        .map-link-button {
-          position: absolute;
-          bottom: 20px;
-          right: 20px;
-          background: rgba(255, 255, 255, 0.9);
-          padding: 0.7rem 1.3rem;
-          border-radius: 30px;
-          text-decoration: none;
-          color: #7A4F50;
-          font-weight: 500;
-          box-shadow: 0 2px 8px rgba(122, 79, 80, 0.1);
-          transition: all 0.3s ease;
-          border: 1px solid rgba(122, 79, 80, 0.2);
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 1rem;
-          
-          &:hover {
-            background: #7A4F50;
-            color: white;
-            transform: translateY(-2px);
-          }
-        }
-      }
-    }
-
-    .seccion-transporte {
-      margin-bottom: 3rem;
-      
-      h2 {
-        font-family: 'Cinzel', serif;
-        color: #5A2D2D;
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.8rem;
-      }
-      
-      .opciones-transporte {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        
-        .opcion-transporte {
-          background: rgba(255, 255, 255, 0.7);
-          padding: 1.5rem;
-          border-radius: 12px;
-          box-shadow: 0 5px 15px rgba(122, 79, 80, 0.1);
-          border: 1px solid rgba(122, 79, 80, 0.15);
-          transition: all 0.3s ease;
-          
-          &:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(122, 79, 80, 0.15);
-          }
-          
-          i {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
-          }
-          
-          h3 {
-            font-family: 'Cinzel', serif;
-            color: #5A2D2D;
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-          }
-          
-          p {
-            font-family: 'Cormorant Garamond', serif;
-            color: #7A4F50;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            
-            &.detalle {
-              font-style: italic;
-              color: #8C5E3D;
-            }
-          }
-          
-          &.opcion-confirmar {
-            i { color: #7A4F50; }
-          }
-          &.opcion-ubicacion {
-            i { color: #8C5E3D; }
-          }
-        }
-      }
-    }
-
-    .seccion-historia {
-      margin-bottom: 3rem;
-      
-      h2 {
-        font-family: 'Cinzel', serif;
-        color: #5A2D2D;
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.8rem;
-      }
-      
-      .historia-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-        align-items: center;
-        
-        @media (max-width: 768px) {
-          grid-template-columns: 1fr;
-        }
-        
-        .historia-texto {
-          text-align: left;
-          
-          p {
-            font-family: 'Cormorant Garamond', serif;
-            color: #7A4F50;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-          }
-        }
-        
-        .historia-imagen {
-          img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(122, 79, 80, 0.1);
-            border: 1px solid rgba(122, 79, 80, 0.15);
-          }
-        }
-      }
-    }
-
-    .seccion-hashtag {
-      padding: 2rem;
-      background: rgba(255, 249, 245, 0.7);
-      border-radius: 12px;
-      border: 1px solid rgba(122, 79, 80, 0.15);
-      
-      p {
-        font-family: 'Cormorant Garamond', serif;
-        color: #7A4F50;
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
       }
       
       h3 {
         font-family: 'Cinzel', serif;
         color: #5A2D2D;
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
+        font-size: 16px;
+        margin: 0 0 5px 0;
       }
       
-      .corazon-animado {
-        font-size: 1.8rem;
-        animation: float 3s ease-in-out infinite;
-        display: inline-block;
-        color: #d9534f;
+      p {
+        font-family: 'Cormorant Garamond', serif;
+        color: #7A4F50;
+        font-size: 14px;
+        margin: 0 0 5px 0;
+        
+        &.transporte-detalle {
+          font-style: italic;
+          color: #8C5E3D;
+          font-size: 13px;
+        }
+      }
+      
+      &:nth-child(2) i {
+        color: #8C5E3D;
+      }
+    }
+  }
+
+  .ubicacion-historia {
+    margin-bottom: 20px;
+    
+    h2 {
+      font-family: 'Cinzel', serif;
+      color: #5A2D2D;
+      font-size: 18px;
+      margin: 0 0 15px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .historia-contenido {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .historia-texto {
+      p {
+        font-family: 'Cormorant Garamond', serif;
+        color: #7A4F50;
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 0 0 10px 0;
+      }
+    }
+    
+    .historia-imagen {
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(122, 79, 80, 0.1);
+        border: 1px solid rgba(122, 79, 80, 0.1);
       }
     }
   }
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
+/* Tablet (768px en adelante) */
+@media (min-width: 768px) {
+  .ubicacion-container {
+    max-width: 768px;
+    padding: 20px;
 
-@media (max-width: 900px) {
-  .pantalla-ubicacion {
-    padding: 1.5rem;
-    
-    .contenedor-ubicacion {
-      padding: 2rem;
+    .ubicacion-content {
+      padding: 25px;
+      border-radius: 12px;
+    }
+
+    .ubicacion-header {
+      h1 {
+        font-size: 28px;
+      }
       
-      .encabezado-boda {
-        h1 {
-          font-size: 2.2rem;
-        }
+      h2 {
+        font-size: 22px;
+      }
+      
+      p {
+        font-size: 16px;
         
-        h2 {
-          font-size: 1.5rem;
-          
-          .location-subtitle {
-            font-size: 1.2rem;
-          }
+        span {
+          display: inline;
+          margin-left: 5px;
         }
       }
     }
-  }
-}
 
-@media (max-width: 600px) {
-  .pantalla-ubicacion {
-    padding: 1rem;
-    
-    .contenedor-ubicacion {
-      padding: 1.5rem;
-      
-      .encabezado-boda {
-        h1 {
-          font-size: 1.8rem;
+    .ubicacion-mapa {
+      .mapa-wrapper {
+        iframe {
+          height: 350px;
         }
         
-        h2 {
-          font-size: 1.3rem;
-          
-          .location-subtitle {
-            font-size: 1rem;
-          }
+        .mapa-link {
+          padding: 10px 15px;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .ubicacion-transporte {
+      .transporte-opciones {
+        flex-direction: row;
+        gap: 20px;
+      }
+      
+      .transporte-opcion {
+        flex: 1;
+        padding: 20px;
+        
+        i {
+          font-size: 30px;
         }
         
-        .mensaje-bienvenida {
-          font-size: 1rem;
-        }
-      }
-      
-      .mapa-principal {
-        .map-container {
-          iframe {
-            height: 350px;
-          }
-          
-          .map-link-button {
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
-            bottom: 10px;
-            right: 10px;
-          }
-        }
-      }
-      
-      .seccion-hashtag {
         h3 {
-          font-size: 1.5rem;
+          font-size: 18px;
         }
+        
+        p {
+          font-size: 15px;
+          
+          &.transporte-detalle {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .ubicacion-historia {
+      .historia-contenido {
+        flex-direction: row;
+        gap: 20px;
+      }
+      
+      .historia-texto {
+        flex: 1;
+        
+        p {
+          font-size: 16px;
+        }
+      }
+      
+      .historia-imagen {
+        flex: 1;
+      }
+    }
+  }
+}
+
+/* Escritorio (1024px en adelante) */
+@media (min-width: 1024px) {
+  .ubicacion-container {
+    max-width: 1000px;
+
+    .ubicacion-mapa {
+      .mapa-wrapper {
+        iframe {
+          height: 400px;
+        }
+      }
+    }
+
+    .ubicacion-transporte {
+      .transporte-opciones {
+        gap: 30px;
       }
     }
   }

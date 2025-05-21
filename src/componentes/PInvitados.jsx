@@ -6,23 +6,50 @@ function PInvitados() {
   const navigate = useNavigate();
 
   const guestOptions = [
-    // Tus opciones de invitados aquí
+    {
+      className: "confirm-option",
+      path: "/confirmar-asistencia",
+      icon: "bi-envelope-check",
+      title: "Confirmar Asistencia",
+      description: "Confirma tu asistencia a nuestra boda"
+    },
+    {
+      className: "location-option",
+      path: "/ubicacion",
+      icon: "bi-geo-alt",
+      title: "Ubicación",
+      description: "Cómo llegar al lugar del evento"
+    },
+    {
+      className: "itinerary-option",
+      path: "/itinerario",
+      icon: "bi-calendar-event",
+      title: "Itinerario",
+      description: "Programa de actividades"
+    },
+    {
+      className: "dresscode-option",
+      path: "/codigo-vestimenta",
+      icon: "bi-suit-heart",
+      title: "Código de Vestimenta",
+      description: "Recomendaciones para tu outfit"
+    }
   ];
 
   return (
-    <div className="guest-screen">
-      <div className="guest-container">
+    <div className="invitados-container">
+      <div className="invitados-content">
         {/* Header */}
-        <div className="guest-header">
+        <header className="invitados-header">
           <h1>Panel de Invitados</h1>
-        </div>
+        </header>
 
         {/* Event Details Section */}
-        <div className="event-details">
-          <div className="details-card">
+        <section className="evento-detalles">
+          <div className="detalles-card">
             <h2>Detalles del Evento</h2>
-            <div className="details-grid">
-              <div className="detail-item confirm-option">
+            <div className="detalles-grid">
+              <div className="detalle-item confirm-option">
                 <i className="bi bi-cup-hot-fill"></i>
                 <div>
                   <h3>Recepción Invitados</h3>
@@ -30,7 +57,7 @@ function PInvitados() {
                 </div>
               </div>
 
-              <div className="detail-item location-option">
+              <div className="detalle-item location-option">
                 <i className="bi bi-suit-heart"></i>
                 <div>
                   <h3>La Ceremonia</h3>
@@ -39,7 +66,7 @@ function PInvitados() {
                 </div>
               </div>
 
-              <div className="detail-item itinerary-option">
+              <div className="detalle-item itinerary-option">
                 <i className="bi bi-moon-stars"></i>
                 <div>
                   <h3>Evento</h3>
@@ -48,7 +75,7 @@ function PInvitados() {
                 </div>
               </div>
 
-              <div className="detail-item dresscode-option">
+              <div className="detalle-item dresscode-option">
                 <i className="bi bi-people-fill"></i>
                 <div>
                   <h3>Edad Permitida</h3>
@@ -58,32 +85,33 @@ function PInvitados() {
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Guest Options */}
-        <div className="guest-options">
+        <div className="opciones-invitados">
           {guestOptions.map((option, index) => (
-            <div
+            <button
               key={`option-${index}`}
-              className={`guest-option ${option.className}`}
+              className={`opcion-invitado ${option.className}`}
               onClick={() => navigate(option.path)}
+              aria-label={option.title}
             >
-              <div className="option-icon">
+              <div className="opcion-icono">
                 <i className={`bi ${option.icon}`}></i>
               </div>
               <h3>{option.title}</h3>
               <p>{option.description}</p>
-              <div className="option-decoration"></div>
-            </div>
+              <div className="opcion-decoracion"></div>
+            </button>
           ))}
         </div>
 
         {/* Social Hashtag Section */}
-        <div className="hashtag-section">
+        <section className="seccion-hashtag">
           <p>Compartí tus fotos usando nuestro hashtag</p>
           <h3>#BodaFabiyAle</h3>
-          <div className="animated-heart">❤️</div>
-        </div>
+          <div className="corazon-animado">❤️</div>
+        </section>
       </div>
     </div>
   );

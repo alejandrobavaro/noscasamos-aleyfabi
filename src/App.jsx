@@ -34,7 +34,7 @@ import PInvitadosProbadorRopaAvatar from "./componentes/PInvitadosProbadorRopaAv
 
 //------------RUTAS DE ORGANIZACIÓN--------------//
 import POrganizacion from "./componentes/POrganizacion";
-import PInvitadosLista from "./componentes/PInvitadosLista";
+import POrgListaInvitados from "./componentes/POrgListaInvitados";
 import POrgMesas from "./componentes/POrgMesas";
 import POrgTareasBoda from "./componentes/POrgTareasBoda";
 import POrgRegalos from "./componentes/POrgRegalos";
@@ -79,7 +79,7 @@ function App() {
 
                   {/* RUTAS DE ORGANIZACIÓN */}
                   <Route path="/organizacion" element={<POrganizacion />} />
-                  <Route path="/organizacion/invitados" element={<PInvitadosLista />} />
+                  <Route path="/organizacion/invitados" element={<POrgListaInvitados />} />
                   <Route path="/organizacion/mesas" element={<POrgMesas />} />
                   <Route path="/organizacion/checklist" element={<POrgTareasBoda />} />
                   <Route path="/organizacion/regalos" element={<POrgRegalos />} />

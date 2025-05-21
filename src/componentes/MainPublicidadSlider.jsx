@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "../assets/scss/_03-Componentes/_MainPublicidadSlider.scss";
 
 const MainPublicidadSlider = () => {
-  const settings = {
+  const sliderSettings = {
     dots: false,
     infinite: true,
     speed: 500,
@@ -22,44 +22,40 @@ const MainPublicidadSlider = () => {
     "/img/03-img-banners/banner3.png",
     "/img/03-img-banners/banner4.png",
     "/img/03-img-banners/banner5.png",
-    ];
+  ];
 
   return (
-    <div className="gridPadrePublicidad1">
-      <div className="publicidad-grid-contenedor">
-        <div className="publicidad-grid fila-publicidad">
-          <div className="publicidad-container">
-            <Slider {...settings}>
+    <div className="advertisement-container">
+      <div className="advertisement-content">
+        <div className="slider-row">
+          <div className="slider-wrapper">
+            <Slider {...sliderSettings}>
               {banners.map((banner, index) => (
-                <div key={index} className="slide-item">
+                <div key={`banner-${index}`} className="slider-item">
                   <img
                     src={banner}
                     alt={`Banner ${index + 1}`}
-                    className="imagen-publicidad objetoCentrado1"
+                    className="advertisement-image"
                   />
                 </div>
               ))}
             </Slider>
           </div>
-          <div className="publicidad-container">
-            <Slider {...settings}>
-              {banners
-                .slice()
-                .reverse()
-                .map((banner, index) => (
-                  <div key={index} className="slide-item">
-                    <img
-                      src={banner}
-                      alt={`Banner ${banners.length - index}`}
-                      className="imagen-publicidad objetoCentrado1"
-                    />
-                  </div>
-                ))}
+
+          <div className="slider-wrapper">
+            <Slider {...sliderSettings}>
+              {[...banners].reverse().map((banner, index) => (
+                <div key={`reverse-banner-${index}`} className="slider-item">
+                  <img
+                    src={banner}
+                    alt={`Banner ${banners.length - index}`}
+                    className="advertisement-image"
+                  />
+                </div>
+              ))}
             </Slider>
           </div>
         </div>
-
-       
       </div>
     </div>
   );

@@ -155,83 +155,78 @@ const PInvitadosProbadorRopaAvatar = () => {
     );
   }
 
+
   return (
-    <div className="probador-ropa-container">
-      <h1>OUTFIT PARA LA BODA</h1>
-      <p className="probador-ropa-subtitle">Personaliza tu look</p>
+    <div className="probador-ropa">
+      <header className="probador-header">
+        <h1>OUTFIT PARA LA BODA</h1>
+        <p>Personaliza tu look</p>
+      </header>
       
-      <div className="probador-ropa-grid-wrapper">
-        <div className="probador-ropa-grid">
-          {/* Área de vista previa */}
-          <div className="probador-ropa-preview-fixed-container">
-            <div className="probador-ropa-preview-container probador-ropa-fixed-preview">
-              <div className="probador-ropa-preview" ref={previewRef}>
-                {Object.keys(seleccion).map(tipo => (
-                  seleccion[tipo] && productoSeleccionado[tipo]?.opciones?.find(op => op.nombre === seleccion[tipo]) && (
-                    <img
-                      key={tipo}
-                      src={productoSeleccionado[tipo].opciones.find(op => op.nombre === seleccion[tipo]).imagen}
-                      alt={tipo}
-                      className="probador-ropa-capa"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        console.error(`Error cargando imagen: ${e.target.src}`);
-                      }}
-                    />
-                  )
+      <div className="probador-content">
+        {/* Vista previa del avatar */}
+        <div className="probador-preview-container">
+          <div className="probador-preview" ref={previewRef}>
+            {Object.keys(seleccion).map(tipo => (
+              seleccion[tipo] && productoSeleccionado[tipo]?.opciones?.find(op => op.nombre === seleccion[tipo]) && (
+                <img
+                  key={tipo}
+                  src={productoSeleccionado[tipo].opciones.find(op => op.nombre === seleccion[tipo]).imagen}
+                  alt={tipo}
+                  className="probador-layer"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    console.error(`Error cargando imagen: ${e.target.src}`);
+                  }}
+                />
+              )
+            ))}
+          </div>
+        </div>
+
+        {/* Selector de prendas */}
+        <div className="probador-selector">
+          {productoSeleccionado && Object.keys(productoSeleccionado).map(tipo => (
+            <section key={tipo} className="probador-category">
+              <h2>{productoSeleccionado[tipo].titulo}</h2>
+              <div className="probador-options">
+                {productoSeleccionado[tipo].opciones.map(opcion => (
+                  <div key={opcion.nombre} className="probador-option">
+                    <button
+                      className={seleccion[tipo] === opcion.nombre ? 'selected' : ''}
+                      onClick={() => handleSeleccionChange(tipo, opcion.nombre)}
+                      aria-label={`Seleccionar ${opcion.nombre}`}
+                    >
+                      <img 
+                        src={opcion.imagen} 
+                        alt={opcion.nombre} 
+                        onError={(e) => {
+                          e.target.src = '/img/placeholder-vestuario.png';
+                        }}
+                      />
+                    </button>
+                    <span>{opcion.nombre}</span>
+                  </div>
                 ))}
               </div>
-            </div>
-          </div>
+            </section>
+          ))}
 
-          {/* Área de selección */}
-          <div className="probador-ropa-personalizacion-capas">
-            {productoSeleccionado && Object.keys(productoSeleccionado).map(tipo => (
-              <div key={tipo}>
-                <h5 className="probador-ropa-tituloopciones">{productoSeleccionado[tipo].titulo}</h5>
-                <div className="probador-ropa-options-container">
-                  {productoSeleccionado[tipo].opciones.map(opcion => (
-                    <div key={opcion.nombre} className="probador-ropa-option-wrapper">
-                      <button
-                        className={`probador-ropa-option-button ${
-                          seleccion[tipo] === opcion.nombre ? 'probador-ropa-selected' : ''
-                        }`}
-                        onClick={() => handleSeleccionChange(tipo, opcion.nombre)}
-                      >
-                        <img 
-                          src={opcion.imagen} 
-                          alt={opcion.nombre} 
-                          className="probador-ropa-option-img"
-                          onError={(e) => {
-                            e.target.src = '/img/placeholder-vestuario.png';
-                          }}
-                        />
-                      </button>
-                      <span className="probador-ropa-option-name">{opcion.nombre}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-
-            {/* Acciones */}
-            <div className="probador-ropa-personalizar-acciones">
-              <button 
-                className="probador-ropa-guardar-btn" 
-                onClick={handleSaveDesign}
-                disabled={!productoSeleccionado}
-              >
-                Guardar Outfit
-              </button>
-              <a 
-                href={generateWhatsappUrl()} 
-                className="probador-ropa-guardar-btn" 
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                Compartir Outfit
-              </a>
-            </div>
+          {/* Acciones */}
+          <div className="probador-actions">
+            <button 
+              onClick={handleSaveDesign}
+              disabled={!productoSeleccionado}
+            >
+              Guardar Outfit
+            </button>
+            <a 
+              href={generateWhatsappUrl()} 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              Compartir Outfit
+            </a>
           </div>
         </div>
       </div>
