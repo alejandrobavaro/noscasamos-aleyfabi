@@ -85,7 +85,7 @@ const POrgInvitaciones = () => {
     ],
     giftStores: [
       { name: "Casa Muñoz", logo: "/img/stores/casa-munoz.png", link: "#" },
-      { name: "Río POrgRegalos", logo: "/img/stores/rio-POrgRegalos.png", link: "#" },
+      { name: "Río Regalos", logo: "/img/stores/rio-Regalos.png", link: "#" },
       { name: "Lista de Amazon", logo: "/img/stores/amazon.png", link: "#" }
     ]
   };
@@ -626,9 +626,11 @@ const POrgInvitaciones = () => {
                         </div>
                       </div>
 
-                      {/* Lista de POrgRegalos */}
+                      {/* Lista de PInvitadosRegalos
+ */}
                       <div className="gift-section">
-                        <h4>Lista de POrgRegalos</h4>
+                        <h4>Lista de PInvitadosRegalos
+</h4>
                         <p>Tu presencia es nuestro mejor regalo, pero si deseas hacernos un obsequio, estas son algunas opciones:</p>
                         <div className="gift-options">
                           {eventData.giftStores.map((store, index) => (

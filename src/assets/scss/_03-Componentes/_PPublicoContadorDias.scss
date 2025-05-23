@@ -1,398 +1,286 @@
-.baroque-clock-container {
+/* ==========================================================================
+   COMPONENTE CONTADOR DE DÍAS - Mobile First
+   ========================================================================== */
+
+/* Contenedor principal */
+.contador-container {
   position: relative;
-  width: 123%;
-   padding: 6rem 1.5rem;
+  width: 100%;
+  max-width: 412px;
+  margin: 1rem auto;
+  padding: 3rem 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 20px;
+  border-radius: 0.5rem;
   overflow: hidden;
   z-index: 1;
   text-align: center;
-  margin: 2rem 0;
-  
-  .background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('/img/13-gif/gif8.gif');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -2;
-    opacity: 0.8;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('/img/decoraciones/baroque-pattern.png');
-    opacity: 0.08;
-    z-index: -1;
-  }
+  box-sizing: border-box;
+  transition: all 0.3s ease; /* Transición suave para cambios */
 }
 
-.gold-frame {
+/* Fondo animado */
+.contador-background {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  border: 1.5px solid transparent;
+  top: 0;
+  left: 10;
+  width: 150%;
+  height: 90%;
+  background-image: url('/img/13-gif/gif8.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -2;
+  opacity: 0.8;
+  transition: transform 0.5s ease; /* Transición para el zoom */
+}
+
+/* Patrón decorativo */
+.contador-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/img/decoraciones/baroque-pattern.png');
+  opacity: 0.08;
+  z-index: -1;
+}
+
+/* Marco dorado */
+.contador-frame {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  border: 1px solid transparent;
   border-image: url('/img/decoraciones/gold-border.png') 15 round;
   pointer-events: none;
   z-index: -1;
 }
 
-.white-particle {
+/* Partículas flotantes */
+.contador-particle {
   position: absolute;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
-  animation: floatParticle linear infinite;
+  animation: flotar-particula linear infinite;
   filter: blur(1px);
-  
-  @keyframes floatParticle {
-    0% { 
-      transform: translateY(0) translateX(0) scale(0.8); 
-      opacity: 0; 
-    }
-    10% { 
-      opacity: 0.8; 
-      transform: translateY(-10px) translateX(5px) scale(1);
-    }
-    90% { 
-      opacity: 0.8; 
-    }
-    100% { 
-      transform: translateY(-80vh) translateX(15px) scale(1.2); 
-      opacity: 0; 
-    }
+}
+
+@keyframes flotar-particula {
+  0% { 
+    transform: translateY(0) translateX(0) scale(0.8); 
+    opacity: 0; 
+  }
+  10% { 
+    opacity: 0.8; 
+    transform: translateY(-0.5rem) translateX(0.3rem) scale(1);
+  }
+  90% { 
+    opacity: 0.8; 
+  }
+  100% { 
+    transform: translateY(-80vh) translateX(1rem) scale(1.2); 
+    opacity: 0; 
   }
 }
 
-.clock-content {
+/* Contenido principal */
+.contador-content {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 800px;
-  padding: 2rem;
+  padding: 0rem;
   background: transparent;
-  
-  @media (max-width: 768px) {
-    padding: 1.5rem;
-  }
-  
-  @media (max-width: 480px) {
-    padding: 1rem;
-  }
 }
 
-.animated-title {
+/* Título */
+.contador-title {
   font-family: 'Cinzel Decorative', serif;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   color: #5a2d2d;
   margin: 0 0 1rem 0;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-  letter-spacing: 10px;
-  animation: titleFadeIn 1.5s ease-out;
+  letter-spacing: 0.5rem;
+  animation: titulo-aparecer 1.5s ease-out;
   position: relative;
   display: inline-block;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 8px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(to right, transparent, #b13128, transparent);
-    transform: scaleX(0);
-    transform-origin: center;
-    animation: titleUnderline 3s ease-in-out 1s forwards;
-  }
-  
-  @media (max-width: 768px) {
-    font-size: 2rem;
-    letter-spacing: 8px;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 1.7rem;
-    letter-spacing: 5px;
-    margin-bottom: 0.8rem;
-    
-    &::after {
-      bottom: 6px;
-    }
-  }
 }
 
-.main-counter {
+.contador-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #b13128, transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  animation: subrayado-titulo 3s ease-in-out 1s forwards;
+}
+
+/* Contador principal */
+.contador-principal {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+  margin-bottom: 0rem;
   flex-wrap: wrap;
-  
-  @media (max-width: 768px) {
-    gap: 0.6rem;
-    margin-bottom: 1.2rem;
-  }
-  
-  @media (max-width: 480px) {
-    gap: 0.4rem;
-    margin-bottom: 1rem;
-  }
 }
 
-.time-block {
+.contador-bloque {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.ornate-number {
+.contador-valor {
   font-family: 'Cinzel', serif;
-  font-size: 2.8rem;
+  font-size: 2rem;
   color: #5a2d2d;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.2rem;
   text-shadow: 
     1px 1px 0 rgba(255, 255, 255, 0.5),
-    2px 2px 3px rgba(0, 0, 0, 0.15);
+    1px 1px 2px rgba(0, 0, 0, 0.15);
   position: relative;
-  min-width: 70px;
+  min-width: 3.5rem;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(245, 235, 220, 0.85) 100%);
-  border-radius: 6px;
-  padding: 0.3rem 0.8rem;
+  border-radius: 0.3rem;
+  padding: 0.2rem 0.5rem;
   box-shadow: 
-    0 3px 10px rgba(0, 0, 0, 0.08),
-    inset 0 0 8px rgba(255, 255, 255, 0.4);
+    0 2px 6px rgba(0, 0, 0, 0.08),
+    inset 0 0 6px rgba(255, 255, 255, 0.4);
   border: 1px solid rgba(210, 180, 140, 0.4);
-  animation: pulseGlow 2s infinite alternate;
-  
-  @keyframes pulseGlow {
-    0% { box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08), inset 0 0 8px rgba(255, 255, 255, 0.4); }
-    100% { box-shadow: 0 3px 15px rgba(210, 180, 140, 0.2), inset 0 0 12px rgba(255, 255, 255, 0.6); }
-  }
-  
-  @media (max-width: 768px) {
-    font-size: 2.2rem;
-    min-width: 60px;
-    padding: 0.2rem 0.6rem;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 1.8rem;
-    min-width: 50px;
-    padding: 0.1rem 0.5rem;
-  }
+  animation: pulso-resplandor 2s infinite alternate;
 }
 
-.time-label {
+.contador-etiqueta {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #5a2d2d;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.5px;
   font-weight: 600;
-  
-  @media (max-width: 768px) {
-    font-size: 0.85rem;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 0.8rem;
-    letter-spacing: 0.5px;
-  }
 }
 
-.time-separator {
+.contador-separador {
   font-family: 'Cinzel', serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #a67c52;
-  margin-top: -0.8rem;
-  text-shadow: 0 0 3px rgba(255, 215, 0, 0.4);
-  animation: blinkSeparator 1.5s infinite;
-  
-  @keyframes blinkSeparator {
-    0% { opacity: 0.7; }
-    50% { opacity: 1; text-shadow: 0 0 6px rgba(255, 215, 0, 0.6); }
-    100% { opacity: 0.7; }
-  }
-  
-  @media (max-width: 768px) {
-    font-size: 1.6rem;
-    margin-top: -0.6rem;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 1.3rem;
-    margin-top: -0.5rem;
-  }
+  margin-top: -0.5rem;
+  text-shadow: 0 0 2px rgba(255, 215, 0, 0.4);
+  animation: parpadeo-separador 1.5s infinite;
 }
 
-.compact-info {
+/* Información adicional */
+.contador-info-adicional {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   flex-wrap: wrap;
-  margin-top: 1.5rem;
-  
-  @media (max-width: 768px) {
-    gap: 1.2rem;
-    margin-top: 1.2rem;
-  }
-  
-  @media (max-width: 480px) {
-    gap: 1rem;
-    flex-direction: column;
-    margin-top: 1rem;
-  }
+  margin-top: 1rem;
 }
 
-.additional-time {
+.contador-tiempo-adicional {
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
-  
-  .additional-value {
-    font-family: 'Cinzel', serif;
-    font-size: 1.5rem;
-    color: #5a2d2d;
-    
-    @media (max-width: 768px) {
-      font-size: 1.3rem;
-    }
-    
-    @media (max-width: 480px) {
-      font-size: 1.2rem;
-    }
-  }
-  
-  .additional-label {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.9rem;
-    color: #490101;
-     font-weight: bold;
-    
-    @media (max-width: 480px) {
-      font-size: 0.85rem;
-    }
-  }
+  gap: 0.3rem;
 }
 
-.wedding-date {
+.contador-valor-adicional {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  color: #5a2d2d;
+}
+
+.contador-etiqueta-adicional {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem;
+  font-size: 0.8rem;
   color: #490101;
   font-weight: bold;
-  padding: 2px 10px;
- 
-  
-  @media (max-width: 768px) {
-    font-size: 0.9rem;
-    padding: 0.2rem 0.6rem;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 0.85rem;
-    padding: 0.2rem 0.5rem;
-  }
 }
 
-/* Nuevo contenedor del botón de WhatsApp integrado */
-.whatsapp-integrated-container {
+.contador-fecha-boda {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  color: #490101;
+  font-weight: bold;
+  padding: 0.1rem 0.5rem;
   width: 100%;
-  margin-top: 1rem;
+}
+
+/* Botón de WhatsApp */
+.contador-boton-whatsapp {
+  width: 100%;
+  margin-top: 0.8rem;
   display: flex;
   justify-content: center;
-
-  @media (max-width: 480px) {
-    margin-top: 0.8rem;
-  }
 }
 
-.whatsapp-integrated-button {
+.boton-compartir {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 10px 20px;
+  gap: 0.5rem;
+  padding: 0rem 1.2rem;
   border: none;
-  border-radius: 30px;
+  border-radius: 1.5rem;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   background: transparent;
   color: rgb(102, 14, 14);
-  box-shadow: 0 4px 12px rgba(109, 7, 7, 0.226);
-
-  
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(44, 22, 1, 0.596);
-    // background: rgba(83, 1, 1, 0.9);
-  }
-  
-  @media (max-width: 768px) {
-    padding: 9px 18px;
-    font-size: 0.95rem;
-  }
-  
-  @media (max-width: 480px) {
-    padding: 8px 16px;
-    font-size: 0.9rem;
-  }
+  box-shadow: 0 2px 8px rgba(109, 7, 7, 0.2);
 }
 
-.baroque-decoration {
+.boton-compartir:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(44, 22, 1, 0.3);
+}
+
+.icono-whatsapp {
+  font-size: 1.1rem;
+  margin-left: 0.3rem;
+}
+
+/* Decoraciones */
+.contador-decoracion {
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 3rem;
+  height: 3rem;
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 0.7;
   z-index: 0;
-  
-  &.top-left {
-    top: 10px;
-    left: 10px;
-  }
-  
-  &.top-right {
-    top: 10px;
-    right: 10px;
-    transform: scaleX(-1);
-  }
-  
-  @media (max-width: 768px) {
-    width: 50px;
-    height: 50px;
-  }
-  
-  @media (max-width: 480px) {
-    width: 40px;
-    height: 40px;
-  }
 }
 
-/* Animations */
-@keyframes titleFadeIn {
+.izquierda-superior {
+  top: 0.5rem;
+  left: 0.5rem;
+}
+
+.derecha-superior {
+  top: 0.5rem;
+  right: 0.5rem;
+  transform: scaleX(-1);
+}
+
+/* Animaciones */
+@keyframes titulo-aparecer {
   from { 
     opacity: 0; 
-    transform: translateY(-20px);
+    transform: translateY(-1rem);
   }
   to { 
     opacity: 1; 
@@ -400,7 +288,154 @@
   }
 }
 
-@keyframes titleUnderline {
+@keyframes subrayado-titulo {
   from { transform: scaleX(0); }
   to { transform: scaleX(1); }
 }
+
+@keyframes pulso-resplandor {
+  0% { box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), inset 0 0 6px rgba(255, 255, 255, 0.4); }
+  100% { box-shadow: 0 2px 10px rgba(210, 180, 140, 0.2), inset 0 0 8px rgba(255, 255, 255, 0.6); }
+}
+
+@keyframes parpadeo-separador {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; text-shadow: 0 0 4px rgba(255, 215, 0, 0.6); }
+  100% { opacity: 0.7; }
+}
+
+/* ==========================================================================
+   ADAPTACIONES PARA TABLET (768px+)
+   ========================================================================== */
+@media (min-width: 768px) {
+  .contador-container {
+    padding: 0rem 1.5rem;
+    border-radius: 0.75rem;
+  }
+
+  .contador-frame {
+    top: 0.75rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.75rem;
+  }
+
+  .contador-title {
+    font-size: 2.2rem;
+    letter-spacing: 0.6rem;
+  }
+
+  .contador-valor {
+    font-size: 2.5rem;
+    min-width: 4rem;
+    padding: 0rem 0.7rem;
+  }
+
+  .contador-etiqueta {
+    font-size: 0.85rem;
+  }
+
+  .contador-separador {
+    font-size: 1.8rem;
+    margin-top: -0.6rem;
+  }
+
+  .contador-valor-adicional {
+    font-size: 1.4rem;
+  }
+
+  .contador-etiqueta-adicional {
+    font-size: 0.85rem;
+  }
+
+  .contador-fecha-boda {
+    font-size: 1rem;
+  }
+
+  .boton-compartir {
+    padding: 0.7rem 1.4rem;
+    font-size: 1rem;
+  }
+
+  .contador-decoracion {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
+/* ==========================================================================
+   ADAPTACIONES PARA ESCRITORIO (1024px+)
+   ========================================================================== */
+   @media (min-width: 1024px) {
+    .contador-container {
+      max-width: 1300px; /* Aumentamos el ancho máximo */
+      padding: 0rem 2.5rem; /* Más padding para mayor espacio */
+      border-radius: 1.2rem;
+    }
+  
+    .contador-background {
+      top: 0;
+      left: 10;
+      width: 100%;
+      height: 100%;
+       }
+
+    .contador-frame {
+      top: 1.2rem;
+      left: 1.2rem;
+      right: 1.2rem;
+      bottom: 1.2rem;
+    }
+  
+    .contador-title {
+      font-size: 2.8rem; /* Título más grande */
+      letter-spacing: 1rem;
+      margin-bottom: 1.5rem;
+    }
+  
+    .contador-valor {
+      font-size: 3.5rem; /* Números más grandes */
+      min-width: 5rem;
+      padding: 0.5rem 1rem;
+    }
+  
+    .contador-etiqueta {
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+  
+    .contador-separador {
+      font-size: 2.5rem;
+      margin-top: -1rem;
+    }
+  
+    .contador-info-adicional {
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+  
+    .contador-valor-adicional {
+      font-size: 1.8rem;
+    }
+  
+    .contador-etiqueta-adicional {
+      font-size: 1rem;
+    }
+  
+    .contador-fecha-boda {
+      font-size: 1.3rem;
+      padding: 0.5rem 1rem;
+    }
+  
+    .boton-compartir {
+      padding: 0rem 2rem;
+      font-size: 1.2rem;
+      border-radius: 2rem;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+  
+    .contador-decoracion {
+      width: 5rem;
+      height: 5rem;
+    }
+  }

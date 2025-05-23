@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import "../assets/scss/_03-Componentes/_POrgCatering.scss";
+import "../assets/scss/_03-Componentes/_PInvitadosMenu.scss";
 
-function POrgCatering() {
-  const [POrgCateringData, setPOrgCateringData] = useState({
+function PInvitadosMenu() {
+  const [PInvitadosMenuData, setPInvitadosMenuData] = useState({
     menuOptions: [],
     dietaryRestrictions: []
   });
@@ -10,7 +10,7 @@ function POrgCatering() {
   const [restrictions, setRestrictions] = useState([]);
   const [activeTab, setActiveTab] = useState('menu');
   const [notes, setNotes] = useState({
-    POrgCatering: ''
+    PInvitadosMenu: ''
   });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -18,18 +18,18 @@ function POrgCatering() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await fetch('/POrgCatering.json');
+        const response = await fetch('/PInvitadosMenu.json');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setPOrgCateringData(data);
+        setPInvitadosMenuData(data);
         setMenu(data.menuOptions || []);
         setRestrictions(data.dietaryRestrictions || []);
       } catch (error) {
-        console.error("Error al cargar datos de catering:", error);
+        console.error("Error al cargar datos de menu:", error);
         // Datos de prueba en caso de error
-        setPOrgCateringData({
+        setPInvitadosMenuData({
           menuOptions: [
             {
               id: 1,
@@ -55,9 +55,9 @@ function POrgCatering() {
 
   // Actualizar menu y restrictions cuando cambian los datos
   useEffect(() => {
-    setMenu(POrgCateringData.menuOptions || []);
-    setRestrictions(POrgCateringData.dietaryRestrictions || []);
-  }, [POrgCateringData]);
+    setMenu(PInvitadosMenuData.menuOptions || []);
+    setRestrictions(PInvitadosMenuData.dietaryRestrictions || []);
+  }, [PInvitadosMenuData]);
 
   const toggleMenuItem = (categoryId, itemId) => {
     setMenu(menu.map(category => 
@@ -75,18 +75,18 @@ function POrgCatering() {
   const handleNotesChange = (value) => {
     setNotes(prev => ({
       ...prev,
-      POrgCatering: value
+      PInvitadosMenu: value
     }));
   };
 
   const saveNotes = () => {
-    console.log('Notas de POrgCatering guardadas:', notes.POrgCatering);
+    console.log('Notas de PInvitadosMenu guardadas:', notes.PInvitadosMenu);
     // Aquí podrías agregar lógica para guardar en localStorage o API
   };
 
   if (isLoading) {
     return (
-      <div className="POrgCatering-container loading">
+      <div className="PInvitadosMenu-container loading">
         <div className="spinner"></div>
         <p>Cargando opciones de menú...</p>
       </div>
@@ -94,13 +94,13 @@ function POrgCatering() {
   }
 
   return (
-    <div className="POrgCatering-container">
-      <div className="POrgCatering-header">
+    <div className="PInvitadosMenu-container">
+      <div className="PInvitadosMenu-header">
         <h1>Menu para la Boda</h1>
         <p className="wedding-subtitle">Planifica el menú y las restricciones alimentarias para tu gran día</p>
       </div>
       
-      <div className="POrgCatering-tabs">
+      <div className="PInvitadosMenu-tabs">
         <button 
           className={`tab-btn ${activeTab === 'menu' ? 'active' : ''}`}
           onClick={() => setActiveTab('menu')}
@@ -115,7 +115,7 @@ function POrgCatering() {
         </button>
       </div>
       
-      <div className="POrgCatering-content">
+      <div className="PInvitadosMenu-content">
         {activeTab === 'menu' && (
           <div className="menu-section">
             <div className="section-header">
@@ -223,9 +223,9 @@ function POrgCatering() {
             </div>
             
             <div className="notes-section">
-              <h3>Notas para el POrgCatering</h3>
+              <h3>Notas para el Menu</h3>
               <textarea 
-                value={notes.POrgCatering}
+                value={notes.PInvitadosMenu}
                 onChange={(e) => handleNotesChange(e.target.value)}
                 placeholder="Agrega aquí cualquier nota especial sobre alergias o restricciones..."
               ></textarea>
@@ -243,4 +243,4 @@ function POrgCatering() {
   );
 }
 
-export default POrgCatering;
+export default PInvitadosMenu;

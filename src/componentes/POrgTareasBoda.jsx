@@ -23,9 +23,9 @@ function POrgTareasBoda() {
         setTasksData(data.categories);
         
         // Cargar datos guardados localmente si existen
-        const savedChecklist = localStorage.getItem('weddingChecklist');
-        if (savedChecklist) {
-          setTasksData(JSON.parse(savedChecklist));
+        const savedTareasboda = localStorage.getItem('weddingTareasboda');
+        if (savedTareasboda) {
+          setTasksData(JSON.parse(savedTareasboda));
         }
       } catch (err) {
         setError(err.message);
@@ -40,7 +40,7 @@ function POrgTareasBoda() {
   // Guardar datos en localStorage cuando cambian
   useEffect(() => {
     if (tasksData.length > 0) {
-      localStorage.setItem('weddingChecklist', JSON.stringify(tasksData));
+      localStorage.setItem('weddingTareasboda', JSON.stringify(tasksData));
     }
   }, [tasksData]);
 
@@ -139,7 +139,7 @@ function POrgTareasBoda() {
   // Estados de carga
   if (loading) {
     return (
-      <div className="pantalla-checklist">
+      <div className="pantalla-tareasboda">
         <div className="loading-message">
           <i className="bi bi-hourglass-split"></i> Cargando lista de tareas...
         </div>
@@ -149,7 +149,7 @@ function POrgTareasBoda() {
 
   if (error) {
     return (
-      <div className="pantalla-checklist">
+      <div className="pantalla-tareasboda">
         <div className="error-message">
           <i className="bi bi-exclamation-triangle-fill"></i> Error: {error}
         </div>
@@ -158,8 +158,8 @@ function POrgTareasBoda() {
   }
 
   return (
-    <div className="pantalla-checklist">
-      <div className="contenedor-checklist">
+    <div className="pantalla-tareasboda">
+      <div className="contenedor-tareasboda">
         {/* Encabezado */}
         <div className="encabezado-boda">
           <h1>Lista de Tareas de la Boda</h1>
@@ -319,11 +319,11 @@ function getCategoryIcon(categoryId) {
   switch(categoryId) {
     case 'salon': return 'bi-building';
     case 'vestuario': return 'bi-suit-heart';
-    case 'POrgCatering': return 'bi-egg-fried';
+    case 'PInvitadosMenu': return 'bi-egg-fried';
     case 'POrgInvitaciones': return 'bi-envelope';
     case 'entretenimiento': return 'bi-music-note-beamed';
     case 'fotografia': return 'bi-camera';
-    case 'POrgRegalos': return 'bi-gift';
+    case 'PInvitadosRegalos': return 'bi-gift';
     case 'web': return 'bi-globe';
     case 'ceremonia': return 'bi-heart';
     case 'transporte': return 'bi-truck';

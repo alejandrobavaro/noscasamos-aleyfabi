@@ -9,9 +9,13 @@
         {"id": "salon-3", "name": "Contratar florista para arreglos", "assigned": "fabiola", "dueDate": "2025-05-01", "completed": false},
         {"id": "salon-4", "name": "Diseñar y construir arco nupcial", "assigned": "alejandro", "dueDate": "2025-08-01", "completed": false},
         {"id": "salon-5", "name": "Seleccionar mantelería", "assigned": "fabiola", "dueDate": "2025-05-15", "completed": false},
-        {"id": "salon-6", "name": "Elegir decoración de POrgMesas", "assigned": "fabiola", "dueDate": "2025-06-01", "completed": false},
+        {"id": "salon-6", "name": "Elegir decoración de POrgAsignacionMesas
+
+", "assigned": "fabiola", "dueDate": "2025-06-01", "completed": false},
         {"id": "salon-7", "name": "Contratar servicio de iluminación", "assigned": "alejandro", "dueDate": "2025-06-15", "completed": false},
-        {"id": "salon-8", "name": "Planificar distribución de POrgMesas", "assigned": "both", "dueDate": "2025-07-01", "completed": false},
+        {"id": "salon-8", "name": "Planificar distribución de POrgAsignacionMesas
+
+", "assigned": "both", "dueDate": "2025-07-01", "completed": false},
         {"id": "salon-9", "name": "Seleccionar mobiliario adicional", "assigned": "fabiola", "dueDate": "2025-07-15", "completed": false},
         {"id": "salon-10", "name": "Confirmar entrega de decoración", "assigned": "alejandro", "dueDate": "2025-08-15", "completed": false}
       ]
@@ -33,19 +37,33 @@
       ]
     },
     {
-      "id": "POrgCatering",
-      "name": "POrgCatering & Banquete",
+      "id": "PInvitadosMenu
+",
+      "name": "PInvitadosMenu
+ & Banquete",
       "tasks": [
-        {"id": "POrgCatering-1", "name": "Seleccionar menú principal", "assigned": "both", "dueDate": "2025-05-01", "completed": false},
-        {"id": "POrgCatering-2", "name": "Definir opciones para vegetarianos", "assigned": "fabiola", "dueDate": "2025-05-15", "completed": false},
-        {"id": "POrgCatering-3", "name": "Seleccionar torta nupcial", "assigned": "both", "dueDate": "2025-06-01", "completed": false},
-        {"id": "POrgCatering-4", "name": "Contratar servicio de POrgCatering", "assigned": "both", "dueDate": "2025-04-01", "completed": false},
-        {"id": "POrgCatering-5", "name": "Definir menú para niños", "assigned": "fabiola", "dueDate": "2025-05-30", "completed": false},
-        {"id": "POrgCatering-6", "name": "Seleccionar bebidas", "assigned": "alejandro", "dueDate": "2025-06-15", "completed": false},
-        {"id": "POrgCatering-7", "name": "Coordinar degustación de menú", "assigned": "both", "dueDate": "2025-07-01", "completed": false},
-        {"id": "POrgCatering-8", "name": "Confirmar cantidad de invitados para POrgCatering", "assigned": "both", "dueDate": "2025-07-15", "completed": false},
-        {"id": "POrgCatering-9", "name": "Seleccionar postres adicionales", "assigned": "fabiola", "dueDate": "2025-08-01", "completed": false},
-        {"id": "POrgCatering-10", "name": "Confirmar entrega de torta nupcial", "assigned": "both", "dueDate": "2025-08-15", "completed": false}
+        {"id": "PInvitadosMenu
+-1", "name": "Seleccionar menú principal", "assigned": "both", "dueDate": "2025-05-01", "completed": false},
+        {"id": "PInvitadosMenu
+-2", "name": "Definir opciones para vegetarianos", "assigned": "fabiola", "dueDate": "2025-05-15", "completed": false},
+        {"id": "PInvitadosMenu
+-3", "name": "Seleccionar torta nupcial", "assigned": "both", "dueDate": "2025-06-01", "completed": false},
+        {"id": "PInvitadosMenu
+-4", "name": "Contratar servicio de PInvitadosMenu
+", "assigned": "both", "dueDate": "2025-04-01", "completed": false},
+        {"id": "PInvitadosMenu
+-5", "name": "Definir menú para niños", "assigned": "fabiola", "dueDate": "2025-05-30", "completed": false},
+        {"id": "PInvitadosMenu
+-6", "name": "Seleccionar bebidas", "assigned": "alejandro", "dueDate": "2025-06-15", "completed": false},
+        {"id": "PInvitadosMenu
+-7", "name": "Coordinar degustación de menú", "assigned": "both", "dueDate": "2025-07-01", "completed": false},
+        {"id": "PInvitadosMenu
+-8", "name": "Confirmar cantidad de invitados para PInvitadosMenu
+", "assigned": "both", "dueDate": "2025-07-15", "completed": false},
+        {"id": "PInvitadosMenu
+-9", "name": "Seleccionar postres adicionales", "assigned": "fabiola", "dueDate": "2025-08-01", "completed": false},
+        {"id": "PInvitadosMenu
+-10", "name": "Confirmar entrega de torta nupcial", "assigned": "both", "dueDate": "2025-08-15", "completed": false}
       ]
     },
     {
@@ -97,19 +115,38 @@
       ]
     },
     {
-      "id": "POrgRegalos",
-      "name": "POrgRegalos & Souvenirs",
+      "id": "PInvitadosRegalos
+",
+      "name": "PInvitadosRegalos
+ & Souvenirs",
       "tasks": [
-        {"id": "POrgRegalos-1", "name": "Seleccionar souvenirs para invitados", "assigned": "fabiola", "dueDate": "2025-06-01", "completed": false},
-        {"id": "POrgRegalos-2", "name": "Crear lista de POrgRegalos", "assigned": "both", "dueDate": "2025-04-01", "completed": false},
-        {"id": "POrgRegalos-3", "name": "Personalizar souvenirs", "assigned": "fabiola", "dueDate": "2025-06-15", "completed": false},
-        {"id": "POrgRegalos-4", "name": "Contratar servicio de entrega de POrgRegalos", "assigned": "alejandro", "dueDate": "2025-07-01", "completed": false},
-        {"id": "POrgRegalos-5", "name": "Seleccionar POrgRegalos para padrinos y damas de honor", "assigned": "both", "dueDate": "2025-05-01", "completed": false},
-        {"id": "POrgRegalos-6", "name": "Confirmar entrega de souvenirs", "assigned": "fabiola", "dueDate": "2025-08-01", "completed": false},
-        {"id": "POrgRegalos-7", "name": "Preparar mesa de POrgRegalos", "assigned": "both", "dueDate": "2025-08-15", "completed": false},
-        {"id": "POrgRegalos-8", "name": "Seleccionar POrgRegalos para familiares cercanos", "assigned": "both", "dueDate": "2025-05-15", "completed": false},
-        {"id": "POrgRegalos-9", "name": "Coordinar entrega de POrgRegalos especiales", "assigned": "both", "dueDate": "2025-07-15", "completed": false},
-        {"id": "POrgRegalos-10", "name": "Confirmar lista final de POrgRegalos", "assigned": "both", "dueDate": "2025-08-30", "completed": false}
+        {"id": "PInvitadosRegalos
+-1", "name": "Seleccionar souvenirs para invitados", "assigned": "fabiola", "dueDate": "2025-06-01", "completed": false},
+        {"id": "PInvitadosRegalos
+-2", "name": "Crear lista de PInvitadosRegalos
+", "assigned": "both", "dueDate": "2025-04-01", "completed": false},
+        {"id": "PInvitadosRegalos
+-3", "name": "Personalizar souvenirs", "assigned": "fabiola", "dueDate": "2025-06-15", "completed": false},
+        {"id": "PInvitadosRegalos
+-4", "name": "Contratar servicio de entrega de PInvitadosRegalos
+", "assigned": "alejandro", "dueDate": "2025-07-01", "completed": false},
+        {"id": "PInvitadosRegalos
+-5", "name": "Seleccionar PInvitadosRegalos
+ para padrinos y damas de honor", "assigned": "both", "dueDate": "2025-05-01", "completed": false},
+        {"id": "PInvitadosRegalos
+-6", "name": "Confirmar entrega de souvenirs", "assigned": "fabiola", "dueDate": "2025-08-01", "completed": false},
+        {"id": "PInvitadosRegalos
+-7", "name": "Preparar mesa de PInvitadosRegalos
+", "assigned": "both", "dueDate": "2025-08-15", "completed": false},
+        {"id": "PInvitadosRegalos
+-8", "name": "Seleccionar PInvitadosRegalos
+ para familiares cercanos", "assigned": "both", "dueDate": "2025-05-15", "completed": false},
+        {"id": "PInvitadosRegalos
+-9", "name": "Coordinar entrega de PInvitadosRegalos
+ especiales", "assigned": "both", "dueDate": "2025-07-15", "completed": false},
+        {"id": "PInvitadosRegalos
+-10", "name": "Confirmar lista final de PInvitadosRegalos
+", "assigned": "both", "dueDate": "2025-08-30", "completed": false}
       ]
     },
     {
@@ -121,7 +158,8 @@
         {"id": "web-3", "name": "Crear sección de RSVP en línea", "assigned": "alejandro", "dueDate": "2025-03-01", "completed": false},
         {"id": "web-4", "name": "Agregar galería de fotos", "assigned": "alejandro", "dueDate": "2025-04-01", "completed": false},
         {"id": "web-5", "name": "Incluir información de alojamiento", "assigned": "both", "dueDate": "2025-04-15", "completed": false},
-        {"id": "web-6", "name": "Actualizar lista de POrgRegalos en la web", "assigned": "both", "dueDate": "2025-05-01", "completed": false},
+        {"id": "web-6", "name": "Actualizar lista de PInvitadosRegalos
+ en la web", "assigned": "both", "dueDate": "2025-05-01", "completed": false},
         {"id": "web-7", "name": "Agregar sección de agradecimientos", "assigned": "alejandro", "dueDate": "2025-05-15", "completed": false},
         {"id": "web-8", "name": "Publicar historias y anécdotas", "assigned": "both", "dueDate": "2025-06-01", "completed": false},
         {"id": "web-9", "name": "Actualizar información de contacto", "assigned": "both", "dueDate": "2025-06-15", "completed": false},

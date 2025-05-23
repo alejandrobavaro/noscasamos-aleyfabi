@@ -32,6 +32,7 @@ const PPublicoCabinaFotografica = ({ onClose, fullscreenMode }) => {
     showCameraSelector: false
   });
 
+
   useEffect(() => {
     const savedPhotos = localStorage.getItem('cabinaFotograficaFotos');
     if (savedPhotos) setRecentPhotos(JSON.parse(savedPhotos));
@@ -118,7 +119,6 @@ const PPublicoCabinaFotografica = ({ onClose, fullscreenMode }) => {
       downloadCollage(photoUrl);
     }
   };
-
   if (showTutorial) {
     return (
       <PPublicoCabinaFotograficaTutorial 
@@ -141,18 +141,22 @@ const PPublicoCabinaFotografica = ({ onClose, fullscreenMode }) => {
   }
 
   return (
-    <div className={`photo-booth ${fullscreenMode ? 'fullscreen' : ''}`}>
+    <div className={`cabina-fotografica-container ${fullscreenMode ? 'fullscreen-mode' : ''}`}>
       <PPublicoCabinaFotograficaEffects effect={activeEffect} />
       
-      <button className="close-btn" onClick={onClose} aria-label="Cerrar cabina fotográfica">
+      <button 
+        className="cabina-close-button" 
+        onClick={onClose} 
+        aria-label="Cerrar cabina fotográfica"
+      >
         <X size={24} />
       </button>
 
-      <div className="photo-booth-header">
-        <h1>Cabina Fotográfica</h1>
-        <p>¡Captura momentos divertidos!</p>
-        {guestData.name && <p className="guest-name">Hola, {guestData.name}!</p>}
-      </div>
+      <header className="cabina-header">
+        <h1 className="cabina-title">Cabina Fotográfica</h1>
+        <p className="cabina-subtitle">¡Captura momentos divertidos!</p>
+        {guestData.name && <p className="cabina-guest-name">Hola, {guestData.name}!</p>}
+      </header>
 
       <PPublicoCabinaFotograficaCamera
         cameraState={cameraState}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../assets/scss/_03-Componentes/_PPublicoContadorDias.scss";
-import { FaWhatsapp, FaCog } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 
 function PPublicoContadorDias() {
   const [timeLeft, setTimeLeft] = useState({
@@ -12,30 +12,22 @@ function PPublicoContadorDias() {
     weeks: 0
   });
 
-  const [showWhatsappPanel, setShowWhatsappPanel] = useState(false);
-  const [phoneNumbers] = useState([
-    "5492235208386",
-    "5492235455451"
-  ]);
-
   const generateMessage = () => {
     return ` *¡Faltan solo ${timeLeft.days} días para la Boda!* 
 
 ${timeLeft.days > 30 ? ` ¡${timeLeft.months} meses! ` : ``}`;
   };
 
-  const shareOnWhatsApp = (number = null) => {
+  const shareOnWhatsApp = () => {
     const message = generateMessage();
-    const url = number 
-      ? `https://wa.me/${number}?text=${encodeURIComponent(message)}`
-      : `https://wa.me/?text=${encodeURIComponent(message)}`;
+    const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
 
   useEffect(() => {
     const createParticle = () => {
       const particle = document.createElement('div');
-      particle.className = 'white-particle';
+      particle.className = 'contador-particle';
       
       const xPos = Math.random() * 100;
       const delay = Math.random() * 3;
@@ -50,7 +42,7 @@ ${timeLeft.days > 30 ? ` ¡${timeLeft.months} meses! ` : ``}`;
       particle.style.height = `${size}px`;
       particle.style.opacity = opacity;
       
-      document.querySelector('.baroque-clock-container')?.appendChild(particle);
+      document.querySelector('.contador-container')?.appendChild(particle);
       
       setTimeout(() => {
         particle.remove();
@@ -90,14 +82,14 @@ ${timeLeft.days > 30 ? ` ¡${timeLeft.months} meses! ` : ``}`;
   }, []);
 
   return (
-    <section className="baroque-clock-container">
-      <div className="background-image"></div>
-      <div className="gold-frame"></div>
+    <section className="contador-container">
+      <div className="contador-background"></div>
+      <div className="contador-frame"></div>
       
-      <div className="clock-content">
-        <h1 className="animated-title">Faltan</h1>
+      <div className="contador-content">
+        <h1 className="contador-title">Faltan</h1>
         
-        <div className="main-counter">
+        <div className="contador-principal">
           {Object.entries({
             days: timeLeft.days,
             hours: timeLeft.hours.toString().padStart(2, '0'),
@@ -105,44 +97,44 @@ ${timeLeft.days > 30 ? ` ¡${timeLeft.months} meses! ` : ``}`;
             seconds: timeLeft.seconds.toString().padStart(2, '0')
           }).map(([key, value]) => (
             <React.Fragment key={key}>
-              <div className="time-block">
-                <div className="time-value ornate-number">{value}</div>
-                <div className="time-label">{key.charAt(0).toUpperCase() + key.slice(1)}</div>
+              <div className="contador-bloque">
+                <div className="contador-valor">{value}</div>
+                <div className="contador-etiqueta">{key.charAt(0).toUpperCase() + key.slice(1)}</div>
               </div>
-              {key !== 'seconds' && <div className="time-separator">:</div>}
+              {key !== 'seconds' && <div className="contador-separador">:</div>}
             </React.Fragment>
           ))}
         </div>
         
-        <div className="compact-info">
-          <div className="additional-time">
-            <span className="additional-value">{timeLeft.months}</span>
-            <span className="additional-label">Meses</span>
+        <div className="contador-info-adicional">
+          <div className="contador-tiempo-adicional">
+            <span className="contador-valor-adicional">{timeLeft.months}</span>
+            <span className="contador-etiqueta-adicional">Meses</span>
           </div>
           
-          <div className="additional-time">
-            <span className="additional-value">{timeLeft.weeks}</span>
-            <span className="additional-label">Semanas</span>
+          <div className="contador-tiempo-adicional">
+            <span className="contador-valor-adicional">{timeLeft.weeks}</span>
+            <span className="contador-etiqueta-adicional">Semanas</span>
           </div>
           
-          <div className="wedding-date">
+          <div className="contador-fecha-boda">
             <span>23 / 11 / 2025 - 19:00 hs</span>
           </div>
 
-          {/* Botón de WhatsApp integrado debajo de la fecha */}
-          <div className="whatsapp-integrated-container">
+          <div className="contador-boton-whatsapp">
             <button 
-              className="whatsapp-integrated-button" 
-              onClick={() => shareOnWhatsApp()}
+              className="boton-compartir" 
+              onClick={shareOnWhatsApp}
+              aria-label="Compartir cuenta regresiva por WhatsApp"
             >
-              Compartir cuenta regresiva<FaWhatsapp />
+              Compartir cuenta regresiva<FaWhatsapp className="icono-whatsapp" />
             </button>
           </div>
         </div>
       </div>
       
-      <div className="baroque-decoration top-left"></div>
-      <div className="baroque-decoration top-right"></div>
+      <div className="contador-decoracion izquierda-superior"></div>
+      <div className="contador-decoracion derecha-superior"></div>
     </section>
   );
 }

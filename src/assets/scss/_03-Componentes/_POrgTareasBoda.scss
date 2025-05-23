@@ -1,11 +1,13 @@
-.pantalla-checklist {
+.pantalla-
+tareasboda {
   display: flex;
   justify-content: center;
   align-items: center;
   background-size: cover;
   padding: 0;
 
-  .contenedor-checklist {
+  .contenedor-
+tareasboda {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -45,7 +47,8 @@
       }
     }
 
-    .resumen-checklist {
+    .resumen-
+tareasboda {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1.5rem;
@@ -259,10 +262,12 @@
 }
 
 @media (max-width: 992px) {
-  .pantalla-checklist {
+  .pantalla-
+tareasboda {
     padding: 1.5rem;
     
-    .contenedor-checklist {
+    .contenedor-
+tareasboda {
       padding: 2rem 1.5rem;
       
       .encabezado-boda {
@@ -279,10 +284,12 @@
 }
 
 @media (max-width: 768px) {
-  .pantalla-checklist {
+  .pantalla-
+tareasboda {
     padding: 1rem;
     
-    .contenedor-checklist {
+    .contenedor-
+tareasboda {
       padding: 1.5rem 1rem;
       
       .encabezado-boda {
@@ -295,7 +302,8 @@
         }
       }
       
-      .resumen-checklist {
+      .resumen-
+tareasboda {
         grid-template-columns: 1fr;
       }
     }

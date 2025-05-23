@@ -1,53 +1,172 @@
-.camera-container {
-  padding: 12px;
-  text-align: center;
-  max-width: 100%;
-  box-sizing: border-box;
-  margin: 0 auto;
-}
+/* ==========================================================================
+   COMPONENTE CÁMARA CABINA FOTOGRÁFICA - Mobile First
+   ========================================================================== */
 
-.camera-video {
+/* Contenedor principal */
+.camera-wrapper {
   width: 100%;
-  max-width: 100%;
+  max-width: 412px;
+  margin: 0 auto;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Contenedor de la cámara */
+.camera-container {
+  width: 100%;
+  height: auto;
+  background-color: #1a1a1a;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+/* Elemento de video */
+.camera-video-element {
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
   aspect-ratio: 4 / 3;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-  background-color: black;
+  background-color: #000;
+  border-radius: 0.25rem;
   object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  transition: opacity 0.3s ease;
+  
+  &:not([srcObject]) {
+    opacity: 0.5;
+  }
 }
 
-.camera-loading,
-.camera-error {
-  color: white;
-  font-size: 16px;
-  margin: 12px 0;
-  padding: 10px;
+/* Mensajes de estado */
+.camera-loading-message,
+.camera-error-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  line-height: 1.4;
+  width: 90%;
+  z-index: 10;
 }
 
-.camera-error {
-  background-color: rgba(211, 47, 47, 0.1);
-  border: 1px solid rgba(211, 47, 47, 0.4);
-  border-radius: 6px;
-  color: #d32f2f;
+/* Mensaje de carga */
+.camera-loading-message {
+  .loading-icon {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .loading-text {
+    color: #ffffff;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+  }
 }
 
+/* Mensaje de error */
+.camera-error-message {
+  .error-icon {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #ff4d4f;
+  }
+  
+  .error-text {
+    color: #ff4d4f;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+    background-color: rgba(255, 77, 79, 0.1);
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    border: 1px solid rgba(255, 77, 79, 0.3);
+  }
+}
+
+/* ==========================================================================
+   ADAPTACIONES PARA TABLET (768px+)
+   ========================================================================== */
 @media (min-width: 768px) {
+  .camera-wrapper {
+    padding: 1rem;
+  }
+  
   .camera-container {
+    padding: 1rem;
+    border-radius: 0.75rem;
+  }
+  
+  .camera-video-element {
+    border-radius: 0.5rem;
+    max-height: 65vh;
+  }
+  
+  .camera-loading-message {
+    .loading-icon {
+      font-size: 2rem;
+    }
+    
+    .loading-text {
+      font-size: 1.1rem;
+    }
+  }
+  
+  .camera-error-message {
+    .error-icon {
+      font-size: 2rem;
+    }
+    
+    .error-text {
+      font-size: 1.1rem;
+      padding: 1rem;
+    }
+  }
+}
+
+/* ==========================================================================
+   ADAPTACIONES PARA ESCRITORIO (1024px+)
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .camera-wrapper {
     max-width: 500px;
   }
-
-  .camera-video {
-    border-radius: 12px;
+  
+  .camera-container {
+    padding: 1.25rem;
+    border-radius: 1rem;
   }
-
-  .camera-error {
-    font-size: 18px;
-    padding: 14px;
+  
+  .camera-video-element {
+    max-height: 60vh;
+    border-radius: 0.75rem;
   }
-
-  .camera-loading {
-    font-size: 18px;
+  
+  .camera-loading-message {
+    .loading-icon {
+      font-size: 2.5rem;
+    }
+    
+    .loading-text {
+      font-size: 1.2rem;
+    }
+  }
+  
+  .camera-error-message {
+    .error-icon {
+      font-size: 2.5rem;
+    }
+    
+    .error-text {
+      font-size: 1.2rem;
+      padding: 1.25rem;
+    }
   }
 }

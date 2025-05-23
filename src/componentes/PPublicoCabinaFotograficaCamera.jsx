@@ -20,8 +20,6 @@ const PPublicoCabinaFotograficaCamera = ({
       audio: false
     };
 
-    console.log("🔄 Intentando acceder a la cámara con constraints:", constraints);
-
     navigator.mediaDevices
       .getUserMedia(constraints)
       .then((stream) => {
@@ -32,7 +30,7 @@ const PPublicoCabinaFotograficaCamera = ({
         }
       })
       .catch((err) => {
-        console.error("❌ Error al acceder a la cámara:", err);
+        console.error("Error al acceder a la cámara:", err);
         setError(err.message || "No se pudo acceder a la cámara.");
         onCameraStateChange(prev => ({ ...prev, isActive: false, error: err.message }));
       });
@@ -45,18 +43,30 @@ const PPublicoCabinaFotograficaCamera = ({
   }, []);
 
   return (
-    <div className="camera-container">
-      {error && <p className="camera-error">⚠️ Error: {error}</p>}
-      {!streaming && !error && (
-        <p className="camera-loading">📷 Cargando cámara...</p>
-      )}
-      <video
-        ref={videoRef}
-        autoPlay
-        playsInline
-        muted
-        className="camera-video"
-      />
+    <div className="camera-wrapper">
+      <div className="camera-container">
+        {error && (
+          <div className="camera-error-message">
+            <span className="error-icon">⚠️</span>
+            <p className="error-text">Error: {error}</p>
+          </div>
+        )}
+        
+        {!streaming && !error && (
+          <div className="camera-loading-message">
+            <span className="loading-icon">📷</span>
+            <p className="loading-text">Cargando cámara...</p>
+          </div>
+        )}
+        
+        <video
+          ref={videoRef}
+          autoPlay
+          playsInline
+          muted
+          className="camera-video-element"
+        />
+      </div>
     </div>
   );
 };

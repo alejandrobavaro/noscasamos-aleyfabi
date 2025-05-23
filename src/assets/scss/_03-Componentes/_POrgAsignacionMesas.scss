@@ -1,253 +1,561 @@
-// POrgMesas.scss - Versión corregida
+/* ==========================================================================
+   COMPONENTE ASIGNACIÓN DE MESAS - Mobile First
+   ========================================================================== */
 
-.asignacion-POrgMesas {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Variables de color */
+$color-primario: #5a2d2d;
+$color-secundario: #8c5e3d;
+$color-fondo: #fff9f0;
+$color-borde: #e0e0e0;
+$color-exito: #4caf50;
+$color-error: #d32f2f;
+$color-texto: #333;
+$color-texto-claro: #777;
+
+/* Estilos base */
+.asignacion-container {
+  font-family: 'Cormorant Garamond', serif;
+  max-width: 100%;
+  padding: 1rem;
+  background-color: $color-fondo;
+  color: $color-texto;
+}
+
+/* Loading state */
+.asignacion-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
   
-  h1 {
-    font-family: 'Playfair Display', serif;
-    color: #7A4F50; /* Color bordo directo */
-    font-size: 2.2rem;
-    margin-bottom: 1.5rem;
+  .loading-spinner {
+    border: 4px solid rgba($color-primario, 0.1);
+    border-top: 4px solid $color-primario;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    color: $color-primario;
+    font-size: 1rem;
   }
 }
 
-.controles {
-  margin-bottom: 2rem;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-.boton-nueva-mesa {
-  background: #7A4F50; /* Color bordo directo */
+/* Encabezado */
+.asignacion-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.asignacion-titulo {
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  color: $color-primario;
+  margin-bottom: 1rem;
+}
+
+.asignacion-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.asignacion-busqueda {
+  position: relative;
+  
+  input {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 2.5rem;
+    border: 1px solid $color-borde;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-family: inherit;
+    
+    &:focus {
+      outline: none;
+      border-color: $color-primario;
+      box-shadow: 0 0 0 2px rgba($color-primario, 0.2);
+    }
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $color-texto-claro;
+  }
+}
+
+.asignacion-nueva-mesa {
+  background-color: $color-primario;
   color: white;
   border: none;
-  padding: 0.7rem 1.5rem;
-  border-radius: 5px;
-  font-family: 'Cormorant Garamond', serif;
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
   font-size: 1rem;
+  font-family: inherit;
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
   
   &:hover {
-    background: #6c4546; /* Color bordo oscurecido manualmente */
+    background-color: darken($color-primario, 10%);
   }
   
-  i {
+  .plus-icon {
     font-size: 1.2rem;
   }
 }
 
-.formulario-mesa {
-  background: #FFF9F5; /* Color blanco directo */
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
+/* Formulario nueva mesa */
+.asignacion-formulario-mesa {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   
-  h2 {
-    font-family: 'Cormorant Garamond', serif;
-    color: #7A4F50; /* Color bordo directo */
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+  h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    color: $color-primario;
+    margin-bottom: 1rem;
+    text-align: center;
   }
 }
 
-.form-group {
-  margin-bottom: 1.2rem;
+.formulario-grupo {
+  margin-bottom: 1rem;
   
   label {
     display: block;
-    font-family: 'Cormorant Garamond', serif;
-    color: #7A4F50; /* Color bordo directo */
     margin-bottom: 0.5rem;
-    font-size: 1rem;
+    font-weight: 500;
+    color: $color-primario;
   }
   
   input, select {
     width: 100%;
-    padding: 0.7rem;
-    border: 1px solid rgba(122, 79, 80, 0.2); /* RGBA del color bordo */
-    border-radius: 5px;
-    font-family: 'Cormorant Garamond', serif;
+    padding: 0.8rem;
+    border: 1px solid $color-borde;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-family: inherit;
     
     &:focus {
       outline: none;
-      border-color: #C2A78D; /* Color dorado directo */
+      border-color: $color-primario;
     }
   }
 }
 
-.botones-formulario {
+.formulario-botones {
   display: flex;
   gap: 1rem;
   margin-top: 1.5rem;
   
   button {
-    padding: 0.7rem 1.5rem;
-    border-radius: 5px;
-    font-family: 'Cormorant Garamond', serif;
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 0.5rem;
     font-size: 1rem;
+    font-family: inherit;
     cursor: pointer;
     transition: all 0.3s ease;
   }
 }
 
 .boton-guardar {
-  background: #7A4F50; /* Color bordo directo */
+  background-color: $color-primario;
   color: white;
-  border: none;
   
   &:hover {
-    background: #6c4546; /* Color bordo oscurecido manualmente */
+    background-color: darken($color-primario, 10%);
   }
 }
 
 .boton-cancelar {
-  background: transparent;
-  color: #7A4F50; /* Color bordo directo */
-  border: 1px solid #7A4F50; /* Color bordo directo */
+  background-color: #f5f5f5;
+  color: $color-texto;
   
   &:hover {
-    background: rgba(122, 79, 80, 0.1); /* RGBA del color bordo */
+    background-color: #e0e0e0;
   }
 }
 
-.resumen-POrgMesas {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-  
-  .estadistica {
-    background: #FFF9F5; /* Color blanco directo */
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    flex: 1;
-    
-    .numero {
-      font-family: 'Cinzel', serif;
-      color: #7A4F50; /* Color bordo directo */
-      font-size: 1.8rem;
-      font-weight: bold;
-      display: block;
-    }
-    
-    .texto {
-      font-family: 'Cormorant Garamond', serif;
-      color: #9a7a7b; /* Color bordo aclarado manualmente (20%) */
-      font-size: 0.9rem;
-    }
-  }
-}
-
-.POrgMesas-container {
+/* Estadísticas */
+.asignacion-estadisticas {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.mesa {
-  background: #FFF9F5; /* Color blanco directo */
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+.estadistica-tarjeta {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.estadistica-numero {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  color: $color-primario;
+  margin-bottom: 0.3rem;
+}
+
+.estadistica-etiqueta {
+  font-size: 0.9rem;
+  color: $color-texto-claro;
+}
+
+/* Contenido principal */
+.asignacion-contenido {
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
 }
 
-.encabezado-mesa {
-  background: #7A4F50; /* Color bordo directo */
-  color: white;
-  padding: 1rem;
+.asignacion-subtitulo {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  color: $color-primario;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid $color-borde;
+}
+
+/* Sección invitados */
+.asignacion-invitados {
+  flex: 1;
+}
+
+.asignacion-grupos {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.grupo-item {
+  margin-bottom: 1rem;
+  border: 1px solid $color-borde;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.grupo-cabecera {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.8rem 1rem;
+  background-color: #f5f5f5;
+  cursor: pointer;
   
-  h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    margin: 0;
+  &:hover {
+    background-color: #eeeeee;
   }
+}
+
+.grupo-nombre {
+  font-weight: 500;
   
-  .capacidad {
-    font-family: 'Cormorant Garamond', serif;
+  .grupo-contador {
+    color: $color-texto-claro;
     font-size: 0.9rem;
-    background: rgba(255, 255, 255, 0.2); /* RGBA blanco */
-    padding: 0.2rem 0.5rem;
-    border-radius: 30px;
   }
 }
 
-.invitados-mesa {
-  padding: 1rem;
-  flex-grow: 1;
-  min-height: 150px;
+.grupo-asignar {
+  background-color: $color-primario;
+  color: white;
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
-.invitado {
+.grupo-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: white;
+}
+
+.invitado-item {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(122, 79, 80, 0.1); /* RGBA del color bordo */
-  font-family: 'Cormorant Garamond', serif;
+  cursor: grab;
+  
+  &:hover {
+    background-color: #fafafa;
+  }
   
   &:last-child {
     border-bottom: none;
   }
+}
+
+.invitado-nombre {
+  font-weight: 500;
+}
+
+.invitado-info {
+  font-size: 0.9rem;
+  color: $color-texto-claro;
+}
+
+.invitado-asignado {
+  color: $color-exito;
+  font-weight: bold;
+}
+
+/* Sección mesas */
+.asignacion-mesas {
+  flex: 1;
+}
+
+.asignacion-lista-mesas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.mesa-item {
+  border: 1px solid $color-borde;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: white;
+  cursor: pointer;
   
-  .boton-quitar {
-    background: transparent;
-    border: none;
-    color: #9a7a7b; /* Color bordo aclarado manualmente (20%) */
-    cursor: pointer;
-    transition: color 0.3s ease;
+  &.mesa-seleccionada {
+    border-color: $color-primario;
+    box-shadow: 0 0 0 2px rgba($color-primario, 0.2);
+  }
+}
+
+.mesa-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid $color-borde;
+}
+
+.mesa-nombre {
+  font-weight: 500;
+}
+
+.mesa-capacidad {
+  font-size: 0.9rem;
+  color: $color-texto-claro;
+}
+
+.mesa-eliminar {
+  background: none;
+  border: none;
+  color: $color-error;
+  cursor: pointer;
+  padding: 0.2rem;
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.mesa-invitados {
+  list-style: none;
+  padding: 0.5rem;
+  margin: 0;
+  min-height: 60px;
+}
+
+.mesa-invitado-item {
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 0.5rem;
+  background-color: #f9f9f9;
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+}
+
+.invitado-detalle {
+  flex: 1;
+}
+
+.invitado-nombre-mesa {
+  display: block;
+  font-weight: 500;
+}
+
+.invitado-grupo-mesa {
+  font-size: 0.8rem;
+  color: $color-texto-claro;
+}
+
+.invitado-remover {
+  background: none;
+  border: none;
+  color: $color-error;
+  cursor: pointer;
+  padding: 0.2rem;
+  margin-left: 0.5rem;
+}
+
+/* Pie de página */
+.asignacion-pie {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.asignacion-exportar {
+  background-color: $color-primario;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: darken($color-primario, 10%);
+  }
+}
+
+/* Estilos para drag and drop */
+.dragging {
+  background-color: #e3f2fd !important;
+}
+
+.drag-placeholder {
+  background-color: #bbdefb;
+  border-radius: 0.3rem;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #bdbdbd;
+  border-radius: 3px;
+}
+
+/* ==========================================================================
+   ADAPTACIONES PARA TABLET (768px+)
+   ========================================================================== */
+@media (min-width: 768px) {
+  .asignacion-container {
+    padding: 1.5rem;
+  }
+  
+  .asignacion-controls {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .asignacion-busqueda {
+    flex: 1;
+  }
+  
+  .asignacion-nueva-mesa {
+    width: auto;
+  }
+  
+  .asignacion-estadisticas {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .asignacion-contenido {
+    flex-direction: row;
+  }
+  
+  .asignacion-invitados {
+    flex: 1;
+  }
+  
+  .asignacion-mesas {
+    flex: 1;
+  }
+}
+
+/* ==========================================================================
+   ADAPTACIONES PARA ESCRITORIO (1024px+)
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .asignacion-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .asignacion-titulo {
+    font-size: 2rem;
+  }
+  
+  .asignacion-formulario-mesa {
+    padding: 2rem;
+  }
+  
+  .asignacion-grupos {
+    max-height: 500px;
+  }
+  
+  .asignacion-lista-mesas {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  
+  /* Efecto de zoom en hover para escritorio */
+  .mesa-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     
     &:hover {
-      color: #7A4F50; /* Color bordo directo */
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
   }
-}
-
-.sin-invitados {
-  font-family: 'Cormorant Garamond', serif;
-  color: #b8a1a1; /* Color bordo aclarado manualmente (30%) */
-  text-align: center;
-  padding: 1rem 0;
-}
-
-.agregar-invitado {
-  padding: 0 1rem 1rem;
   
-  select {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid rgba(122, 79, 80, 0.2); /* RGBA del color bordo */
-    border-radius: 5px;
-    font-family: 'Cormorant Garamond', serif;
-    
-    &:focus {
-      outline: none;
-      border-color: #C2A78D; /* Color dorado directo */
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .asignacion-POrgMesas {
-    padding: 1rem;
-  }
-  
-  .resumen-POrgMesas {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .POrgMesas-container {
-    grid-template-columns: 1fr;
+  .invitado-item {
+    transition: background-color 0.2s ease;
   }
 }

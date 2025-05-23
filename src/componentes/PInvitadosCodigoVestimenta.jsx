@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
-import PInvitadosProbadorRopaAvatar from "./PInvitadosProbadorRopaAvatar";
+
 import { FaFemale, FaMale, FaPalette, FaQuestionCircle, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "../assets/scss/_03-Componentes/_PInvitadosCodigoVestimenta.scss";
 
@@ -186,10 +186,7 @@ const PInvitadosCodigoVestimenta = () => {
                 <p className="guide-note"><strong>Nota:</strong> Este probador es solo una guía. Las prendas mostradas son representativas.</p>
               </div>
             )}
-            
-            <div className="virtual-avatar">
-              <PInvitadosProbadorRopaAvatar />
-            </div>
+      
             
             <div className="virtual-tips">
               <h3>Consejos para tu look perfecto</h3>

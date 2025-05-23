@@ -8,31 +8,45 @@ function PInvitados() {
   const guestOptions = [
     {
       className: "confirm-option",
-      path: "/confirmar-asistencia",
+      path: "/invitados/confirmar",
       icon: "bi-envelope-check",
       title: "Confirmar Asistencia",
       description: "Confirma tu asistencia a nuestra boda"
     },
     {
       className: "location-option",
-      path: "/ubicacion",
+      path: "/invitados/ubicacion",
       icon: "bi-geo-alt",
       title: "Ubicación",
       description: "Cómo llegar al lugar del evento"
     },
     {
       className: "itinerary-option",
-      path: "/itinerario",
+      path: "/invitados/itinerario",
       icon: "bi-calendar-event",
       title: "Itinerario",
       description: "Programa de actividades"
     },
     {
       className: "dresscode-option",
-      path: "/codigo-vestimenta",
+      path: "/invitados/codigo-vestimenta",
       icon: "bi-suit-heart",
       title: "Código de Vestimenta",
       description: "Recomendaciones para tu outfit"
+    },
+    {
+      className: "menu-option",
+      path: "/invitados/menu",
+      icon: "bi-egg-fried",
+      title: "Menú Comida",
+      description: "El menú del casamiento"
+    },
+    {
+      className: "gifts-option",
+      path: "/invitados/regalos",
+      icon: "bi-gift",
+      title: "Lista de Regalos",
+      description: "Elige un regalo para los novios"
     }
   ];
 
@@ -42,6 +56,7 @@ function PInvitados() {
         {/* Header */}
         <header className="invitados-header">
           <h1>Panel de Invitados</h1>
+          <p className="welcome-message">¡Gracias por acompañarnos en este día tan especial!</p>
         </header>
 
         {/* Event Details Section */}
